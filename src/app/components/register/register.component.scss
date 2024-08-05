@@ -1,0 +1,93 @@
+// body {  
+//     font-family: Arial, sans-serif;  
+//     margin: 0;  
+// }  
+
+// .navbar {  
+//     background-color: #333;  
+//     color: #fff;  
+//     padding: 10px;  
+//     text-align: center;  
+// }  
+
+// .register-container {  
+//     background-color: #fff;  
+//     padding: 20px;  
+//     border-radius: 5px;  
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+//     width: 300px;  
+//     margin: 50px auto; /* Orta hizalamak için */  
+// }  
+
+// h2 {  
+//     text-align: center;  
+//     margin-bottom: 20px;  
+// }  
+
+// .form-group {  
+//     margin-bottom: 15px;  
+// }  
+
+// label {  
+//     display: block;  
+//     margin-bottom: 5px;  
+// }  
+
+// input[type="text"],  
+// input[type="email"],  
+// input[type="password"] {  
+//     width: 100%;  
+//     padding: 10px;  
+//     border: 1px solid #ccc;  
+//     border-radius: 3px;  
+// }  
+
+.submit-button {  
+    width: 100%;  
+    padding: 10px;  
+    background-color: #28a745;  
+    color: white;  
+    border: none;  
+    border-radius: 3px;  
+    cursor: pointer;  
+}  
+
+// .submit-button:hover {  
+//     background-color: #218838;  
+// }
+body {  
+    font-family: Arial, sans-serif; /* Yazı tipi ayarı */  
+    margin: 0; /* Varsayılan margin'i sıfırlama */  
+    padding: 0; /* Varsayılan padding'i sıfırlama */  
+}  
+
+.register-container {  
+    display: flex; /* Esnek kutu düzeni */  
+    height: 100vh; /* Sayfanın tamamını kapla */  
+}  
+
+.form-container {  
+    flex: 1; /* Formun genişliğini ayarlamak için */  
+    display: flex;  
+    flex-direction: column; /* İçerikleri dikey yerleştir */  
+    justify-content: center; /* Dikeyde ortala */  
+    padding: 40px; /* İç boşluk ekle */  
+    background-color: #f9f9f9; /* Arka plan rengi */  
+}  
+
+
+#registerphoto {  
+    flex: 1; /* Resim bölümünün genişliğini ayarla */  
+    display: flex; /* Esnek kutu düzeni */  
+    justify-content: center; /* Yatayda ortala */  
+    align-items: center; /* Dikeyde ortala */  
+  
+    
+    background-image: url('https://img-cdn.inc.com/image/upload/w_1024,h_576,c_fill/images/panoramic/GettyImages-900301626_437925_t2i3bm.jpg');
+    
+}  
+
+#registerphoto img {  
+    max-width: 100%; /* Resmin boyutunu ayarlamak için */  
+    height: auto; /* Yüksekliği otomatik ayarla */  
+}
