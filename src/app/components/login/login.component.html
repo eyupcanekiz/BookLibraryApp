@@ -1,11 +1,19 @@
-<div class="login-container">  
+<!DOCTYPE html>  
+<html lang="tr">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Login</title>  
+</head>  
+<body>
+  <div class="login-container">  
     <div class="form-container">  
         <h2>Login</h2> <br>
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
             <div class="form-floating mb-3">
               <input type="text" class="form-control" id="floatingInput" formControlName="username" placeholder="Username">
               <label for="floatingInput">Username</label>
-            </div><br>
+            </div><br>  
             <div class="form-floating">
               <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="Password">
               <label for="floatingPassword">Password</label>
@@ -17,3 +25,5 @@
     </div>  
     <div id="loginphoto"></div>  
 </div>
+
+</body>

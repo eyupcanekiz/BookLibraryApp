@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -30,6 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatButtonModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatSnackBarModule
   ],
   
