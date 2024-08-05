@@ -62,3 +62,36 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
   }
 }
+
+.section ul li img {
+  width: 90px;
+  height: 125px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.book-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.book-details {
+  flex-grow: 1;
+  text-align: center;
+
+}
+
+.book-button {
+  display: inline-block;
+  margin-top: 5px;
+  font-size: 0.9em;
+  text-decoration: none;
+  padding: 2%;
+ 
+}
+
+.book-button:hover {
+  color: #218838;
+}
+
