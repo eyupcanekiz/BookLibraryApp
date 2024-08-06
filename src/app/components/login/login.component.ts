@@ -50,10 +50,7 @@ export class LoginComponent implements OnInit {
             }) }
           if(!response.authenticateResult){   this.snackBar.open('Login failed', 'Close', { duration: 3000 });}
 
-<<<<<<< HEAD
-          
-          
-=======
+
           // console.log('Login successful, Token:', token);
           this.router.navigate(['/dashboard']); // Giriş yaptıktan sonra dashboard sayfasına yönlendir
           console.log("Giriş işlemi başarılı",response)
@@ -68,7 +65,7 @@ export class LoginComponent implements OnInit {
               console.log("token listelenemedi: " ,error)
             }
           })
->>>>>>> fb545dc1c42aec3137a6bc05c4ea23adcc4ff856
+
           
         },
         error: (error) => {
