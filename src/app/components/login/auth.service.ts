@@ -7,7 +7,7 @@ import { LoginModel } from './loginModel';  // Doğru yolda olduğundan emin olu
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:5066/api/User/LoginUser';
+  private apiUrl = 'https://booklibaryapi.azurewebsites.net/api/User/LoginUser';
 
   constructor(private http: HttpClient) {}
 
