@@ -26,6 +26,7 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "@popperjs/core": "^2.11.8",
+    "animate-scss": "^3.2.1",
     "axios": "^1.7.3",
     "bootstrap": "^5.3.3",
     "express": "^4.18.2",

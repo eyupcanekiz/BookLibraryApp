@@ -1,5 +1,5 @@
 {
-  "TITLE": "Kitap Kütüphanesi",
+  "TITLE": "Kütüphane.",
   "MAIN_PAGE": "Ana Sayfa",
   "REGISTER": "Kayıt Ol",
   "LOGIN": "Giriş Yap",
@@ -7,7 +7,7 @@
   "CONTACT": "İletişim",
   "BOOKS_IN_STOCK": "Stoktaki Kitaplar",
   "BORROW": "Ödünç Al",
-  "BOOKS_COMING_SOON": "Stoka Gelecek Kitaplar",
+  "BOOKS_COMING_SOON": "Stoğa Gelecek Kitaplar",
   "PRE_ORDER": "Ön Sipariş",
   "HOW_TO_GET_BOOKS": "Kitapları Nasıl Alabilirim?",
   "BORROW_BOOK": "Kitap Ödünç Al",
@@ -35,5 +35,4 @@
   "ABOUT_LIBRARY_TEXT": "Kütüphane sistemi, kitap ödünç alma ve iade etme işlemlerini yapabileceğiniz modern bir kütüphane çözümüdür. Amacımız, kullanıcılara kitaplara kolay erişim sağlamak ve yönetimlerini dijitalleştirmektir.",
   "OUR_TEAM": "Ekibimiz",
   "SOFTWARE_DEVELOPER": "Yazılım Geliştirici"
-  
 }
