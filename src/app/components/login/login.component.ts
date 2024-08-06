@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { error } from 'console';
 
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -34,10 +35,11 @@ export class LoginComponent implements OnInit {
       this.authService.login(username, password).subscribe({
         next: (response) => {
           this.snackBar.open('Login successful', 'Close', { duration: 3000 });
-          if(response.authenticateResult){// console.log('Login successful, Token:', token);
-            this.router.navigate(['/']); // Giriş yaptıktan sonra dashboard sayfasına yönlendir
+          if(response.authenticateResult){
             console.log("Giriş işlemi başarılı",response.authToken)
-  
+              
+          this.router.navigate(['/dashboard']); 
+         
            
             this.authService.getToken().subscribe({
               next:(token) =>{
@@ -51,9 +53,7 @@ export class LoginComponent implements OnInit {
           if(!response.authenticateResult){   this.snackBar.open('Login failed', 'Close', { duration: 3000 });}
 
 
-          // console.log('Login successful, Token:', token);
-          this.router.navigate(['/dashboard']); // Giriş yaptıktan sonra dashboard sayfasına yönlendir
-          console.log("Giriş işlemi başarılı",response)
+      
 
          
           this.authService.getToken().subscribe({
