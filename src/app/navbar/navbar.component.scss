@@ -17,10 +17,7 @@ body {
     backdrop-filter: blur(10px); /* Arka planı bulanıklaştırarak modern bir efekt ekliyoruz */
   }
   
-  .navbar {
-    padding: 10px 20px;
-  }
-  
+
   .navbar-brand {
     font-size: 28px; /* Boyutu biraz artırıyoruz */
     font-weight: bold; /* Daha kalın bir font yapıyoruz */
@@ -144,4 +141,10 @@ body {
     font-weight: 400;
     font-style: normal;
   }
+  .navbar {
+    margin: 0; /* Örnek olarak margin değerini sıfırlayabilirsiniz */
+    padding: 0; /* Aynı şekilde padding için de */
+    padding: 10px 20px;
+  }
+ 
   
