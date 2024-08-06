@@ -1,4 +1,4 @@
-<!DOCTYPE html>  
+<!-- <!DOCTYPE html>  
 <html lang="tr">  
 <head>  
     <meta charset="UTF-8">  
@@ -26,4 +26,34 @@
     <div id="loginphoto"></div>  
 </div>
 
+</body> -->
+<!DOCTYPE html>  
+<html lang="tr">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>{{ 'LOGIN' | translate }}</title>  
+</head>  
+<body>
+  <div class="login-container">  
+    <div class="form-container">  
+        <h2>{{ 'LOGIN' | translate }}</h2><br>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="floatingInput" formControlName="username" placeholder="{{ 'USERNAME' | translate }}">
+              <label for="floatingInput">{{ 'USERNAME' | translate }}</label>
+            </div><br>  
+            <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="{{ 'PASSWORD' | translate }}">
+              <label for="floatingPassword">{{ 'PASSWORD' | translate }}</label>
+            </div><br>
+            <button type="submit" class="submit-button">{{ 'LOGIN' | translate }}</button>
+            <br><br>{{ 'DONT_HAVE_ACCOUNT' | translate }}<br><br>
+            <a routerLink='/register' class="submit-button">{{ 'REGISTER_HERE' | translate }}</a>
+          </form> 
+    </div>  
+    <div id="loginphoto"></div>  
+</div>
+
 </body>
+</html>

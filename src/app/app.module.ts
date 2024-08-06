@@ -10,9 +10,14 @@ import { HomeComponent } from './components/home/home.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+//import { HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { RegisterComponent } from './components/register/register.component';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ContactComponent,
     LoginComponent,
     CarouselComponent,
+    RegisterComponent
     
   ],
   imports: [
@@ -30,11 +36,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    ReactiveFormsModule,
     HttpClientModule,
-    MatSnackBarModule
+    ReactiveFormsModule,
+    MatSnackBarModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }})
   ],
   
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
