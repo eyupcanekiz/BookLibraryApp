@@ -4,6 +4,15 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LoginModel } from './loginModel';  // Doğru yolda olduğundan emin olun
 
+// auth-response.interface.ts
+
+interface LoginResponse {
+  accessTokenExpireDate: string;
+  admin: string;
+  authToken:string;
+  authenticateResult:boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +22,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  public login(username: string, password: string): Observable<string> {
+  public login(username: string, password: string): Observable<LoginResponse> {
     const loginData: LoginModel = { username, password };
     return this.http.post<any>(this.loginUrl, loginData, {
     
