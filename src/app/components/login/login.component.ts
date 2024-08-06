@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router'; 
+import { Router } from '@angular/router';
+import { error } from 'console';
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +18,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private router: Router 
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,16 +32,31 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
       this.authService.login(username, password).subscribe({
-        next: (token) => {
+        next: (response) => {
           this.snackBar.open('Login successful', 'Close', { duration: 3000 });
-          console.log('Login successful, Token:', token);
+
+          // console.log('Login successful, Token:', token);
           this.router.navigate(['/dashboard']); // Giriş yaptıktan sonra dashboard sayfasına yönlendir
+          console.log("Giriş işlemi başarılı",response)
+          this.authService.getToken().subscribe({
+            next:(token) =>{
+              console.log("token:",token)
+              localStorage.setItem("AuthToken",token)
+            },
+            error:(error) =>{
+              console.log("token listelenemedi: " ,error)
+            }
+          })
+          this.router.navigate(['/header']);
         },
         error: (error) => {
           this.snackBar.open('Login failed', 'Close', { duration: 3000 });
           console.error('Login failed', error);
         }
+
       });
+   
+
     }
   }}
   
