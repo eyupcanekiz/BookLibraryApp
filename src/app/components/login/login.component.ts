@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
               console.log("token listelenemedi: " ,error)
             }
           })
-          this.router.navigate(['/header']);
+          
         },
         error: (error) => {
           this.snackBar.open('Login failed', 'Close', { duration: 3000 });
