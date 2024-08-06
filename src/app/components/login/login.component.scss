@@ -11,9 +11,14 @@ body {
     font-family: "Bebas Neue", sans-serif; /* Yazı tipi ayarı */  
     margin: 0; /* Varsayılan margin'i sıfırlama */  
     padding: 0; /* Varsayılan padding'i sıfırlama */  
+    h2{
+        font-family: "Bebas Neue", sans-serif;
+        color:$primary-color;
+    }
 }  
 
 .login-container {  
+    
     display: flex; /* Esnek kutu düzeni */  
     height: 100vh; /* Sayfanın tamamını kapla */  
 }  

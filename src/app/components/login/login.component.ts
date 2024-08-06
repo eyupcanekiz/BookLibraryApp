@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         next: response => {
           this.snackBar.open('Login successful', 'Close', { duration: 3000 });
           console.log('Login successful', response);
-          this.router.navigate(['/']); // Ana sayfaya yönlendirin
+          this.router.navigate(['/header']); // Ana sayfaya yönlendirin
         },
         error: error => {
           this.snackBar.open('Login failed', 'Close', { duration: 3000 });
