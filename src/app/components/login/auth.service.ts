@@ -19,8 +19,9 @@ export class AuthService {
     
     }).pipe(
       map(response => {
-        // Yanıtın içinde token'ı döndürmek için bu kodu kullanabilirsiniz
-        return response; // Yanıt yapısına göre burayı düzenleyin
+        
+        
+        return response; 
       })
     );
   }
