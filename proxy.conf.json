@@ -1,0 +1,12 @@
+{
+    "/api": {
+      "target": "https://booklibaryapi.azurewebsites.net",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug",
+      "pathRewrite": {
+        "^/api": ""
+      }
+    }
+  }
+  

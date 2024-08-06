@@ -13,6 +13,8 @@ export class AuthService {
 
   public login(username: string, password: string): Observable<any> {
     const loginData: LoginModel = { username, password };
-    return this.http.post<any>(`${this.apiUrl}`, loginData);  // '/login' kaldırıldı, çünkü apiUrl zaten login endpointine işaret ediyor.
+    return this.http.post<any>(this.apiUrl, loginData, {
+      withCredentials: true // Bu ayar, backend tarafında set edilen cookie'lerin frontend'e gelmesini sağlar
+    });
   }
 }

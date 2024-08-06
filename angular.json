@@ -78,7 +78,8 @@
               "buildTarget": "BookLibary:build:production"
             },
             "development": {
-              "buildTarget": "BookLibary:build:development"
+              "buildTarget": "BookLibary:build:development",
+               "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
