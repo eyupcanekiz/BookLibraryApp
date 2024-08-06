@@ -29,12 +29,12 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
       this.authService.login(username, password).subscribe({
-        next: response => {
+        next: (token) => {
           this.snackBar.open('Login successful', 'Close', { duration: 3000 });
-          console.log('Login successful', response);
+          console.log('Login successful, Token:', token);
           this.router.navigate(['/header']); // Ana sayfaya yönlendirin
         },
-        error: error => {
+        error: (error) => {
           this.snackBar.open('Login failed', 'Close', { duration: 3000 });
           console.error('Login failed', error);
         }
