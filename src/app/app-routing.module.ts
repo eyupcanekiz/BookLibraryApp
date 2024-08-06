@@ -26,6 +26,8 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent  },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent},
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'profile', component: ProfileComponent },
     ]
   },
   {
@@ -33,8 +35,7 @@ const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent },
-      { path: 'profile', component: ProfileComponent },
+     
     ]
   }
  
