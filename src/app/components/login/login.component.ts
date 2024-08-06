@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
           this.snackBar.open('Login successful', 'Close', { duration: 3000 });
 
           // console.log('Login successful, Token:', token);
-          this.router.navigate(['/dashboard']); // Giriş yaptıktan sonra dashboard sayfasına yönlendir
+          this.router.navigate(['/profile']); // Giriş yaptıktan sonra dashboard sayfasına yönlendir
           console.log("Giriş işlemi başarılı",response)
 
          
