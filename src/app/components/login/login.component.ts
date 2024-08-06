@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         next: (token) => {
           this.snackBar.open('Login successful', 'Close', { duration: 3000 });
           console.log('Login successful, Token:', token);
-          this.router.navigate(['/header']); // Ana sayfaya yönlendirin
+          this.router.navigate(['/dashboard']); // Giriş yaptıktan sonra dashboard sayfasına yönlendir
         },
         error: (error) => {
           this.snackBar.open('Login failed', 'Close', { duration: 3000 });
@@ -40,5 +40,5 @@ export class LoginComponent implements OnInit {
         }
       });
     }
-  }
-}
+  }}
+  

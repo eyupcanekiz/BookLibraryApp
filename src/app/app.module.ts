@@ -18,6 +18,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component';
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AnotherNavbarComponent } from './another-navbar/another-navbar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -29,7 +35,13 @@ import { Component, HostListener, OnInit } from '@angular/core';
     ContactComponent,
     LoginComponent,
     CarouselComponent,
-    RegisterComponent
+    RegisterComponent,
+    AuthLayoutComponent,
+    MainLayoutComponent,
+    NavbarComponent,
+    AnotherNavbarComponent,
+    DashboardComponent,
+    ProfileComponent
     
   ],
   imports: [
