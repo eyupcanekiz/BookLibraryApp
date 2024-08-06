@@ -1,59 +1,160 @@
 
-input[type="text"],  
-input[type="email"],  
-input[type="password"] {  
-    width: 100%;  
-    padding: 10px;  
-    border: 1px solid #ccc;  
-    border-radius: 3px;  
-}  
+// input[type="text"],  
+// input[type="email"],  
+// input[type="password"] {  
+//     width: 100%;  
+//     padding: 10px;  
+//     border: 1px solid #ccc;  
+//     border-radius: 3px;  
+// }  
 
-.submit-button {  
-    width: 100%;  
-    padding: 10px;  
-    background-color: #28a745;  
-    color: white;  
-    border: none;  
-    border-radius: 3px;  
-    cursor: pointer;  
-}  
+// .submit-button {  
+//     width: 100%;  
+//     padding: 10px;  
+//     background-color: #28a745;  
+//     color: white;  
+//     border: none;  
+//     border-radius: 3px;  
+//     cursor: pointer;  
+// }  
 
-.submit-button:hover {  
-    background-color: #218838;  
-}
-body {  
-    font-family: Arial, sans-serif; /* Yazı tipi ayarı */  
-    margin: 0; /* Varsayılan margin'i sıfırlama */  
-    padding: 0; /* Varsayılan padding'i sıfırlama */  
-}  
+// .submit-button:hover {  
+//     background-color: #218838;  
+// }
+// body {  
+//     font-family: Arial, sans-serif; /* Yazı tipi ayarı */  
+//     margin: 0; /* Varsayılan margin'i sıfırlama */  
+//     padding: 0; /* Varsayılan padding'i sıfırlama */  
+// }  
 
-.register-container {  
-    display: flex; /* Esnek kutu düzeni */  
-    height: 100vh; /* Sayfanın tamamını kapla */  
-}  
+// .register-container {  
+//     display: flex; /* Esnek kutu düzeni */  
+//     height: 100vh; /* Sayfanın tamamını kapla */  
+// }  
 
-.form-container {  
-    flex: 1; /* Formun genişliğini ayarlamak için */  
-    display: flex;  
-    flex-direction: column; /* İçerikleri dikey yerleştir */  
-    justify-content: center; /* Dikeyde ortala */  
-    padding: 40px; /* İç boşluk ekle */  
-    background-color: #f9f9f9; /* Arka plan rengi */  
-}  
+// .form-container {  
+//     flex: 1; /* Formun genişliğini ayarlamak için */  
+//     display: flex;  
+//     flex-direction: column; /* İçerikleri dikey yerleştir */  
+//     justify-content: center; /* Dikeyde ortala */  
+//     padding: 40px; /* İç boşluk ekle */  
+//     background-color: #f9f9f9; /* Arka plan rengi */  
+// }  
 
 
-#registerphoto {  
-    flex: 1; /* Resim bölümünün genişliğini ayarla */  
-    display: flex; /* Esnek kutu düzeni */  
-    justify-content: center; /* Yatayda ortala */  
-    align-items: center; /* Dikeyde ortala */  
+// #registerphoto {  
+//     flex: 1; /* Resim bölümünün genişliğini ayarla */  
+//     display: flex; /* Esnek kutu düzeni */  
+//     justify-content: center; /* Yatayda ortala */  
+//     align-items: center; /* Dikeyde ortala */  
   
     
-    background-image: url('https://img-cdn.inc.com/image/upload/w_1024,h_576,c_fill/images/panoramic/GettyImages-900301626_437925_t2i3bm.jpg');
+//     background-image: url('https://img-cdn.inc.com/image/upload/w_1024,h_576,c_fill/images/panoramic/GettyImages-900301626_437925_t2i3bm.jpg');
     
-}  
+// }  
 
-#registerphoto img {  
-    max-width: 100%; /* Resmin boyutunu ayarlamak için */  
-    height: auto; /* Yüksekliği otomatik ayarla */  
+// #registerphoto img {  
+//     max-width: 100%; /* Resmin boyutunu ayarlamak için */  
+//     height: auto; /* Yüksekliği otomatik ayarla */  
+// }
+$primary-color: #28a745;
+$secondary-color: #6C757D;
+$background-color: #F4F4F4;
+$form-background-color: #FFFFFF;
+$input-border-color: #CCC;
+$button-hover-color: darken($primary-color, 10%);
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+body {
+  background-color: $background-color;
+  margin: 0;
+  padding: 0;
+  font-family: "Bebas Neue", sans-serif;
+}
+
+.register-container {
+  display: flex;
+  height: 100vh;
+}
+
+.form-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  background-color: $form-background-color;
+  border-radius: 10px;
+  box-shadow: $box-shadow;
+  max-width: 500px;
+  margin: auto;
+
+  h2 {
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: 30px;
+    font-family: "Bebas Neue", sans-serif;
+  }
+  
+   
+  
+
+  input[type="text"],  
+  input[type="email"],  
+  input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid $input-border-color;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 1em;
+
+    &:focus {
+      border-color: $primary-color;
+      outline: none;
+      box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    }
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 15px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $button-hover-color;
+    }
+  }
+
+  .login-container {
+    text-align: center;
+    margin-top: 20px;
+
+    a {
+      color: white;
+      
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $button-hover-color;
+      }
+    }
+  }
+}
+
+#registerphoto {
+  flex: 1;
+  background-image: url('https://img-cdn.inc.com/image/upload/w_1024,h_576,c_fill/images/panoramic/GettyImages-900301626_437925_t2i3bm.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  box-shadow: $box-shadow;
 }
