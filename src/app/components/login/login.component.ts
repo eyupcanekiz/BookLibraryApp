@@ -53,7 +53,6 @@ export class LoginComponent implements OnInit {
           if(!response.authenticateResult){   this.snackBar.open('Login failed', 'Close', { duration: 3000 });}
 
 
-      
 
          
           this.authService.getToken().subscribe({
