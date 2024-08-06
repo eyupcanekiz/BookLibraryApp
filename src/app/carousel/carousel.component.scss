@@ -1,96 +1,129 @@
-// .carousel-container {
-//     position: relative;
-//     max-width: 100%;
-//     margin: auto;
-//     overflow: hidden;
-    
-    
-//   }
-  
-//   .carousel-wrapper {
-//     display: flex;
-//     transition: transform 0.5s ease-in-out;
-//   }
-  
-//   .carousel-slide {
-//     min-width: 50%;
-//     box-sizing: border-box;
-//     transition: opacity 0.5s ease-in-out;
-  
-//     img {
-//       width: 100%;
-//       vertical-align: middle;
-//     }
-//   }
-  
-//   button {
-//     position: absolute;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     background-color: rgba(0, 0, 0, 0.5);
-//     color: white;
-//     border: none;
-//     cursor: pointer;
-//     padding: 16px;
-//     border-radius: 50%;
-//     user-select: none;
-  
-//     &:hover {
-//       background-color: rgba(0, 0, 0, 0.8);
-//     }
-  
-//     &.prev {
-//       left: 10px;
-//     }
-  
-//     &.next {
-//       right: 10px;
-//     }
-//   }
 .carousel-container {
   position: relative;
-  max-width: 100%;
-  margin: auto;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
   overflow: hidden;
-}
-
-.carousel-wrapper {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.carousel-slide {
-  min-width: 50%;
-  box-sizing: border-box;
-  transition: opacity 0.5s ease-in-out;
-
-  img {
-    width: 100%;
-    vertical-align: middle;
-  }
-}
-
-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 16px;
-  border-radius: 50%;
-  user-select: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Daha belirgin bir gölge */
+  background: linear-gradient(135deg, #f5f5f5, #ffffff); /* Arka plan için hafif bir gradyan */
+  transition: transform 0.3s ease-in-out;
+  margin-top: 10px;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(1.01); /* Hover durumunda hafif büyüme efekti */
   }
 
-  &.prev {
-    left: 10px;
+  &:hover .prev,
+  &:hover .next {
+    opacity: 1;
+    visibility: visible;
   }
 
-  &.next {
-    right: 10px;
+  .carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-slide {
+    min-width: 100%;
+    transition: transform 0.5s ease-in-out;
+    position: relative;
+
+    img {
+      width: 100%; /* Görsel genişliğini tam yapıyoruz */
+      height: auto;
+      border-radius: 15px;
+      object-fit: cover;
+      transition: transform 0.5s ease-in-out;
+
+      &:hover {
+        transform: scale(1.05); /* Hover durumunda görsel büyüme efekti */
+      }
+    }
+
+    /* Slide içindeki içeriği ortalamak için */
+    .slide-content {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5); /* Arka planı yarı şeffaf yapıyoruz */
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      font-size: 1.2em;
+      font-weight: bold;
+      width: 80%;
+      transition: opacity 0.5s ease;
+      opacity: 0;
+    }
+
+    &:hover .slide-content {
+      opacity: 1; /* Hover'da içeriğin görünmesini sağlıyoruz */
+    }
+  }
+
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 0 6px 12px;
+      border-color: transparent transparent transparent #fff;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .prev {
+    left: 15px;
+
+    &::before {
+      transform: translate(-50%, -50%) rotate(180deg);
+    }
+  }
+
+  .next {
+    right: 15px;
   }
 }
+
+@media (max-width: 768px) {
+  .carousel-container {
+    max-width: 100%;
+    border-radius: 10px;
+
+    .prev,
+    .next {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+

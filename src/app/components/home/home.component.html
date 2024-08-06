@@ -1,89 +1,85 @@
-
-
 <!DOCTYPE html>
 
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
 </head>
 <body>
   <app-carousel></app-carousel>
 
-  
   <div class="container">
     <div class="section">
-      <h2>Books in Stock</h2>
+      <h2>{{ 'BOOKS_IN_STOCK' | translate }}</h2>
       <ul>
         <li class="book-item">
-          <img src="assets/images/don-kisot.jpg" alt="Don Kişot">
+          <img src="assets/images/don-kisot.jpg" alt="{{ 'DON_QUIXOTE' | translate }}">
           <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">Don Quixote</span>
-            <a class="btn btn-success book-button" routerLink="/login">Borrow</a>
+            <span class="badge rounded-pill text-bg-secondary">{{ 'DON_QUIXOTE' | translate }}</span>
+            <a class="btn btn-success book-button" routerLink="/login">{{ 'BORROW' | translate }}</a>
           </div>
         </li>
         <li class="book-item">
-          <img src="assets/images/kucuk-prens.jpg" alt="Küçük Prens">
+          <img src="assets/images/kucuk-prens.jpg" alt="{{ 'LITTLE_PRINCE' | translate }}">
           <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">Little Prince</span>
-            <a class="btn btn-success book-button" routerLink="/login">Borrow</a>
+            <span class="badge rounded-pill text-bg-secondary">{{ 'LITTLE_PRINCE' | translate }}</span>
+            <a class="btn btn-success book-button" routerLink="/login">{{ 'BORROW' | translate }}</a>
           </div>
         </li>
         <li class="book-item">
-          <img src="assets/images/nutuk.jpg" alt="Nutuk">
+          <img src="assets/images/nutuk.jpg" alt="{{ 'GREAT_SPEECH' | translate }}">
           <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">The Great Speech</span>
-            <a class="btn btn-success book-button" routerLink="/login">Borrow</a>
+            <span class="badge rounded-pill text-bg-secondary">{{ 'GREAT_SPEECH' | translate }}</span>
+            <a class="btn btn-success book-button" routerLink="/login">{{ 'BORROW' | translate }}</a>
           </div>
         </li>
       </ul>
     </div>
     <div class="section">
-      <h2>Books Coming to Stock</h2>
+      <h2>{{ 'BOOKS_COMING_SOON' | translate }}</h2>
       <ul>
         <li class="book-item">
-          <img src="assets/images/anna-karenina.jpg" alt="Anna Karenina">
+          <img src="assets/images/anna-karenina.jpg" alt="{{ 'ANNA_KARENINA' | translate }}">
           <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">Anna Karenina</span>
-            <a class="btn btn-success book-button " routerLink="/login">Pre Order</a>
+            <span class="badge rounded-pill text-bg-secondary">{{ 'ANNA_KARENINA' | translate }}</span>
+            <a class="btn btn-success book-button " routerLink="/login">{{ 'PRE_ORDER' | translate }}</a>
           </div>
         </li>
         <li class="book-item">
-          <img src="assets/images/suc-ve-ceza.jpg" alt="Suç ve Ceza">
+          <img src="assets/images/suc-ve-ceza.jpg" alt="{{ 'CRIME_PUNISHMENT' | translate }}">
           <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">Crime and Punishment</span>
-            <a class="btn btn-success book-button" routerLink="/login">Pre Order</a>
+            <span class="badge rounded-pill text-bg-secondary">{{ 'CRIME_PUNISHMENT' | translate }}</span>
+            <a class="btn btn-success book-button" routerLink="/login">{{ 'PRE_ORDER' | translate }}</a>
           </div>
         </li>
         <li class="book-item">
-          <img src="assets/images/sefiller.jpg" alt="Sefiller">
+          <img src="assets/images/sefiller.jpg" alt="{{ 'LES_MISERABLES' | translate }}">
           <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">Les Misrables</span>
-            <a class="btn btn-success book-button" routerLink="/login">Pre Order</a>
+            <span class="badge rounded-pill text-bg-secondary">{{ 'LES_MISERABLES' | translate }}</span>
+            <a class="btn btn-success book-button" routerLink="/login">{{ 'PRE_ORDER' | translate }}</a>
           </div>
         </li>
       </ul>
     </div>
     <div class="section">
-      <h2>How Can I Get Books?</h2>
+      <h2>{{ 'HOW_TO_GET_BOOKS' | translate }}</h2>
       <ul>
         <li>
-          <a class="btn btn-warning " routerLink="/register">Register</a>
+          <a class="btn btn-success " routerLink="/register">{{ 'REGISTER' | translate }}</a>
         </li>
         <li>
-          <a class="btn btn-warning " routerLink="/login">Login</a>
+          <a class="btn btn-success " routerLink="/login">{{ 'LOGIN' | translate }}</a>
         </li>
         <li>
-          <a class="btn btn-warning " routerLink="/login">Borrow The Book</a>
+          <a class="btn btn-success " routerLink="/login">{{ 'BORROW_BOOK' | translate }}</a>
         </li>
         <li>
-          <a class="btn btn-warning " routerLink="/login">Return The Book</a>
+          <a class="btn btn-success " routerLink="/login">{{ 'RETURN_BOOK' | translate }}</a>
         </li>
       </ul>
     </div>
   </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
