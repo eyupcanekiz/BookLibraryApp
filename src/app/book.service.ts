@@ -20,4 +20,7 @@ export class BookService {
   getBorrowedBooks() {
     return this.borrowedBooks;
   }
+  returnBook(book: string): void {
+    this.borrowedBooks = this.borrowedBooks.filter(b => b !== book);
+  }
 }

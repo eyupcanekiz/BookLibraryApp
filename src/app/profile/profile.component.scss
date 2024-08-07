@@ -152,12 +152,12 @@
     }
 
     &.disabled {
-      background-color: rgba(128, 128, 128, 0.6);  // Silik görünüm
+      opacity: 0; 
       cursor: not-allowed;
     }
   }
 }
 .upload-label.hidden {
-  opacity: 0;  // Butonu görünmez yapar ama yerini korur
+  opacity: 0;  
   cursor: not-allowed;
 }

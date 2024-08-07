@@ -1,1 +1,11 @@
-<app-another-navbar></app-another-navbar>
+<div class="books-container">
+    <h2>İade Edilecek Kitaplar</h2>
+    <ul class="book-list">
+      <li *ngFor="let book of borrowedBooks; let i = index" [ngClass]="{'fade-out': bookBeingReturned === book}" class="book-item">
+        {{ book }}
+        <button class="return-button" (click)="returnBook(book, i)">İade Et</button>
+      </li>
+    </ul>
+  </div>
+  <app-another-navbar></app-another-navbar>
+  
