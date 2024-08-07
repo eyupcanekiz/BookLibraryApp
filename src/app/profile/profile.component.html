@@ -1,29 +1,31 @@
-
-<div class="profile-container">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="profile-container">
     <div class="profile-header">
-      <img class="profile-avatar" src="assets/images/avatar.jpg" alt="User Avatar">
-      <h2 class="profile-name">John Doe</h2>
-      <p class="profile-username">johndoe</p>
+      <div class="profile-avatar-container">
+        <img class="profile-avatar" [src]="profileImageUrl || 'assets/images/avatar.jpg'" alt="{{ 'USER_AVATAR' | translate }}">
+      </div>
     </div>
-  
     <div class="profile-details">
       <div class="detail-item">
-        <label>E-posta:</label>
-        <p>johndoexample.com</p>
+        <label>{{ 'USER_NAME' | translate }}:</label>
       </div>
       <div class="detail-item">
-        <label>Telefon:</label>
-        <p>+123456789</p>
+        <label>{{ 'FULL_NAME' | translate }}:</label>
       </div>
       <div class="detail-item">
-        <label>Adres:</label>
-        <p>123 Main St, Anytown, USA</p>
+        <label>{{ 'EMAIL' | translate }}:</label>
       </div>
     </div>
-  
     <div class="profile-actions">
-      <button class="btn btn-primary">Profili Düzenle</button>
-      <button class="btn btn-danger">Çıkış Yap</button>
+      <button class="btn btn-success">{{ 'EDIT_PROFILE' | translate }}</button>
     </div>
   </div>
   <app-another-navbar></app-another-navbar>
+</body>
+</html>
+
