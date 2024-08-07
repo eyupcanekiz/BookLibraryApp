@@ -25,6 +25,8 @@ import { AnotherNavbarComponent } from './another-navbar/another-navbar.componen
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule,HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+import { ReturnBookComponent } from './return-book/return-book.component';
+import { MyBooksComponent } from './my-books/my-books.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { HttpClientModule,HttpClient, provideHttpClient, withFetch } from '@angu
     NavbarComponent,
     AnotherNavbarComponent,
     DashboardComponent,
-    ProfileComponent
+    ProfileComponent,
+    ReturnBookComponent,
+    MyBooksComponent
     
   ],
   providers: [
