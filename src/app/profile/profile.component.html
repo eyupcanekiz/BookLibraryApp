@@ -1,31 +1,25 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <div class="profile-container">
-    <div class="profile-header">
-      <div class="profile-avatar-container">
-        <img class="profile-avatar" [src]="profileImageUrl || 'assets/images/avatar.jpg'" alt="{{ 'USER_AVATAR' | translate }}">
-      </div>
-    </div>
-    <div class="profile-details">
-      <div class="detail-item">
-        <label>{{ 'USER_NAME' | translate }}:</label>
-      </div>
-      <div class="detail-item">
-        <label>{{ 'FULL_NAME' | translate }}:</label>
-      </div>
-      <div class="detail-item">
-        <label>{{ 'EMAIL' | translate }}:</label>
-      </div>
-    </div>
-    <div class="profile-actions">
-      <button class="btn btn-success">{{ 'EDIT_PROFILE' | translate }}</button>
+<div class="profile-container">
+  <div class="profile-header">
+    <div class="profile-avatar-container">
+      <img class="profile-avatar" [src]="profileImageUrl || 'assets/images/avatar.jpg'" alt="{{ 'USER_AVATAR' | translate }}">
     </div>
   </div>
-  <app-another-navbar></app-another-navbar>
-</body>
-</html>
-
+  <div class="profile-details">
+    <div class="detail-item">
+      <label>{{ 'USER_NAME' | translate }}:</label>
+      <span>{{ userName }}</span>
+    </div>
+    <div class="detail-item">
+      <label>{{ 'FULL_NAME' | translate }}:</label>
+      <span>{{ fullName }}</span>
+    </div>
+    <div class="detail-item">
+      <label>{{ 'EMAIL' | translate }}:</label>
+      <span>{{ email }}</span>
+    </div>
+  </div>
+  <div class="profile-actions">
+    <button class="btn btn-success">{{ 'EDIT_PROFILE' | translate }}</button>
+  </div>
+</div>
+<app-another-navbar></app-another-navbar>
