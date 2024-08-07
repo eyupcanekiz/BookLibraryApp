@@ -9,22 +9,26 @@
     <div class="register-container">
         <div class="form-container">
             <h2>{{ 'REGISTER' | translate }}</h2><br>
-            <form class="register-form">
+            <form  [formGroup]="registerForm" (ngSubmit)="onRegister()">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="username" placeholder="{{ 'USERNAME' | translate }}">
+                    <input type="text" class="form-control" id="UserName" formControlName="UserName" placeholder="{{ 'USERNAME' | translate }}">
                     <label for="username">{{ 'USERNAME' | translate }}</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="fullname" placeholder="{{ 'FULLNAME' | translate }}">
+                    <input type="text" class="form-control" id="FullName" formControlName="FullName" placeholder="{{ 'FULLNAME' | translate }}">
                     <label for="fullname">{{ 'FULLNAME' | translate }}</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email" placeholder="{{ 'EMAIL' | translate }}">
+                    <input type="email" class="form-control" id="Email" formControlName="Email" placeholder="{{ 'EMAIL' | translate }}">
                     <label for="email">{{ 'EMAIL' | translate }}</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="password" placeholder="{{ 'PASSWORD' | translate }}">
+                    <input type="password" class="form-control" id="Password" formControlName="Password" placeholder="{{ 'PASSWORD' | translate }}">
                     <label for="password">{{ 'PASSWORD' | translate }}</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="PasswordRepeat" formControlName="PasswordRepeat" placeholder="{{ 'PASSWORD' | translate }}">
+                    <label for="passwordRepeat">{{ 'PASSWORD' | translate }}</label>
                 </div><br>
                 <button type="submit" class="submit-button">{{ 'REGISTER' | translate }}</button>
             </form>
