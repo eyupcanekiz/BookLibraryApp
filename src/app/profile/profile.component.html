@@ -1,32 +1,31 @@
-<div class="profile-container">
-  <div class="profile-header">
-    <div class="profile-avatar-container">
-      <img class="profile-avatar" [src]="profileImageUrl || 'assets/images/avatar.jpg'" alt="User Avatar">
-      <!-- <input type="file" id="avatarUpload" class="avatar-upload" (change)="onFileSelected($event)">
-      <label for="avatarUpload" class="upload-label" [class.hidden]="isImageUploaded">Profil Fotoğrafını Yükle</label> -->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-header">
+      <div class="profile-avatar-container">
+        <img class="profile-avatar" [src]="profileImageUrl || 'assets/images/avatar.jpg'" alt="{{ 'USER_AVATAR' | translate }}">
+      </div>
     </div>
-    <h2 class="profile-name">{{ user?.fullName }}</h2>
-    <p class="profile-username">{{ user?.username }}</p>
+    <div class="profile-details">
+      <div class="detail-item">
+        <label>{{ 'USER_NAME' | translate }}:</label>
+      </div>
+      <div class="detail-item">
+        <label>{{ 'FULL_NAME' | translate }}:</label>
+      </div>
+      <div class="detail-item">
+        <label>{{ 'EMAIL' | translate }}:</label>
+      </div>
+    </div>
+    <div class="profile-actions">
+      <button class="btn btn-success">{{ 'EDIT_PROFILE' | translate }}</button>
+    </div>
   </div>
+  <app-another-navbar></app-another-navbar>
+</body>
+</html>
 
-  <div class="profile-details">
-    <div class="detail-item">
-      <label>Kullanıcı Adı:</label>
-      <p>{{ user?.username }}</p>
-    </div>
-    <div class="detail-item">
-      <label>Tam Ad:</label>
-      <p>{{ user?.fullName }}</p>
-    </div>
-    <div class="detail-item">
-      <label>E-posta:</label>
-      <p>{{ user?.email }}</p>
-    </div>
-  </div>
-
-  <div class="profile-actions">
-    <button class="btn btn-primary">Profili Düzenle</button>
-    <!-- <button class="btn btn-danger" (click)="logout()">Çıkış Yap</button> -->
-  </div>
-</div>
-<app-another-navbar></app-another-navbar>

@@ -93,7 +93,7 @@
         font-size: 1.1em;
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.3s ease;
-        z-index: 15; /* Butonu diğer elementlerin önüne almak için z-index artırıldı */
+        z-index: 15; 
       
         &:hover {
           background-color: #c82333;

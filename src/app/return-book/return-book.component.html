@@ -1,11 +1,19 @@
-<div class="books-container">
-    <h2>İade Edilecek Kitaplar</h2>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body>
+  <div class="books-container">
+    <h2>{{ 'BOOKS_TO_RETURN' | translate }}</h2>
     <ul class="book-list">
       <li *ngFor="let book of borrowedBooks; let i = index" [ngClass]="{'fade-out': bookBeingReturned === book}" class="book-item">
         {{ book }}
-        <button class="return-button" (click)="returnBook(book, i)">İade Et</button>
+        <button class="return-button" (click)="returnBook(book, i)">{{ 'RETURN' | translate }}</button>
       </li>
     </ul>
   </div>
-  <app-another-navbar></app-another-navbar>
-  
+  <app-another-navbar></app-another-navbar>  
+</body>
+</html>

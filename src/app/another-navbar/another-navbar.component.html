@@ -26,27 +26,27 @@
               <a class="nav-link" id="mainPage" routerLink="/" routerLinkActive="" aria-current="page">{{ 'MAIN_PAGE' | translate }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="profile" routerLink="/profile" routerLinkActive="active">{{ 'Profile' | translate }}</a>
+              <a class="nav-link" id="profile" routerLink="/profile" routerLinkActive="active">{{ 'PROFILE' | translate }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="addBook" routerLink="/dashboard" routerLinkActive="active">{{ 'Kitap Ekle' | translate }}</a>
+              <a class="nav-link" id="addBook" routerLink="/dashboard" routerLinkActive="active">{{ 'ADD_BOOK' | translate }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="returnBook" routerLink="/return-book" routerLinkActive="active">{{ 'Kitap İade' | translate }}</a>
+              <a class="nav-link" id="returnBook" routerLink="/return-book" routerLinkActive="active">{{ 'RETURN_BOOK' | translate }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="myBooks" routerLink="/my-books" routerLinkActive="active">{{ 'Kitaplığım' | translate }}</a>
+              <a class="nav-link" id="myBooks" routerLink="/my-books" routerLinkActive="active">{{ 'MY_BOOKS' | translate }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="logout" routerLinkActive="active" routerLink="/login" (click)="toogleLogout()">{{ 'Oturumu kapat' | translate }}</a>
+              <a class="nav-link" id="logout" routerLinkActive="active" routerLink="/login" (click)="toogleLogout()">{{ 'LOGOUT' | translate }}</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{ 'LANGUAGE' | translate }}
               </a>
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <!-- <li><a class="dropdown-item" (click)="switchLanguage('tr')">Türkçe</a></li>
-                <li><a class="dropdown-item" (click)="switchLanguage('en')">English</a></li> -->
+                <li><a class="dropdown-item" (click)="switchLanguage('tr')">Türkçe</a></li>
+                <li><a class="dropdown-item" (click)="switchLanguage('en')">English</a></li>
               </ul>
             </li>
           </ul>
@@ -54,6 +54,7 @@
       </div>
     </nav>
   </div>
+  
 </body>
 </html>
 <router-outlet></router-outlet>

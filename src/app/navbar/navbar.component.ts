@@ -8,26 +8,30 @@ import { AuthGuard } from '../components/login/auth.guard';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
+
 export class NavbarComponent implements OnInit {
   isLoggedIn: boolean | undefined;
 
-  constructor(
+  constructor
+  (
     private translate: TranslateService,
     private router: Router,
     private authGuard: AuthGuard
-  ) {
+  ) 
+  {
     this.translate.addLangs(['en', 'tr']);
     this.translate.setDefaultLang('en');
-
     const browserLang = this.translate.getBrowserLang();
     this.translate.use(browserLang && browserLang.match(/en|tr/) ? browserLang : 'en');
   }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
    this.toggleLogin();
   }
 
-  switchLanguage(lang: string) {
+  switchLanguage(lang: string)
+  {
     this.translate.use(lang);
   }
 
