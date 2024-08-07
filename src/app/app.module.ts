@@ -15,7 +15,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+//import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
@@ -24,7 +24,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AnotherNavbarComponent } from './another-navbar/another-navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import { HttpClientModule,HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,9 @@ import { ProfileComponent } from './profile/profile.component';
     DashboardComponent,
     ProfileComponent
     
+  ],
+  providers: [
+    provideHttpClient(withFetch()) 
   ],
   imports: [
     BrowserModule,
