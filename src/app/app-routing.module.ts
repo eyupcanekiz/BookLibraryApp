@@ -6,15 +6,14 @@ import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { AppComponent } from './app.component';
-
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import { ReturnBookComponent } from './return-book/return-book.component';
+import { MyBooksComponent } from './my-books/my-books.component';
+import { AppComponent } from './app.component';
 import { AuthGuard } from './components/login/auth.guard';
-
 
 const routes: Routes = [
   {
@@ -28,6 +27,8 @@ const routes: Routes = [
       { path: 'contact', component: ContactComponent},
       { path: 'dashboard', component: DashboardComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'return-book', component: ReturnBookComponent },
+      { path: 'my-books', component: MyBooksComponent },  
     ]
   },
   {
