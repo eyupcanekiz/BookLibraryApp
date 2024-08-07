@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           this.snackBar.open('Login successful', 'Close', { duration: 3000 });
           if(response.authenticateResult){
-            console.log("Giriş işlemi başarılı",response.authToken)
+           
               
           this.router.navigate(['/dashboard']); 
          
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
          
           this.authService.getToken().subscribe({
             next:(token) =>{
-              console.log("token:",token)
+           
               localStorage.setItem("AuthToken",token)
             },
             error:(error) =>{
@@ -76,5 +76,10 @@ export class LoginComponent implements OnInit {
    
 
     }
-  }}
+  }
+  
+
+
+
+}
   

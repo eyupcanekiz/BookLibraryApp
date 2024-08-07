@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { LoginModel } from './loginModel';  // Doğru yolda olduğundan emin olun
+import { response } from 'express';
 
 // auth-response.interface.ts
 
@@ -25,7 +26,7 @@ export class AuthService {
   public login(username: string, password: string): Observable<LoginResponse> {
     const loginData: LoginModel = { username, password };
     return this.http.post<any>(this.loginUrl, loginData, {
-    
+      withCredentials: true,
     }).pipe(
       map(response => {
         
@@ -34,6 +35,7 @@ export class AuthService {
       })
     );
   }
+
 
   public getToken(): Observable<string> {
     return this.http.get(this.tokenUrl, {

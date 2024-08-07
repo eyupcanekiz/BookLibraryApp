@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
         if(typeof window !=='undefined'){
         const token = localStorage.getItem("AuthToken") || null;
         if(token){
-            this.snackBar.open("Giriş yapilmiş","Close",{duration:3000});
+            
             
           
             return false;
