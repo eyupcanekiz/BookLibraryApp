@@ -29,14 +29,17 @@
               <a class="nav-link" id="profile" routerLink="/profile" routerLinkActive="active">{{ 'Profile' | translate }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="dashboard" routerLink="/dashboard" routerLinkActive="active">{{ 'Kitap Ekle' | translate }}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="dashboard" routerLink="/return-book" routerLinkActive="active">{{ 'Kitap İade' | translate }}</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" id="dashboard" routerLink="/my-books" routerLinkActive="active">{{ 'Kitaplığım' | translate }}</a>
-              </li>
+              <a class="nav-link" id="addBook" routerLink="/dashboard" routerLinkActive="active">{{ 'Kitap Ekle' | translate }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="returnBook" routerLink="/return-book" routerLinkActive="active">{{ 'Kitap İade' | translate }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="myBooks" routerLink="/my-books" routerLinkActive="active">{{ 'Kitaplığım' | translate }}</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="logout" routerLinkActive="active" routerLink="/login" (click)="toogleLogout()">{{ 'Oturumu kapat' | translate }}</a>
+            </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 {{ 'LANGUAGE' | translate }}
