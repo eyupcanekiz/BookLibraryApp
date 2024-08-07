@@ -1,32 +1,32 @@
 <div class="profile-container">
   <div class="profile-header">
     <div class="profile-avatar-container">
-      <img class="profile-avatar" src="assets/images/avatar.jpg" alt="User Avatar">
+      <img class="profile-avatar" [src]="profileImageUrl || 'assets/images/avatar.jpg'" alt="User Avatar">
       <input type="file" id="avatarUpload" class="avatar-upload" (change)="onFileSelected($event)">
-      <label for="avatarUpload" class="upload-label">Profil Fotoğrafını Yükle</label>
+      <label for="avatarUpload" class="upload-label" [class.hidden]="isImageUploaded">Profil Fotoğrafını Yükle</label>
     </div>
-    <h2 class="profile-name"></h2>
-    <p class="profile-username"></p>
+    <h2 class="profile-name">{{ user?.fullName }}</h2>
+    <p class="profile-username">{{ user?.username }}</p>
   </div>
 
   <div class="profile-details">
     <div class="detail-item">
       <label>Kullanıcı Adı:</label>
-      
+      <p>{{ user?.username }}</p>
     </div>
     <div class="detail-item">
       <label>Tam Ad:</label>
-      
+      <p>{{ user?.fullName }}</p>
     </div>
     <div class="detail-item">
       <label>E-posta:</label>
-      
+      <p>{{ user?.email }}</p>
     </div>
   </div>
 
   <div class="profile-actions">
     <button class="btn btn-primary">Profili Düzenle</button>
-    <button class="btn btn-danger" >Çıkış Yap</button>
+    <button class="btn btn-danger" (click)="logout()">Çıkış Yap</button>
   </div>
 </div>
 <app-another-navbar></app-another-navbar>
