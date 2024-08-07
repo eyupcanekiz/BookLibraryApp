@@ -29,7 +29,9 @@
               <a class="nav-link" id="register" routerLink="/register" routerLinkActive="active">{{ 'REGISTER' | translate }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="login" routerLink="/login" routerLinkActive="active">{{ 'LOGIN' | translate }}</a>
+              <a class="nav-link" id="login"   [routerLink]="isLoggedIn ? '/profile' : '/login'"routerLinkActive="active" (click)="toggleLogin()">
+                {{ isLoggedIn ? 'Profil' : ('LOGIN' | translate) }}
+              </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" id="about" routerLink="/about" routerLinkActive="active">{{ 'ABOUT' | translate }}</a>
@@ -51,6 +53,5 @@
       </div>
     </nav>
   </div>
-  <router-outlet></router-outlet>
 </body>
 </html>

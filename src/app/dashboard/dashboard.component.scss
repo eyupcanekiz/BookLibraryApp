@@ -1,0 +1,186 @@
+// /* Renk Değişkenleri */
+// $primary-color: #28a745;
+// $secondary-color: #6C757D;
+// $background-color: #F4F4F4;
+// $section-background-color: #FFFFFF;
+// $border-color: #DDD;
+// $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+// /* Dashboard Container Ayarları */
+// .dashboard-container {
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 30px; /* Kategoriler arası boşluk */
+//   justify-content: space-around; /* Kategorileri yatayda yay */
+//   padding: 20px;
+//   margin-top: 20px;
+//   background-color: $background-color;
+// }
+
+// /* Section Stilleri (Her kategori için) */
+// .category-container {
+//   flex: 0 1 300px; /* Yatayda her bir kategori minimum 300px olacak şekilde yer kaplasın */
+//   background-color: $section-background-color;
+//   border: 1px solid $border-color;
+//   border-radius: 10px;
+//   box-shadow: $box-shadow;
+//   padding: 20px;
+//   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+//   font-family: "Bebas Neue", sans-serif;
+
+//   &:hover {
+//     transform: translateY(-5px);
+//     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+//     background-color: lighten($primary-color, 45%);
+//   }
+
+//   h2 {
+//     font-size: 1.8em;
+//     color: $primary-color;
+//     border-bottom: 2px solid $secondary-color;
+//     padding-bottom: 10px;
+//     margin-bottom: 20px;
+//     letter-spacing: 1px;
+//     font-family: "Bebas Neue", sans-serif;
+
+//     &::after {
+//       content: '';
+//       position: absolute;
+//       bottom: -2px;
+//       left: 0;
+//       width: 50px;
+//       height: 4px;
+//       background-color: $primary-color;
+//       transition: width 0.3s ease;
+//     }
+
+//     &:hover::after {
+//       width: 100%;
+//     }
+//   }
+
+//   .book-carousel {
+//     display: flex;
+//     overflow-x: auto;
+//     gap: 15px;
+
+//     .book-item {
+//       flex: 0 0 100px; /* Kitap itemları yatayda 100px genişlikte yer kaplasın */
+//       display: flex;
+//       align-items: center;
+//       flex-direction: column;
+//       transition: transform 0.3s ease;
+
+//       &:hover {
+//         transform: scale(1.05);
+//       }
+
+//       img {
+//         width: 100px;
+//         height: 150px;
+//         object-fit: cover;
+//         margin-bottom: 15px;
+//         border-radius: 10px;
+//         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//         transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+//         &:hover {
+//           transform: scale(1.1);
+//           box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+//         }
+//       }
+//     }
+//   }
+// }
+
+// /* Kitap Detayları */
+// .book-details {
+//   flex-grow: 1;
+//   text-align: center;
+//   font-size: 1.1em;
+//   color: $secondary-color;
+//   transition: color 0.3s ease;
+
+//   h3 {
+//     font-size: 1.4em;
+//     color: $primary-color;
+//     margin-bottom: 10px;
+//   }
+
+//   &:hover {
+//     color: darken($secondary-color, 15%);
+//   }
+// }
+
+// /* Kitap Butonları */
+// .book-button {
+//   display: inline-block;
+//   margin-top: 5px;
+//   font-size: 0.9em;
+//   text-decoration: none;
+//   padding: 5px 6px;
+//   border-radius: 20px;
+//   background-color: $primary-color;
+//   color: #fff;
+//   transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+//   margin-left: 10px;
+
+//   &:hover {
+//     background-color: darken($primary-color, 10%);
+//     color: #fff;
+//     transform: scale(1.05);
+//   }
+// }
+
+.category-container {
+  margin-bottom: 30px;
+
+  .category-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #28a745;
+  }
+
+  .book-carousel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .book-item {
+    flex: 0 1 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .book-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .book-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .btn {
+      font-size: 14px;
+      padding: 5px 10px;
+    }
+  }
+}
