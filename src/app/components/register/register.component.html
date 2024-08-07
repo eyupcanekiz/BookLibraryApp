@@ -22,14 +22,25 @@
                 <div class="form-floating mb-3">
                     <input type="email" class="form-control" id="Email" formControlName="Email" placeholder="{{ 'EMAIL' | translate }}">
                     <label for="email">{{ 'EMAIL' | translate }}</label>
+                    <div *ngIf="registerForm.get('Email')?.invalid && (registerForm.get('Email')?.touched || registerForm.get('Email')?.dirty)">
+                        <small class="text-danger">Geçerli bir e-posta adresi gereklidir.</small>
+                      </div>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="Password" formControlName="Password" placeholder="{{ 'PASSWORD' | translate }}">
                     <label for="password">{{ 'PASSWORD' | translate }}</label>
+                    <div *ngIf="registerForm.get('Password')?.invalid && (registerForm.get('Password')?.touched || registerForm.get('Password')?.dirty)">
+                        <small class="text-danger" *ngIf="registerForm.get('Password')?.errors?.['minlength']">
+                          Şifre en az 8 karakter uzunluğunda olmalıdır.
+                        </small>
+                      </div>
                 </div>
                 <div class="form-floating">
                     <input type="password" class="form-control" id="PasswordRepeat" formControlName="PasswordRepeat" placeholder="{{ 'PASSWORD' | translate }}">
                     <label for="passwordRepeat">{{ 'PASSWORD' | translate }}</label>
+                    <div *ngIf="registerForm.get('PasswordRepeat')?.invalid && (registerForm.get('PasswordRepeat')?.touched || registerForm.get('PasswordRepeat')?.dirty)">
+                        <small class="text-danger">Şifre tekrarı gereklidir.</small>
+                      </div>
                 </div><br>
                 <button type="submit" class="submit-button">{{ 'REGISTER' | translate }}</button>
             </form>
