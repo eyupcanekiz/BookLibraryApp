@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       UserName: ['', [Validators.required]],
       FullName: [''],
-      Email: ['' ],
+      Email: ['',[Validators.email]],
       Password: ['',[Validators.required,Validators.minLength(8)]],
       PasswordRepeat: ['',[Validators.required] ]
     });
@@ -35,11 +35,6 @@ export class RegisterComponent implements OnInit {
       const { UserName, FullName, Email, Password, PasswordRepeat } = this.registerForm.value;
       if (Password !== PasswordRepeat) {
         this.snackBar.open('Şifreler eşleşmiyor', 'Close', { duration: 3000 });
-        return;
-      }
-
-      if(Password.minLength < 8 || PasswordRepeat.minLength < 8){
-        this.snackBar.open('Şifre en az 8 karakter olmalıdır', 'Close', {duration:3000});
         return;
       }
       const registerModel: RegisterModel = { UserName, FullName, Email, Password, PasswordRepeat };
