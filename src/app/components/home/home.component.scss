@@ -1,5 +1,3 @@
-
-/* Renk Değişkenleri */
 $primary-color: #28a745;
 $secondary-color: #6C757D;
 $background-color: #F4F4F4;
@@ -7,7 +5,6 @@ $section-background-color: #FFFFFF;
 $border-color: #DDD;
 $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-/* Container Ayarları */
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

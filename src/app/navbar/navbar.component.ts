@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { AuthGuard } from '../components/login/auth.guard';
+import { AuthService } from '../components/login/auth.service';
+import { userModel } from '../components/login/userModel';
+import { profile } from 'console';
 
 @Component({
   selector: 'app-navbar',
@@ -11,12 +14,14 @@ import { AuthGuard } from '../components/login/auth.guard';
 
 export class NavbarComponent implements OnInit {
   isLoggedIn: boolean | undefined;
+  userId:string|undefined;
 
   constructor
   (
     private translate: TranslateService,
     private router: Router,
-    private authGuard: AuthGuard
+    private authGuard: AuthGuard,
+    private authService: AuthService
   ) 
   {
     this.translate.addLangs(['en', 'tr']);
@@ -27,17 +32,34 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() 
   {
+    this.getToken();
    this.toggleLogin();
-  }
+   }
 
   switchLanguage(lang: string)
   {
     this.translate.use(lang);
   }
-
+  getToken(){
+    const token = localStorage.getItem("AuthToken");
+    if (token) {
+      this.userId = this.authService.extractUserIdFromToken(token);
+      console.log(this.userId);  
+    }
+  }
   toggleLogin() {
-    this.isLoggedIn = !this.authGuard.canActivate();
+    this.isLoggedIn = this.authGuard.canActivate();
+    console.log(this.userId);
+    
   
+  }
+  navigateToProfile(){
+    if(!this.isLoggedIn && this.userId){
+      this.router.navigate(["/profile",this.userId]);
+    }
+    else{
+      this.router.navigate(["/login"]);
+    }
   }
 
 }

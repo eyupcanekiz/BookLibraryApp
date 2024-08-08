@@ -43,19 +43,17 @@ public getToken(): Observable<string> {
 }
 
 
-  private extractUserIdFromToken(token: string): string {
+  public extractUserIdFromToken(token: string): string {
     const payload = token.split('.')[1];
     const decodedPayload = atob(payload);
     const parsedPayload = JSON.parse(decodedPayload);
     return parsedPayload.id; // This should match the key that holds the user ID
   }
 
-  public getById(): Observable<userModel> {
-    return this.getTokenLocal().pipe(
-      map(token => this.extractUserIdFromToken(token)),
-      switchMap(userId => this.http.get<userModel>(`${this.userUrl}${userId}`, {
-        withCredentials: true,
-      }))
-    );
+  public getById(userId:string): Observable<userModel> {
+    
+    return this.http.get<userModel>(`${this.userUrl}${userId}`, {
+      withCredentials: true,
+    });
   }
 }

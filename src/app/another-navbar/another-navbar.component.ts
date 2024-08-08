@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { error } from 'console';
 import { LogoutService } from './logout.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../components/login/auth.service';
 
 @Component({
   selector: 'app-another-navbar',
@@ -11,13 +11,15 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrl: './another-navbar.component.scss'
 })
 
-export class AnotherNavbarComponent  {
+export class AnotherNavbarComponent implements OnInit  {
+  userId: string | undefined;
   constructor
   (
     private logoutService : LogoutService,
     private snackBar: MatSnackBar,
     private router : Router,
     private translate: TranslateService,
+    private authService : AuthService
   )
   {
     this.translate.addLangs(['en', 'tr']);
@@ -25,6 +27,21 @@ export class AnotherNavbarComponent  {
     const browserLang = this.translate.getBrowserLang();
     this.translate.use(browserLang && browserLang.match(/en|tr/) ? browserLang : 'en');
   }
+  switchLanguage(lang: string)
+  {
+  this.translate.use(lang);
+  }
+  ngOnInit(): void {
+    this.getToken();
+  }
+  getToken(){
+    const token = localStorage.getItem("AuthToken");
+    if(token){
+      this.userId=this.authService.extractUserIdFromToken(token);
+              
+    }
+  }
+
 
   toogleLogout()
   {
@@ -38,8 +55,11 @@ export class AnotherNavbarComponent  {
       }
     })
   }
-  switchLanguage(lang: string)
-  {
-  this.translate.use(lang);
+  navigateToProfile(){
+    if(this.userId){
+      this.router.navigate(["/profile",this.userId]);
+    }
+  
   }
+ 
 }

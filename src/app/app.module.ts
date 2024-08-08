@@ -3,7 +3,7 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './components/about/about.component';
-import { HeaderComponent } from './components/header/header.component';
+// import { HeaderComponent } from './components/header/header.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
@@ -32,7 +32,7 @@ import { BookModule } from './components/book/book.module'; //BookModule
     AppComponent,
     HomeComponent,
     AboutComponent,
-    HeaderComponent,
+    // HeaderComponent,
     ContactComponent,
     LoginComponent,
     CarouselComponent,

@@ -7,6 +7,7 @@
     <title>{{ 'REGISTER' | translate }}</title>  
 </head>  
 <body>  
+    
     <div class="register-container">
         <div class="form-container">
             <h2>{{ 'REGISTER' | translate }}</h2><br>
@@ -42,18 +43,20 @@
                         <small class="text-danger">Şifre tekrarı gereklidir.</small>
                       </div>
                 </div>
-                <div>
+                <div class="radio-group">
                     <label>
-                      <input type="radio"  [value]="genderType.male" formControlName ="Gender"> Male
+                      <input type="radio" [value]="genderType.male" formControlName="Gender">
+                      <span class="checkmark"></span>
+                      Male
                     </label>
                     <label>
-                      <input type="radio" [value]="genderType.female" formControlName  ="Gender"> Female
+                      <input type="radio" [value]="genderType.female" formControlName="Gender">
+                      <span class="checkmark"></span>
+                      Female
                     </label>
-                </div>
-                
-                
+                  </div>
+                  
                 <br>
-
                 <button type="submit" class="submit-button">{{ 'REGISTER' | translate }}</button>
             </form>
             <div class="login-container">
@@ -61,12 +64,15 @@
                 <a routerLink='/login' class="submit-button">{{ 'LOGIN_HERE' | translate }}</a>
             </div>
         </div>
+        
         <div id="registerphoto">
             <!-- Buraya bir resim veya başka bir içerik ekleyebilirsiniz -->
         </div>
     </div>
-    <app-navbar>
-  
-    </app-navbar>
+    
 </body>  
+<footer>
+    <br><br>
+    <app-navbar></app-navbar>
+</footer>
 </html>

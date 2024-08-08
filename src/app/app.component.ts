@@ -11,7 +11,6 @@ export class AppComponent implements OnInit {
   constructor(private languageService: LanguageService) {}
 
   ngOnInit() {
-    // Uygulama başlatıldığında dil ayarını yükle
     const currentLanguage = this.languageService.getLanguage();
     this.languageService.setLanguage(currentLanguage);
   }
