@@ -35,6 +35,7 @@
     "coreui": "^0.4.2-alpha2",
     "express": "^4.18.2",
     "ngx-cookie-service": "^18.0.0",
+    "ngx-spinner": "^17.0.0",
     "redis": "^4.7.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
