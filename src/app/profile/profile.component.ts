@@ -9,7 +9,7 @@ import { AuthService } from '../components/login/auth.service';
 export class ProfileComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
-  profileImageUrl: string | ArrayBuffer | null = null;
+  avatarUrl: string = '' ;
   userName: string = '';
   fullName: string = '';
   email: string = '';
@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
         this.userName = response.userName;
         this.fullName = response.fullName;
         this.email = response.email;
+        this.avatarUrl = response.avatarUrl;
         
       },
       error: (error) => {
