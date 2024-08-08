@@ -27,6 +27,7 @@ import { MyBooksComponent } from './my-books/my-books.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { BookModule } from './components/book/book.module';
 import { ProfilEditComponent } from './profil-edit/profil-edit.component'; 
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ProfilEditComponent } from './profil-edit/profil-edit.component';
     HttpClientModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    NgxSpinnerModule,
     BookModule, 
     TranslateModule.forRoot({
       loader: {
