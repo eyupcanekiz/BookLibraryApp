@@ -27,7 +27,7 @@ const routes: Routes = [
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent},
       { path: 'dashboard', component: DashboardComponent },
-      { path: 'profile', component: ProfileComponent },
+      { path: 'profile/:id', component: ProfileComponent },
       { path: 'return-book', component: ReturnBookComponent },
       { path: 'my-books', component: MyBooksComponent },  
       { path: 'return-book', component: ReturnBookComponent },

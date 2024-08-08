@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../components/login/auth.service';
+import { log } from 'console';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -7,26 +9,30 @@ import { AuthService } from '../components/login/auth.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  constructor(private authService: AuthService) {}
-
+  constructor(private authService: AuthService, private route:ActivatedRoute) {}
+  userId:string='';
   profileImageUrl: string | ArrayBuffer | null = null;
   userName: string = '';
   fullName: string = '';
   email: string = '';
+  id:string='';
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params =>{
+      this.userId= params.get('id')!;
+    })
     this.getUser();
+   
   }
 
   getUser() {
-    this.authService.getById().subscribe({
+    this.authService.getById(this.userId).subscribe({
       next: (response) => {
-    
         this.userName = response.userName;
         this.fullName = response.fullName;
         this.email = response.email;
-        
       },
+      
       error: (error) => {
         console.log("Kullanıcı getirilemedi", error);
       }
