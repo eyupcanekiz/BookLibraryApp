@@ -14,7 +14,7 @@ import { error } from 'console';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-
+  passwordFieldType: string = 'password';
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
