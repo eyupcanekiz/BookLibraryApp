@@ -41,7 +41,19 @@
                     <div *ngIf="registerForm.get('PasswordRepeat')?.invalid && (registerForm.get('PasswordRepeat')?.touched || registerForm.get('PasswordRepeat')?.dirty)">
                         <small class="text-danger">Şifre tekrarı gereklidir.</small>
                       </div>
-                </div><br>
+                </div>
+                <div>
+                    <label>
+                      <input type="radio"  [value]="genderType.male" formControlName ="Gender"> Male
+                    </label>
+                    <label>
+                      <input type="radio" [value]="genderType.female" formControlName  ="Gender"> Female
+                    </label>
+                </div>
+                
+                
+                <br>
+
                 <button type="submit" class="submit-button">{{ 'REGISTER' | translate }}</button>
             </form>
             <div class="login-container">

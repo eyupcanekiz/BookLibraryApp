@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { RegisterService } from './register.service'; // Dosya adı düzeltildi
-import { RegisterModel } from './registerModel';
+import { RegisterModel, GenderType } from './registerModel';
+
 
 @Component({
   selector: 'app-register',
@@ -12,6 +13,8 @@ import { RegisterModel } from './registerModel';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  genderType = GenderType; 
+
 
   constructor(
     private fb: FormBuilder,
@@ -26,18 +29,20 @@ export class RegisterComponent implements OnInit {
       FullName: [''],
       Email: ['',[Validators.email]],
       Password: ['',[Validators.required,Validators.minLength(8)]],
-      PasswordRepeat: ['',[Validators.required] ]
+      PasswordRepeat: ['',[Validators.required] ],
+      Gender: null
     });
   }
 
   onRegister(): void {
     if (this.registerForm.valid) {
-      const { UserName, FullName, Email, Password, PasswordRepeat } = this.registerForm.value;
+      const { UserName, FullName, Email, Password, PasswordRepeat, Gender } = this.registerForm.value;
+      
       if (Password !== PasswordRepeat) {
         this.snackBar.open('Şifreler eşleşmiyor', 'Close', { duration: 3000 });
         return;
       }
-      const registerModel: RegisterModel = { UserName, FullName, Email, Password, PasswordRepeat };
+      const registerModel: RegisterModel = { UserName, FullName, Email, Password, PasswordRepeat,Gender };
       this.registerService.register(registerModel ).subscribe({
         next: (response: any) => {
           this.snackBar.open('Başarıyla kayıt olundu', 'Close', { duration: 3000 });
