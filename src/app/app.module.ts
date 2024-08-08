@@ -32,7 +32,6 @@ import { BookModule } from './components/book/book.module'; //BookModule
     AppComponent,
     HomeComponent,
     AboutComponent,
-    // HeaderComponent,
     ContactComponent,
     LoginComponent,
     CarouselComponent,

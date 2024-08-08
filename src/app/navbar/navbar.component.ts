@@ -45,16 +45,12 @@ export class NavbarComponent implements OnInit {
     const token = localStorage.getItem("AuthToken");
     if (token) {
       this.userId = this.authService.extractUserIdFromToken(token);
-      console.log(this.userId);  
     }
     }
   }
   toggleLogin() {
     this.isLoggedIn = this.authGuard.canActivate();
-    console.log(this.userId);
-    
-  
-  }
+}
   navigateToProfile(){
     if(!this.isLoggedIn && this.userId){
       this.router.navigate(["/profile",this.userId]);
