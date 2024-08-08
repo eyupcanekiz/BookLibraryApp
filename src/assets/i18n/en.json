@@ -57,5 +57,7 @@
   "BOOK_TITLE": "Book Title:",
   "PUBLISHER": "Publisher:",
   "AUTHOR": "Author:",
-  "ADD_BOOK_BUTTON": "Add Book"
+  "ADD_BOOK_BUTTON": "Add Book",
+  "CHOOSE_FILE":"Choose File",
+  "BOOK_IMAGE":"Book Image"
 }
