@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private authService: AuthService, private route:ActivatedRoute) {}
   userId:string='';
+  isEditMode: boolean = false;
   profileImageUrl: string | ArrayBuffer | null = null;
 
 
@@ -28,6 +29,8 @@ export class ProfileComponent implements OnInit {
       this.userId= params.get('id')!;
     })
     this.getUser();
+    
+    
    
   }
 
@@ -48,4 +51,5 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
+  
 }

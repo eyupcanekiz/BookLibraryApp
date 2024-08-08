@@ -35,11 +35,13 @@ export class AnotherNavbarComponent implements OnInit  {
     this.getToken();
   }
   getToken(){
+    if(typeof window !==undefined){
     const token = localStorage.getItem("AuthToken");
     if(token){
       this.userId=this.authService.extractUserIdFromToken(token);
               
     }
+  }
   }
 
 

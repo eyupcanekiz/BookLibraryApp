@@ -41,10 +41,12 @@ export class NavbarComponent implements OnInit {
     this.translate.use(lang);
   }
   getToken(){
+    if(typeof window!=='undefined'){
     const token = localStorage.getItem("AuthToken");
     if (token) {
       this.userId = this.authService.extractUserIdFromToken(token);
       console.log(this.userId);  
+    }
     }
   }
   toggleLogin() {
