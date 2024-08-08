@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
   getUser() {
     this.authService.getById().subscribe({
       next: (response) => {
-        console.log("User bilgileri", response);
+    
         this.userName = response.userName;
         this.fullName = response.fullName;
         this.email = response.email;
