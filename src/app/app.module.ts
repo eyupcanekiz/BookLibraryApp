@@ -27,13 +27,15 @@ import { MyBooksComponent } from './my-books/my-books.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { BookModule } from './components/book/book.module'; //BookModule
 import { BookService } from './components/book/book.service';//bookservice
+import { ProfilEditComponent } from './profil-edit/profil-edit.component'; 
+import { NgxSpinnerModule } from "ngx-spinner";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    // HeaderComponent,
     ContactComponent,
     LoginComponent,
     CarouselComponent,
@@ -46,7 +48,8 @@ import { BookService } from './components/book/book.service';//bookservice
     ProfileComponent,
     ReturnBookComponent,
     MyBooksComponent,
-    AddBookComponent
+    AddBookComponent,
+    ProfilEditComponent
   ],
   providers: [
     provideHttpClient(withFetch()),
@@ -61,7 +64,8 @@ import { BookService } from './components/book/book.service';//bookservice
     HttpClientModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    BookModule, // bookmodule
+    NgxSpinnerModule,
+    BookModule, 
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../components/login/auth.service';
 import { log } from 'console';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService: AuthService, private route:ActivatedRoute) {}
+  constructor(private authService: AuthService, private route:ActivatedRoute,private spinner: NgxSpinnerService) {}
   userId:string='';
   profileImageUrl: string | ArrayBuffer | null = null;
 
@@ -24,11 +25,13 @@ export class ProfileComponent implements OnInit {
   id:string='';
 
   ngOnInit(): void {
+   this.spinner.show();
     this.route.paramMap.subscribe(params =>{
       this.userId= params.get('id')!;
     })
     this.getUser();
-   
+    
+
   }
 
   getUser() {
@@ -45,7 +48,11 @@ export class ProfileComponent implements OnInit {
       
       error: (error) => {
         console.log("Kullanıcı getirilemedi", error);
+      },
+      complete: () => {
+        this.spinner.hide(); // Tüm veriler yüklendiğinde spinner'ı gizle
       }
+      
     });
   }
 }

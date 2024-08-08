@@ -69,12 +69,26 @@
         <li>
           <a class="btn btn-success " routerLink="/login">{{ 'LOGIN' | translate }}</a>
         </li>
+        <ng-container *ngIf="!isLoggedIn">
         <li>
-          <a class="btn btn-success " routerLink="/login">{{ 'BORROW_BOOK' | translate }}</a>
+          <a class="btn btn-success " routerLink="/dashboard">{{ 'BORROW_BOOK' | translate }}</a>
         </li>
+        </ng-container>
+        <ng-container *ngIf="isLoggedIn">
+          <li>
+            <a class="btn btn-success " routerLink="/login">{{ 'BORROW_BOOK' | translate }}</a>
+          </li>
+          </ng-container>
+          <ng-container *ngIf="!isLoggedIn">
+        <li>
+          <a class="btn btn-success " routerLink="/return-book">{{ 'RETURN_BOOK' | translate }}</a>
+        </li>
+      </ng-container> 
+      <ng-container *ngIf="isLoggedIn">
         <li>
           <a class="btn btn-success " routerLink="/login">{{ 'RETURN_BOOK' | translate }}</a>
         </li>
+      </ng-container> 
       </ul>
     </div>
   </div>
