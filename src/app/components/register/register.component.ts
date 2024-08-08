@@ -2,16 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { RegisterService } from './register.service'; // Dosya adı düzeltildi
-import { RegisterModel } from './registerModel';
+import { RegisterService } from './register.service';
+import { RegisterModel, GenderType } from './registerModel';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  genderType = GenderType; 
 
   constructor(
     private fb: FormBuilder,
@@ -26,25 +29,38 @@ export class RegisterComponent implements OnInit {
       FullName: [''],
       Email: ['',[Validators.email]],
       Password: ['',[Validators.required,Validators.minLength(8)]],
-      PasswordRepeat: ['',[Validators.required] ]
+      PasswordRepeat: ['',[Validators.required] ],
+      Gender:['']
     });
   }
 
   onRegister(): void {
     if (this.registerForm.valid) {
-      const { UserName, FullName, Email, Password, PasswordRepeat } = this.registerForm.value;
+      const { UserName, FullName, Email, Password, PasswordRepeat, Gender } = this.registerForm.value;
+      
       if (Password !== PasswordRepeat) {
         this.snackBar.open('Şifreler eşleşmiyor', 'Close', { duration: 3000 });
         return;
       }
-      const registerModel: RegisterModel = { UserName, FullName, Email, Password, PasswordRepeat };
+      const registerModel: RegisterModel = { UserName, FullName, Email, Password, PasswordRepeat,Gender };
       this.registerService.register(registerModel ).subscribe({
         next: (response: any) => {
           this.snackBar.open('Başarıyla kayıt olundu', 'Close', { duration: 3000 });
-  
+          this.router.navigate(['/login']);
         },
         error: (error: any) => {
-          this.snackBar.open('Kayıt başarısız', 'Close', { duration: 3000 });
+          // Backend'den dönen hata mesajını yakalama
+          if (error.status === 400) { // Hata kodu backend'de 400 olarak tanımlanabilir
+            if (error.error === 'EMAIL_ALREADY_EXISTS') {
+              this.snackBar.open('Bu e-posta adresi zaten kayıtlı', 'Close', { duration: 3000 });
+            } else if (error.error === 'USERNAME_ALREADY_EXISTS') {
+              this.snackBar.open('Bu kullanıcı adı zaten kayıtlı', 'Close', { duration: 3000 });
+            } else {
+              this.snackBar.open('Kayıt başarısız. Lütfen tekrar deneyin.', 'Close', { duration: 3000 });
+            }
+          } else {
+            this.snackBar.open('Kayıt başarısız', 'Close', { duration: 3000 });
+          }
           console.error('Kayıt başarısız', error);
         }
       });
