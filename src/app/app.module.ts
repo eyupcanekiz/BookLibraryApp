@@ -25,7 +25,9 @@ import { HttpClientModule, HttpClient, provideHttpClient, withFetch } from '@ang
 import { ReturnBookComponent } from './return-book/return-book.component';
 import { MyBooksComponent } from './my-books/my-books.component';
 import { AddBookComponent } from './add-book/add-book.component';
-import { BookModule } from './components/book/book.module'; //BookModule
+import { BookModule } from './components/book/book.module';
+import { ProfilEditComponent } from './profil-edit/profil-edit.component'; 
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ import { BookModule } from './components/book/book.module'; //BookModule
     ProfileComponent,
     ReturnBookComponent,
     MyBooksComponent,
-    AddBookComponent
+    AddBookComponent,
+    ProfilEditComponent
   ],
   providers: [
     provideHttpClient(withFetch())
@@ -57,7 +60,8 @@ import { BookModule } from './components/book/book.module'; //BookModule
     HttpClientModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    BookModule, // bookmodule
+    NgxSpinnerModule,
+    BookModule, 
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

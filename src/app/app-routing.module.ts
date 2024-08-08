@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './components/login/auth.guard';
 import { AddBookComponent } from './add-book/add-book.component';
 import { BookComponent } from './components/book/book.component';
+import { ProfilEditComponent } from './profil-edit/profil-edit.component';
 
 const routes: Routes = [
   {
@@ -33,7 +34,8 @@ const routes: Routes = [
       { path: 'my-books', component: MyBooksComponent },  
       { path: 'return-book', component: ReturnBookComponent },
       { path: 'add-book', component: AddBookComponent },
-      { path: 'book', component: BookComponent} //bookroute
+      { path: 'book', component: BookComponent},
+      { path: 'profil-edit', component: ProfilEditComponent}
     ]
   },
   {

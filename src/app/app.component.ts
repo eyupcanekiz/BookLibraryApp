@@ -8,6 +8,7 @@ import { LanguageService } from './language.service';
 })
 
 export class AppComponent implements OnInit {
+  title = 'BookLibary';
   constructor(private languageService: LanguageService) {}
 
   ngOnInit() {
