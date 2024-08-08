@@ -3,4 +3,5 @@ export interface userModel {
     fullName: string;
     email: string;
     avatarUrl:string;
+    gender:string;
 }
