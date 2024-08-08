@@ -4,22 +4,37 @@
       <img class="profile-avatar" [src]="avatarUrl" alt="{{ 'USER_AVATAR' | translate }}">
     </div>
   </div>
-  <div class="profile-details">
-    <div class="detail-item">
-      <label>{{ 'USER_NAME' | translate }}:</label>
-      <span>{{ userName }}</span>
+  <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+    <div class="profile-details">
+      <div class="detail-item">
+        <label>{{ 'USER_NAME' | translate }}:</label>
+        <input type="text" formControlName="userName" [readonly]="!isEditMode">
+      </div>
+      <div class="detail-item">
+        <label>{{ 'FULL_NAME' | translate }}:</label>
+        <input type="text" formControlName="fullName" [readonly]="!isEditMode">
+      </div>
+      <div class="detail-item">
+        <label>{{ 'EMAIL' | translate }}:</label>
+        <input type="email" formControlName="email" [readonly]="!isEditMode">
+      </div>
+      <div class="detail-item">
+        <label>{{ 'PASSWORD' | translate }}:</label>
+        <input type="password" formControlName="password" [readonly]="!isEditMode" placeholder="{{ isEditMode ? 'Yeni Şifre Girin' : '*****' }}">
+      </div>
+      <div class="detail-item">
+        <label>{{ 'GENDER' | translate }}:</label>
+        <select formControlName="gender" [disabled]="!isEditMode">
+          <option value="male">{{ 'MALE' | translate }}</option>
+          <option value="female">{{ 'FEMALE' | translate }}</option>
+        </select>
+      </div>
     </div>
-    <div class="detail-item">
-      <label>{{ 'FULL_NAME' | translate }}:</label>
-      <span>{{ fullName }}</span>
+    <div class="profile-actions">
+      <button *ngIf="!isEditMode" class="btn btn-primary" type="button" (click)="toggleEditMode()">{{ 'EDIT_PROFILE' | translate }}</button>
+      <button *ngIf="isEditMode" class="btn btn-success" type="submit">{{ 'SAVE_PROFILE' | translate }}</button>
+      <button *ngIf="isEditMode" class="btn btn-secondary" type="button" (click)="toggleEditMode()">{{ 'CANCEL' | translate }}</button>
     </div>
-    <div class="detail-item">
-      <label>{{ 'EMAIL' | translate }}:</label>
-      <span>{{ email }}</span>
-    </div>
-  </div>
-  <div class="profile-actions">
-    <button class="btn btn-primary">{{ 'EDIT_PROFILE' | translate }}</button>
-  </div>
+  </form>
 </div>
 <app-another-navbar></app-another-navbar>
