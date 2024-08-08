@@ -22,7 +22,7 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'register', component: RegisterComponent },
+      { path: 'register', component: RegisterComponent,canActivate:[AuthGuard] },
       { path: 'login', component: LoginComponent , canActivate:[AuthGuard] },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent},

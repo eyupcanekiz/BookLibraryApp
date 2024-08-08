@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
            
             this.authService.getToken().subscribe({
               next:(token) =>{
-                console.log("token:",token)
+               
                 localStorage.setItem("AuthToken",token)
               },
               error:(error) =>{
