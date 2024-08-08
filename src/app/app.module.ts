@@ -9,7 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -25,9 +25,11 @@ import { HttpClientModule, HttpClient, provideHttpClient, withFetch } from '@ang
 import { ReturnBookComponent } from './return-book/return-book.component';
 import { MyBooksComponent } from './my-books/my-books.component';
 import { AddBookComponent } from './add-book/add-book.component';
-import { BookModule } from './components/book/book.module';
+import { BookModule } from './components/book/book.module'; //BookModule
+import { BookService } from './components/book/book.service';//bookservice
 import { ProfilEditComponent } from './profil-edit/profil-edit.component'; 
 import { NgxSpinnerModule } from "ngx-spinner";
+
 
 @NgModule({
   declarations: [
@@ -50,10 +52,12 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ProfilEditComponent
   ],
   providers: [
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()),
+    [BookService], //  BookService  providers
   ],
   imports: [
     BrowserModule,
+    FormsModule,//form module
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -70,6 +74,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
       }
     })
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

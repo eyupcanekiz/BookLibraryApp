@@ -1,13 +1,35 @@
-<div class="book-list">
-  <h2>{{ 'BOOK_LIST'}}</h2>
-  <div *ngIf="errorMessage" class="error-message">
-    {{ 'ERROR'}}: {{ errorMessage }}
+<div>
+  <h2>Add a New Book</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div>
+      <label for="bookName">Book Name:</label>
+      <input type="text" id="bookName" [(ngModel)]="newBook.bookName" name="bookName" required>
+    </div>
+    <div>
+      <label for="publisher">Publisher:</label>
+      <input type="text" id="publisher" [(ngModel)]="newBook.publisher" name="publisher" required>
+    </div>
+    <div>
+      <label for="author">Author:</label>
+      <input type="text" id="author" [(ngModel)]="newBook.author" name="author" required>
+    </div>
+    <div>
+      <label for="isAvailable">Available:</label>
+      <input type="checkbox" id="isAvailable" [(ngModel)]="newBook.isAvailable" name="isAvailable">
+    </div>
+    <button type="submit">Add Book</button>
+  </form>
+
+  <div *ngIf="errorMessage">
+    <p>Error: {{ errorMessage }}</p>
   </div>
-  <div *ngFor="let book of books" class="book-item">
-    <h3>{{ book.bookName }}</h3>
-    <p>{{ book.author }}</p>
-    <p>{{ book.publisher }}</p>
-    <!-- Add image URL if available in the Book interface -->
-    <!-- <img [src]="book.imageUrl" alt="{{ book.bookName }}" *ngIf="book.imageUrl"> -->
+
+  <div *ngIf="books.length">
+    <h3>Book List</h3>
+    <ul>
+      <li *ngFor="let book of books">
+        {{ book.bookName }} by {{ book.author }} ({{ book.publisher }}) - Available: {{ book.isAvailable ? 'Yes' : 'No' }}
+      </li>
+    </ul>
   </div>
 </div>
