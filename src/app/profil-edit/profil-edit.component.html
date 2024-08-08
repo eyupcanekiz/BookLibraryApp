@@ -1,0 +1,42 @@
+<div class="profile-container">      
+      <div class="profile-details">
+        <div class="detail-item">
+          <label for="userName">{{ 'USER_NAME' | translate }}:</label>
+          <input id="userName"  type="text" class="form-control" >
+        </div>
+        
+        <div class="detail-item">
+          <label for="fullName">{{ 'FULL_NAME' | translate }}:</label>
+          <input id="fullName"  type="text" class="form-control">
+        </div>
+        
+        <div class="detail-item">
+          <label for="email">{{ 'EMAIL' | translate }}:</label>
+          <input id="email"  type="email" class="form-control">
+        </div>
+  
+        <div class="detail-item">
+          <label for="password">{{ 'PASSWORD' | translate }}:</label>
+          <input id="password" type="password" class="form-control" >
+        </div>
+  
+        <div class="detail-item">
+          <label>{{ 'GENDER' | translate }}:</label>
+          <div class="gender-radio">
+            <!-- <label>
+              <input type="radio" formControlName="gender" [value]="genderType.male"> {{ 'MALE' | translate }}
+            </label>
+            <label>
+              <input type="radio" formControlName="gender" [value]="genderType.female"> {{ 'FEMALE' | translate }}
+            </label> -->
+          </div>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <button type="submit" class="btn btn-success">{{ 'SAVE_CHANGES' | translate }}</button>
+      </div>
+      <div class="profile-actions">
+        <button type="submit" class="btn btn-danger">{{ 'CANCEL' | translate }}</button>
+      </div>
+  </div>
+<app-another-navbar></app-another-navbar> 
