@@ -1,62 +1,3 @@
-
-// input[type="text"],  
-// input[type="email"],  
-// input[type="password"] {  
-//     width: 100%;  
-//     padding: 10px;  
-//     border: 1px solid #ccc;  
-//     border-radius: 3px;  
-// }  
-
-// .submit-button {  
-//     width: 100%;  
-//     padding: 10px;  
-//     background-color: #28a745;  
-//     color: white;  
-//     border: none;  
-//     border-radius: 3px;  
-//     cursor: pointer;  
-// }  
-
-// .submit-button:hover {  
-//     background-color: #218838;  
-// }
-// body {  
-//     font-family: Arial, sans-serif; /* Yazı tipi ayarı */  
-//     margin: 0; /* Varsayılan margin'i sıfırlama */  
-//     padding: 0; /* Varsayılan padding'i sıfırlama */  
-// }  
-
-// .register-container {  
-//     display: flex; /* Esnek kutu düzeni */  
-//     height: 100vh; /* Sayfanın tamamını kapla */  
-// }  
-
-// .form-container {  
-//     flex: 1; /* Formun genişliğini ayarlamak için */  
-//     display: flex;  
-//     flex-direction: column; /* İçerikleri dikey yerleştir */  
-//     justify-content: center; /* Dikeyde ortala */  
-//     padding: 40px; /* İç boşluk ekle */  
-//     background-color: #f9f9f9; /* Arka plan rengi */  
-// }  
-
-
-// #registerphoto {  
-//     flex: 1; /* Resim bölümünün genişliğini ayarla */  
-//     display: flex; /* Esnek kutu düzeni */  
-//     justify-content: center; /* Yatayda ortala */  
-//     align-items: center; /* Dikeyde ortala */  
-  
-    
-//     background-image: url('https://img-cdn.inc.com/image/upload/w_1024,h_576,c_fill/images/panoramic/GettyImages-900301626_437925_t2i3bm.jpg');
-    
-// }  
-
-// #registerphoto img {  
-//     max-width: 100%; /* Resmin boyutunu ayarlamak için */  
-//     height: auto; /* Yüksekliği otomatik ayarla */  
-// }
 $primary-color: #28a745;
 $secondary-color: #6C757D;
 $background-color: #F4F4F4;
@@ -88,7 +29,7 @@ body {
   box-shadow: $box-shadow;
   max-width: 500px;
   margin: auto;
-
+  
   h2 {
     text-align: center;
     color: $primary-color;
@@ -96,19 +37,16 @@ body {
     font-family: "Bebas Neue", sans-serif;
   }
   
-   
-  
-
   input[type="text"],  
   input[type="email"],  
   input[type="password"] {
     width: 100%;
-
     border: 1px solid $input-border-color;
     border-radius: 5px;
     margin-bottom: 20px;
     font-size: 1em;
-
+    text-transform: none; /* Varsayılan değer, harflerde değişiklik yapılmaması için */
+    font-family:'Times New Roman', Times, serif;
     &:focus {
       border-color: $primary-color;
       outline: none;
@@ -138,7 +76,6 @@ body {
 
     a {
       color: white;
-      
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
@@ -157,4 +94,65 @@ body {
   background-position: center;
   border-radius: 10px;
   box-shadow: $box-shadow;
+  height: 830px;
+}
+.radio-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  label {
+    position: relative;
+    padding-left: 35px;
+    margin-right: 20px;
+    cursor: pointer;
+    font-size: 1.2em;
+    user-select: none;
+    color: $secondary-color;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: darken($secondary-color, 10%);
+    }
+
+    input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+
+      &:checked ~ .checkmark {
+        background-color: $primary-color;
+        border-color: $primary-color;
+      }
+
+      &:checked ~ .checkmark:after {
+        display: block;
+      }
+    }
+
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: $background-color;
+      border: 2px solid $secondary-color;
+      border-radius: 50%;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+
+      &:after {
+        content: "";
+        position: absolute;
+        display: none;
+        top: 7px;
+        left: 7px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: white;
+        transition: transform 0.2s ease-in-out;
+      }
+    }
+  }
 }
