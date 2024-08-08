@@ -53,5 +53,10 @@
   "CLASSICS": "Klasikler",
   "HISTORY": "Tarih",
   "PHILOSOPHY": "Felsefe",
-  "PROFILE": "Profİl"
+  "PROFILE": "Profİl",
+  "ADD_BOOKS": "Kİtap Ekle",
+  "BOOK_TITLE": "Kitabın Adı:",
+  "PUBLISHER": "Yayınevi:",
+  "AUTHOR": "Yazar:",
+  "ADD_BOOK_BUTTON": "Kitap Ekle"
 }

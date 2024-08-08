@@ -10,7 +10,7 @@
     text-transform: uppercase;  /* Başlıkları büyük harfe çeviriyoruz */
     letter-spacing: 1px;  /* Harfler arası boşluk ekliyoruz */
     position: relative;
-
+    margin-top: 80px;
     &::after {
       content: '';
       width: 50px;

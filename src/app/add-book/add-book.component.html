@@ -1,0 +1,17 @@
+<div class="add-book-container">
+    <h2>{{ 'ADD_BOOK' | translate }}</h2>
+    <!-- <form (ngSubmit)="addBook()" [formGroup]="bookForm"> -->
+      <div class="form-group">
+        <input type="text" id="title"  class="form-control" placeholder="{{ 'BOOK_TITLE' | translate }}">
+      </div>
+      <div class="form-group">
+        <input type="text" id="publisher"  class="form-control" placeholder="{{ 'PUBLISHER' | translate }}">
+      </div>
+      <div class="form-group">
+        <input type="text" id="author" class="form-control" placeholder="{{ 'AUTHOR' | translate }}">
+      </div>
+      <button type="submit" class="btn btn-primary">{{ 'ADD_BOOK_BUTTON' | translate }}</button>
+    <!-- </form> -->
+  </div>
+  <app-another-navbar></app-another-navbar>
+  

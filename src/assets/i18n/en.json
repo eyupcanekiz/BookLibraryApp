@@ -52,5 +52,10 @@
   "ADVENTURE": "Adventure",
   "CLASSICS": "Classics",
   "HISTORY": "History",
-  "PHILOSOPHY": "Philosophy"
+  "PHILOSOPHY": "Philosophy",
+  "ADD_BOOKS": "Add Book",
+  "BOOK_TITLE": "Book Title:",
+  "PUBLISHER": "Publisher:",
+  "AUTHOR": "Author:",
+  "ADD_BOOK_BUTTON": "Add Book"
 }

@@ -14,6 +14,7 @@ import { ReturnBookComponent } from './return-book/return-book.component';
 import { MyBooksComponent } from './my-books/my-books.component';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './components/login/auth.guard';
+import { AddBookComponent } from './add-book/add-book.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'return-book', component: ReturnBookComponent },
       { path: 'my-books', component: MyBooksComponent },  
       { path: 'return-book', component: ReturnBookComponent },
+      { path: 'add-book', component: AddBookComponent },
     ]
   },
   {

@@ -27,6 +27,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule,HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { ReturnBookComponent } from './return-book/return-book.component';
 import { MyBooksComponent } from './my-books/my-books.component';
+import { AddBookComponent } from './add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { MyBooksComponent } from './my-books/my-books.component';
     DashboardComponent,
     ProfileComponent,
     ReturnBookComponent,
-    MyBooksComponent
+    MyBooksComponent,
+    AddBookComponent
     
   ],
   providers: [
