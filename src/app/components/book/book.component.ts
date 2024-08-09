@@ -3,6 +3,7 @@ import { BookService, Book } from './book.service';
 import { AuthService } from '../login/auth.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
@@ -59,6 +60,17 @@ export class BookComponent implements OnInit {
     this.bookService.getBookById(id).subscribe(
       (book: Book) => {
         this.selectedBook = book;
+      },
+      error => {
+        this.errorMessage = error.message;
+      }
+    );
+  }
+
+  deleteBook(bookName: string) {
+    this.bookService.deleteByName(bookName).subscribe(
+      response => {
+        this.books = this.books.filter(book => book.bookName !== bookName);
       },
       error => {
         this.errorMessage = error.message;
