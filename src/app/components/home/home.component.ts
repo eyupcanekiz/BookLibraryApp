@@ -16,13 +16,11 @@ export class HomeComponent implements OnInit  {
   isLoggedIn: boolean=false;
   ngOnInit() :void {
     this.toggleLogin();
-    /** spinner starts on init */
     this.spinner.show();
 
     setTimeout(() => {
-      /** spinner ends after 5 seconds */
       this.spinner.hide();
-    }, 2000);
+    }, 500);
     
   }
   toggleLogin(){

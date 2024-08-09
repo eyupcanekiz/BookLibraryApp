@@ -38,7 +38,7 @@ export class AuthService {
 public getToken(): Observable<string> {
   return this.http.get(this.tokenUrl, {
     withCredentials: true,
-    responseType: 'text' // Yanıtı text olarak işle
+    responseType: 'text' 
   });
 }
 
@@ -47,7 +47,7 @@ public getToken(): Observable<string> {
     const payload = token.split('.')[1];
     const decodedPayload = atob(payload);
     const parsedPayload = JSON.parse(decodedPayload);
-    return parsedPayload.id; // This should match the key that holds the user ID
+    return parsedPayload.id; 
   }
 
   public getById(userId:string): Observable<userModel> {

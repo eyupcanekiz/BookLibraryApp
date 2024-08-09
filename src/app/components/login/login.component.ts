@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           if(response.authenticateResult){
            
               
-          this.router.navigate(['/dashboard']); 
+          this.router.navigate(['/my-books']); 
          
            
             this.authService.getToken().subscribe({
