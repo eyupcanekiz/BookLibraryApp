@@ -3,7 +3,7 @@
   <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
   <!-- Form to add a new book -->
-  <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
+  <form (ngSubmit)="onSubmit()" #bookForm="ngForm" class="bookls">
     <div>
       <label for="bookName">Book Name</label>
       <input id="bookName" [(ngModel)]="newBook.bookName" name="bookName" required>
@@ -31,8 +31,8 @@
   </div>
 
   <!-- Book List -->
-  <ul *ngIf="books.length > 0">
-    <li *ngFor="let book of books">
+  <ul *ngIf="books.length > 0" class="booksl">
+    <li *ngFor="let book of books" >
       <a href="#" (click)="getBookById(book.id)">{{ book.bookName }}</a> 
       by {{ book.author }} (Publisher: {{ book.publisher }}) - 
       Available: {{ book.isAvailable ? 'Yes' : 'No' }}
@@ -42,7 +42,7 @@
   </ul>
 
   <!-- Input field to get a book by ID -->
-  <div class="get-book-by-id">
+  <div class="get-book-by-id" class="bookls">
     <h2>Get Book by ID</h2>
     <label for="bookId">Book ID</label>
     <input id="bookId" [(ngModel)]="bookId" name="bookId" required>
@@ -50,7 +50,7 @@
   </div>
 
   <!-- Selected Book Details -->
-  <div *ngIf="selectedBook">
+  <div *ngIf="selectedBook" class="bookls">
     <h2>Book Details</h2>
     <p><strong>Book Name:</strong> {{ selectedBook.bookName }}</p>
     <p><strong>Author:</strong> {{ selectedBook.author }}</p>

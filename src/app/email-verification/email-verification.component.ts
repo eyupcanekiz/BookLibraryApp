@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EmailVerificationService } from './email-verification.service';
 
 @Component({
   selector: 'app-email-verification',
@@ -8,20 +9,24 @@ import { Component } from '@angular/core';
 export class EmailVerificationComponent {
   email: string = '';
   verificationCode: string = '';
-  generatedCode: string = '';
   isCodeSent: boolean = false;
   isVerified: boolean = false;
 
+  constructor(private emailVerificationService: EmailVerificationService) {}
+
   sendVerificationCode() {
-    // Burada backend'e bir istek gönderebilir ve doğrulama kodunu gönderebilirsiniz.
-    // Şimdilik basit bir rastgele kod üreteceğiz.
-    this.generatedCode = Math.floor(100000 + Math.random() * 900000).toString();
-    console.log('Generated code:', this.generatedCode); // Sadece test amaçlı, konsolda gösteriyoruz.
-    this.isCodeSent = true;
+    this.emailVerificationService.sendVerificationCode(this.email).subscribe(response => {
+      this.isCodeSent = true;
+      console.log('Verification code sent:', response);
+    }, error => {
+      console.error('Error sending verification code:', error);
+    });
   }
 
   verifyCode() {
-    if (this.verificationCode === this.generatedCode) {
+    // Kod doğrulama işlemi burada yapılacak
+    // Bu örnekte backend'den alınan bir doğrulama kodu bulunmamakta. Bunu backend'e göre uyarlayabilirsiniz.
+    if (this.verificationCode === '123456') { // Bu örnek kod; gerçek kodu backend'den almalısınız
       this.isVerified = true;
     } else {
       alert('Verification code is incorrect. Please try again.');
