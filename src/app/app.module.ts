@@ -49,7 +49,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ReturnBookComponent,
     MyBooksComponent,
     AddBookComponent,
-    ProfilEditComponent
+    ProfilEditComponent,
   ],
   providers: [
     provideHttpClient(withFetch()),
