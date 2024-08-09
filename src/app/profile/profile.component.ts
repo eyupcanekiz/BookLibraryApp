@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../components/login/auth.service';
 import { log } from 'console';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -11,14 +11,20 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private authService: AuthService, private route:ActivatedRoute,private spinner: NgxSpinnerService) {}
+  constructor(
+    private authService: AuthService, 
+    private route:ActivatedRoute,
+    private spinner: NgxSpinnerService,
+    private router: Router
+
+  ) 
+    {}
+  
+  
+  
   userId:string='';
   profileImageUrl: string | ArrayBuffer | null = null;
-
-
-
   avatarUrl: string = '' ;
-
   userName: string = '';
   fullName: string = '';
   email: string = '';
@@ -54,5 +60,11 @@ export class ProfileComponent implements OnInit {
       }
       
     });
+  }
+  navigateToProfileEditPage(){
+    if( this.userId){
+      this.router.navigate(["/profil-edit",this.userId]);
+    }
+   
   }
 }
