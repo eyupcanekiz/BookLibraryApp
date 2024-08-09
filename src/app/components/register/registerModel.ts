@@ -4,10 +4,11 @@ export interface RegisterModel {
     Email: string;
     Password: string;
     PasswordRepeat: string;
-    Gender:GenderType;
+    Gender:GenderType ;
   }
 
   export enum GenderType{
+    other,
     male ,
     female
   }

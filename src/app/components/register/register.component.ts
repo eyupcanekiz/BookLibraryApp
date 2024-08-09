@@ -30,14 +30,14 @@ export class RegisterComponent implements OnInit {
       Email: ['',[Validators.email]],
       Password: ['',[Validators.required,Validators.minLength(8)]],
       PasswordRepeat: ['',[Validators.required] ],
-      Gender:['']
+      Gender: this.genderType.other
     });
   }
 
   onRegister(): void {
     if (this.registerForm.valid) {
       const { UserName, FullName, Email, Password, PasswordRepeat, Gender } = this.registerForm.value;
-      
+    
       if (Password !== PasswordRepeat) {
         this.snackBar.open('Şifreler eşleşmiyor', 'Close', { duration: 3000 });
         return;
@@ -66,4 +66,7 @@ export class RegisterComponent implements OnInit {
       });
     }
   }
+ 
+  
+  
 }
