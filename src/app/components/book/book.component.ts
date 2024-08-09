@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { BookService, Book } from './book.service';
+import { Component,OnInit } from '@angular/core';
+import { BookService } from './book.service';
+
 
 @Component({
   selector: 'app-book',
@@ -7,24 +8,46 @@ import { BookService, Book } from './book.service';
   styleUrls: ['./book.component.scss']
 })
 export class BookComponent implements OnInit {
-  books: Book[] = [];
+  newBook = {
+    bookName: '',
+    publisher: '',
+    author: '',
+    isAvailable: false
+  };
   errorMessage: string = '';
+  books: any[] = [];
 
   constructor(private bookService: BookService) {}
 
   ngOnInit() {
-    this.fetchBooks();
+    this.getBooks();
   }
 
-  fetchBooks() {
+  onSubmit() {
+    this.bookService.addBook(this.newBook).subscribe(
+      response => {
+        this.books.push(response);
+        this.newBook = {
+          bookName: '',
+          publisher: '',
+          author: '',
+          isAvailable: false
+        };
+      },
+      error => {
+        this.errorMessage = error.message;
+      }
+    );
+  }
+  getBooks() {
     this.bookService.getBooks().subscribe(
-      (data: Book[]) => {
-    
+      (data: any[]) => {
         this.books = data;
       },
-      (error: string) => {
+      error => {
         this.errorMessage = error;
       }
     );
   }
+
 }

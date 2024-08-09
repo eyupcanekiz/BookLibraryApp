@@ -1,32 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-
-export interface Book {
-  id: any;
-  bookName: string;
-  publisher: string;
-  author: string;
-  isAvailable: boolean;
-}
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
-  private bookUrl = 'https://booklibaryapi.azurewebsites.net/api/Book';
+  private apiUrl = 'https://booklibaryapi.azurewebsites.net/api/Book';
 
   constructor(private http: HttpClient) {}
 
-  public getBooks(): Observable<Book[]> {
-    return this.http.get<{ result: Book[] }>(this.bookUrl).pipe(
-      map(response => response.result),  // Extract result array
-      catchError(this.handleError)
-    );
+  addBook(book: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, book)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
-  private handleError(error: HttpErrorResponse): Observable<never> {
+  getBooks(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
       // Client-side errors

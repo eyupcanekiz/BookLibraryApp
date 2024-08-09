@@ -8,12 +8,18 @@ $button-hover-color: darken($primary-color, 10%);
 $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
 body {  
-    font-family: "Bebas Neue", sans-serif; /* Yazı tipi ayarı */  
+    font-family: "Bebas Neue", sans-serif;
     margin: 0; /* Varsayılan margin'i sıfırlama */  
     padding: 0; /* Varsayılan padding'i sıfırlama */  
     h2{
         font-family: "Bebas Neue", sans-serif;
         color:$primary-color;
+    }
+    #floatingInput{
+        font-family: 'Times New Roman', Times, serif;
+    }
+    #floatingPassword{
+        font-family: 'Times New Roman', Times, serif;
     }
 }  
 
