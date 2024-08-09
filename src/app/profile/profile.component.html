@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="profile-actions">
-    <button routerLink="/profil-edit" class="btn btn-primary">{{ 'EDIT-PROFILE' | translate }}</button>
+    <button routerLink="/profil-edit"   (click)="navigateToProfileEditPage()" class="btn btn-primary">{{ 'EDIT-PROFILE' | translate }}</button>
   </div>
 </div>
 <app-another-navbar></app-another-navbar>

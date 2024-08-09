@@ -36,8 +36,9 @@ const routes: Routes = [
       { path: 'return-book', component: ReturnBookComponent },
       { path: 'add-book', component: AddBookComponent },
       { path: 'book', component: BookComponent},
-      { path: 'profil-edit', component: ProfilEditComponent},
+      { path: 'profil-edit/:id', component: ProfilEditComponent},
       { path: 'email-verification', component: EmailVerificationComponent}
+
     ]
   },
   {
