@@ -29,6 +29,7 @@ import { BookModule } from './components/book/book.module'; //BookModule
 import { BookService } from './components/book/book.service';//bookservice
 import { ProfilEditComponent } from './profil-edit/profil-edit.component'; 
 import { NgxSpinnerModule } from "ngx-spinner";
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ReturnBookComponent,
     MyBooksComponent,
     AddBookComponent,
-    ProfilEditComponent
+    ProfilEditComponent,
+    EmailVerificationComponent,
   ],
   providers: [
     provideHttpClient(withFetch()),

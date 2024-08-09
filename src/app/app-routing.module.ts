@@ -17,6 +17,7 @@ import { AuthGuard } from './components/login/auth.guard';
 import { AddBookComponent } from './add-book/add-book.component';
 import { BookComponent } from './components/book/book.component';
 import { ProfilEditComponent } from './profil-edit/profil-edit.component';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 const routes: Routes = [
   {
@@ -35,7 +36,9 @@ const routes: Routes = [
       { path: 'return-book', component: ReturnBookComponent },
       { path: 'add-book', component: AddBookComponent },
       { path: 'book', component: BookComponent},
-      { path: 'profil-edit/:id', component: ProfilEditComponent}
+      { path: 'profil-edit/:id', component: ProfilEditComponent},
+      { path: 'email-verification', component: EmailVerificationComponent}
+
     ]
   },
   {

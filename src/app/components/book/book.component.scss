@@ -1,0 +1,438 @@
+$primary-color: #28a745;
+$secondary-color: #dc3545;
+$background-color: #f1f3f5;
+$form-background-color: #ffffff;
+$input-border-color: #ccc;
+$button-hover-color: darken($primary-color, 10%);
+$box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+$transition: 0.3s ease;
+
+.container {
+  width: 60%;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: $form-background-color;
+  border-radius: 20px;
+  box-shadow: $box-shadow;
+  animation: fadeInUp 0.6s $transition;
+  margin-top: 80px;
+
+  @media (max-width: 768px) {
+    width: 85%;
+  }
+
+  h1 {
+    text-align: center;
+    color: $primary-color;
+    margin-bottom: 25px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.6em;
+    letter-spacing: 1.5px;
+    position: relative;
+    text-transform: uppercase;
+
+    &::after {
+      content: '';
+      width: 60px;
+      height: 4px;
+      background-color: $secondary-color;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width 0.4s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  .error-message {
+    color: $secondary-color;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    animation: shake 0.5s $transition;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 40px;
+
+    label {
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid $input-border-color;
+      border-radius: 5px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: border-color $transition;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+      }
+    }
+
+    input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    button[type="submit"] {
+      background-color: $primary-color;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color $transition, transform $transition;
+
+      &:hover {
+        background-color: $button-hover-color;
+        transform: scale(1.1);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .no-books-message {
+    text-align: center;
+    font-size: 1.2em;
+    color: #999;
+    margin-top: 20px;
+    animation: fadeIn 1s $transition;
+  }
+
+  ul.book-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      background-color: $background-color;
+      margin-bottom: 15px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      transition: transform $transition, box-shadow $transition, background-color $transition;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        background-color: lighten($background-color, 10%);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(220, 53, 69, 0.1);
+        transition: opacity $transition, transform $transition;
+        transform: scale(1.5);
+        opacity: 0;
+        z-index: 1;
+      }
+
+      &:hover::before {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      a {
+        color: $primary-color;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color $transition;
+
+        &:hover {
+          color: $button-hover-color;
+        }
+      }
+
+      button {
+        background-color: $secondary-color;
+        color: #fff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color $transition, transform $transition;
+
+        &:hover {
+          background-color: darken($secondary-color, 10%);
+          transform: scale(1.1);
+        }
+
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
+  }
+
+  .get-book-by-id {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: $background-color;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      margin-bottom: 20px;
+      font-size: 1.8em;
+      color: $primary-color;
+    }
+
+    label {
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid $input-border-color;
+      border-radius: 5px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+      transition: border-color $transition;
+
+      &:focus {
+        border-color: $primary-color;
+        outline: none;
+        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+      }
+    }
+
+    button {
+      margin-top: 15px;
+      background-color: $primary-color;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color $transition, transform $transition;
+
+      &:hover {
+        background-color: $button-hover-color;
+        transform: scale(1.1);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+
+  .fade-out {
+    animation: fadeOut 0.5s forwards;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+.booksl {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  
+    li {
+      background-color: #f9f9f9;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+  
+      &:hover {
+        background-color: #eef1f5;
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+      }
+  
+      a {
+        color: #28a745;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+  
+        &:hover {
+          color: darken(#28a745, 10%);
+          text-decoration: underline;
+        }
+      }
+  
+      button {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9em;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+  
+        &:hover {
+          background-color: darken(#dc3545, 10%);
+          transform: scale(1.05);
+        }
+  
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
+  }
+  .bookls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  
+    @media (max-width: 768px) {
+      padding: 15px;
+    }
+  
+    div {
+      display: flex;
+      flex-direction: column;
+  
+      label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #555;
+      }
+  
+      input[type="text"], input[type="checkbox"] {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  
+        &:focus {
+          border-color: #28a745;
+          box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+          outline: none;
+        }
+      }
+  
+      input[type="checkbox"] {
+        width: auto;
+        margin-top: 10px;
+      }
+    }
+  
+    button {
+      padding: 12px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+  
+      &:hover {
+        background-color: darken(#28a745, 10%);
+        transform: scale(1.05);
+      }
+  
+      &:active {
+        transform: scale(0.95);
+      }
+  
+      &:disabled {
+        background-color: lighten(#28a745, 30%);
+        cursor: not-allowed;
+      }
+    }
+  }
+  

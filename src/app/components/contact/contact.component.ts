@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from './contact.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { contactModel } from './contactModel';
 
 @Component({
   selector: 'app-contact',
@@ -19,24 +20,27 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
-      message: ['', Validators.required]
+      Name: ['', Validators.required],
+      EmailAddress: ['', [Validators.required, Validators.email]],
+      Phone: ['', Validators.required],
+      Message: ['', Validators.required]
     });
   }
 
   onSubmit(): void {
     if (this.contactForm.valid) {
-      this.contactService.sendContactForm(this.contactForm.value).subscribe({
-        next: () => {
+      const formData: contactModel = this.contactForm.value;
+      this.contactService.sendContactForm(formData).subscribe({
+        next: (response) => {
+          console.log('Sunucu yanıtı:', response);
           this.snackBar.open('Mesaj başarıyla gönderildi', 'Kapat', { duration: 3000 });
           this.contactForm.reset();
         },
-        error: () => {
+        error: (error) => {
+          console.error('HTTP Hatası:', error);
           this.snackBar.open('Mesaj gönderilemedi', 'Kapat', { duration: 3000 });
         }
       });
-    }
-  }
+    }}
+
 }

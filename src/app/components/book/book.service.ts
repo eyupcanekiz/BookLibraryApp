@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+
+export interface Book {
+  id?: any;
+  bookName: string;
+  publisher: string;
+  author: string;
+  isAvailable: boolean;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -12,26 +20,50 @@ export class BookService {
   constructor(private http: HttpClient) {}
 
   addBook(book: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, book)
+    const token = localStorage.getItem('AuthToken');
+    if (!token) {
+      return throwError('User is not authenticated');
+    }
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.post<Book>(this.apiUrl, book, { headers })
       .pipe(
         catchError(this.handleError)
       );
   }
 
-  getBooks(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl)
+  getBooks(): Observable<Book[]> {
+    return this.http.get<{ result: Book[] }>(this.apiUrl).pipe(
+      map(response => response.result),
+      catchError(this.handleError)
+    );
+  }
+
+  getBookById(id: any): Observable<Book> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Book>(url).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteByName(bookName: string): Observable<any> {
+    const url = `${this.apiUrl}/${bookName}`;
+    return this.http.delete<any>(url)
       .pipe(
         catchError(this.handleError)
       );
   }
+
 
   private handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error!';
+    let errorMessage = 'Unknown error occurred!';
     if (error.error instanceof ErrorEvent) {
-      // Client-side errors
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      // Server-side errors
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(errorMessage);

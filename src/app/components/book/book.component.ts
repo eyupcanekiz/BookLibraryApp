@@ -1,5 +1,7 @@
-import { Component,OnInit } from '@angular/core';
-import { BookService } from './book.service';
+import { Component, OnInit } from '@angular/core';
+import { BookService, Book } from './book.service';
+import { AuthService } from '../login/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,8 +18,10 @@ export class BookComponent implements OnInit {
   };
   errorMessage: string = '';
   books: any[] = [];
+  selectedBook: Book | null = null;
+  bookId: string = ''; // To hold the user-entered book ID
 
-  constructor(private bookService: BookService) {}
+  constructor(private bookService: BookService, private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     this.getBooks();
@@ -33,12 +37,14 @@ export class BookComponent implements OnInit {
           author: '',
           isAvailable: false
         };
+        this.getBooks(); 
       },
       error => {
         this.errorMessage = error.message;
       }
     );
   }
+
   getBooks() {
     this.bookService.getBooks().subscribe(
       (data: any[]) => {
@@ -50,4 +56,25 @@ export class BookComponent implements OnInit {
     );
   }
 
+  getBookById(id: string) {
+    this.bookService.getBookById(id).subscribe(
+      (book: Book) => {
+        this.selectedBook = book;
+      },
+      error => {
+        this.errorMessage = error.message;
+      }
+    );
+  }
+
+  deleteBook(bookName: string) {
+    this.bookService.deleteByName(bookName).subscribe(
+      response => {
+        this.books = this.books.filter(book => book.bookName !== bookName);
+      },
+      error => {
+        this.errorMessage = error.message;
+      }
+    );
+  }
 }
