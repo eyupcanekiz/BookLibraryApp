@@ -51,18 +51,19 @@
     </style>
 </head>
 <body>
-  <div class="container">
-      <div class="header">
-          Kütüphane sistemi kod
-      </div>
-      <div class="content">
-          <p>Enter this verification code in the field:</p>
-          <div class="verification-code">{{verificationCode}}</div>
-          <p>Verification code is valid only for 30 minutes</p>
-      </div>
-      <div class="footer">
-          If you did not request this code, please ignore this email.
-      </div>
-  </div>
+    <div class="container">
+        <div class="header">
+            {{verificationName}} Kütüphane Sistemi Doğrulama Kodu
+        </div>
+        <div class="content">
+            <p>Bu doğrulama kodunu ilgili alana giriniz:</p>
+            <div class="verification-code">{{verificationCode}}</div>
+            <p>Doğrulama kodu sadece 30 dakika boyunca geçerlidir.</p>
+        </div>
+        <div class="footer">
+            Eğer bu kodu siz talep etmediyseniz, lütfen bu e-postayı dikkate almayınız.
+        </div>
+    </div>
+    
 </body>
 </html>

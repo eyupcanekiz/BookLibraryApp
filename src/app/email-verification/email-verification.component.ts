@@ -10,9 +10,10 @@ import { EmailVerificationService } from './email-verification.service';
 })
 export class EmailVerificationComponent implements OnInit {
   verificationCode: string = '';
+  verificationName: string = 'Alperen';
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private sanitizer: DomSanitizer,
     private emailservice: EmailVerificationService
   ) { }
@@ -22,7 +23,6 @@ export class EmailVerificationComponent implements OnInit {
     this.loadHtmlContent();
   }
 
-  // Generate a 6-digit verification code
   generateVerificationCode() {
     this.verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
   }
@@ -30,16 +30,17 @@ export class EmailVerificationComponent implements OnInit {
   loadHtmlContent() {
     this.http.get('assets/email-verification.component.html', { responseType: 'text' })
       .subscribe((htmlContent: string) => {
-        // Replace the placeholder with the actual verification code
-        const modifiedHtmlContent = htmlContent.replace('{{verificationCode}}', this.verificationCode);
+        const modifiedHtmlContent = htmlContent
+          .replace('{{verificationCode}}', this.verificationCode)
+          .replace('{{verificationName}}', this.verificationName);
         this.sendEmailVerification(modifiedHtmlContent);
       });
   }
 
   sendEmailVerification(htmlContent: string) {
     const emailData = {
-      EmailAddress: 'alperenakkal06@gmail.com',  
-      HtmlContent: htmlContent  
+      EmailAddress: 'alperenakkal06@gmail.com',
+      HtmlContent: htmlContent
     };
 
     this.emailservice.sendVerificationCode(emailData)
@@ -50,3 +51,4 @@ export class EmailVerificationComponent implements OnInit {
       });
   }
 }
+
