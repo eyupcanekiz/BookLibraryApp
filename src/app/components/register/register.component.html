@@ -45,19 +45,19 @@
                 </div>
                 <div class="radio-group">
                     <label>
-                      <input type="radio" [value]="genderType.male" formControlName="Gender">
+                      <input type="radio" [value]="genderType.male" formControlName="Gender" >
                       <span class="checkmark"></span>
                       Male
                     </label>
                     <label>
-                      <input type="radio" [value]="genderType.female" formControlName="Gender">
+                      <input type="radio" [value]="genderType.female" formControlName="Gender" >
                       <span class="checkmark"></span>
                       Female
                     </label>
                   </div>
                   
                 <br>
-                <button type="submit" class="submit-button" routerLink="/email-verification">{{ 'REGISTER' | translate }}</button>
+                <button type="submit" class="submit-button" >{{ 'REGISTER' | translate }}</button>
             </form>
             <div class="login-container">
                 <br>{{ 'ALREADY_HAVE_ACCOUNT' | translate }}<br><br>

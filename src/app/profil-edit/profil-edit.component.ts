@@ -34,7 +34,7 @@ export class ProfilEditComponent implements OnInit {
         userName:["",[Validators.required]],
         fullName:[""],
         email:["",[Validators.email]],
-        Gender:['']
+        Gender:['other']
       })
       this.route.paramMap.subscribe(params =>{
         this.userId= params.get('id')!;
@@ -44,10 +44,10 @@ export class ProfilEditComponent implements OnInit {
     getUser(){
       let genderSelect=0;
       if(this.profileEditForm.get("Gender")?.value=="male"){
-        genderSelect=0
+        genderSelect=1
       }
       if(this.profileEditForm.get("Gender")?.value=="female"){
-        genderSelect=1
+        genderSelect=2
       }
       this.authService.getById(this.userId).subscribe({
         next:(response)=>{
@@ -99,5 +99,7 @@ export class ProfilEditComponent implements OnInit {
         })
       }
     }
+    
+    
 
 }
