@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
+
+export interface Book {
+  id: any;
+  bookName: string;
+  publisher: string;
+  author: string;
+  isAvailable: boolean;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +26,11 @@ export class BookService {
       );
   }
 
-  getBooks(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl)
-      .pipe(
-        catchError(this.handleError)
-      );
+   getBooks(): Observable<Book[]> {
+    return this.http.get<{ result: Book[] }>(this.apiUrl).pipe(
+      map(response => response.result),  
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: HttpErrorResponse) {
