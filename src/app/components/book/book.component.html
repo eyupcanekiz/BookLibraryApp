@@ -1,35 +1,35 @@
-<div>
-  <h2>Add a New Book</h2>
-  <form (ngSubmit)="onSubmit()">
+<div class="container">
+  <h1>Book List</h1>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
     <div>
-      <label for="bookName">Book Name:</label>
-      <input type="text" id="bookName" [(ngModel)]="newBook.bookName" name="bookName" required>
+      <label for="bookName">Book Name</label>
+      <input id="bookName" [(ngModel)]="newBook.bookName" name="bookName" required>
     </div>
     <div>
-      <label for="publisher">Publisher:</label>
-      <input type="text" id="publisher" [(ngModel)]="newBook.publisher" name="publisher" required>
+      <label for="publisher">Publisher</label>
+      <input id="publisher" [(ngModel)]="newBook.publisher" name="publisher" required>
     </div>
     <div>
-      <label for="author">Author:</label>
-      <input type="text" id="author" [(ngModel)]="newBook.author" name="author" required>
+      <label for="author">Author</label>
+      <input id="author" [(ngModel)]="newBook.author" name="author" required>
     </div>
     <div>
-      <label for="isAvailable">Available:</label>
-      <input type="checkbox" id="isAvailable" [(ngModel)]="newBook.isAvailable" name="isAvailable">
+      <label>
+        <input type="checkbox" [(ngModel)]="newBook.isAvailable" name="isAvailable">
+        Available
+      </label>
     </div>
-    <button type="submit">Add Book</button>
+    <button type="submit" [disabled]="!bookForm.form.valid">Add Book</button>
   </form>
-
-  <div *ngIf="errorMessage">
-    <p>Error: {{ errorMessage }}</p>
+  <div *ngIf="books.length === 0 && !errorMessage" class="no-books-message">
+    No books available.
   </div>
 
-  <div *ngIf="books.length">
-    <h3>Book List</h3>
-    <ul>
-      <li *ngFor="let book of books">
-        {{ book.bookName }} by {{ book.author }} ({{ book.publisher }}) - Available: {{ book.isAvailable ? 'Yes' : 'No' }}
-      </li>
-    </ul>
-  </div>
+  <ul *ngIf="books.length > 0">
+    <li *ngFor="let book of books">
+      {{ book.bookName }} by {{ book.author }} (Publisher: {{ book.publisher }}) - Available: {{ book.isAvailable }}
+    </li>
+  </ul>
 </div>

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { BookService, Book } from './book.service';
+import { Component,OnInit } from '@angular/core';
+import { BookService } from './book.service';
+
 
 @Component({
   selector: 'app-book',
@@ -7,56 +8,46 @@ import { BookService, Book } from './book.service';
   styleUrls: ['./book.component.scss']
 })
 export class BookComponent implements OnInit {
-  books: Book[] = [];
-  errorMessage: string = '';
-  newBook: Book = {
-    id: null,
+  newBook = {
     bookName: '',
     publisher: '',
     author: '',
     isAvailable: false
   };
+  errorMessage: string = '';
+  books: any[] = [];
 
   constructor(private bookService: BookService) {}
 
   ngOnInit() {
-    this.fetchBooks();
+    this.getBooks();
   }
 
-  fetchBooks() {
+  onSubmit() {
+    this.bookService.addBook(this.newBook).subscribe(
+      response => {
+        this.books.push(response);
+        this.newBook = {
+          bookName: '',
+          publisher: '',
+          author: '',
+          isAvailable: false
+        };
+      },
+      error => {
+        this.errorMessage = error.message;
+      }
+    );
+  }
+  getBooks() {
     this.bookService.getBooks().subscribe(
-      (data: Book[]) => {
-        console.log('Books:', data);  // Log data to verify
+      (data: any[]) => {
         this.books = data;
       },
-      (error: string) => {
+      error => {
         this.errorMessage = error;
       }
     );
   }
 
-  onSubmit() {
-    this.addBook(this.newBook);
-  }
-
-  addBook(book: Book) {
-    console.log('Adding book:', book);  // Log the book being added
-    this.bookService.postBook(book).subscribe(
-      (data: Book) => {
-        console.log('Book added:', data);
-        this.fetchBooks();  // Refresh the book list
-        this.newBook = {
-          id: null,
-          bookName: '',
-          publisher: '',
-          author: '',
-          isAvailable: false
-        };  // Reset the form
-      },
-      (error: string) => {
-        this.errorMessage = `Error adding book: ${error}`;
-        console.error(this.errorMessage);
-      }
-    );
-  }
 }
