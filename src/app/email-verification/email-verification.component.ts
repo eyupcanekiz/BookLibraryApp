@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 import { EmailVerificationService } from './email-verification.service';
 
 @Component({
@@ -6,30 +8,45 @@ import { EmailVerificationService } from './email-verification.service';
   templateUrl: './email-verification.component.html',
   styleUrls: ['./email-verification.component.scss']
 })
-export class EmailVerificationComponent {
-  email: string = '';
+export class EmailVerificationComponent implements OnInit {
   verificationCode: string = '';
-  isCodeSent: boolean = false;
-  isVerified: boolean = false;
 
-  constructor(private emailVerificationService: EmailVerificationService) {}
+  constructor(
+    private http: HttpClient, 
+    private sanitizer: DomSanitizer,
+    private emailservice: EmailVerificationService
+  ) { }
 
-  sendVerificationCode() {
-    // Kullanıcının girdiği e-posta adresini alıp backend'e gönderiyoruz
-    this.emailVerificationService.sendVerificationCode(this.email).subscribe(response => {
-      this.isCodeSent = true;
-      console.log('Verification code sent:', response);
-    }, error => {
-      console.error('Error sending verification code:', error);
-    });
+  ngOnInit(): void {
+    this.generateVerificationCode();
+    this.loadHtmlContent();
   }
 
-  verifyCode() {
-    // Bu kısımda doğrulama kodunu backend ile kontrol edebilirsiniz
-    if (this.verificationCode === '123456') { // Örnek kod; backend'den dönen kodu burada kullanmalısınız
-      this.isVerified = true;
-    } else {
-      alert('Verification code is incorrect. Please try again.');
-    }
+  // Generate a 6-digit verification code
+  generateVerificationCode() {
+    this.verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+  }
+
+  loadHtmlContent() {
+    this.http.get('assets/email-verification.component.html', { responseType: 'text' })
+      .subscribe((htmlContent: string) => {
+        // Replace the placeholder with the actual verification code
+        const modifiedHtmlContent = htmlContent.replace('{{verificationCode}}', this.verificationCode);
+        this.sendEmailVerification(modifiedHtmlContent);
+      });
+  }
+
+  sendEmailVerification(htmlContent: string) {
+    const emailData = {
+      EmailAddress: 'alperenakkal06@gmail.com',  
+      HtmlContent: htmlContent  
+    };
+
+    this.emailservice.sendVerificationCode(emailData)
+      .subscribe(response => {
+        console.log('Verification email sent successfully');
+      }, error => {
+        console.error('Error sending verification email', error);
+      });
   }
 }
