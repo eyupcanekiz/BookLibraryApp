@@ -2,6 +2,7 @@
   <h1>Book List</h1>
   <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
+  <!-- Form to add a new book -->
   <form (ngSubmit)="onSubmit()" #bookForm="ngForm">
     <div>
       <label for="bookName">Book Name</label>
@@ -23,13 +24,37 @@
     </div>
     <button type="submit" [disabled]="!bookForm.form.valid">Add Book</button>
   </form>
+
+ 
+
+  <!-- Book List -->
+  <ul *ngIf="books.length > 0">
+    <li *ngFor="let book of books">
+      <a href="#" (click)="getBookById(book.id)">{{ book.bookName }}</a> 
+      by {{ book.author }} (Publisher: {{ book.publisher }}) - 
+      Available: {{ book.isAvailable ? 'Yes' : 'No' }}
+    </li>
+  </ul>
+
+   <!-- Input field to get a book by ID -->
+   <div class="get-book-by-id">
+    <h2>Get Book by ID</h2>
+    <label for="bookId">Book ID</label>
+    <input id="bookId" [(ngModel)]="bookId" name="bookId" required>
+    <button (click)="getBookById(bookId)">Get Book</button>
+  </div>
+
+  <!-- Message displayed when there are no books -->
   <div *ngIf="books.length === 0 && !errorMessage" class="no-books-message">
     No books available.
   </div>
 
-  <ul *ngIf="books.length > 0">
-    <li *ngFor="let book of books">
-      {{ book.bookName }} by {{ book.author }} (Publisher: {{ book.publisher }}) - Available: {{ book.isAvailable }}
-    </li>
-  </ul>
+  <!-- Selected Book Details -->
+  <div *ngIf="selectedBook">
+    <h2>Book Details</h2>
+    <p><strong>Book Name:</strong> {{ selectedBook.bookName }}</p>
+    <p><strong>Author:</strong> {{ selectedBook.author }}</p>
+    <p><strong>Publisher:</strong> {{ selectedBook.publisher }}</p>
+    <p><strong>Available:</strong> {{ selectedBook.isAvailable ? 'Yes' : 'No' }}</p>
+  </div>
 </div>
