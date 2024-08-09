@@ -1,0 +1,32 @@
+.email-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+.email-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.verification-code-container {
+  text-align: center;
+  margin: 20px 0;
+}
+.verification-code {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #28a745;
+  border-radius: 5px;
+}
+.email-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #777;
+}
