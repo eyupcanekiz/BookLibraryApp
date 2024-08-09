@@ -50,6 +50,15 @@ export class BookService {
     );
   }
 
+  deleteByName(bookName: string): Observable<any> {
+    const url = `${this.apiUrl}/${bookName}`;
+    return this.http.delete<any>(url)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
   private handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error occurred!';
     if (error.error instanceof ErrorEvent) {
