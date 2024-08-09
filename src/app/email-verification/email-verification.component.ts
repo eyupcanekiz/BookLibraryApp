@@ -15,6 +15,7 @@ export class EmailVerificationComponent {
   constructor(private emailVerificationService: EmailVerificationService) {}
 
   sendVerificationCode() {
+    // Kullanıcının girdiği e-posta adresini alıp backend'e gönderiyoruz
     this.emailVerificationService.sendVerificationCode(this.email).subscribe(response => {
       this.isCodeSent = true;
       console.log('Verification code sent:', response);
@@ -24,9 +25,8 @@ export class EmailVerificationComponent {
   }
 
   verifyCode() {
-    // Kod doğrulama işlemi burada yapılacak
-    // Bu örnekte backend'den alınan bir doğrulama kodu bulunmamakta. Bunu backend'e göre uyarlayabilirsiniz.
-    if (this.verificationCode === '123456') { // Bu örnek kod; gerçek kodu backend'den almalısınız
+    // Bu kısımda doğrulama kodunu backend ile kontrol edebilirsiniz
+    if (this.verificationCode === '123456') { // Örnek kod; backend'den dönen kodu burada kullanmalısınız
       this.isVerified = true;
     } else {
       alert('Verification code is incorrect. Please try again.');

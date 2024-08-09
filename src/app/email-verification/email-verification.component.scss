@@ -1,32 +1,43 @@
-.email-container {
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+body {
   font-family: Arial, sans-serif;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 0;
+  margin: 0;
 }
-.email-header {
-  text-align: center;
-  margin-bottom: 20px;
+.container {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
-.verification-code-container {
+.header {
+  background-color: #28a745;
+  padding: 20px;
   text-align: center;
-  margin: 20px 0;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+}
+.content {
+  padding: 20px;
+  text-align: center;
 }
 .verification-code {
+  font-size: 32px;
+  font-weight: bold;
+  color: #333333;
+  background-color: #eeeeee;
+  border-radius: 12px;
   display: inline-block;
   padding: 10px 20px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #ffffff;
-  background-color: #28a745;
-  border-radius: 5px;
+  margin: 20px 0;
 }
-.email-footer {
+.footer {
+  font-size: 12px;
+  color: #999999;
   text-align: center;
-  margin-top: 20px;
-  font-size: 14px;
-  color: #777;
+  padding: 20px;
 }
