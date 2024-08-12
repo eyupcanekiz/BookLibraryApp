@@ -15,7 +15,7 @@ export class AdminGuard implements CanActivate {
     return this.authService.getCurrentUser().pipe(
       map(user => {
         if (user && user.isAdmin) {
-          return true; // Admin kullanıcılar sayfaya erişebilir
+          return true; 
         } else {
           this.router.navigate(['/not-authorized']); // Yetkisiz kullanıcıları yönlendirin
           return false;
