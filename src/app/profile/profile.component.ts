@@ -48,9 +48,10 @@ export class ProfileComponent implements OnInit {
       if (authToken && checkUserTokenDate) {
         const tokenDate = new Date(checkUserTokenDate).getTime();
         const currentTime = new Date().getTime();
-        if (Math.abs(tokenDate - currentTime) < 1000) {
+        if (tokenDate - currentTime < 1000) {
           localStorage.removeItem("AuthToken");
           localStorage.removeItem("DateNow");
+          this.router.navigate(['/login']);
         }
       } else {
         console.log("Token bulunamadı.");
