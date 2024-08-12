@@ -24,9 +24,11 @@ export class VerificationEnterComponent {
       console.log('Girdiğiniz kod doğru!');
       alert('Girdiğiniz kod doğru!');
       this.router.navigate(['/login']); // Kullanıcıyı login sayfasına yönlendir
+      return true;
     } else {
       // Kod yanlış ise
       this.errorMessage = 'Girdiğiniz kod yanlış, lütfen tekrar deneyin.';
+      return false;
     }
   }
 }

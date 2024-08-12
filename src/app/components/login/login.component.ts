@@ -48,27 +48,8 @@ export class LoginComponent implements OnInit {
       const { username, password } = this.loginForm.value;
       this.authService.login(username, password).subscribe({
         next: (response) => {
-
-          this.snackBar.open('Login successful', 'Close', { duration: 3000 });
-
           if (response.authenticateResult) {
-            // Kullanıcı bilgilerini yerel depolamaya kaydedin
-            this.authService.getToken().subscribe({
-              next: (token) => {
-                localStorage.setItem("AuthToken", token);
-                this.authService.getCurrentUser().subscribe(user => {
-                  if (user && user.isAdmin) {
-                    this.router.navigate(['/admin']);
-                  } else {
-                    this.router.navigate(['/my-books']);
-                  }
-                });
-              },
-              error: (error) => {
-                console.log("Token alınamadı: ", error);
-              }
-            });
-
+            this.handleSuccessfulLogin();
           } else {
             this.snackBar.open('Login failed', 'Close', { duration: 3000 });
           }
@@ -80,7 +61,6 @@ export class LoginComponent implements OnInit {
       });
     }
   }
-<<<<<<< HEAD
 
   private handleSuccessfulLogin() {
     this.snackBar.open('Login successful', 'Close', { duration: 3000 });
@@ -100,10 +80,3 @@ export class LoginComponent implements OnInit {
     localStorage.setItem('DateNow', this.dateNow);
   }
 }
-=======
-}
-
-
-
-  
->>>>>>> 77b114c5f16a7caffda04088d7fee202c7ce5fde
