@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -8,12 +8,16 @@ import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { VerificationCodeService } from '../../verification-enter/verification-code.service';
 import { EmailVerificationService } from './emailVerification.service';
+import { VerificationEnterComponent } from '../../verification-enter/verification-enter.component';
+import * as CryptoJS from 'crypto-js';
 
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'], 
+  providers: [VerificationEnterComponent],
+
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
@@ -21,6 +25,7 @@ export class RegisterComponent implements OnInit {
   verificationCode: string = '';
   verificationName: string = 'Alperen';
   private emailSent: boolean = false;
+  check!:boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -30,7 +35,9 @@ export class RegisterComponent implements OnInit {
     private http: HttpClient,
     private sanitizer: DomSanitizer,
     private emailservice: EmailVerificationService,
-    private verificationCodeService: VerificationCodeService
+    private verificationCodeService: VerificationCodeService,
+    private verificationCodeCompenent : VerificationEnterComponent
+
   ) { }
 
   ngOnInit(): void {
@@ -74,7 +81,10 @@ export class RegisterComponent implements OnInit {
       next: (response) => {
         console.log('Verification email sent successfully', response);
         this.emailSent = true;
-        this.router.navigate(["/verification-enter"]);
+       
+      
+  
+        
       },
       error: (error) => {
         console.error('Error sending verification email', error);
@@ -82,42 +92,28 @@ export class RegisterComponent implements OnInit {
       }
     });
   }
+
   
   onRegister(): void {
     if (this.registerForm.valid) {
+      this.generateVerificationCode();
+      this.loadHtmlContent();
+
       const { UserName, FullName, Email, Password, PasswordRepeat, Gender } = this.registerForm.value;
-    
+      
       if (Password !== PasswordRepeat) {
         this.snackBar.open('Şifreler eşleşmiyor', 'Close', { duration: 3000 });
         return;
       }
-      const registerModel: RegisterModel = { UserName, FullName, Email, Password, PasswordRepeat, Gender };
-      this.registerService.register(registerModel).subscribe({
-        next: (response: any) => {
-          this.generateVerificationCode();
-          this.loadHtmlContent();
-          this.snackBar.open('Başarıyla kayıt olundu', 'Close', { duration: 3000 });
-       
-        },
-        error: (error: any) => {
     
-          if (error.status === 400) { // Hata kodu backend'de 400 olarak tanımlanabilir
-            if (error.error === 'EMAIL_ALREADY_EXISTS') {
-              this.snackBar.open('Bu e-posta adresi zaten kayıtlı', 'Close', { duration: 3000 });
-            } else if (error.error === 'USERNAME_ALREADY_EXISTS') {
-              this.snackBar.open('Bu kullanıcı adı zaten kayıtlı', 'Close', { duration: 3000 });
-            } else {
-              this.snackBar.open('Kayıt başarısız. Lütfen tekrar deneyin.', 'Close', { duration: 3000 });
-            }
-          } else {
-            this.snackBar.open('Kayıt başarısız', 'Close', { duration: 3000 });
-          }
-          console.error('Kayıt başarısız', error);
-        }
-      });
+      const registerModel: RegisterModel = { UserName, FullName, Email, Password, PasswordRepeat, Gender };
+      const key = 'YourSecretKeyForEncryption&Descryption';
+      const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(registerModel), key).toString();
+      this.router.navigate(['/verification-enter', { data: encryptedData }]);
+
     }
   }
-
+}
  
 
-}
+
