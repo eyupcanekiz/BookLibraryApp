@@ -40,13 +40,9 @@ const routes: Routes = [
       { path: 'add-book', component: AddBookComponent },
       { path: 'book', component: BookComponent},
       { path: 'profil-edit/:id', component: ProfilEditComponent},
-<<<<<<< HEAD
       { path: 'verification-enter', component: VerificationEnterComponent}
 
-=======
-      { path: 'email-verification', component: EmailVerificationComponent},
-      { path: 'verification-enter', component: VerificationEnterComponent},
->>>>>>> 77b114c5f16a7caffda04088d7fee202c7ce5fde
+
     ]
   },
   {
