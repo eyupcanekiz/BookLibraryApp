@@ -24,7 +24,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule, HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { ReturnBookComponent } from './return-book/return-book.component';
 import { MyBooksComponent } from './my-books/my-books.component';
-import { AddBookComponent } from './add-book/add-book.component';
 import { BookModule } from './components/book/book.module'; //BookModule
 import { BookService } from './components/book/book.service';//bookservice
 import { ProfilEditComponent } from './profil-edit/profil-edit.component'; 
@@ -52,7 +51,6 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
     ProfileComponent,
     ReturnBookComponent,
     MyBooksComponent,
-    AddBookComponent,
     ProfilEditComponent,
     EmailVerificationComponent,
     VerificationEnterComponent,
