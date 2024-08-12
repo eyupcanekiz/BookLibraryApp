@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EmailVerificationService {
-  private apiUrl = 'https://booklibaryapi.azurewebsites.net/api/Contact/sendverify-email'; // Backend API URL'inizi buraya girin
+  private apiUrl = 'https://booklibaryapi.azurewebsites.net/api/Contact/sendverify-email'; 
 
   constructor(private http: HttpClient) {}
 
