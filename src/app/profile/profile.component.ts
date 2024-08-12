@@ -35,11 +35,31 @@ export class ProfileComponent implements OnInit {
     this.route.paramMap.subscribe(params =>{
       this.userId= params.get('id')!;
     })
+    this.checkTokenUser();
     this.getUser();
     
 
   }
-
+  checkTokenUser() {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const checkUserTokenDate = localStorage.getItem("DateNow");
+      const authToken = localStorage.getItem("AuthToken");
+  
+      if (authToken && checkUserTokenDate) {
+        const tokenDate = new Date(checkUserTokenDate).getTime();
+        const currentTime = new Date().getTime();
+        if (Math.abs(tokenDate - currentTime) < 1000) {
+          localStorage.removeItem("AuthToken");
+          localStorage.removeItem("DateNow");
+        }
+      } else {
+        console.log("Token bulunamadı.");
+      }
+    } else {
+      console.log("localStorage erişilemedi.");
+    }
+  }
+  
   getUser() {
     this.authService.getById(this.userId).subscribe({
       next: (response) => {
