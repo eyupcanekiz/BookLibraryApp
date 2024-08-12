@@ -14,7 +14,7 @@ import { MyBooksComponent } from './my-books/my-books.component';
 import { AuthGuard } from './components/login/auth.guard';
 import { BookComponent } from './components/book/book.component';
 import { ProfilEditComponent } from './profil-edit/profil-edit.component';
-import { EmailVerificationComponent } from './email-verification/email-verification.component';
+
 import { BorrowbookComponent } from './components/borrowbook/borrowbook.component';
 import { VerificationEnterComponent } from './verification-enter/verification-enter.component';
 import { AdminComponent } from './admin/admin.component';
@@ -40,7 +40,6 @@ const routes: Routes = [
       { path: 'return-book', component: ReturnBookComponent },
       { path: 'book', component: BookComponent},
       { path: 'profil-edit/:id', component: ProfilEditComponent},
-      { path: 'email-verification', component: EmailVerificationComponent},
       { path: 'borrowbook', component: BorrowbookComponent},
       { path: 'verification-enter', component: VerificationEnterComponent}
 
