@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
       this.registerService.register(registerModel ).subscribe({
         next: (response: any) => {
           this.snackBar.open('Başarıyla kayıt olundu', 'Close', { duration: 3000 });
-          this.router.navigate(['/login']);
+          this.router.navigate(['/verification-enter']);
         },
         error: (error: any) => {
           // Backend'den dönen hata mesajını yakalama

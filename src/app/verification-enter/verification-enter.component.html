@@ -1,0 +1,24 @@
+<div class="verification-container">
+    <h2>Enter Your Verification Code</h2>
+    
+    <form (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <label for="verificationCode">Verification Code</label>
+        <input 
+          id="verificationCode" 
+          type="text" 
+          [(ngModel)]="verificationCode" 
+          name="verificationCode" 
+          maxlength="6" 
+          required 
+          placeholder="Enter 6-digit code">
+      </div>
+      
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+  
+      <button type="submit" class="submit-button">Verify</button>
+    </form>
+  </div>
+  
