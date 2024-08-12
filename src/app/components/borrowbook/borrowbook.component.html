@@ -1,0 +1,31 @@
+<div class="borrowbook-container">
+  <h2>Borrowed Books</h2>
+  
+  <ul>
+    <li *ngFor="let book of borrowedBooks">
+      <strong>{{ book.bookName }}</strong> by {{ book.author }}
+    </li>
+  </ul>
+  
+  <div *ngIf="borrowedBooks.length === 0">
+    <p>No borrowed books found.</p>
+  </div>
+
+  <div>
+  <h3>Borrow a Book</h3>
+
+    <form  [formGroup]="borrowForm" (ngSubmit)="onSubmit()">
+    <label for="bookId">Book ID:</label>
+    <input type="text" id="bookId" #bookIdInput formControlName="bookId">
+    <button type="submit">Borrow</button>
+      </form>
+  </div>
+
+  <div *ngIf="borrowBookSuccess" class="success-message">
+    <p>Book borrowed successfully!</p>
+  </div>
+
+  <div *ngIf="borrowBookError" class="error-message">
+    <p>Error borrowing book. Please try again.</p>
+  </div>
+</div>
