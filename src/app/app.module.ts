@@ -31,6 +31,8 @@ import { ProfilEditComponent } from './profil-edit/profil-edit.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
 import { VerificationEnterComponent } from './verification-enter/verification-enter.component';
+import { AdminComponent } from './admin/admin.component';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 
 
 @NgModule({
@@ -54,6 +56,8 @@ import { VerificationEnterComponent } from './verification-enter/verification-en
     ProfilEditComponent,
     EmailVerificationComponent,
     VerificationEnterComponent,
+    AdminComponent,
+    NotAuthorizedComponent,
   ],
   providers: [
     provideHttpClient(withFetch()),

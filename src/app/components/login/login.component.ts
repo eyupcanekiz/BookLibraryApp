@@ -43,53 +43,37 @@ export class LoginComponent implements OnInit {
       this.authService.login(username, password).subscribe({
         next: (response) => {
           this.snackBar.open('Login successful', 'Close', { duration: 3000 });
-          if(response.authenticateResult){
-           
-              
-          this.router.navigate(['/my-books']); 
-         
-           
+
+          if (response.authenticateResult) {
+            // Kullanıcı bilgilerini yerel depolamaya kaydedin
             this.authService.getToken().subscribe({
-              next:(token) =>{
-               
-                localStorage.setItem("AuthToken",token)
-               
+              next: (token) => {
+                localStorage.setItem("AuthToken", token);
+                this.authService.getCurrentUser().subscribe(user => {
+                  if (user && user.isAdmin) {
+                    this.router.navigate(['/admin']);
+                  } else {
+                    this.router.navigate(['/my-books']);
+                  }
+                });
               },
-              error:(error) =>{
-                console.log("token listelenemedi: " ,error)
+              error: (error) => {
+                console.log("Token alınamadı: ", error);
               }
-            }) }
-          if(!response.authenticateResult){   this.snackBar.open('Login failed', 'Close', { duration: 3000 });}
-
-
-
-         
-          this.authService.getToken().subscribe({
-            next:(token) =>{
-           
-              localStorage.setItem("AuthToken",token)
-              localStorage.setItem("DateNow",this.dateNow);
-            },
-            error:(error) =>{
-              console.log("token listelenemedi: " ,error)
-            }
-          })
-
-          
+            });
+          } else {
+            this.snackBar.open('Login failed', 'Close', { duration: 3000 });
+          }
         },
         error: (error) => {
           this.snackBar.open('Login failed', 'Close', { duration: 3000 });
           console.error('Login failed', error);
         }
-
       });
-   
-
     }
   }
-  
-
-
-
 }
+
+
+
   

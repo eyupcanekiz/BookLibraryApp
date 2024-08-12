@@ -6,12 +6,11 @@ import { LoginModel } from './loginModel';  // Ensure the path is correct
 import { userModel } from './userModel';
 import { CookieService } from 'ngx-cookie-service';
 
-
 interface LoginResponse {
   accessTokenExpireDate: string;
   admin: string;
-  authToken:string;
-  authenticateResult:boolean;
+  authToken: string;
+  authenticateResult: boolean;
 }
 
 @Injectable({
@@ -22,7 +21,7 @@ export class AuthService {
   private tokenUrl = 'https://booklibaryapi.azurewebsites.net/api/User/redis%20get';
   private userUrl = 'https://booklibaryapi.azurewebsites.net/api/BorrowBook/user/';
   
-  constructor(private http: HttpClient, private cookieService:CookieService) {}
+  constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   public login(username: string, password: string): Observable<LoginResponse> {
     const loginData: LoginModel = { username, password };
@@ -34,26 +33,36 @@ export class AuthService {
   public getTokenLocal(): Observable<string> {
     const token = localStorage.getItem("AuthToken") || '';
     return of(token);
-}
-public getToken(): Observable<string> {
-  return this.http.get(this.tokenUrl, {
-    withCredentials: true,
-    responseType: 'text' 
-  });
-}
+  }
 
+  public getToken(): Observable<string> {
+    return this.http.get(this.tokenUrl, {
+      withCredentials: true,
+      responseType: 'text'
+    });
+  }
 
   public extractUserIdFromToken(token: string): string {
     const payload = token.split('.')[1];
     const decodedPayload = atob(payload);
     const parsedPayload = JSON.parse(decodedPayload);
-    return parsedPayload.id; 
+    return parsedPayload.id;
   }
 
-  public getById(userId:string): Observable<userModel> {
-    
+  public getById(userId: string): Observable<userModel> {
     return this.http.get<userModel>(`${this.userUrl}${userId}`, {
       withCredentials: true,
     });
+  }
+
+  // Yeni `getCurrentUser` metodu
+  public getCurrentUser(): Observable<userModel | null> {
+    const token = localStorage.getItem("AuthToken");
+    if (token) {
+      const userId = this.extractUserIdFromToken(token);
+      return this.getById(userId);
+    } else {
+      return of(null);
+    }
   }
 }
