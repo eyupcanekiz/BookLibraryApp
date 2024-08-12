@@ -16,7 +16,7 @@
   <div id="navdiv">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" id="title1">{{ 'TITLE' | translate }}</a>
+        <a class="navbar-brand" id="title1" routerLink="">{{ 'TITLE' | translate }}</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,9 +41,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" id="contact" routerLink="/contact" routerLinkActive="active">{{ 'CONTACT' | translate }}</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="contact" routerLink="/admin" routerLinkActive="active">{{ 'TEST' | translate }}</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
