@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { RegisterService } from './register.service';
 import { RegisterModel, GenderType } from './registerModel';
+import { time } from 'console';
 
 
 @Component({
@@ -46,7 +47,7 @@ export class RegisterComponent implements OnInit {
       this.registerService.register(registerModel ).subscribe({
         next: (response: any) => {
           this.snackBar.open('Başarıyla kayıt olundu', 'Close', { duration: 3000 });
-          this.router.navigate(['/login']);
+          this.router.navigate(['/email-verification']);
         },
         error: (error: any) => {
           // Backend'den dönen hata mesajını yakalama
