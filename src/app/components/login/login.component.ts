@@ -8,8 +8,8 @@ import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
-  providers: [DatePipe]
+  styleUrls: ['./login.component.scss'],  
+  providers: [DatePipe] 
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
@@ -23,24 +23,14 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private datePipe: DatePipe
   ) {
-    this.setDateNowWithOffset(5);
+    this.dateNow = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss')!;
   }
 
   ngOnInit(): void {
-    this.initLoginForm();
-  }
-
-  private initLoginForm() {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', Validators.required]
     });
-  }
-
-  private setDateNowWithOffset(minutes: number) {
-    let now = new Date();
-    now.setMinutes(now.getMinutes() + minutes);
-    this.dateNow = this.datePipe.transform(now, 'yyyy-MM-dd HH:mm:ss')!;
   }
 
   onLogin() {
@@ -48,8 +38,25 @@ export class LoginComponent implements OnInit {
       const { username, password } = this.loginForm.value;
       this.authService.login(username, password).subscribe({
         next: (response) => {
+          this.snackBar.open('Login successful', 'Close', { duration: 3000 });
+
           if (response.authenticateResult) {
-            this.handleSuccessfulLogin();
+            // Kullanıcı bilgilerini yerel depolamaya kaydedin
+            this.authService.getToken().subscribe({
+              next: (token) => {
+                localStorage.setItem("AuthToken", token);
+                this.authService.getCurrentUser().subscribe(user => {
+                  if (user && user.isAdmin) {
+                    this.router.navigate(['/admin']);
+                  } else {
+                    this.router.navigate(['/my-books']);
+                  }
+                });
+              },
+              error: (error) => {
+                console.log("Token alınamadı: ", error);
+              }
+            });
           } else {
             this.snackBar.open('Login failed', 'Close', { duration: 3000 });
           }
@@ -60,23 +67,5 @@ export class LoginComponent implements OnInit {
         }
       });
     }
-  }
-
-  private handleSuccessfulLogin() {
-    this.snackBar.open('Login successful', 'Close', { duration: 3000 });
-    this.router.navigate(['/my-books']);
-    this.authService.getToken().subscribe({
-      next: (token) => {
-        this.saveTokenAndDate(token);
-      },
-      error: (error) => {
-        console.error('Token could not be retrieved:', error);
-      }
-    });
-  }
-
-  private saveTokenAndDate(token: string) {
-    localStorage.setItem('AuthToken', token);
-    localStorage.setItem('DateNow', this.dateNow);
   }
 }

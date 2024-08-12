@@ -1,6 +1,6 @@
 $primary-color: #007BFF;
 $secondary-color: #6C757D;
-$background-color: #F4F4F4;
+$background-color: #555555;
 $form-background-color: #FFFFFF;
 $border-color: #DDD;
 $input-border-color: #CCC;
@@ -8,90 +8,17 @@ $button-hover-color: darken($primary-color, 10%);
 $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
 body {
-  background-image: url(https://t4.ftcdn.net/jpg/06/19/95/45/360_F_619954512_EyNJQBH0bUwXGC4EtBoLnmfvBZ7cI421.jpg);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
+  
 }
-
-// .contact-container {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 100%;
-//   padding: 20px;
-//   height: 100vh;
-// }
-
-// .contact-form {
-//   background-color: $form-background-color;
-//   border: 1px solid $border-color;
-//   border-radius: 10px;
-//   box-shadow: $box-shadow;
-//   padding: 30px;
-//   width: 100%;
-//   max-width: 500px;
-
-//   h2 {
-//     margin-bottom: 20px;
-//     color: seagreen;
-//     text-align: center;
-//     font-size: 2em;
-//   }
-
-//   .form-group {
-//     margin-bottom: 20px;
-
-//     label {
-//       display: block;
-//       margin-bottom: 5px;
-//       color: $secondary-color;
-//       font-size: 1.2em;
-//     }
-
-//     .form-control {
-//       width: 100%;
-//       padding: 15px;
-//       border: 1px solid $input-border-color;
-//       border-radius: 5px;
-//       box-sizing: border-box;
-//       font-size: 1em;
-
-//       &:focus {
-//         border-color: $primary-color;
-//         outline: none;
-//         box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-//       }
-//     }
-
-//     textarea.form-control {
-//       resize: vertical;
-//     }
-//   }
-
-//   .btn {
-//     width: 100%;
-//     padding: 15px;
-//     background-color: seagreen;
-//     border: none;
-//     border-radius: 5px;
-//     color: #fff;
-//     font-size: 1.2em;
-//     cursor: pointer;
-//     transition: background-color 0.3s;
-//     margin-top: 30px;
-
-//     &:hover {
-//       background-color: darken(seagreen, 10%);
-//     }
-//   }
-// }
 .contact-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f7f7f7;
+  background-color: #555555;
 
   .contact-form {
     background-color: #fff;
@@ -100,6 +27,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
+    
 
     h2 {
       text-align: center;
@@ -113,11 +41,13 @@ body {
         font-weight: bold;
         margin-bottom: 5px;
         display: block;
+        
       }
 
       .form-control {
         border-radius: 5px;
         padding: 10px;
+        
       }
     }
 
