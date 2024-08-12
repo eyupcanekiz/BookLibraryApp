@@ -4,23 +4,31 @@ import { AuthService } from './auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { error } from 'console';
+import { DatePipe } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],  
+  providers: [DatePipe] 
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   passwordFieldType: string = 'password';
+  dateNow! :string 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
     private snackBar: MatSnackBar,
-    private router: Router
-  ) {}
+    private router: Router,
+    private datePipe:DatePipe,
+  ) {
+     this.dateNow= this.datePipe.transform(new Date(),'yyyy-MM-dd HH:mm:ss')!;
+
+  }
+  
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -45,6 +53,7 @@ export class LoginComponent implements OnInit {
               next:(token) =>{
                
                 localStorage.setItem("AuthToken",token)
+               
               },
               error:(error) =>{
                 console.log("token listelenemedi: " ,error)
@@ -59,6 +68,7 @@ export class LoginComponent implements OnInit {
             next:(token) =>{
            
               localStorage.setItem("AuthToken",token)
+              localStorage.setItem("DateNow",this.dateNow);
             },
             error:(error) =>{
               console.log("token listelenemedi: " ,error)
