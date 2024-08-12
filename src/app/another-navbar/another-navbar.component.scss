@@ -58,15 +58,15 @@ body {
   .nav-item {
     margin-left: 20px;
     transition: transform 0.3s ease;
+    
   }
-  
+  .nav-item1{
+    font-weight: bold;
+  }
   .nav-item:hover {
     transform: translateY(-3px); /* Hover durumunda hafif yukarı kayma efekti */
   }
   
-  .nav-item1 {
-    font-weight: bold;
-  }
   
   .navbar-toggler {
     border: none;
@@ -74,16 +74,17 @@ body {
     background-color: #28a745;
     color: white;
     border-radius: 5px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  
+    &:hover {
+      background-color: #218838;
+    }
+  
+    &:focus {
+      box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+    }
   }
   
-  .navbar-toggler:hover {
-    background-color: #218838; /* Hover durumunda koyu yeşil */
-  }
-  
-  .navbar-toggler:focus {
-    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
-  }
   
   /* Dropdown Menü Stilleri */
   .navbar .dropdown-menu {
@@ -141,10 +142,4 @@ body {
     font-weight: 400;
     font-style: normal;
   }
-  .navbar {
-    margin: 0; /* Örnek olarak margin değerini sıfırlayabilirsiniz */
-    padding: 0; /* Aynı şekilde padding için de */
-    
-  }
- 
   
