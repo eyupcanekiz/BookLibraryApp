@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
-// import { HeaderComponent } from './components/header/header.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -12,13 +11,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReturnBookComponent } from './return-book/return-book.component';
 import { MyBooksComponent } from './my-books/my-books.component';
-import { AppComponent } from './app.component';
 import { AuthGuard } from './components/login/auth.guard';
 import { AddBookComponent } from './add-book/add-book.component';
 import { BookComponent } from './components/book/book.component';
 import { ProfilEditComponent } from './profil-edit/profil-edit.component';
 
 import { VerificationEnterComponent } from './verification-enter/verification-enter.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminGuard } from './admin.guard';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   {
@@ -38,8 +40,13 @@ const routes: Routes = [
       { path: 'add-book', component: AddBookComponent },
       { path: 'book', component: BookComponent},
       { path: 'profil-edit/:id', component: ProfilEditComponent},
+<<<<<<< HEAD
       { path: 'verification-enter', component: VerificationEnterComponent}
 
+=======
+      { path: 'email-verification', component: EmailVerificationComponent},
+      { path: 'verification-enter', component: VerificationEnterComponent},
+>>>>>>> 77b114c5f16a7caffda04088d7fee202c7ce5fde
     ]
   },
   {
@@ -47,7 +54,8 @@ const routes: Routes = [
     path: '',
     component: MainLayoutComponent,
     children: [
-     
+      { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+      { path: 'not-authorized', component: NotAuthorizedComponent },
     ]
   }
  

@@ -30,6 +30,8 @@ import { BookService } from './components/book/book.service';//bookservice
 import { ProfilEditComponent } from './profil-edit/profil-edit.component'; 
 import { NgxSpinnerModule } from "ngx-spinner";
 import { VerificationEnterComponent } from './verification-enter/verification-enter.component';
+import { AdminComponent } from './admin/admin.component';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 
 
 @NgModule({
@@ -52,6 +54,8 @@ import { VerificationEnterComponent } from './verification-enter/verification-en
     AddBookComponent,
     ProfilEditComponent,
     VerificationEnterComponent,
+    AdminComponent,
+    NotAuthorizedComponent,
   ],
   providers: [
     provideHttpClient(withFetch()),

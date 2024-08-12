@@ -5,4 +5,5 @@ export interface userModel {
     email: string;
     avatarUrl:string;
     gender:string;
+    isAdmin:boolean;
 }
