@@ -30,6 +30,8 @@ import { BookService } from './components/book/book.service';//bookservice
 import { ProfilEditComponent } from './profil-edit/profil-edit.component'; 
 import { NgxSpinnerModule } from "ngx-spinner";
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { BorrowbookService } from './components/borrowbook/borrowbook.service';
+import { BorrowbookModule } from './components/borrowbook/borrowbook.module';
 
 
 @NgModule({
@@ -55,7 +57,7 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
   ],
   providers: [
     provideHttpClient(withFetch()),
-    [BookService], //  BookService  providers
+    [BookService, BorrowbookService], //  BookService  providers
   ],
   imports: [
     BrowserModule,
@@ -68,6 +70,7 @@ import { EmailVerificationComponent } from './email-verification/email-verificat
     MatSnackBarModule,
     NgxSpinnerModule,
     BookModule, 
+    BorrowbookModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
