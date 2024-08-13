@@ -1,0 +1,26 @@
+<div class="get-book-by-id" class="bookls">
+    <h2>Get Book by ID</h2>
+    <label for="bookId">Book ID</label>
+    <input id="bookId" [(ngModel)]="bookId" name="bookId" required>
+    <button (click)="getBookById(bookId)">Get Book</button>
+  </div>
+  <div *ngIf="selectedBook" class="bookls">
+    <h2>Book Details</h2>
+    <p><strong>Book Name:</strong> {{ selectedBook.bookName }}</p>
+    <p><strong>Author:</strong> {{ selectedBook.author }}</p>
+    <p><strong>Publisher:</strong> {{ selectedBook.publisher }}</p>
+    <p><strong>Available:</strong> {{ selectedBook.isAvailable ? 'Yes' : 'No' }}</p>
+  </div>
+
+  <div class="book-details-container" *ngIf="book; else noBook">
+    <h2>{{ book.bookName }}</h2>
+    <!-- <img [src]="book.photoUrl" alt="{{ book.bookName }}" class="book-photo"> -->
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Publisher:</strong> {{ book.publisher }}</p>
+    <p><strong>Available:</strong> {{ book.isAvailable ? 'Yes' : 'No' }}</p>
+    <!-- <p><strong>Duration:</strong> {{ book.duration }}</p> -->
+  </div>
+  
+  <ng-template #noBook>
+    <p>Book not found.</p>
+  </ng-template>

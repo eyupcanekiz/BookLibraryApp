@@ -22,6 +22,8 @@ import { AdminGuard } from './admin.guard';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AppComponent } from './app.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AllBookShowComponent } from './all-book-show/all-book-show.component';
+import { AllBooksComponent } from './all-books/all-books.component';
 
 
 const routes: Routes = [
@@ -45,6 +47,8 @@ const routes: Routes = [
       { path: 'verification-enter', component: VerificationEnterComponent},
       { path: 'reset-password', component: ResetPasswordComponent },
       { path: 'forgot-password', component:ForgotPasswordComponent},
+      { path: 'all-books', component: AllBooksComponent },
+      { path: 'all-book-show', component: AllBookShowComponent },
 
     ]
   },

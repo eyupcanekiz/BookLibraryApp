@@ -1,0 +1,49 @@
+.book-details-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 0.8s ease-in-out;
+  
+    h1 {
+      text-align: center;
+      color: #28a745;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+  
+    .book-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  
+    .book-info {
+      p {
+        font-size: 1.2em;
+        color: #555;
+        margin-bottom: 10px;
+  
+        strong {
+          color: #333;
+        }
+      }
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

@@ -36,6 +36,9 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
+import { AllBooksComponent } from './all-books/all-books.component';
+import { AllBookShowComponent } from './all-book-show/all-book-show.component';
+
 
 
 @NgModule({
@@ -61,6 +64,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     NotAuthorizedComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
+    AllBooksComponent,
+    AllBookShowComponent,
   ],
   providers: [
     provideHttpClient(withFetch()),
