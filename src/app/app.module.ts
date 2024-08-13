@@ -33,6 +33,8 @@ import { BorrowbookModule } from './components/borrowbook/borrowbook.module';
 import { VerificationEnterComponent } from './verification-enter/verification-enter.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 
@@ -57,6 +59,8 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
     VerificationEnterComponent,
     AdminComponent,
     NotAuthorizedComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
   ],
   providers: [
     provideHttpClient(withFetch()),
