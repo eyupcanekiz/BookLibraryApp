@@ -15,8 +15,9 @@ export class BorrowbookComponent implements OnInit {
   borrowBookSuccess: boolean = false;
   borrowBookError: boolean = false;
 
-  constructor(private borrowbookService: BorrowbookService,   
-     private fb: FormBuilder,
+  constructor(
+    private borrowbookService: BorrowbookService,   
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
@@ -52,20 +53,29 @@ export class BorrowbookComponent implements OnInit {
 
   // Handles borrowing a book and refreshing the borrowed books list
   borrowBook(bookId: string): void {
-  
     this.borrowbookService.addBorrowedBook(bookId, this.userId).subscribe({
       next: () => {
-        
         this.borrowBookSuccess = true;
         this.borrowBookError = false;
         this.fetchBorrowedBooks(); // Refresh the list after successfully borrowing a book
-
       },
-      error: (error:string) => {
+      error: (error: string) => {
         console.log('Error borrowing book', error);
         this.borrowBookError = true;
         this.borrowBookSuccess = false;
+      }
+    });
+  }
 
+  // Handles removing a borrowed book and refreshing the borrowed books list
+  removeBorrowedBook(bookId: string): void {
+    this.borrowbookService.removeBorrowedBook(this.userId, bookId).subscribe({
+      next: () => {
+        this.fetchBorrowedBooks(); // Refresh the list after successfully removing a book
+        console.log('Kitap başarıyla geri verildi');
+      },
+      error: (error: string) => {
+        console.error('Kitap geri verilirken hata oluştu', error);
       }
     });
   }

@@ -21,6 +21,36 @@ $transition: 0.3s ease;
     width: 85%;
   }
 
+  .btn-group{
+    text-align: center
+    }
+button[type="button"]{
+  background-color: $primary-color;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      margin: 10px;
+      border-radius: 25px;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: background-color $transition, transform $transition;
+
+      &:hover {
+        background-color: $button-hover-color;
+        transform: scale(1.08);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+}
+
   h1 {
     text-align: center;
     color: $primary-color;

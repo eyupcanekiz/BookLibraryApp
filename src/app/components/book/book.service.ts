@@ -56,7 +56,7 @@ export class BookService {
       .pipe(
         catchError(this.handleError)
       );
-  }
+ }
 
 
   private handleError(error: HttpErrorResponse) {

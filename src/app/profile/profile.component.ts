@@ -67,7 +67,6 @@ export class ProfileComponent implements OnInit {
         this.userName = response.userName;
         this.fullName = response.fullName;
         this.email = response.email;
-
         this.avatarUrl = response.avatarUrl;
         
 
