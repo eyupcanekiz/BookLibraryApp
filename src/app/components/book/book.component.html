@@ -35,7 +35,7 @@
   <!-- Book List -->
   <ul *ngIf="books.length > 0" class="booksl">
     <li *ngFor="let book of paginatedBooks" >
-      <a href="#" (click)="getBookById(book.id)">{{ book.bookName }}</a> 
+      <a href="#" (click)="getBookByName(book.bookName)">{{ book.bookName }}</a> 
       by {{ book.author }} (Publisher: {{ book.publisher }}) - 
       Available: {{ book.isAvailable ? 'Yes' : 'No' }}
       <!-- Delete button -->
@@ -58,7 +58,7 @@
     <h2>Get Book by ID</h2>
     <label for="bookId">Book ID</label>
     <input id="bookId" [(ngModel)]="bookId" name="bookId" required>
-    <button (click)="getBookById(bookId)">Get Book</button>
+    <button >Get Book</button>
   </div>
 
   <!-- Selected Book Details -->

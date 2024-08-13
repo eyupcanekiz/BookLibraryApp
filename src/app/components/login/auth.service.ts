@@ -20,7 +20,7 @@ export class AuthService {
   private loginUrl = 'https://booklibaryapi.azurewebsites.net/api/User/LoginUser';
   private tokenUrl = 'https://booklibaryapi.azurewebsites.net/api/User/redis%20get';
   private userUrl = 'https://booklibaryapi.azurewebsites.net/api/BorrowBook/user/';
-  private resetPasswordUrl = 'https://yourapiurl.com/api/reset-password'; // Şifre sıfırlama için API URL'i
+
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   public login(username: string, password: string): Observable<LoginResponse> {
@@ -65,8 +65,5 @@ export class AuthService {
       return of(null);
     }
   }
-  resetPassword(newPassword: string): Observable<any> {
-    // Şifre sıfırlama isteğini API'ye gönderir
-    return this.http.post(this.resetPasswordUrl, { password: newPassword });
-  }
+
 }

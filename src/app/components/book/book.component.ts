@@ -63,8 +63,8 @@ export class BookComponent implements OnInit {
     );
   }
 
-  getBookById(id: string) {
-    this.bookService.getBookById(id).subscribe(
+  getBookByName(name: string) {
+    this.bookService.getBookByName(name).subscribe(
       (book: Book) => {
         this.selectedBook = book;
       },

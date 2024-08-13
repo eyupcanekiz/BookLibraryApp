@@ -15,7 +15,7 @@
               <strong>{{ book.bookName }}</strong> by {{ book.author }} (Publisher: {{ book.publisher }})
               <p>Available: {{ book.isAvailable ? 'Yes' : 'No' }}</p>
             </div>
-            <button (click)="viewBookDetails(book.id)">View Details</button>
+            <button (click)="viewBookDetails(book.bookName)">View Details</button>
           </li>
         </ul>
         <ng-template #noBooks>

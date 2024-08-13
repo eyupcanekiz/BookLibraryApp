@@ -21,6 +21,7 @@ export class AllBooksComponent implements OnInit {
     this.bookService.getBooks().subscribe(
       (data: Book[]) => {
         this.books = data;
+   
       },
       (error) => {
         this.errorMessage = error.message;
@@ -28,7 +29,9 @@ export class AllBooksComponent implements OnInit {
     );
   }
 
-  viewBookDetails(id: string) {
-    this.router.navigate(['/all-book-show', id]);
+  viewBookDetails(name: string) {
+
+    
+    this.router.navigate(['/all-book-show',name]);
   }
 }

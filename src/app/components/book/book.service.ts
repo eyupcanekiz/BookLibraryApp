@@ -16,6 +16,7 @@ export interface Book {
 })
 export class BookService {
   private apiUrl = 'https://booklibaryapi.azurewebsites.net/api/Book';
+  private bookGetUrl = 'https://booklibaryapi.azurewebsites.net/api/Book/Name/';
 
   constructor(private http: HttpClient) {}
 
@@ -43,8 +44,8 @@ export class BookService {
     );
   }
 
-  getBookById(id: any): Observable<Book> {
-    const url = `${this.apiUrl}/${id}`;
+  getBookByName(name: any): Observable<Book> {
+    const url = `${this.bookGetUrl}/${name}`;
     return this.http.get<Book>(url).pipe(
       catchError(this.handleError)
     );
