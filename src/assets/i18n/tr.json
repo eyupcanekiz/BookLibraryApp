@@ -61,5 +61,9 @@
   "ADD_BOOK_BUTTON": "Kitap Ekle",
   "CHOOSE_FILE":"Dosya Seç",
   "BOOK_IMAGE":"Kitap Resmi",
-  "EDIT-PROFILE": "Profili Düzenle"
+  "EDIT-PROFILE": "Profili Düzenle",
+  "FORGOT_PASSWORD":"Şifremi Unuttum",
+  "CART": "SEPETİM",
+  "ALL_BOOKS": "Tüm Kİtaplar"
+
 }

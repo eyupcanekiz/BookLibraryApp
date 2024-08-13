@@ -66,3 +66,19 @@ body {
       background-color: $button-hover-color;
     }
   }
+  #forgot{
+    margin-left: 400px;
+    width: 100%;
+    padding: 15px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $button-hover-color;
+    }
+  }
