@@ -33,17 +33,16 @@ import { BorrowbookModule } from './components/borrowbook/borrowbook.module';
 import { VerificationEnterComponent } from './verification-enter/verification-enter.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
-<<<<<<< HEAD
 import { ReadoutBookComponent } from './components/readoutbook/readoutbook.component';
 import { ReadoutbookModule } from './components/readoutbook/readoutbook.module';
 import { CommonModule } from '@angular/common';
-=======
+
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 import { AllBooksComponent } from './all-books/all-books.component';
 import { AllBookShowComponent } from './all-book-show/all-book-show.component';
->>>>>>> 48db347f81704f7f42c2c2517d72e81b222bdaa4
+
 
 
 

@@ -21,13 +21,12 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from './admin.guard';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
 import { ReadoutBookComponent } from './components/readoutbook/readoutbook.component';
-=======
+
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { AllBookShowComponent } from './all-book-show/all-book-show.component';
 import { AllBooksComponent } from './all-books/all-books.component';
->>>>>>> 48db347f81704f7f42c2c2517d72e81b222bdaa4
+
 
 
 const routes: Routes = [
