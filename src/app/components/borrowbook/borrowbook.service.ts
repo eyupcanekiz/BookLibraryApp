@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book } from '../book/book.model';
 import { Observable } from 'rxjs';
+import { BorrowBookModel } from './borrowbook.model';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,16 @@ export class BorrowbookService {
     const url = `${this.apiUrl}/RemoveBorrowed/${userId}`;
     return this.http.delete(url, { 
       body: { 
-        id : bookId  // JSON verisinin doğru formatta olduğundan emin olun
+        id : bookId.toString // JSON verisinin doğru formatta olduğundan emin olun
       } 
+    });
+  }
+  updateBorrowedBook(data: BorrowBookModel, userId: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/UpdateBorrowedBook?id=${userId}`, data, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': '*/*'
+      }
     });
   }
   

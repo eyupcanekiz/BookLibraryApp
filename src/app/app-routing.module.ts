@@ -21,6 +21,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from './admin.guard';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AppComponent } from './app.component';
+import { ReadoutBookComponent } from './components/readoutbook/readoutbook.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,8 @@ const routes: Routes = [
       { path: 'book', component: BookComponent},
       { path: 'profil-edit/:id', component: ProfilEditComponent},
       { path: 'borrowbook', component: BorrowbookComponent},
-      { path: 'verification-enter', component: VerificationEnterComponent}
+      { path: 'verification-enter', component: VerificationEnterComponent},
+      { path: 'readoutbook', component: ReadoutBookComponent}
 
 
 

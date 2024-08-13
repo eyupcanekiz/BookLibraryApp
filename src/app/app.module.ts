@@ -33,6 +33,9 @@ import { BorrowbookModule } from './components/borrowbook/borrowbook.module';
 import { VerificationEnterComponent } from './verification-enter/verification-enter.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { ReadoutBookComponent } from './components/readoutbook/readoutbook.component';
+import { ReadoutbookModule } from './components/readoutbook/readoutbook.module';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -66,6 +69,7 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
     BrowserModule,
     FormsModule,//form module
     AppRoutingModule,
+    CommonModule,
     BrowserAnimationsModule,
     MatButtonModule,
     HttpClientModule,
@@ -74,6 +78,7 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
     NgxSpinnerModule,
     BookModule, 
     BorrowbookModule,
+    ReadoutbookModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
