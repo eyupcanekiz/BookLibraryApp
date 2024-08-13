@@ -48,16 +48,12 @@ const routes: Routes = [
       { path: 'profil-edit/:id', component: ProfilEditComponent},
       { path: 'borrowbook', component: BorrowbookComponent},
       { path: 'verification-enter', component: VerificationEnterComponent},
-<<<<<<< HEAD
-      { path: 'readoutbook', component: ReadoutBookComponent}
-
-
-=======
+      { path: 'readoutbook', component: ReadoutBookComponent},
       { path: 'reset-password', component: ResetPasswordComponent },
       { path: 'forgot-password', component:ForgotPasswordComponent},
       { path: 'all-books', component: AllBooksComponent },
       { path: 'all-book-show', component: AllBookShowComponent },
->>>>>>> 48db347f81704f7f42c2c2517d72e81b222bdaa4
+
 
     ]
   },
