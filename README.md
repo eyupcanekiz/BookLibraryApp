@@ -1,20 +1,7 @@
-Kütüphane Yönetim Sistemi
-İçindekiler
-Giriş
-Özellikler
-Kullanılan Teknolojiler
-Kullanım
-API Dokümantasyonu
-Dil Desteği
-Kullanıcı Rolleri
-Katkıda Bulunma
-Geri Bildirim
-Hakkımızda
-Lisans
-Giriş
+Kütüphane Yönetim Sistemi<br>
 Kütüphane Yönetim Sistemi, kütüphane işlemlerini verimli bir şekilde yönetmek için tasarlanmış kapsamlı bir web uygulamasıdır. Bu sistem, hem kütüphane yöneticileri hem de kullanıcılar için kullanıcı dostu bir arayüz sunarak kütüphanenin koleksiyonu ile sorunsuz bir şekilde etkileşim kurmalarını sağlar. Uygulama, Türkçe ve İngilizce dahil olmak üzere çoklu dil desteği sunarak daha geniş bir kitleye erişim sağlar.
 
-Özellikler
+Özellikler<br>
 Kullanıcı Kaydı ve Kimlik Doğrulama: Kullanıcılar, sisteme kaydolup giriş yaparak çeşitli özelliklere erişebilirler.
 Kitap Ödünç Alma: Kullanıcılar, kütüphanenin koleksiyonunu tarayarak kitap ödünç alabilirler.
 Kitap Listeleme: Kütüphanedeki tüm mevcut kitapları detaylı bilgi ile görüntüleyin.
@@ -24,12 +11,12 @@ Profil Yönetimi: Kullanıcılar, profil bilgilerini görüntüleyip güncelleye
 Çok Dilli Destek: Sistem hem Türkçe hem de İngilizce olarak kullanılabilir.
 Geri Bildirim ve İletişim: Kullanıcılar, iletişim bölümünden geri bildirim veya sorularını iletebilirler.
 Hakkımızda: Projeyi oluşturan ekibi hakkımızda sayfasından öğrenin.
-Kullanılan Teknolojiler
+Kullanılan Teknolojiler<br>
 Frontend: Angular CLI
 Backend: ASP.NET Web API
 Veritabanı: MongoDB
 Stil: SCSS
-Kullanım
+Kullanım<br>
 Kullanıcı Kaydı ve Girişi
 Bir hesap oluşturmak için kayıt sayfasına gidin.
 Kayıttan sonra, sistemin özelliklerine erişmek için giriş yapın.
@@ -40,32 +27,29 @@ Profil Yönetimi
 Kişisel bilgilerinizi güncellemek için "Profil" bölümüne erişin.
 Dil Desteği
 Ana sayfada bulunan dil değiştirici ile Türkçe ve İngilizce diller arasında geçiş yapabilirsiniz.
-API Dokümantasyonu
-Detaylı API dokümantasyonuna buradan ulaşabilirsiniz (API dokümantasyonunuza veya Swagger sayfanıza bağlantı ekleyin).
 
-Dil Desteği
-Sistem aşağıdaki dilleri desteklemektedir:
+Dil Desteği<br>
+Sistem aşağıdaki dilleri desteklemektedir:<br>
 
-Türkçe: Türkiye'deki yerel kullanıcılar için.
-İngilizce: Uluslararası kullanıcılar için.
-Kullanıcı Rolleri
+Türkçe: Türkiye'deki yerel kullanıcılar için.<br>
+İngilizce: Uluslararası kullanıcılar için.<br>
+
+Kullanıcı Rolleri<br>
 Admin: Kütüphane envanterini, kullanıcı hesaplarını ve sistem ayarlarını yönetir.
 Kullanıcı: Kitap ödünç alabilir ve iade edebilir, profilini yönetebilir ve geri bildirimde bulunabilir.
 Katkıda Bulunma
 Katkılarınızı bekliyoruz! Lütfen depoyu fork edin ve iyileştirme veya hata düzeltmeleri için bir pull request gönderin.
 
-Katkıda Bulunma Adımları
+Katkıda Bulunma Adımları<br>
 Depoyu fork edin.
 Yeni bir dal oluşturun: git checkout -b feature/your-feature
 Değişikliklerinizi işleyin: git commit -m 'Add your feature'
 Dalı gönderin: git push origin feature/your-feature
 Bir pull request gönderin.
-Geri Bildirim
+Geri Bildirim<br>
 Herhangi bir geri bildiriminiz veya sorununuz varsa, ana sayfada bulunan iletişim formu aracılığıyla bize ulaşabilirsiniz.
 
 Hakkımızda
 Bu projeyi oluşturan ekip hakkında daha fazla bilgi almak için Hakkımızda sayfasını ziyaret edin.
 
-Lisans
-Bu proje MIT Lisansı altında lisanslanmıştır - ayrıntılar için LİSANS dosyasına bakın.
 
