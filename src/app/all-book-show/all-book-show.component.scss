@@ -1,49 +1,85 @@
 .book-details-container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    animation: fadeInUp 0.8s ease-in-out;
-  
-    h1 {
-      text-align: center;
-      color: #28a745;
-      font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
-      font-size: 2em;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+
+  h1 {
+    text-align: center;
+    color: #28a745;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 4px;
+      background-color: #28a745;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -10px;
+      border-radius: 2px;
+      transition: width 0.3s ease;
     }
-  
-    .book-image {
+
+    &:hover::after {
       width: 100%;
-      height: auto;
-      border-radius: 10px;
-      margin-bottom: 20px;
     }
-  
-    .book-info {
-      p {
-        font-size: 1.2em;
-        color: #555;
-        margin-bottom: 10px;
-  
-        strong {
-          color: #333;
-        }
+  }
+
+  .book-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.2em;
+
+    p {
+      color: #555;
+      position: relative;
+      padding-left: 25px;
+      line-height: 1.6;
+      transition: color 0.3s ease;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 15px;
+        height: 15px;
+        background-color: #28a745;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        transition: background-color 0.3s ease;
+      }
+
+      &:hover {
+        color: #28a745;
+      }
+
+      &:hover::before {
+        background-color: darken(#28a745, 10%);
       }
     }
   }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+#btn-back{
+  margin-left: 700px;
+}
