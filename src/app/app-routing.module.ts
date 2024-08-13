@@ -14,13 +14,14 @@ import { MyBooksComponent } from './my-books/my-books.component';
 import { AuthGuard } from './components/login/auth.guard';
 import { BookComponent } from './components/book/book.component';
 import { ProfilEditComponent } from './profil-edit/profil-edit.component';
-
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { BorrowbookComponent } from './components/borrowbook/borrowbook.component';
 import { VerificationEnterComponent } from './verification-enter/verification-enter.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from './admin.guard';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AppComponent } from './app.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -41,9 +42,9 @@ const routes: Routes = [
       { path: 'book', component: BookComponent},
       { path: 'profil-edit/:id', component: ProfilEditComponent},
       { path: 'borrowbook', component: BorrowbookComponent},
-      { path: 'verification-enter', component: VerificationEnterComponent}
-
-
+      { path: 'verification-enter', component: VerificationEnterComponent},
+      { path: 'reset-password', component: ResetPasswordComponent },
+      { path: 'forgot-password', component:ForgotPasswordComponent},
 
     ]
   },
