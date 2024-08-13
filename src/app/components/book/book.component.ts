@@ -3,25 +3,31 @@ import { BookService, Book } from './book.service';
 import { AuthService } from '../login/auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.scss']
+  styleUrls: ['./book.component.scss'],
 })
 export class BookComponent implements OnInit {
   newBook = {
     bookName: '',
     publisher: '',
     author: '',
-    isAvailable: false
+    isAvailable: false,
   };
   errorMessage: string = '';
   books: any[] = [];
   selectedBook: Book | null = null;
   bookId: string = ''; // To hold the user-entered book ID
+  currentPage: number = 1;
+  itemsPerPage: number = 5;
+  paginatedBooks: any[] = [];
 
-  constructor(private bookService: BookService, private authService: AuthService, private router: Router) {}
+  constructor(
+    private bookService: BookService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getBooks();
@@ -29,17 +35,17 @@ export class BookComponent implements OnInit {
 
   onSubmit() {
     this.bookService.addBook(this.newBook).subscribe(
-      response => {
+      (response) => {
         this.books.push(response);
         this.newBook = {
           bookName: '',
           publisher: '',
           author: '',
-          isAvailable: false
+          isAvailable: false,
         };
-        this.getBooks(); 
+        this.getBooks();
       },
-      error => {
+      (error) => {
         this.errorMessage = error.message;
       }
     );
@@ -49,8 +55,9 @@ export class BookComponent implements OnInit {
     this.bookService.getBooks().subscribe(
       (data: any[]) => {
         this.books = data;
+        this.setPaginated();
       },
-      error => {
+      (error) => {
         this.errorMessage = error;
       }
     );
@@ -61,7 +68,7 @@ export class BookComponent implements OnInit {
       (book: Book) => {
         this.selectedBook = book;
       },
-      error => {
+      (error) => {
         this.errorMessage = error.message;
       }
     );
@@ -69,12 +76,32 @@ export class BookComponent implements OnInit {
 
   deleteBook(bookName: string) {
     this.bookService.deleteByName(bookName).subscribe(
-      response => {
-        this.books = this.books.filter(book => book.bookName !== bookName);
+      (response) => {
+        this.books = this.books.filter((book) => book.bookName !== bookName);
+        this.setPaginated();
       },
-      error => {
+      (error) => {
         this.errorMessage = error.message;
       }
     );
+  }
+
+  setPaginated() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedBooks = this.books.slice(startIndex, endIndex);
+  }
+  goToNextPage(){
+    if (this.currentPage * this.itemsPerPage < this.books.length) {
+    this.currentPage++;
+    this.setPaginated();
+    }
+  }
+
+  goToPreviousPage(){
+    if(this.currentPage>1){
+      this.currentPage--;
+      this.setPaginated();
+    }
   }
 }
