@@ -17,7 +17,7 @@ export class ResetPasswordComponent implements OnInit {
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private router: Router
-    
+
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +35,7 @@ export class ResetPasswordComponent implements OnInit {
         this.snackBar.open('Şifreler eşleşmiyor.', 'Close', { duration: 3000 });
         return;
       }
+      
 
      
     }
