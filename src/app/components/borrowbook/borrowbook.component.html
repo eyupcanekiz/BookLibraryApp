@@ -4,6 +4,7 @@
   <ul>
     <li *ngFor="let book of borrowedBooks">
       <strong>{{ book.bookName }}</strong> by {{ book.author }}
+      <button (click)="removeBorrowedBook(book.id)">Geri Ver</button>
     </li>
   </ul>
   
@@ -12,13 +13,13 @@
   </div>
 
   <div>
-  <h3>Borrow a Book</h3>
+    <h3>Borrow a Book</h3>
 
     <form  [formGroup]="borrowForm" (ngSubmit)="onSubmit()">
-    <label for="bookId">Book ID:</label>
-    <input type="text" id="bookId" #bookIdInput formControlName="bookId">
-    <button type="submit">Borrow</button>
-      </form>
+      <label for="bookId">Book ID:</label>
+      <input type="text" id="bookId" #bookIdInput formControlName="bookId">
+      <button type="submit">Borrow</button>
+    </form>
   </div>
 
   <div *ngIf="borrowBookSuccess" class="success-message">
