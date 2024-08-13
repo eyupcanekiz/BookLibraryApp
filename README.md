@@ -1,27 +1,71 @@
-# BookLibary
+Kütüphane Yönetim Sistemi
+İçindekiler
+Giriş
+Özellikler
+Kullanılan Teknolojiler
+Kullanım
+API Dokümantasyonu
+Dil Desteği
+Kullanıcı Rolleri
+Katkıda Bulunma
+Geri Bildirim
+Hakkımızda
+Lisans
+Giriş
+Kütüphane Yönetim Sistemi, kütüphane işlemlerini verimli bir şekilde yönetmek için tasarlanmış kapsamlı bir web uygulamasıdır. Bu sistem, hem kütüphane yöneticileri hem de kullanıcılar için kullanıcı dostu bir arayüz sunarak kütüphanenin koleksiyonu ile sorunsuz bir şekilde etkileşim kurmalarını sağlar. Uygulama, Türkçe ve İngilizce dahil olmak üzere çoklu dil desteği sunarak daha geniş bir kitleye erişim sağlar.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
+Özellikler
+Kullanıcı Kaydı ve Kimlik Doğrulama: Kullanıcılar, sisteme kaydolup giriş yaparak çeşitli özelliklere erişebilirler.
+Kitap Ödünç Alma: Kullanıcılar, kütüphanenin koleksiyonunu tarayarak kitap ödünç alabilirler.
+Kitap Listeleme: Kütüphanedeki tüm mevcut kitapları detaylı bilgi ile görüntüleyin.
+Kitap İade Etme: Kullanıcılar, ödünç aldıkları kitapları sistem üzerinden iade edebilirler.
+Profil Yönetimi: Kullanıcılar, profil bilgilerini görüntüleyip güncelleyebilirler.
+Ödünç Alınan Kitapları Görüntüleme: Kullanıcılar, ödünç aldıkları kitapları takip edebilirler.
+Çok Dilli Destek: Sistem hem Türkçe hem de İngilizce olarak kullanılabilir.
+Geri Bildirim ve İletişim: Kullanıcılar, iletişim bölümünden geri bildirim veya sorularını iletebilirler.
+Hakkımızda: Projeyi oluşturan ekibi hakkımızda sayfasından öğrenin.
+Kullanılan Teknolojiler
+Frontend: Angular CLI
+Backend: ASP.NET Web API
+Veritabanı: MongoDB
+Stil: SCSS
+Kullanım
+Kullanıcı Kaydı ve Girişi
+Bir hesap oluşturmak için kayıt sayfasına gidin.
+Kayıttan sonra, sistemin özelliklerine erişmek için giriş yapın.
+Kitap Ödünç Alma ve İade Etme
+Kütüphanenin koleksiyonunu tarayın ve ödünç almak için bir kitap seçin.
+Bir kitabı iade etmek için "Kitaplarım" bölümüne gidin ve "İade Et"e tıklayın.
+Profil Yönetimi
+Kişisel bilgilerinizi güncellemek için "Profil" bölümüne erişin.
+Dil Desteği
+Ana sayfada bulunan dil değiştirici ile Türkçe ve İngilizce diller arasında geçiş yapabilirsiniz.
+API Dokümantasyonu
+Detaylı API dokümantasyonuna buradan ulaşabilirsiniz (API dokümantasyonunuza veya Swagger sayfanıza bağlantı ekleyin).
 
-## Development server
+Dil Desteği
+Sistem aşağıdaki dilleri desteklemektedir:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Türkçe: Türkiye'deki yerel kullanıcılar için.
+İngilizce: Uluslararası kullanıcılar için.
+Kullanıcı Rolleri
+Admin: Kütüphane envanterini, kullanıcı hesaplarını ve sistem ayarlarını yönetir.
+Kullanıcı: Kitap ödünç alabilir ve iade edebilir, profilini yönetebilir ve geri bildirimde bulunabilir.
+Katkıda Bulunma
+Katkılarınızı bekliyoruz! Lütfen depoyu fork edin ve iyileştirme veya hata düzeltmeleri için bir pull request gönderin.
 
-## Code scaffolding
+Katkıda Bulunma Adımları
+Depoyu fork edin.
+Yeni bir dal oluşturun: git checkout -b feature/your-feature
+Değişikliklerinizi işleyin: git commit -m 'Add your feature'
+Dalı gönderin: git push origin feature/your-feature
+Bir pull request gönderin.
+Geri Bildirim
+Herhangi bir geri bildiriminiz veya sorununuz varsa, ana sayfada bulunan iletişim formu aracılığıyla bize ulaşabilirsiniz.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Hakkımızda
+Bu projeyi oluşturan ekip hakkında daha fazla bilgi almak için Hakkımızda sayfasını ziyaret edin.
 
-## Build
+Lisans
+Bu proje MIT Lisansı altında lisanslanmıştır - ayrıntılar için LİSANS dosyasına bakın.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
