@@ -5,6 +5,7 @@
     <li *ngFor="let book of borrowedBooks">
       <strong>{{ book.bookName }}</strong> by {{ book.author }}
       <button (click)="removeBorrowedBook(book.id)">Geri Ver</button>
+      <button (click)="markAsRead(book.id)">Okundu Olarak İşaretle</button>
     </li>
   </ul>
   
@@ -15,7 +16,7 @@
   <div>
     <h3>Borrow a Book</h3>
 
-    <form  [formGroup]="borrowForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="borrowForm" (ngSubmit)="onSubmit()">
       <label for="bookId">Book ID:</label>
       <input type="text" id="bookId" #bookIdInput formControlName="bookId">
       <button type="submit">Borrow</button>

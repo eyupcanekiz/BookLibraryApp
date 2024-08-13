@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../book/book.model';
 import { BorrowbookService } from '../borrowbook/borrowbook.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { BorrowBookModel } from './borrowbook.model';
 
 @Component({
   selector: 'app-borrowbook',
@@ -78,5 +79,21 @@ export class BorrowbookComponent implements OnInit {
         console.error('Kitap geri verilirken hata oluştu', error);
       }
     });
+  }
+  markAsRead(bookId: string): void {
+    const borrowBookData: BorrowBookModel = {
+      Id: bookId,
+      BorrowedAt: new Date("2024-08-13T14:03:08.728Z") // Tarihi doğru formatta gönderin
+    };
+
+    this.borrowbookService.updateBorrowedBook(borrowBookData, this.userId).subscribe(
+      (response) => {
+        console.log('Kitap okundu olarak işaretlendi:', response);
+      },
+      (error) => {
+        console.error('Güncelleme sırasında hata oluştu:', error);
+        alert('Kitap güncellenirken bir hata oluştu. Lütfen tekrar deneyin.');
+      }
+    );
   }
 }

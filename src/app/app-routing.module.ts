@@ -21,6 +21,8 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from './admin.guard';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AppComponent } from './app.component';
+import { ReadoutBookComponent } from './components/readoutbook/readoutbook.component';
+
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyPasswordComponent } from './components/verify-password/verify-password.component';
 import { AllBookShowComponent } from './all-book-show/all-book-show.component';
@@ -47,11 +49,13 @@ const routes: Routes = [
       { path: 'profil-edit/:id', component: ProfilEditComponent},
       { path: 'borrowbook', component: BorrowbookComponent},
       { path: 'verification-enter', component: VerificationEnterComponent},
+      { path: 'readoutbook', component: ReadoutBookComponent},
       { path: 'reset-password', component: ResetPasswordComponent },
       { path: 'forgot-password', component:ForgotPasswordComponent},
       { path: 'verify-password', component:VerifyPasswordComponent},
       { path: 'all-books', component: AllBooksComponent },
       { path: 'all-book-show/:name', component: AllBookShowComponent },
+
 
 
     ]
