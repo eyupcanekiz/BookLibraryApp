@@ -51,7 +51,7 @@ const routes: Routes = [
       { path: 'forgot-password', component:ForgotPasswordComponent},
       { path: 'verify-password', component:VerifyPasswordComponent},
       { path: 'all-books', component: AllBooksComponent },
-      { path: 'all-book-show', component: AllBookShowComponent },
+      { path: 'all-book-show/:name', component: AllBookShowComponent },
 
 
     ]
