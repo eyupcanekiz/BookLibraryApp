@@ -4,7 +4,9 @@ $background-color: #F4F4F4;
 $section-background-color: #FFFFFF;
 $border-color: #DDD;
 $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
+body{
+  margin: bottom 100px; 
+}
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -23,6 +25,7 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   box-shadow: $box-shadow;
   padding: 20px;
+  margin-bottom: 100px;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   font-family: "Bebas Neue", sans-serif;
   &:hover {

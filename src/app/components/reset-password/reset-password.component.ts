@@ -17,6 +17,7 @@ export class ResetPasswordComponent implements OnInit {
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private router: Router
+    
   ) { }
 
   ngOnInit(): void {
@@ -35,16 +36,7 @@ export class ResetPasswordComponent implements OnInit {
         return;
       }
 
-      this.authService.resetPassword(password).subscribe({
-        next: () => {
-          this.snackBar.open('Şifreniz başarıyla sıfırlandı.', 'Close', { duration: 3000 });
-          this.router.navigate(['/login']);
-        },
-        error: (error) => {
-          this.snackBar.open('Şifre sıfırlama başarısız oldu. Lütfen tekrar deneyin.', 'Close', { duration: 3000 });
-          console.error('Şifre sıfırlama başarısız oldu', error);
-        }
-      });
+     
     }
   }
 }

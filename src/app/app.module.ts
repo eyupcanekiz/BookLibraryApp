@@ -35,6 +35,7 @@ import { AdminComponent } from './admin/admin.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyPasswordComponent } from './components/verify-password/verify-password.component';
 
 
 
@@ -61,6 +62,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     NotAuthorizedComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
+    VerifyPasswordComponent,
   ],
   providers: [
     provideHttpClient(withFetch()),

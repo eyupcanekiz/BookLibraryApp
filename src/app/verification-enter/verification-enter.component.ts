@@ -13,7 +13,7 @@ import * as CryptoJS from 'crypto-js';
 })
 export class VerificationEnterComponent implements OnInit {
   verificationCode: string = '';  // Kullanıcının girdiği kod
-  errorMessage: string = '';      // Hataları göstermek için
+  errorMessage: string = '';      
   model:any
   constructor(
     private router: Router,
@@ -21,9 +21,7 @@ export class VerificationEnterComponent implements OnInit {
     private registerService :RegisterService,
     private snackBar: MatSnackBar,
     private route:ActivatedRoute
-   
-
-  ) {}
+) {}
   ngOnInit(): void {
     const key = 'YourSecretKeyForEncryption&Descryption';
     const encryptedData = this.route.snapshot.paramMap.get('data');
