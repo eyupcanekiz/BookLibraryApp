@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+
 <div class="container">
   <h1>Book List</h1>
   <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
@@ -32,7 +34,7 @@
 
   <!-- Book List -->
   <ul *ngIf="books.length > 0" class="booksl">
-    <li *ngFor="let book of books" >
+    <li *ngFor="let book of paginatedBooks" >
       <a href="#" (click)="getBookById(book.id)">{{ book.bookName }}</a> 
       by {{ book.author }} (Publisher: {{ book.publisher }}) - 
       Available: {{ book.isAvailable ? 'Yes' : 'No' }}
@@ -40,6 +42,16 @@
       <button (click)="deleteBook(book.bookName)">Delete</button>
     </li>
   </ul>
+  <br>
+
+
+  <div class="btn-group">
+    <button type="button" class="btn btn-primary"(click)="goToPreviousPage()" [disabled]="currentPage === 1" ><i class="bi bi-arrow-left"></i></button>
+    <span>Sayfa {{ currentPage }}</span>
+    <button type="button" class="btn btn-primary" (click)="goToNextPage()" [disabled]="paginatedBooks.length < itemsPerPage"><i class="bi bi-arrow-right"></i> </button>
+  </div>
+
+  <br>
 
   <!-- Input field to get a book by ID -->
   <div class="get-book-by-id" class="bookls">
