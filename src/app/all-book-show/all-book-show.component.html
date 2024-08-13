@@ -1,11 +1,12 @@
 
-<div class="book-details-container">
-  <h1>{{ bookName }}</h1>
-  <div class="book-info">
-    <p><strong>Author:</strong> {{ author }}</p>
-    <p><strong>Publisher:</strong> {{ publisher }}</p>
-    <p><strong>Available:</strong> {{ available ? 'Yes' : 'No' }}</p>
-  </div>
-</div>
-<button type="button" class="btn btn-primary" id="btn-back" routerLink="/all-books">Tüm Kitaplara Geri Dön</button>
-<app-another-navbar></app-another-navbar>
+
+  <div class="book-details-container" >
+    <h2>{{ bookName}}</h2>
+    <h2>{{ author}}</h2>
+    <h2>{{ available}}</h2>
+    <h2>{{ bookName}}</h2>
+
+  
+  <ng-template #noBook>
+    <p>Book not found.</p>
+  </ng-template>
