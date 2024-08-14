@@ -14,7 +14,8 @@ body {
   h2 {
     text-align: center;
     color: $primary-color;
-    margin-top: 150px;
+    margin-top: 150px ;
+    margin-bottom: 30px;
     font-family: "Bebas Neue", sans-serif;
   }
 }
@@ -151,4 +152,5 @@ body {
 }
 #PasswordRepeat{
   margin-top: 15px;
+
 }
