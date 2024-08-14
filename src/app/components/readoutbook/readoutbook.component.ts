@@ -9,27 +9,27 @@ import { Book } from '../book/book.model';
 })
 export class ReadoutBookComponent implements OnInit {
   readOutBooks: any[] = [];
-  userId: string = '66b9d721ff3df6d3d967360a';
+  userName: string = 'HalukAyt';
 
   constructor(private readoutBookService: ReadoutBookService) {}
 
   ngOnInit(): void {
 
-    // this.fetchReadOutBooks(this.userId);
+     this.fetchReadOutBooks(this.userName);
   }
 
-  // fetchReadOutBooks(userId: string): void {
-  //   this.readoutBookService.getReadOutBooks(userId).subscribe(
-  //     (response) => {
+    fetchReadOutBooks(userName: string): void {
+      this.readoutBookService.getReadOutBooks(userName).subscribe(
+      (response) => {
 
-  //       this.readOutBooks = response.readOutBooks; // Doğru alana atandığından emin olun
+       this.readOutBooks = response.readOutBooks; // Doğru alana atandığından emin olun
     
-  //     },
-  //     (error) => {
-  //       console.error('Hata:', error);
-  //     }
-  //   );
-  // }
+      },
+      (error) => {
+         console.error('Hata:', error);
+      }
+     );
+   }
   
   
 }
