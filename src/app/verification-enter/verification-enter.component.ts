@@ -22,20 +22,23 @@ export class VerificationEnterComponent implements OnInit {
     private snackBar: MatSnackBar,
     private route:ActivatedRoute
 ) {}
-  ngOnInit(): void {
-    const key = CryptoJS.enc.Utf8.parse('YourSecretKeyForEncryption&Descryption');
-    const encryptedData = this.route.snapshot.paramMap.get('data');
+ngOnInit(): void {
+  const key = 'YourSecretKeyForEncryption&Descryption';
+  const encryptedData = this.route.snapshot.paramMap.get('data');
+  
+  if (encryptedData) {
+    const bytes = CryptoJS.AES.decrypt(encryptedData, key);
+    const decryptedData = bytes.toString(CryptoJS.enc.Utf8);
     
-    if (encryptedData) {
-        const iv = CryptoJS.enc.Utf8.parse('YourIVString12345'); // IV ile birlikte çözme işlemi
-        const bytes = CryptoJS.AES.decrypt(encryptedData, key, { iv: iv });
-        this.model = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+    if (decryptedData) {
+      this.model = JSON.parse(decryptedData);
     } else {
-        console.error("Encrypteds data is null or undefined.");
+      console.error('Decryption failed, decrypted data is null or empty');
     }
-
-
+  } else {
+    console.error('No encrypted data found in route parameters');
   }
+}
   
 
   onSubmit() {
@@ -74,7 +77,7 @@ export class VerificationEnterComponent implements OnInit {
       
     
      else {
-
+      // Kod yanlış ise
       this.errorMessage = 'Girdiğiniz kod yanlış, lütfen tekrar deneyin.';
       
     }
