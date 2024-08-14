@@ -25,7 +25,7 @@ export class BorrowbookComponent implements OnInit {
     this.borrowForm = this.fb.group({
       bookId: ['', Validators.required] // Validator eklendi
     });
-    this.fetchBorrowedBooks(); // Fetch the list of borrowed books on component initialization
+    // this.fetchBorrowedBooks(); // Fetch the list of borrowed books on component initialization
   }
 
   onSubmit(): void {
@@ -39,18 +39,18 @@ export class BorrowbookComponent implements OnInit {
     }
   }
 
-  // Fetches the list of borrowed books for the user
-  fetchBorrowedBooks(): void {
-    this.borrowbookService.getBorrowedBooks(this.userId).subscribe({
-      next: (books: Book[]) => {
-        // Hatalı kitapları filtrele ve ekrana yazdırma
-        this.borrowedBooks = books.filter(book => !!book); 
-      },
-      error: (err) => {
-        console.error('Error fetching borrowed books', err);
-      }
-    });
-  }
+  // // Fetches the list of borrowed books for the user
+  // fetchBorrowedBooks(): void {
+  //   this.borrowbookService.getBorrowedBooks(this.userId).subscribe({
+  //     next: (books: Book[]) => {
+  //       // Hatalı kitapları filtrele ve ekrana yazdırma
+  //       this.borrowedBooks = books.filter(book => !!book); 
+  //     },
+  //     error: (err) => {
+  //       console.error('Error fetching borrowed books', err);
+  //     }
+  //   });
+  // }
 
   // Handles borrowing a book and refreshing the borrowed books list
   borrowBook(bookId: string): void {
@@ -58,7 +58,7 @@ export class BorrowbookComponent implements OnInit {
       next: () => {
         this.borrowBookSuccess = true;
         this.borrowBookError = false;
-        this.fetchBorrowedBooks(); // Refresh the list after successfully borrowing a book
+        // this.fetchBorrowedBooks(); // Refresh the list after successfully borrowing a book
       },
       error: (error: string) => {
         console.log('Error borrowing book', error);
@@ -72,7 +72,7 @@ export class BorrowbookComponent implements OnInit {
   removeBorrowedBook(bookId: string): void {
     this.borrowbookService.removeBorrowedBook(this.userId, bookId).subscribe({
       next: () => {
-        this.fetchBorrowedBooks(); // Refresh the list after successfully removing a book
+        // this.fetchBorrowedBooks(); // Refresh the list after successfully removing a book
         console.log('Kitap başarıyla geri verildi');
       },
       error: (error: string) => {

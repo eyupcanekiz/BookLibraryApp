@@ -15,21 +15,21 @@ export class ReadoutBookComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.fetchReadOutBooks(this.userId);
+    // this.fetchReadOutBooks(this.userId);
   }
 
-  fetchReadOutBooks(userId: string): void {
-    this.readoutBookService.getReadOutBooks(userId).subscribe(
-      (response) => {
+  // fetchReadOutBooks(userId: string): void {
+  //   this.readoutBookService.getReadOutBooks(userId).subscribe(
+  //     (response) => {
 
-        this.readOutBooks = response.readOutBooks; // Doğru alana atandığından emin olun
+  //       this.readOutBooks = response.readOutBooks; // Doğru alana atandığından emin olun
     
-      },
-      (error) => {
-        console.error('Hata:', error);
-      }
-    );
-  }
+  //     },
+  //     (error) => {
+  //       console.error('Hata:', error);
+  //     }
+  //   );
+  // }
   
   
 }

@@ -55,15 +55,18 @@ export class AuthService {
     });
   }
 
-  // Yeni `getCurrentUser` metodu
   public getCurrentUser(): Observable<userModel | null> {
-    const token = localStorage.getItem("AuthToken");
-    if (token) {
-      const userId = this.extractUserIdFromToken(token);
-      return this.getById(userId);
+    if (typeof window !== 'undefined' && window.localStorage) {
+        const token = localStorage.getItem("AuthToken");
+        if (token) {
+            const userId = this.extractUserIdFromToken(token);
+            return this.getById(userId);
+        } else {
+            return of(null);
+        }
     } else {
-      return of(null);
+        // window veya localStorage mevcut değilse null döndür
+        return of(null);
     }
-  }
-
+}
 }
