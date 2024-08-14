@@ -5,6 +5,7 @@ export interface ProfileEditModel {
     Gender:GenderType;
 }
 export enum GenderType{
+    other,
     male ,
     female
   }

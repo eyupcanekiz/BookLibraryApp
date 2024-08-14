@@ -76,6 +76,8 @@ export class ProfilEditComponent implements OnInit {
       if(this.profileEditForm.valid){
         const{ userName,fullName,email,Gender}=this.profileEditForm.value;
         const profileeditmodel:ProfileEditModel={userName,fullName,email,Gender};
+        console.log(profileeditmodel);
+        
         this.profileEditService.profileEdit(profileeditmodel,this.userId).subscribe({
           next:(response:any)=>{
             this.snackBar.open('Basariyla profil güncellendi','Close',{duration:3000});
