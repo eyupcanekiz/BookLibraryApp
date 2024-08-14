@@ -50,9 +50,9 @@ const routes: Routes = [
       { path: 'borrowbook', component: BorrowbookComponent},
       { path: 'verification-enter', component: VerificationEnterComponent},
       { path: 'readoutbook', component: ReadoutBookComponent},
-      { path: 'reset-password', component: ResetPasswordComponent },
+      { path: 'reset-password/:name', component: ResetPasswordComponent },
       { path: 'forgot-password', component:ForgotPasswordComponent},
-      { path: 'verify-password', component:VerifyPasswordComponent},
+      { path: 'verify-password/:name', component:VerifyPasswordComponent},
       { path: 'all-books', component: AllBooksComponent },
       { path: 'all-book-show/:name', component: AllBookShowComponent },
 

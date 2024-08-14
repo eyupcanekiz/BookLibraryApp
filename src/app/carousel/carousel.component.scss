@@ -9,6 +9,7 @@
   background: linear-gradient(135deg, #f5f5f5, #ffffff); /* Arka plan için hafif bir gradyan */
   transition: transform 0.3s ease-in-out;
   margin-top: 10px;
+  height: auto;
 
   &:hover {
     transform: scale(1.01); /* Hover durumunda hafif büyüme efekti */

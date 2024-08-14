@@ -19,6 +19,7 @@ export class ForgotPasswordComponent implements OnInit {
   private emailSent: boolean = false;
   email:string =""
   fetchEmail:string=""
+  private userName:string =""
 
   constructor(
     private fb: FormBuilder,
@@ -77,6 +78,8 @@ export class ForgotPasswordComponent implements OnInit {
       this.forgotPasswordService.getEmail(email).subscribe({
         next:(response)=>{
           this.fetchEmail=response.email;
+          this.userName=response.userName
+          
           resolve();
         },
         error:(error)=>{
@@ -101,7 +104,7 @@ export class ForgotPasswordComponent implements OnInit {
       if(this.fetchEmail){
           this.generateVerificationCode();
           this.loadHtmlContent();
-         this.router.navigate(['/verify-password']);
+         this.router.navigate(['/verify-password',this.userName]);
        }
     }
   }
