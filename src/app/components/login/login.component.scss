@@ -1,4 +1,3 @@
-
 $primary-color: #28a745;
 $secondary-color: #6C757D;
 $background-color: #F4F4F4;
@@ -9,76 +8,83 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
 body {  
     font-family: "Bebas Neue", sans-serif;
-    margin: 0; /* Varsayılan margin'i sıfırlama */  
-    padding: 0; /* Varsayılan padding'i sıfırlama */  
-    h2{
+    margin: 0;  
+    padding: 0;  
+    h2 {
         font-family: "Bebas Neue", sans-serif;
-        color:$primary-color;
+        color: $primary-color;
     }
-    #floatingInput{
+    #floatingInput {
         font-family: 'Times New Roman', Times, serif;
     }
-    #floatingPassword{
+    #floatingPassword {
         font-family: 'Times New Roman', Times, serif;
     }
 }  
 
 .login-container {  
-    
-    display: flex; /* Esnek kutu düzeni */  
-    height: 120vh; /* Sayfanın tamamını kapla */  
+    display: flex; 
+    height: 100vh; /* Sayfanın yüksekliğini tamamen kapla */
+
+    @media (max-width: 768px) {
+        flex-direction: column; /* Küçük ekranlarda dikey hizalama */
+        height: auto; /* Sayfanın yüksekliğini otomatik ayarla */
+    }
 }  
 
 .form-container {  
-    flex: 1; /* Formun genişliğini ayarlamak için */  
+    flex: 1; 
     display: flex;  
-    flex-direction: column; /* İçerikleri dikey yerleştir */  
-    justify-content: center; /* Dikeyde ortala */  
-    padding: 40px; /* İç boşluk ekle */  
-    background-color: #f9f9f9; /* Arka plan rengi */  
+    flex-direction: column; 
+    justify-content: center; 
+    padding: 40px; 
+    background-color: #f9f9f9; 
+    max-width: 43%;
+
+    @media (max-width: 768px) {
+        max-width: 100%; /* Küçük ekranlarda tam genişlik */
+        padding: 20px; /* Küçük ekranlar için padding azaltma */
+    }
 }  
 
 #loginphoto {  
-    flex: 1; /* Resim bölümünün genişliğini ayarla */  
-    display: flex; /* Esnek kutu düzeni */  
-    justify-content: center; /* Yatayda ortala */  
-    align-items: center; /* Dikeyde ortala */  
+    flex: 1; 
+    display: flex;  
+    justify-content: center; 
+    align-items: center; 
     background-image: url('https://i.pinimg.com/originals/f2/1c/2f/f21c2f27294e010cdc2af50533b90228.jpg');
+
+    @media (max-width: 768px) {
+        height: 200px; /* Küçük ekranlar için resim alanı yüksekliği */
+        background-size: cover; /* Resmi kapla */
+        background-position: center; /* Resmi ortala */
+    }
 }  
 
 #loginphoto img {  
-    max-width:  100%; 
+    max-width: 100%; 
     height: auto; 
-   
 }
-.submit-button {
+
+.submit-button, 
+#forgot {
     width: 100%;
-    padding: 15px;
+    padding: 9px;
     background-color: $primary-color;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 18px;
     cursor: pointer;
     font-size: 1.2em;
     transition: background-color 0.3s;
-
+    margin-bottom: 20px; /* Butonlar arasına boşluk ekle */
+    margin-left: 1%;
     &:hover {
-      background-color: $button-hover-color;
+        background-color: $button-hover-color;
     }
-  }
-  #forgot{
-    margin-left: 400px;
-    width: 100%;
-    padding: 15px;
-    background-color: $primary-color;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1.2em;
-    transition: background-color 0.3s;
 
-    &:hover {
-      background-color: $button-hover-color;
+    @media (max-width: 768px) {
+        font-size: 1em; /* Küçük ekranlar için yazı boyutunu azaltma */
+        padding: 10px; /* Küçük ekranlar için padding azaltma */
     }
-  }
+}
