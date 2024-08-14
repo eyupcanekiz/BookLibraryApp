@@ -10,7 +10,7 @@ export class ReadoutBookService {
 
   constructor(private http: HttpClient) {}
 
-  getReadOutBooks(userId: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}/GetReadOutByName?id=${userId}`);
+  getReadOutBooks(userName: any): Observable<any> {
+    return this.http.get(`${this.apiUrl}/GetReadOutByName?userName=${userName}`);
   }
 }
