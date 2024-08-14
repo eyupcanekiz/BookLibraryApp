@@ -11,14 +11,28 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Bebas Neue", sans-serif;
-  height: 830px;
- 
+  h2 {
+    text-align: center;
+    color: $primary-color;
+    margin-top: 150px;
+    font-family: "Bebas Neue", sans-serif;
+  }
 }
 
 .register-container {
   display: flex;
-  max-height: auto;
-  margin-top: 100px;
+  height: 100vh; /* Sayfanın yüksekliğini tamamen kapla */
+  padding: 0; /* Kenar boşluklarını kaldır */
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    height: 100vh; /* Masaüstünde tam ekran yüksekliği */
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center; /* İçeriği ortala */
+  }
 }
 
 .form-container {
@@ -28,11 +42,7 @@ body {
   justify-content: center;
   padding: 40px;
   background-color: $form-background-color;
-  border-radius: 10px;
-  box-shadow: $box-shadow;
-  max-width: 40%;
-  max-height: 73%;
- 
+  max-width: 100%;
   
   @media (min-width: 768px) {
     max-width: 43%;
@@ -41,7 +51,7 @@ body {
   .submit-button {
     width: 100%;
     padding: 9px;
-    background-color: #6610f2;
+    background-color: $primary-color;
     color: white;
     border: none;
     border-radius: 18px;
@@ -138,4 +148,7 @@ body {
       }
     }
   }
+}
+#PasswordRepeat{
+  margin-top: 15px;
 }

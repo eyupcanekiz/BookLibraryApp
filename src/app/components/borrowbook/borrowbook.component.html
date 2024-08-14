@@ -1,33 +1,33 @@
-<div class="borrowbook-container">
-  <h2>Borrowed Books</h2>
-  
-  <ul>
-    <li *ngFor="let book of borrowedBooks">
-      <strong>{{ book.bookName }}</strong> by {{ book.author }}
-      <button (click)="removeBorrowedBook(book.id)">Geri Ver</button>
-      <button (click)="markAsRead(book.id)">Okundu Olarak İşaretle</button>
-    </li>
-  </ul>
-  
-  <div *ngIf="borrowedBooks.length === 0">
-    <p>No borrowed books found.</p>
+<div class="borrow-book-container">
+  <h2>Ödünç Alınan Kitaplar</h2>
+
+  <!-- Ödünç Alınan Kitaplar Listesi -->
+  <div *ngIf="borrowedBooks.length > 0; else noBooks" class="borrowed-books-list">
+    <div *ngFor="let book of borrowedBooks" class="book-item">
+      <h3>{{ book.bookName }}</h3>
+      <p>Yazar: {{ book.author }}</p>
+      <p>Yayınevi: {{ book.publisher }}</p>
+      <button (click)="markAsRead(book.id)" class="mark-read-button">Okundu Olarak İşaretle</button>
+      <button (click)="removeBorrowedBook(book.id)" class="remove-button">Kitabı Geri Ver</button>
+    </div>
   </div>
 
-  <div>
-    <h3>Borrow a Book</h3>
+  <!-- Ödünç Alınan Kitap Yok -->
+  <ng-template #noBooks>
+    <p>Şu an ödünç aldığınız kitap bulunmuyor.</p>
+  </ng-template>
 
+  <!-- Kitap Ekleme Formu -->
+  <div class="add-book-form">
+    <h3>Yeni Kitap Ödünç Al</h3>
     <form [formGroup]="borrowForm" (ngSubmit)="onSubmit()">
-      <label for="bookId">Book ID:</label>
-      <input type="text" id="bookId" #bookIdInput formControlName="bookId">
-      <button type="submit">Borrow</button>
+      <input formControlName="bookId" placeholder="Kitap ID Girin" />
+      <div *ngIf="borrowForm.invalid && (borrowForm.dirty || borrowForm.touched)" class="error-message">
+        Kitap ID'si gerekli.
+      </div>
+      <button type="submit" class="add-button">Kitap Ekle</button>
     </form>
-  </div>
-
-  <div *ngIf="borrowBookSuccess" class="success-message">
-    <p>Book borrowed successfully!</p>
-  </div>
-
-  <div *ngIf="borrowBookError" class="error-message">
-    <p>Error borrowing book. Please try again.</p>
+    <div *ngIf="borrowBookSuccess" class="success-message">Kitap başarıyla ödünç alındı!</div>
+    <div *ngIf="borrowBookError" class="error-message">Kitap ödünç alınırken bir hata oluştu.</div>
   </div>
 </div>
