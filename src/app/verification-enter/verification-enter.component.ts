@@ -67,7 +67,6 @@ export class VerificationEnterComponent implements OnInit {
       
     
      else {
-      // Kod yanlış ise
       this.errorMessage = 'Girdiğiniz kod yanlış, lütfen tekrar deneyin.';
       
     }
