@@ -35,13 +35,7 @@ body {
 .form-container {  
     flex: 1; 
     display: flex;  
-<<<<<<< HEAD
-    flex-direction: column; /* İçerikleri dikey yerleştir */  
-    justify-content: center; /* Dikeyde ortala */  
-    padding: 40px; /* İç boşluk ekle */  
-    background-color: #f9f9f9; /* Arka plan rengi */  
-    max-width: 45%;
-=======
+
     flex-direction: column; 
     justify-content: center; 
     padding: 40px; 
@@ -52,7 +46,7 @@ body {
         max-width: 100%; /* Küçük ekranlarda tam genişlik */
         padding: 20px; /* Küçük ekranlar için padding azaltma */
     }
->>>>>>> 02652050fd57a20b260709537c4afe72e9e25cd9
+
 }  
 
 #loginphoto {  
