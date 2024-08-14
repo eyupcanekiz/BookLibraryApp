@@ -13,7 +13,7 @@ body {
   font-family: "Bebas Neue", sans-serif;
   h2 {
     text-align: center;
-    color: $primary-color;
+    color: #6610f2;
     margin-bottom: 30px;
     font-family: "Bebas Neue", sans-serif;
   }
@@ -22,11 +22,11 @@ body {
 .register-container {
   display: flex;
   height: 100vh; /* Sayfanın yüksekliğini tamamen kapla */
-  padding: 20px; /* Mobilde kenarlardan boşluk bırakmak için padding ekle */
-
+  padding: 0; /* Kenar boşluklarını kaldır */
+  
   @media (min-width: 768px) {
     flex-direction: row;
-    height: auto; /* Masaüstünde yatay hizalama */
+    height: 100vh; /* Masaüstünde tam ekran yüksekliği */
   }
 
   @media (max-width: 768px) {
@@ -43,16 +43,15 @@ body {
   padding: 40px;
   background-color: $form-background-color;
   max-width: 100%;
-
-  @media (max-width: 768px) {
-    max-width: 100%; /* Küçük ekranlarda tam genişlik */
-    padding: 20px;
+  
+  @media (min-width: 768px) {
+    max-width: 43%;
   }
 
   .submit-button {
     width: 100%;
     padding: 9px;
-    background-color: $primary-color;
+    background-color: #6610f2;
     color: white;
     border: none;
     border-radius: 18px;
@@ -65,8 +64,8 @@ body {
     }
 
     @media (max-width: 768px) {
-      font-size: 1em; /* Küçük ekranlar için yazı boyutunu azaltma */
-      padding: 10px; /* Küçük ekranlar için padding azaltma */
+      font-size: 1em;
+      padding: 10px;
     }
   }
 }
@@ -77,14 +76,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  background-size: cover;
+  background-position: center;
+  
   @media (max-width: 768px) {
     display: none; /* Mobil cihazlarda fotoğrafı gizle */
   }
 
   @media (min-width: 768px) {
-    background-size: cover;
-    background-position: center;
+    height: 100vh; /* Fotoğrafın tam yüksekliği kaplamasını sağla */
   }
 }
 
