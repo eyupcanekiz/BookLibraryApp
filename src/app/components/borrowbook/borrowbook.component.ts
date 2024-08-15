@@ -44,7 +44,7 @@ export class BorrowbookComponent implements OnInit {
  }
 
  addBorrowedbook() {
-  const bookDto: BorrowBookByNameDto = { bookName: this.bookName };
+  const bookDto: BorrowBookByNameDto = { bookNameDto: this.bookName };
 
   this.borrowbookService.addBorrowedBook(bookDto, this.userName).subscribe({
     next: (response) => {
@@ -63,12 +63,12 @@ export class BorrowbookComponent implements OnInit {
       return;
     }
 
-    const bookDto: BorrowBookByNameDto = { bookName: book.bookName };
+    const bookDto: BorrowBookByNameDto = { bookNameDto: book.bookName };
 
     this.borrowbookService.removeBorrowedBook(bookDto, this.userName).subscribe(
       response => {
         this.message = response.message || 'Kitap başarıyla geri verildi';
-        this.fetchBorrowedBooks(this.userName); // Listeyi güncelle
+        this.fetchBorrowedBooks(this.userName);
       },
       error => {
         this.message = 'Bir hata oluştu: ' + error.message;
@@ -76,9 +76,19 @@ export class BorrowbookComponent implements OnInit {
     );
   }
 
-updateBorrowedBook(bookName:string, userName: string) {
-  this.borrowbookService.updateBorrowedBook(bookName, userName).subscribe(response => {
+updateBorrowedBook(book:BorrowedBook) {
+  if (!this.userName) {
+    this.message = 'Kullanıcı adı gereklidir';
+    return;
+  }
+
+  const bookDto: BorrowBookByNameDto = { bookNameDto: book.bookName };
+  this.borrowbookService.updateBorrowedBook(bookDto, this.userName).subscribe
+  
+  (response => {
     console.log('Güncellendi', response);
+    this.message = response.message || 'Kitap başarıyla geri verildi';
+    this.fetchBorrowedBooks(this.userName);
   }, error => {
     console.error('Güncellenemedi', error);
   });
