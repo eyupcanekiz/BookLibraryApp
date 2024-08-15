@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
+import { FormGroup } from '@angular/forms';
+import { MyBookService } from './my-books.service';
 
 @Component({
   selector: 'app-my-books',
@@ -7,13 +9,32 @@ import { BookService } from '../book.service';
   styleUrl: './my-books.component.scss'
 })
 export class MyBooksComponent implements OnInit {
-  borrowedBooks: string[] = [];
+  borrowForm!: FormGroup;
+  borrowedBooks: any[] = [];
+  userName: string = 'HalukAyt'; 
+  borrowBookSuccess: boolean = false;bookName:string="";
+  borrowBookError: boolean = false;
 
-  constructor(private bookService: BookService) {}
+  constructor(
+    private myBookService: MyBookService,   
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
-    this.borrowedBooks = this.bookService.getBorrowedBooks();
+   this.fetchBorrowedBooks(this.userName);
   }
+
+  fetchBorrowedBooks(userName: string): void {
+    this.myBookService.getBorrowedBooks(userName).subscribe(
+    (response) => {
+console.log(response.borrowBooks)
+     this.borrowedBooks = response.borrowBooks
+  
+    },
+    (error) => {
+       console.error('Hata:', error);
+    }
+   );
+ }
 }
 
