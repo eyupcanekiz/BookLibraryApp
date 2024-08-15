@@ -83,8 +83,8 @@ export class AnotherNavbarComponent implements OnInit  {
     }
   
   }
-  navigateToMyBooks(){
-    this.getUserName();
+  async navigateToMyBooks(){
+    await this.getUserName();
     if(this.userName){
       this.router.navigate(["my-books",this.userName])
     }
