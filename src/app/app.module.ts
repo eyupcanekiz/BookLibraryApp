@@ -33,8 +33,7 @@ import { BorrowbookModule } from './components/borrowbook/borrowbook.module';
 import { VerificationEnterComponent } from './verification-enter/verification-enter.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
-import { ReadoutBookComponent } from './components/readoutbook/readoutbook.component';
-import { ReadoutbookModule } from './components/readoutbook/readoutbook.module';
+
 import { CommonModule } from '@angular/common';
 
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
@@ -92,7 +91,6 @@ import { AllBookShowComponent } from './all-book-show/all-book-show.component';
     NgxSpinnerModule,
     BookModule, 
     BorrowbookModule,
-    ReadoutbookModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
