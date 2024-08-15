@@ -4,6 +4,14 @@ import { FormGroup } from '@angular/forms';
 import { MyBookService } from './my-books.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { BorrowBookByNameDto } from '../components/borrowbook/borrowbook.service';
+
+interface BorrowedBook {
+  bookName: string;
+  author: string;
+  publisher: string;
+  isAvailable: boolean;
+}
 
 @Component({
   selector: 'app-my-books',
@@ -17,6 +25,7 @@ export class MyBooksComponent implements OnInit {
   borrowBookSuccess: boolean = false;bookName:string="";
   borrowBookError: boolean = false;
   readOutBooks: any[] = [];
+  message: string ="";
 
   constructor(
     private myBookService: MyBookService, 
@@ -58,9 +67,24 @@ export class MyBooksComponent implements OnInit {
   },
   (error) => {
      console.error('Hata:', error);
+  },
+  () => {
+    this.spinner.hide(); // İşlem tamamlandığında spinner'ı gizle
   }
  );
 }
-
+updateBorrowedBook(book:BorrowedBook) {
+  const bookDto: BorrowBookByNameDto = { bookName: book.bookName };
+  this.myBookService.updateBorrowedBook(bookDto, this.userName).subscribe
+  
+  (response => {
+    console.log('Güncellendi', response);
+    this.message = response.message || 'Kitap başarıyla geri verildi';
+    this.fetchBorrowedBooks(this.userName);
+    this.fetchReadOutBooks(this.userName);
+  }, error => {
+    console.error('Güncellenemedi', error);
+  });
+}
 }
 

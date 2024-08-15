@@ -25,4 +25,12 @@ import { BorrowBookByNameDto } from "../components/borrowbook/borrowbook.service
         params: { userName: userName } 
       });
     }
+    updateBorrowedBook(bookDto: BorrowBookByNameDto, userName: string): Observable<any> {
+      return this.http.put(`${this.apiUrl}/UpdateBorrowedBook?userName=${userName}`, bookDto, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': '*/*'
+        }
+      });
+    }
 }
