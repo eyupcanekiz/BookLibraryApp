@@ -5,6 +5,8 @@ import { MyBookService } from './my-books.service';
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BorrowBookByNameDto } from '../components/borrowbook/borrowbook.service';
+import { response } from 'express';
+import { error } from 'console';
 
 interface BorrowedBook {
   bookName: string;
@@ -73,6 +75,18 @@ export class MyBooksComponent implements OnInit {
   }
  );
 }
+
+removeBorrowedBook(book: BorrowedBook): void {
+  const bookDto: BorrowBookByNameDto = { bookName: book.bookName};
+  this.myBookService.removeBorrowedBook(bookDto, this.userName).subscribe
+  (response => {
+    console.log("Silindi", response);
+    this.message = response.message || 'Kitap başarıyla İade Edildi';
+    this.fetchBorrowedBooks(this.userName);
+  },error => {
+    console.error('Hata', error);
+});
+}
 updateBorrowedBook(book:BorrowedBook) {
   const bookDto: BorrowBookByNameDto = { bookName: book.bookName };
   this.myBookService.updateBorrowedBook(bookDto, this.userName).subscribe
@@ -86,5 +100,5 @@ updateBorrowedBook(book:BorrowedBook) {
     console.error('Güncellenemedi', error);
   });
 }
-}
 
+}
