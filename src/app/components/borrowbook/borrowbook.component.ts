@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book/book.model';
-import { BorrowbookService } from '../borrowbook/borrowbook.service';
+import { BorrowBookByNameDto, BorrowbookService } from '../borrowbook/borrowbook.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BorrowBookModel } from './borrowbook.model';
-
+interface BorrowedBook {
+  bookName: string;
+  author: string;
+  publisher: string;
+  isAvailable: boolean;
+}
 @Component({
   selector: 'app-borrowbook',
   templateUrl: './borrowbook.component.html',
@@ -13,8 +17,10 @@ export class BorrowbookComponent implements OnInit {
   borrowForm!: FormGroup;
   borrowedBooks: any[] = [];
   userName: string = 'HalukAyt'; 
-  borrowBookSuccess: boolean = false;bookName:string="";
+  borrowBookSuccess: boolean = false;
+  bookName:string="";
   borrowBookError: boolean = false;
+  message: string = '';
 
   constructor(
     private borrowbookService: BorrowbookService,   
@@ -28,7 +34,6 @@ export class BorrowbookComponent implements OnInit {
   fetchBorrowedBooks(userName: string): void {
     this.borrowbookService.getBorrowedBooks(userName).subscribe(
     (response) => {
-console.log(response.borrowBooks)
      this.borrowedBooks = response.borrowBooks
   
     },
@@ -38,4 +43,44 @@ console.log(response.borrowBooks)
    );
  }
 
+ addBorrowedbook() {
+  const bookDto: BorrowBookByNameDto = { bookName: this.bookName };
+
+  this.borrowbookService.addBorrowedBook(bookDto, this.userName).subscribe({
+    next: (response) => {
+      this.message = response.message;
+      this.fetchBorrowedBooks(this.userName)
+    },
+    error: (error) => {
+      this.message = 'Bir hata oluştu: ' + error.message;
+    }
+  });
+}
+
+ removeBorrowedBook(book: BorrowedBook): void {
+    if (!this.userName) {
+      this.message = 'Kullanıcı adı gereklidir';
+      return;
+    }
+
+    const bookDto: BorrowBookByNameDto = { bookName: book.bookName };
+
+    this.borrowbookService.removeBorrowedBook(bookDto, this.userName).subscribe(
+      response => {
+        this.message = response.message || 'Kitap başarıyla geri verildi';
+        this.fetchBorrowedBooks(this.userName); // Listeyi güncelle
+      },
+      error => {
+        this.message = 'Bir hata oluştu: ' + error.message;
+      }
+    );
+  }
+
+updateBorrowedBook(bookName:string, userName: string) {
+  this.borrowbookService.updateBorrowedBook(bookName, userName).subscribe(response => {
+    console.log('Güncellendi', response);
+  }, error => {
+    console.error('Güncellenemedi', error);
+  });
+}
 }
