@@ -1,8 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Book } from '../book/book.model';
 import { Observable } from 'rxjs';
-import { BorrowBookModel } from './borrowbook.model';
+
+export interface BorrowBookByNameDto {
+  bookName: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -16,20 +18,18 @@ export class BorrowbookService {
     return this.http.get(`${this.apiUrl}/GetBorrowBooks?userName=${userName}`);
   }
 
-  addBorrowedBook(bookId: string, userId: string): Observable<string> {
-    return this.http.post<string>(`${this.apiUrl}/AddBorrow?id=${userId}`, { Id: bookId });
+  addBorrowedBook(bookDto: BorrowBookByNameDto, userName: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/AddBorrow?userName=${userName}`, bookDto);
   }
 
-  removeBorrowedBook(userId: string, bookId: string): Observable<any> {
-    const url = `${this.apiUrl}/RemoveBorrowed/${userId}`;
-    return this.http.delete(url, { 
-      body: { 
-        id : bookId.toString // JSON verisinin doğru formatta olduğundan emin olun
-      } 
-    });
+  removeBorrowedBook(userName: string): Observable<any> {
+
+   return this.http.delete<string>( `${this.apiUrl}/RemoveBorrowed?userName=${userName}`);
+  
+  
   }
-  updateBorrowedBook(data: BorrowBookModel, userId: string): Observable<any> {
-    return this.http.put(`${this.apiUrl}/UpdateBorrowedBook?id=${userId}`, data, {
+  updateBorrowedBook(bookName: string, userName: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/UpdateBorrowedBook?userName=${userName}`, bookName, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': '*/*'
