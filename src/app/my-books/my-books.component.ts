@@ -16,6 +16,7 @@ export class MyBooksComponent implements OnInit {
   userName: string = ''; 
   borrowBookSuccess: boolean = false;bookName:string="";
   borrowBookError: boolean = false;
+  readOutBooks: any[] = [];
 
   constructor(
     private myBookService: MyBookService, 
@@ -29,6 +30,7 @@ export class MyBooksComponent implements OnInit {
       this.userName = params.get("name")!;
     })
    this.fetchBorrowedBooks(this.userName);
+   this.fetchReadOutBooks(this.userName);
   }
 
   fetchBorrowedBooks(userName: string): void {
@@ -45,5 +47,18 @@ export class MyBooksComponent implements OnInit {
     }
    );
  }
+ 
+ fetchReadOutBooks(userName: string): void {
+  this.myBookService.getReadOutBooks(userName).subscribe(
+  (response) => {
+
+   this.readOutBooks = response.readOutBooks; // Doğru alana atandığından emin olun
+
+  },
+  (error) => {
+     console.error('Hata:', error);
+  }
+ );
+}
 }
 

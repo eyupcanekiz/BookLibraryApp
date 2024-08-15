@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private datePipe: DatePipe
   ) {
-    this.dateNow = this.datePipe.transform(new Date(), 'yyyy-MM-dd HH:mm:ss')!;
+    this.setDateNowWithOffset(15);
   }
 
   ngOnInit(): void {
@@ -32,7 +32,11 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-
+  private setDateNowWithOffset(minutes: number) {
+    let now = new Date();
+    now.setMinutes(now.getMinutes() + minutes);
+    this.dateNow = this.datePipe.transform(now, 'yyyy-MM-dd HH:mm:ss')!;
+  }
   onLogin() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
@@ -45,11 +49,12 @@ export class LoginComponent implements OnInit {
             this.authService.getToken().subscribe({
               next: (token) => {
                 localStorage.setItem("AuthToken", token);
+                localStorage.setItem('DateNow', this.dateNow);
                 this.authService.getCurrentUser().subscribe(user => {
                   if (user && user.isAdmin) {
                     this.router.navigate(['/admin']);
-                  } else {
-                    this.router.navigate(['/']);
+                  }if(user) {
+                    this.router.navigate(['all-books']);
                   }
                 });
               },
