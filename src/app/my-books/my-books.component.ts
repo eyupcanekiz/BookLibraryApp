@@ -3,7 +3,7 @@ import { BookService } from '../book.service';
 import { FormGroup } from '@angular/forms';
 import { MyBookService } from './my-books.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-my-books',
@@ -19,10 +19,12 @@ export class MyBooksComponent implements OnInit {
 
   constructor(
     private myBookService: MyBookService, 
-    private route : ActivatedRoute  
+    private route : ActivatedRoute ,
+    private spinner: NgxSpinnerService  
   ) { }
 
   ngOnInit(): void {
+    this.spinner.show();
     this.route.paramMap.subscribe(params=>{
       this.userName = params.get("name")!;
     })
@@ -37,6 +39,9 @@ export class MyBooksComponent implements OnInit {
     },
     (error) => {
        console.error('Hata:', error);
+    },
+    () => {
+      this.spinner.hide(); // İşlem tamamlandığında spinner'ı gizle
     }
    );
  }

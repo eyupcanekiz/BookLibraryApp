@@ -24,7 +24,8 @@ export class AnotherNavbarComponent implements OnInit  {
     private snackBar: MatSnackBar,
     private router : Router,
     private translate: TranslateService,
-    private authService : AuthService
+    private authService : AuthService,
+    
   )
   {
     this.translate.addLangs(['en', 'tr']);
@@ -84,10 +85,13 @@ export class AnotherNavbarComponent implements OnInit  {
   
   }
   navigateToMyBooks(){
+    
     this.getUserName();
     if(this.userName){
       this.router.navigate(["my-books",this.userName])
+      
     }
+    
   }
  
 }

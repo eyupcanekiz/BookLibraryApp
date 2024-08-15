@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
                   if (user && user.isAdmin) {
                     this.router.navigate(['/admin']);
                   } else {
-                    this.router.navigate(['/my-books']);
+                    this.router.navigate(['/']);
                   }
                 });
               },

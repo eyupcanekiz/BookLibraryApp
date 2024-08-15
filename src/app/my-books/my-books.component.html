@@ -2,10 +2,10 @@
   <h2>{{ 'BORROWED_BOOKS' | translate }}</h2>
   <ul class="book-list">
     <li *ngFor="let book of borrowedBooks" class="book-item">
-      <strong >Kitap Adı:</strong> {{ book.bookName }}<br>
-      <strong>Yazar:</strong> {{ book.author }}<br>
-      <strong>Yayınevi:</strong> {{ book.publisher }}<br>
-      <strong>Mevcut Durumu:</strong> {{ book.isAvailable ? 'Mevcut' : 'Mevcut Değil' }}<br>
+      <strong>Kitap Adı:</strong> <span>{{ book.bookName }}</span>
+      <strong>Yazar:</strong> <span>{{ book.author }}</span>
+      <strong>Yayınevi:</strong> <span>{{ book.publisher }}</span>
+      <strong>Mevcut Durumu:</strong> <span>{{ book.isAvailable ? 'Mevcut' : 'Mevcut Değil' }}</span>
     </li>
   </ul>
 </div>

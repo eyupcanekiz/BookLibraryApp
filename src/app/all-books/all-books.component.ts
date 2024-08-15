@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService, Book } from '../components/book/book.service'; // Doğru yolu kontrol edin
 import { Router } from '@angular/router';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-all-books',
   templateUrl: './all-books.component.html',
@@ -11,9 +11,14 @@ export class AllBooksComponent implements OnInit {
   books: Book[] = [];
   errorMessage: string = '';
 
-  constructor(private bookService: BookService, private router: Router) {}
+  constructor(
+     private bookService: BookService,
+     private router: Router,
+     private spinner: NgxSpinnerService  
+    ) {}
 
   ngOnInit(): void {
+    this.spinner.show();
     this.getAllBooks();
   }
 
@@ -25,6 +30,9 @@ export class AllBooksComponent implements OnInit {
       },
       (error) => {
         this.errorMessage = error.message;
+      },
+      () => {
+        this.spinner.hide(); // İşlem tamamlandığında spinner'ı gizle
       }
     );
   }
