@@ -1,135 +1,134 @@
 .books-container {
-  width: 60%;
-  margin: 50px auto;
-  padding: 25px;  /* İçerik kenar boşluğunu biraz artırıyoruz */
-  background-color: #fff;
-  border-radius: 20px;  /* Daha yuvarlak köşeler */
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);  /* Daha belirgin gölge */
-  animation: fadeInUp 0.6s ease-in-out;  /* Animasyon süresini biraz uzatıyoruz */
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-in-out;
   margin-top: 100px;
-  
-  @media (max-width: 768px) {
-    width: 85%;  /* Mobilde daha geniş bir alan */
-  }
-
   h2 {
     text-align: center;
-    color: #333;
-    margin-bottom: 25px;  /* Alt boşluk artırıldı */
+    color: #28a745;
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.6em;  /* Yazı boyutu biraz artırıldı */
-    letter-spacing: 1.5px;  /* Harf aralığı artırıldı */
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+    font-size: 2.5em;
     position: relative;
-    text-transform: uppercase;  /* Başlık büyük harflerle yazılır */
-    
+
     &::after {
       content: '';
+      position: absolute;
       width: 60px;
       height: 4px;
-      background-color: #dc3545;  /* Kırmızı bir alt çizgi eklenir */
-      position: absolute;
-      bottom: -10px;
+      background-color: #28a745;
       left: 50%;
       transform: translateX(-50%);
-      transition: width 0.4s ease;
+      bottom: -10px;
+      border-radius: 2px;
+      transition: width 0.3s ease;
     }
 
     &:hover::after {
-      width: 100%;  /* Hover durumunda alt çizgi genişler */
+      width: 100%;
     }
   }
 
   .book-list {
     list-style-type: none;
     padding: 0;
-    display: flex;
-    flex-direction: column;  /* Kitapları dikey hizalar */
-    gap: 15px;  /* Kitaplar arasında boşluk eklenir */
-    
-
+    margin: 0;
+  
     .book-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;  /* İçerik kenar boşluğunu artırıyoruz */
-      background-color: #f1f3f5;  /* Daha açık bir arka plan rengi */
+      background-color: white;
       margin-bottom: 15px;
-      border-radius: 15px;  /* Daha yuvarlak köşeler */
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);  /* Daha belirgin gölge */
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-      position: relative;
-      overflow: hidden;
-
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: fadeInUp 0.5s ease-in-out;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap; /* Uzun metinlerin bir sonraki satıra geçmesini sağlar */
+  
       &:hover {
-        transform: translateY(-8px) scale(1.03);  /* Hover durumunda daha belirgin bir büyütme */
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-        background-color: #e9ecef;  /* Hover sırasında arka plan rengi değişir */
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       }
-
+  
+      strong {
+        color: #333;
+        font-weight: 600;
+        margin-right: 10px; /* Başlıklar arasında boşluk bırak */
+      }
+  
+      span {
+        margin-right: 15px; /* Metinler arasında daha fazla boşluk bırak */
+        white-space: nowrap; /* Metinlerin tek satırda kalmasını sağlar */
+      }
+  
       &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(220, 53, 69, 0.1);  /* Kırmızı bir renk tonu */
-        transition: opacity 0.3s ease, transform 0.3s ease;
-        transform: scale(1.5);
-        opacity: 0;
-        z-index: 1;
-      }
-
-      &:hover::before {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .return-button {
-      background-color: #dc3545;
-      color: #fff;
-      border: none;
-      padding: 12px 20px;  /* Buton boyutunu artırıyoruz */
-      border-radius: 25px;  /* Daha yuvarlak butonlar */
-      font-size: 1.1em;  /* Yazı boyutu artırıldı */
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.3s ease;
-
-      &:hover {
-        background-color: #c82333;
-        transform: scale(1.1);  /* Hover durumunda daha belirgin bir büyütme */
-      }
-
-      &:active {
-        transform: scale(0.95);
+        content: "✅";
+        display: inline-block;
+        margin-right: 15px; /* Simge ile metin arasında boşluk bırak */
+        font-size: 1.2em;
+        vertical-align: middle;
+        animation: bounceIn 0.6s ease-in-out;
       }
     }
   }
+}  
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.fade-out {
-  animation: fadeOut 0.5s forwards;  /* 0.5 saniyelik bir fade-out animasyonu */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes expandLine {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 50px;
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInUp {
   from {
+    transform: translateY(10px);
     opacity: 0;
-    transform: translateY(30px);  /* Başlangıçta daha fazla kaydırma */
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
 }
 
-@keyframes fadeOut {
+@keyframes bounceIn {
   from {
-    opacity: 1;
-    transform: translateY(0);
+    transform: scale(0.5);
+    opacity: 0;
   }
   to {
-    opacity: 0;
-    transform: translateY(-30px);  /* Daha fazla yukarı kaydırma */
+    transform: scale(1);
+    opacity: 1;
   }
 }

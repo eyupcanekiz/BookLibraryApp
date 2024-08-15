@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../book/book.model';
 import { BorrowBookByNameDto, BorrowbookService } from '../borrowbook/borrowbook.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+interface BorrowedBook {
+  bookName: string;
+  author: string;
+  publisher: string;
+  isAvailable: boolean;
+}
 @Component({
   selector: 'app-borrowbook',
   templateUrl: './borrowbook.component.html',
@@ -44,7 +49,7 @@ export class BorrowbookComponent implements OnInit {
   this.borrowbookService.addBorrowedBook(bookDto, this.userName).subscribe({
     next: (response) => {
       this.message = response.message;
-      this.fetchBorrowedBooks
+      this.fetchBorrowedBooks(this.userName)
     },
     error: (error) => {
       this.message = 'Bir hata oluştu: ' + error.message;
@@ -52,13 +57,24 @@ export class BorrowbookComponent implements OnInit {
   });
 }
 
-removeBorrowedBook(userName: string) {
-  this.borrowbookService.removeBorrowedBook(userName).subscribe(response => {
-    console.log('Başarılı', response);
-  }, error => {
-    console.error('Hata:', error);
-  });
-}
+ removeBorrowedBook(book: BorrowedBook): void {
+    if (!this.userName) {
+      this.message = 'Kullanıcı adı gereklidir';
+      return;
+    }
+
+    const bookDto: BorrowBookByNameDto = { bookName: book.bookName };
+
+    this.borrowbookService.removeBorrowedBook(bookDto, this.userName).subscribe(
+      response => {
+        this.message = response.message || 'Kitap başarıyla geri verildi';
+        this.fetchBorrowedBooks(this.userName); // Listeyi güncelle
+      },
+      error => {
+        this.message = 'Bir hata oluştu: ' + error.message;
+      }
+    );
+  }
 
 updateBorrowedBook(bookName:string, userName: string) {
   this.borrowbookService.updateBorrowedBook(bookName, userName).subscribe(response => {

@@ -7,6 +7,11 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   animation: fadeIn 1s ease-in-out;
 
+  @media (max-width: 768px) {
+    padding: 20px;
+    margin: 20px;
+  }
+
   h1 {
     text-align: center;
     color: #28a745;
@@ -31,6 +36,14 @@
     &:hover::after {
       width: 100%;
     }
+
+    @media (max-width: 768px) {
+      font-size: 2em;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.5em;
+    }
   }
 
   .book-info {
@@ -38,6 +51,14 @@
     flex-direction: column;
     gap: 10px;
     font-size: 1.2em;
+
+    @media (max-width: 768px) {
+      font-size: 1em;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.9em;
+    }
 
     p {
       color: #555;
@@ -66,7 +87,53 @@
       &:hover::before {
         background-color: darken(#28a745, 10%);
       }
+
+      @media (max-width: 768px) {
+        padding-left: 20px;
+
+        &::before {
+          width: 12px;
+          height: 12px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        padding-left: 15px;
+
+        &::before {
+          width: 10px;
+          height: 10px;
+        }
+      }
     }
+  }
+}
+
+#btn-back {
+  display: block;
+  margin: 20px auto 0;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken(#28a745, 10%);
+  }
+
+  @media (max-width: 768px) {
+    width: 50%;
+    margin: 10px 0 0;
+    font-size: 0.9em;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8em;
+    padding: 8px 15px;
   }
 }
 
@@ -79,7 +146,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-#btn-back{
-  margin-left: 700px;
 }

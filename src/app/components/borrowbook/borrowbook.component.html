@@ -24,5 +24,6 @@
     <strong>Yazar:</strong> {{ book.author }}<br>
     <strong>Yayınevi:</strong> {{ book.publisher }}<br>
     <strong>Mevcut Durumu:</strong> {{ book.isAvailable ? 'Mevcut' : 'Mevcut Değil' }}<br>
+    <button (click)="removeBorrowedBook(book)">Geri Ver</button> <!-- Geri Ver butonu eklendi -->
   </li>
 </ul>
