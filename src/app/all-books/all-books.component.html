@@ -12,7 +12,7 @@
         <ul *ngIf="books.length > 0; else noBooks" class="book-list">
           <li *ngFor="let book of books" class="book-item">
             <div class="book-cover">
-              <img [src]="book.isbn ? bookService.getBookCoverUrl(book.isbn) : 'assets/placeholder.png'" alt="{{ book.bookName }} cover" />
+              
             </div>
             <div class="book-info">
               <strong>{{ book.bookName }}</strong> by {{ book.author }} (Publisher: {{ book.publisher }})

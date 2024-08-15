@@ -89,7 +89,7 @@ export class AnotherNavbarComponent implements OnInit  {
     await this.getUserName();
 
     if(this.userName){
-      this.router.navigate(["my-books",this.userName])
+      await this.router.navigate(["/my-books",this.userName])
       
     }
     
