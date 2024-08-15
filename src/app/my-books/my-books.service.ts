@@ -13,4 +13,7 @@ import { Observable } from "rxjs";
     getBorrowedBooks(userName: any): Observable<any> {
       return this.http.get(`${this.apiUrl}/GetBorrowBooks?userName=${userName}`);
     }
+    getReadOutBooks(userName: any): Observable<any> {
+      return this.http.get(`${this.apiUrl}/GetReadOutByName?userName=${userName}`);
+    }
 }
