@@ -5,18 +5,18 @@
       <strong>Kitap Adı:</strong> <span>{{ book.bookName }}</span>
       <strong>Yazar:</strong> <span>{{ book.author }}</span>
       <strong>Yayınevi:</strong> <span>{{ book.publisher }}</span>
-      <strong>Mevcut Durumu:</strong> <span>{{ book.isAvailable ? 'Mevcut' : 'Mevcut Değil' }}</span>
+      <!-- <strong>Mevcut Durumu:</strong> <span>{{ book.isAvailable ? 'Mevcut' : 'Mevcut Değil' }}</span> -->
     </li>
   </ul>
 </div>
 <div class="books-container">
-  <h2>{{ 'BORROWED_BOOKS' | translate }}</h2>
+  <h2 id="h2-2">Daha Önce Okunmuş Kitaplar</h2>
   <ul class="book-list">
     <li *ngFor="let book of readOutBooks" class="book-item">
       <strong>Kitap Adı:</strong> <span>{{ book.bookName }}</span>
       <strong>Yazar:</strong> <span>{{ book.author }}</span>
       <strong>Yayınevi:</strong> <span>{{ book.publisher }}</span>
-      <strong>Mevcut Durumu:</strong> <span>{{ book.isAvailable ? 'Mevcut' : 'Mevcut Değil' }}</span>
+      <!-- <strong>Mevcut Durumu:</strong> <span>{{ book.isAvailable ? 'Mevcut' : 'Mevcut Değil' }}</span> -->
     </li>
   </ul>
 </div>

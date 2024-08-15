@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BookService } from '../book.service';
+import { BookService ,Book} from '../components/book/book.service';
 import { FormGroup } from '@angular/forms';
 import { MyBookService } from './my-books.service';
 import { ActivatedRoute } from '@angular/router';
@@ -21,7 +21,8 @@ export class MyBooksComponent implements OnInit {
   constructor(
     private myBookService: MyBookService, 
     private route : ActivatedRoute ,
-    private spinner: NgxSpinnerService  
+    private spinner: NgxSpinnerService ,
+    private bookService: BookService, 
   ) { }
 
   ngOnInit(): void {

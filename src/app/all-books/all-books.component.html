@@ -13,7 +13,7 @@
           <li *ngFor="let book of books" class="book-item">
             <div class="book-info">
               <strong>{{ book.bookName }}</strong> by {{ book.author }} (Publisher: {{ book.publisher }})
-              <p>Available: {{ book.isAvailable ? 'Yes' : 'No' }}</p>
+              <p>Available: {{ book.isAvailable ? '✅' : '❌' }}</p>
             </div>
             <button (click)="viewBookDetails(book.bookName)">View Details</button>
           </li>
