@@ -44,7 +44,7 @@ export class BorrowbookComponent implements OnInit {
   this.borrowbookService.addBorrowedBook(bookDto, this.userName).subscribe({
     next: (response) => {
       this.message = response.message;
-      this.fetchBorrowedBooks
+      this.fetchBorrowedBooks(this.userName)
     },
     error: (error) => {
       this.message = 'Bir hata oluştu: ' + error.message;
