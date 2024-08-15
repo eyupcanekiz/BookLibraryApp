@@ -5,6 +5,7 @@
       <strong>Kitap Adı:</strong> <span>{{ book.bookName }}</span>
       <strong>Yazar:</strong> <span>{{ book.author }}</span>
       <strong>Yayınevi:</strong> <span>{{ book.publisher }}</span>
+      <button (click)="updateBorrowedBook(book)">Okundu</button>
       <!-- <strong>Mevcut Durumu:</strong> <span>{{ book.isAvailable ? 'Mevcut' : 'Mevcut Değil' }}</span> -->
     </li>
   </ul>

@@ -44,7 +44,7 @@ export class BorrowbookComponent implements OnInit {
  }
 
  addBorrowedbook() {
-  const bookDto: BorrowBookByNameDto = { bookNameDto: this.bookName };
+  const bookDto: BorrowBookByNameDto = { bookName: this.bookName };
 
   this.borrowbookService.addBorrowedBook(bookDto, this.userName).subscribe({
     next: (response) => {
@@ -63,7 +63,7 @@ export class BorrowbookComponent implements OnInit {
       return;
     }
 
-    const bookDto: BorrowBookByNameDto = { bookNameDto: book.bookName };
+    const bookDto: BorrowBookByNameDto = { bookName: book.bookName };
 
     this.borrowbookService.removeBorrowedBook(bookDto, this.userName).subscribe(
       response => {
@@ -82,7 +82,7 @@ updateBorrowedBook(book:BorrowedBook) {
     return;
   }
 
-  const bookDto: BorrowBookByNameDto = { bookNameDto: book.bookName };
+  const bookDto: BorrowBookByNameDto = { bookName: book.bookName };
   this.borrowbookService.updateBorrowedBook(bookDto, this.userName).subscribe
   
   (response => {
