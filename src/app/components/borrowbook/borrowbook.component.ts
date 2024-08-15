@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../book/book.model';
-import { BorrowbookService } from '../borrowbook/borrowbook.service';
+import { BorrowBookByNameDto, BorrowbookService } from '../borrowbook/borrowbook.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BorrowBookModel } from './borrowbook.model';
 
 @Component({
   selector: 'app-borrowbook',
@@ -13,8 +12,10 @@ export class BorrowbookComponent implements OnInit {
   borrowForm!: FormGroup;
   borrowedBooks: any[] = [];
   userName: string = 'HalukAyt'; 
-  borrowBookSuccess: boolean = false;bookName:string="";
+  borrowBookSuccess: boolean = false;
+  bookName:string="";
   borrowBookError: boolean = false;
+  message: string = '';
 
   constructor(
     private borrowbookService: BorrowbookService,   
@@ -28,7 +29,6 @@ export class BorrowbookComponent implements OnInit {
   fetchBorrowedBooks(userName: string): void {
     this.borrowbookService.getBorrowedBooks(userName).subscribe(
     (response) => {
-console.log(response.borrowBooks)
      this.borrowedBooks = response.borrowBooks
   
     },
@@ -38,4 +38,33 @@ console.log(response.borrowBooks)
    );
  }
 
+ addBorrowedbook() {
+  const bookDto: BorrowBookByNameDto = { bookName: this.bookName };
+
+  this.borrowbookService.addBorrowedBook(bookDto, this.userName).subscribe({
+    next: (response) => {
+      this.message = response.message;
+      this.fetchBorrowedBooks
+    },
+    error: (error) => {
+      this.message = 'Bir hata oluştu: ' + error.message;
+    }
+  });
+}
+
+removeBorrowedBook(userName: string) {
+  this.borrowbookService.removeBorrowedBook(userName).subscribe(response => {
+    console.log('Başarılı', response);
+  }, error => {
+    console.error('Hata:', error);
+  });
+}
+
+updateBorrowedBook(bookName:string, userName: string) {
+  this.borrowbookService.updateBorrowedBook(bookName, userName).subscribe(response => {
+    console.log('Güncellendi', response);
+  }, error => {
+    console.error('Güncellenemedi', error);
+  });
+}
 }
