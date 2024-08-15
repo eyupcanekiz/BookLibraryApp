@@ -19,7 +19,6 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AnotherNavbarComponent } from './another-navbar/another-navbar.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule, HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
 import { ReturnBookComponent } from './return-book/return-book.component';
@@ -59,7 +58,6 @@ import { AllBookShowComponent } from './all-book-show/all-book-show.component';
     MainLayoutComponent,
     NavbarComponent,
     AnotherNavbarComponent,
-    DashboardComponent,
     ProfileComponent,
     ReturnBookComponent,
     MyBooksComponent,

@@ -2,9 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService, Book } from '../components/book/book.service';
 import { response } from 'express';
-import { error } from 'console';
+import { error, log } from 'console';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AllBookShowService, AllShowBookDto } from './all-book-show.service';
+import { AuthService } from '../components/login/auth.service';
+import { resolve } from 'path';
+import { rejects } from 'assert';
 
 @Component({
   selector: 'app-all-book-show',
@@ -19,7 +22,7 @@ export class AllBookShowComponent implements OnInit {
   publisher:string =""
   bookId: string = '';
   author:string ="";
-  userName:string="Alperen";
+  userName:string="";
   bookNameDto!:AllShowBookDto;
   
   available : boolean = false;
@@ -30,14 +33,17 @@ export class AllBookShowComponent implements OnInit {
     private snackBar:MatSnackBar,
     private allBookShowService:AllBookShowService,
     private router : Router,
+    private authService:AuthService
   
 
   ) {}
 
-  ngOnInit(){
-   
+   async ngOnInit(){
+    await this.getUser();
     const name = this.route.snapshot.paramMap.get('name');
     this.onGetByName(name!);
+    
+   
     
   
    }
@@ -75,6 +81,24 @@ export class AllBookShowComponent implements OnInit {
         
       }
     })
+    
+  }
+  getUser():Promise<void>{
+    return new Promise((resolve,rejects)=>{
+    this.authService.getCurrentUser().subscribe({
+      next:(response)=>{
+        this.userName=response?.userName || ""
+       
+        resolve();
+        
+      },
+      error:()=>{
+       this.snackBar.open("Lütfen giriş yapininiz ","Close",{duration:3000});
+      rejects();        
+      }
+    })
+  })
+
     
   }
 

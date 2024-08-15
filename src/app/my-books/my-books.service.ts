@@ -1,6 +1,7 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { BorrowBookByNameDto } from "../components/borrowbook/borrowbook.service";
 
 @Injectable({
     providedIn: 'root'
@@ -15,5 +16,13 @@ import { Observable } from "rxjs";
     }
     getReadOutBooks(userName: any): Observable<any> {
       return this.http.get(`${this.apiUrl}/GetReadOutByName?userName=${userName}`);
+    }
+    removeBorrowedBook(bookDto: BorrowBookByNameDto, userName: string): Observable<any> {
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+      return this.http.delete(`${this.apiUrl}/RemoveBorrowed`, { 
+        headers: headers, 
+        body: bookDto,
+        params: { userName: userName } 
+      });
     }
 }
