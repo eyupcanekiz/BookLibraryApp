@@ -30,8 +30,8 @@ export class BorrowbookService {
       params: { userName: userName } 
     });
   }
-  updateBorrowedBook(bookName: string, userName: string): Observable<any> {
-    return this.http.put(`${this.apiUrl}/UpdateBorrowedBook?userName=${userName}`, bookName, {
+  updateBorrowedBook(bookDto: BorrowBookByNameDto, userName: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/UpdateBorrowedBook?userName=${userName}`, bookDto, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': '*/*'
