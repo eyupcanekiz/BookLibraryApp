@@ -12,7 +12,7 @@ export class AllBooksComponent implements OnInit {
   errorMessage: string = '';
 
   constructor(
-     private bookService: BookService,
+     public bookService: BookService,
      private router: Router,
      private spinner: NgxSpinnerService  
     ) {}
@@ -26,7 +26,15 @@ export class AllBooksComponent implements OnInit {
     this.bookService.getBooks().subscribe(
       (data: Book[]) => {
         this.books = data;
-   
+        this.books.forEach(book =>{
+          if(!book.isbn){
+            this.bookService.searchBookByTitleAndAuthor(book.bookName,book.author).subscribe(isbn =>{
+              if(isbn){
+                book.isbn = isbn;
+              }
+            })
+          }
+        })
       },
       (error) => {
         this.errorMessage = error.message;
