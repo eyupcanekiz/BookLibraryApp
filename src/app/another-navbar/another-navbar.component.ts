@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { LogoutService } from './logout.service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../components/login/auth.service';
+import { response } from 'express';
+import { error } from 'console';
+import { resolve } from 'path';
+import { rejects } from 'assert';
 
 @Component({
   selector: 'app-another-navbar',
@@ -13,6 +17,7 @@ import { AuthService } from '../components/login/auth.service';
 
 export class AnotherNavbarComponent implements OnInit  {
   userId: string | undefined;
+  userName:string =""
   constructor
   (
     private logoutService : LogoutService,
@@ -34,6 +39,21 @@ export class AnotherNavbarComponent implements OnInit  {
   ngOnInit(): void {
     this.getToken();
   }
+  getUserName():Promise<void>{
+    return new Promise((resolve,rejects) =>{
+     this.authService.getById(this.userId!).subscribe({
+      next:(response) =>{
+          this.userName=response.userName
+          console.log(this.userName);
+          resolve();
+      },
+      error:(error)=>{
+        console.log(error);
+        rejects();
+      }
+     })
+    })
+  }
   getToken(){
     if(typeof window !== 'undefined'){
     const token = localStorage.getItem("AuthToken");
@@ -48,7 +68,7 @@ export class AnotherNavbarComponent implements OnInit  {
   toogleLogout()
   {
     this.logoutService.logout().subscribe({
-      next:(response) =>{
+      next:() =>{
         this.snackBar.open("Oturum başarili bir şekilde kapatildi","Close",{duration:3000});
       },
       error:(error)=>{
@@ -59,9 +79,15 @@ export class AnotherNavbarComponent implements OnInit  {
   }
   navigateToProfile(){
     if(this.userId){
-      this.router.navigate(["/profile",this.userId]);
+      this.router.navigate(["profile",this.userId]);
     }
   
+  }
+  navigateToMyBooks(){
+    this.getUserName();
+    if(this.userName){
+      this.router.navigate(["my-books",this.userName])
+    }
   }
  
 }
