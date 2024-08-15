@@ -72,21 +72,4 @@ export class BookService {
     }
     return throwError(errorMessage);
   }
-  searchBookByTitleAndAuthor(title: string, author: string): Observable<string | null> {
-    const query = `${this.googleBooksApiUrl}${encodeURIComponent(title)}+inauthor:${encodeURIComponent(author)}&key=${this.apiKey}`;
-    return this.http.get(query).pipe(
-      map((response: any) => {
-        if (response.items && response.items.length > 0) {
-          const isbnInfo = response.items[0].volumeInfo.industryIdentifiers.find(
-            (id: any) => id.type === 'ISBN_13' || id.type === 'ISBN_10'
-          );
-          return isbnInfo ? isbnInfo.identifier : null;
-        }
-        return null;
-      })
-    );
-}
-   getBookCoverUrl(isbn: string): string {
-    return `https://covers.openlibrary.org/b/isbn/${isbn}-L.jpg`;
-  }
 }
