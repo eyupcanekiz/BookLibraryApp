@@ -87,9 +87,8 @@ export class AllBookShowComponent implements OnInit {
     return new Promise((resolve,rejects)=>{
     this.authService.getCurrentUser().subscribe({
       next:(response)=>{
-        this.userName!=response?.userName
-        console.log(response?.userName);
-        console.log(this.userName);
+        this.userName=response?.userName || ""
+       
         resolve();
         
       },
