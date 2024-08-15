@@ -53,8 +53,12 @@ export class ProfileComponent implements OnInit {
           localStorage.removeItem("DateNow");
           this.router.navigate(['/login']);
         }
-      } 
-    } 
+      } else {
+       
+      }
+    } else {
+     
+    }
   }
   
   getUser() {
