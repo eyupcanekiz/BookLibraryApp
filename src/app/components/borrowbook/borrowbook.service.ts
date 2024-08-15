@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export interface BorrowBookByNameDto {
-  bookName: string;
+  bookNameDto: string;
 }
 
 @Injectable({
