@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -22,11 +22,13 @@ export class BorrowbookService {
     return this.http.post(`${this.apiUrl}/AddBorrow?userName=${userName}`, bookDto);
   }
 
-  removeBorrowedBook(userName: string): Observable<any> {
-
-   return this.http.delete<string>( `${this.apiUrl}/RemoveBorrowed?userName=${userName}`);
-  
-  
+  removeBorrowedBook(bookDto: BorrowBookByNameDto, userName: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.delete(`${this.apiUrl}/RemoveBorrowed`, { 
+      headers: headers, 
+      body: bookDto,
+      params: { userName: userName } 
+    });
   }
   updateBorrowedBook(bookName: string, userName: string): Observable<any> {
     return this.http.put(`${this.apiUrl}/UpdateBorrowedBook?userName=${userName}`, bookName, {
