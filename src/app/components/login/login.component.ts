@@ -53,8 +53,8 @@ export class LoginComponent implements OnInit {
                 this.authService.getCurrentUser().subscribe(user => {
                   if (user && user.isAdmin) {
                     this.router.navigate(['/admin']);
-                  } else {
-                    this.router.navigate(['/dashbord']);
+                  }if(user) {
+                    this.router.navigate(['all-books']);
                   }
                 });
               },
