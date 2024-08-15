@@ -43,7 +43,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'profile/:id', component: ProfileComponent },
       { path: 'return-book', component: ReturnBookComponent },
-      { path: 'my-books', component: MyBooksComponent },  
+      { path: 'my-books/:name', component: MyBooksComponent },  
       { path: 'return-book', component: ReturnBookComponent },
       { path: 'book', component: BookComponent},
       { path: 'profil-edit/:id', component: ProfilEditComponent},

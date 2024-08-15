@@ -53,12 +53,8 @@ export class ProfileComponent implements OnInit {
           localStorage.removeItem("DateNow");
           this.router.navigate(['/login']);
         }
-      } else {
-        console.log("Token bulunamadı.");
-      }
-    } else {
-      console.log("localStorage erişilemedi.");
-    }
+      } 
+    } 
   }
   
   getUser() {
