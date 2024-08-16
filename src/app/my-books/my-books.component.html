@@ -13,7 +13,7 @@
   </ul>
 </div>
 <div class="books-container">
-  <h2 id="h2-2">Daha Önce Okunmuş Kitaplar</h2>
+  <h2 id="h2-2">{{ 'READOUT_BOOK' | translate }}</h2>
   <ul class="book-list">
     <li *ngFor="let book of readOutBooks" class="book-item">
       <strong>Kitap Adı:</strong> <span>{{ book.bookName }}</span>

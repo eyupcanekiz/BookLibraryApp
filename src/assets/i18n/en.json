@@ -63,5 +63,17 @@
   "EDIT-PROFILE": "Edit Profile",
   "FORGOT_PASSWORD":"Forgot Password?",
   "CART": "MY CART",
-  "ALL_BOOKS": "All Books"
+  "ALL_BOOKS": "All Books",
+  "MALE": "Male",
+  "FEMALE": "Female",
+  "CANCEL": "Cancel",
+  "READOUT_BOOK": "Books you've read before",
+  "AVAILABLE": "Available",
+  "STOCK": "Stock",
+  "REWIEW_BORROW": "Review and Borrow the Book",
+  "RETURN_ALL_BOOKS": "Return to All Books",
+  "PASSWORD1": "Password must be at least 8 characters long.",
+  "PASSWORD2": "Password repetition is required.",
+  "EMAIL1": "A valid email address is required.",
+  "EMAIL2": "EmaIl address"
 }

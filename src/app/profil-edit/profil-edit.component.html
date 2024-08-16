@@ -25,12 +25,12 @@
           <label>
             <input type="radio" [value]="genderType.male" formControlName="Gender"  >
             <span class="checkmark"></span>
-            Male
+            {{ 'MALE' | translate }}
           </label>
           <label>
             <input type="radio" [value]="genderType.female" formControlName="Gender" >
             <span class="checkmark"></span>
-            Female
+            {{ 'FEMALE' | translate }}
           </label>
           
         </div>

@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="all-books-container">
-        <h1>Tüm Kitaplar</h1>
+        <h1>{{ 'ALL_BOOKS' | translate }}</h1>
         <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
       
         <ul *ngIf="books.length > 0; else noBooks" class="book-list">
@@ -17,12 +17,12 @@
             </div>
 
             <div class="book-info">
-              <strong>{{ book.bookName }}</strong> by {{ book.author }} (Yayınevi: {{ book.publisher }})
-              <p>Müsait: {{ book.isAvailable ? '✅' : '❌' }}</p>
-              <p>Stock: {{book.stock}}</p>
+              <strong>{{ book.bookName }}</strong>  {{ book.author }}<br> ({{ 'PUBLISHER' | translate }} {{ book.publisher }})
+              <p>{{ 'AVAILABLE' | translate }} :{{ book.isAvailable ? '✅' : '❌' }}</p>
+              <p>{{ 'STOCK' | translate }} :{{book.stock}}</p>
 
             </div>
-            <button (click)="viewBookDetails(book.bookName)">Kitabı İncele ve Ödünç Al</button>
+            <button (click)="viewBookDetails(book.bookName)">{{ 'REWIEW_BORROW' | translate }}</button>
           </li>
         </ul>
         <ng-template #noBooks>
