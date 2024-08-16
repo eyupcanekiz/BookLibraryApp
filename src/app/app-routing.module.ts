@@ -7,7 +7,6 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ReturnBookComponent } from './return-book/return-book.component';
 import { MyBooksComponent } from './my-books/my-books.component';
@@ -40,7 +39,6 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent , canActivate:[AuthGuard] },
       { path: 'about', component: AboutComponent },
       { path: 'contact', component: ContactComponent},
-      { path: 'dashboard', component: DashboardComponent },
       { path: 'profile/:id', component: ProfileComponent },
       { path: 'return-book', component: ReturnBookComponent },
       { path: 'my-books/:name', component: MyBooksComponent },  
