@@ -2,11 +2,11 @@
   <h2>{{ 'BORROWED_BOOKS' | translate }}</h2>
   <ul class="book-list">
     <li *ngFor="let book of borrowedBooks" class="book-item">
-      <strong>Kitap Adı:</strong> <span>{{ book.bookName }}</span>
-      <strong>Yazar:</strong> <span>{{ book.author }}</span>
-      <strong>Yayınevi:</strong> <span>{{ book.publisher }}</span>
-      <button class="okundu" (click)="updateBorrowedBook(book)">Okundu</button>
-      <button class="iade-et" (click)="removeBorrowedBook(book)">İade Et</button>
+      <strong>{{ 'BOOK_TITLE' | translate }}</strong> <span>{{ book.bookName }}</span>
+      <strong>{{ 'AUTHOR' | translate }}</strong> <span>{{ book.author }}</span>
+      <strong>{{ 'PUBLISHER2' | translate }}</strong> <span>{{ book.publisher }}</span>
+      <button class="okundu" (click)="updateBorrowedBook(book)">{{ 'READ' | translate }}</button>
+      <button class="iade-et" (click)="removeBorrowedBook(book)">{{ 'RETURN' | translate }}</button>
 
       <!-- <strong>Mevcut Durumu:</strong> <span>{{ book.isAvailable ? 'Mevcut' : 'Mevcut Değil' }}</span> -->
     </li>
@@ -16,9 +16,9 @@
   <h2 id="h2-2">{{ 'READOUT_BOOK' | translate }}</h2>
   <ul class="book-list">
     <li *ngFor="let book of readOutBooks" class="book-item">
-      <strong>Kitap Adı:</strong> <span>{{ book.bookName }}</span>
-      <strong>Yazar:</strong> <span>{{ book.author }}</span>
-      <strong>Yayınevi:</strong> <span>{{ book.publisher }}</span>
+      <strong>{{ 'BOOK_TITLE' | translate }}</strong> <span>{{ book.bookName }}</span>
+      <strong>{{ 'AUTHOR' | translate }}</strong> <span>{{ book.author }}</span>
+      <strong>{{ 'PUBLISHER2' | translate }}</strong> <span>{{ book.publisher }}</span>
       <!-- <strong>Mevcut Durumu:</strong> <span>{{ book.isAvailable ? 'Mevcut' : 'Mevcut Değil' }}</span> -->
     </li>
   </ul>

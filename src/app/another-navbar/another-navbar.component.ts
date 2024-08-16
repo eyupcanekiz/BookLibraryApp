@@ -39,6 +39,7 @@ export class AnotherNavbarComponent implements OnInit  {
   }
   ngOnInit(): void {
     this.getToken();
+    this.getUserName(); 
   }
   getUserName():Promise<void>{
     return new Promise((resolve,rejects) =>{
@@ -85,14 +86,9 @@ export class AnotherNavbarComponent implements OnInit  {
   
   }
 
-  async  navigateToMyBooks(){
-    await this.getUserName();
-
-    if(this.userName){
-      await this.router.navigate(["/my-books",this.userName])
-      
-    }
-    
-  }
+  async navigateToMyBooks(){
+    if(this.userName){ // Kullanıcı adı zaten yüklendi.
+      await this.router.navigate(["/my-books",this.userName]);
+    }}
  
 }
