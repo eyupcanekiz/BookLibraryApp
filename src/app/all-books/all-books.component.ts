@@ -17,7 +17,6 @@ export class AllBooksComponent implements OnInit {
   paginatedBooks: Book[] = [];
 
   constructor(
-
      private bookService: BookService,
      private router: Router,
      private spinner: NgxSpinnerService  
@@ -26,27 +25,13 @@ export class AllBooksComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.getAllBooks();
-
-    private bookService: BookService,
-    private router: Router,
-    private spinner: NgxSpinnerService
-  ) { }
-
-
-  ngOnInit(): void {
-    this.spinner.show();
-    this.getAllBooks();
-
-
   }
 
   getAllBooks() {
     this.bookService.getBooks().subscribe(
       (data: Book[]) => {
         this.books = data;
-
         this.filterAndPaginateBooks(); // Arama ve sayfalama işlemini birlikte yap
-
       },
       (error) => {
         this.errorMessage = error.message;
@@ -58,7 +43,6 @@ export class AllBooksComponent implements OnInit {
   }
 
   viewBookDetails(name: string) {
-
     this.router.navigate(['/all-book-show', name]);
   }
   filterAndPaginateBooks() {
@@ -75,14 +59,6 @@ export class AllBooksComponent implements OnInit {
 
   filteredBooks(): Book[] {
     return this.books.filter(book => 
-
-
-
-    this.router.navigate(['/all-book-show', name]);
-  }
-  filteredBooks() {
-    return this.books.filter(book =>
-
       book.bookName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
