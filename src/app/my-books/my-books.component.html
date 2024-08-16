@@ -5,14 +5,15 @@
       <strong>Kitap Adı:</strong> <span>{{ book.bookName }}</span>
       <strong>Yazar:</strong> <span>{{ book.author }}</span>
       <strong>Yayınevi:</strong> <span>{{ book.publisher }}</span>
-      <button (click)="updateBorrowedBook(book)">Okundu</button>
-      <button (click)="removeBorrowedBook(book)">İade Et</button> 
+      <button class="okundu" (click)="updateBorrowedBook(book)">Okundu</button>
+      <button class="iade-et" (click)="removeBorrowedBook(book)">İade Et</button>
+
       <!-- <strong>Mevcut Durumu:</strong> <span>{{ book.isAvailable ? 'Mevcut' : 'Mevcut Değil' }}</span> -->
     </li>
   </ul>
 </div>
 <div class="books-container">
-  <h2 id="h2-2">Daha Önce Okunmuş Kitaplar</h2>
+  <h2 id="h2-2">{{ 'READOUT_BOOK' | translate }}</h2>
   <ul class="book-list">
     <li *ngFor="let book of readOutBooks" class="book-item">
       <strong>Kitap Adı:</strong> <span>{{ book.bookName }}</span>

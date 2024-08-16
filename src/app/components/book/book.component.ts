@@ -14,9 +14,11 @@ export class BookComponent implements OnInit {
     publisher: '',
     author: '',
     isAvailable: false,
+    stock: ''
+    
   };
   errorMessage: string = '';
-  books: any[] = [];
+  books: Book[] = [];
   selectedBook: Book | null = null;
   bookId: string = ''; // To hold the user-entered book ID
   currentPage: number = 1;
@@ -42,6 +44,7 @@ export class BookComponent implements OnInit {
           publisher: '',
           author: '',
           isAvailable: false,
+          stock: ''
         };
         this.getBooks();
       },

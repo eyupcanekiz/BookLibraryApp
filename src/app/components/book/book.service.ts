@@ -9,7 +9,8 @@ export interface Book {
   publisher: string;
   author: string;
   isAvailable: boolean;
-  isbn?: string;
+  stock: string;
+ 
 }
 
 @Injectable({

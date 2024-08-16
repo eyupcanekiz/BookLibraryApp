@@ -1,14 +1,16 @@
 <div class="book-details-container">
   <h1>{{ bookName }}</h1>
   <div class="book-info">
-    <p><strong>Author:</strong> {{ author }}</p>
-    <p><strong>Publisher:</strong> {{ publisher }}</p>
-    <p><strong>Available:</strong> {{ available ? 'Yes' : 'No' }}</p>
+    <p><strong>{{ 'AUTHOR' | translate }}</strong> {{ author }}</p>
+    <p><strong>{{ 'PUBLISHER' | translate }}</strong> {{ publisher }}</p>
+    <p><strong>{{ 'AVAILABLE' | translate }}:</strong> {{ available ? '✅' : '❌' }}</p>
+    <p><strong>{{ 'STOCK' | translate }}:</strong> {{stock}}</p>
+
   </div>
 </div>
-<button type="button" class="btn btn-primary" id="btn-back" routerLink="/all-books">Tüm Kitaplara Geri Dön</button>
+<button type="button" class="btn btn-primary" id="btn-back" routerLink="/all-books">{{ 'RETURN_ALL_BOOKS' | translate }}</button>
 
-<button type="button" class="btn btn-primary" id="btn-back" (click)="borrowBook(bookName)">Kitapı odunc al</button>
+<button type="button" class="btn btn-primary" id="btn-back" (click)="borrowBook(bookName)">{{ 'BORROW_BOOK' | translate }}</button>
 <app-another-navbar></app-another-navbar>
 
 
