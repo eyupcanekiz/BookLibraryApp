@@ -1,5 +1,5 @@
 .all-books-container {
-  max-width: 1200px;
+  max-width: 1000px; /* Maksimum genişliği biraz daralttık */
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -7,6 +7,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   animation: fadeIn 1s ease-in-out;
   margin-top: 50px;
+  position: relative;
 
   h1 {
     text-align: center;
@@ -41,8 +42,8 @@
 
     input[type="text"] {
       width: 100%;
-      max-width: 400px;
-      padding: 10px 15px;
+      max-width: 350px; /* Arama çubuğu genişliğini daralttık */
+      padding: 8px 12px; /* İç boşluğu biraz azalttık */
       font-size: 1em;
       border-radius: 5px;
       border: 1px solid #ccc;
@@ -61,12 +62,12 @@
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Container genişliğini daralttık */
+    gap: 15px; /* Containerlar arasındaki boşluğu azalttık */
 
     .book-item {
       background-color: #ffffff;
-      padding: 15px;
+      padding: 15px; /* İç boşluğu azalttık */
       border-radius: 10px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -84,7 +85,7 @@
         margin-bottom: 10px;
 
         img {
-          width: 150px;
+          width: 150px; /* Fotoğraf genişliğini biraz azalttık */
           height: auto;
           border-radius: 5px;
           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -100,34 +101,83 @@
         text-align: center;
         font-size: 1em;
         color: #333;
+        width: 100%; /* Kutuların genişliği */
         
         strong {
           display: block;
-          font-size: 1.2em;
-          margin-bottom: 5px;
+          font-size: 1.2em; /* Yazı boyutunu biraz azalttık */
+          margin-bottom: 8px;
         }
 
-        p {
-          margin: 0;
-          color: #666;
+        .info-item {
+          background-color: #f0f0f0;
+          padding: 8px; /* İç boşluğu biraz azalttık */
+          border-radius: 5px;
+          margin-bottom: 6px; /* Kutular arasındaki boşluğu azalttık */
+          border: 1px solid #ddd;
+          font-size: 0.9em;
+          color: #555;
+          text-align: left;
         }
       }
 
       button {
-        margin-top: 10px;
-        padding: 5px 4px;
+        margin-top: 8px;
+        padding: 8px 10px; /* Buton boyutunu biraz azalttık */
         background-color: #28a745;
         color: #ffffff;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         font-size: 1em;
-        transition: background-color 0.3s ease;
-        
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
         &:hover {
-          background-color: darken(#28a745, 10%);
+          background-color: #218838;
+          transform: translateY(-3px);
         }
       }
+    }
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 35px; /* Buton boyutunu biraz küçülttük */
+      height: 35px; /* Buton boyutunu biraz küçülttük */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2em; /* Yazı boyutunu küçülttük */
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      margin: 0 10px;
+      
+      &:hover {
+        background-color: #0c4300;
+        transform: translateY(-3px);
+      }
+      
+      &:disabled {
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+    }
+
+    span {
+      font-size: 1.2em;
+      margin: 0 15px;
     }
   }
 }

@@ -80,6 +80,7 @@
   "EMAIL1": "Geçerli bir e-posta adresi gereklidir.",
   "EMAIL2" : "E-Posta Adresi" ,
   "READ": "Okundu",
-  "CATEGORY": "Kategori"
+  "CATEGORY": "Kategori",
+  "REWIEW": "Kitabı İncele"
 
 }
