@@ -4,5 +4,6 @@ export interface Book {
     publisher: string;
     author: string;
     isAvailable: boolean;
+    stock: string;
   }
   

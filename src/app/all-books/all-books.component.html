@@ -19,6 +19,8 @@
             <div class="book-info">
               <strong>{{ book.bookName }}</strong> by {{ book.author }} (Yayınevi: {{ book.publisher }})
               <p>Müsait: {{ book.isAvailable ? '✅' : '❌' }}</p>
+              <p>Stock: {{book.stock}}</p>
+
             </div>
             <button (click)="viewBookDetails(book.bookName)">Kitabı İncele ve Ödünç Al</button>
           </li>
