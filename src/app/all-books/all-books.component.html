@@ -23,6 +23,7 @@
                 <strong>{{ book.bookName }}</strong>  {{ book.author }}<br> ({{ 'PUBLISHER' | translate }} {{ book.publisher }})
                 <p>{{ 'AVAILABLE' | translate }} :{{ book.isAvailable ? '✅' : '❌' }}</p>
                 <p>{{ 'STOCK' | translate }} :{{book.stock}}</p>
+                <p>{{ 'CATEGORY' | translate }} :{{book.category}}</p>
             </div>
             <button (click)="viewBookDetails(book.bookName)">{{book.isAvailable ? 'Kitabı İncele ve Ödünç Al'  : 'Kitabı İncele'}}</button>
         </li>
