@@ -13,15 +13,22 @@
   <div class="login-container">  
     <div class="form-container">  
         <h2>{{ 'LOGIN' | translate }}</h2><br>
+        <div>
+          <span class="link-button" (click)="showEmailForm()" *ngIf="isUsernameFormVisible">E-posta ile giriş yap</span>
+          <span class="link-button" (click)="showUsernameForm()" *ngIf="isEmailFormVisible">Kullanıcı adı ile giriş yap</span>
+        </div><br>
+        
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-            <div class="form-floating mb-3">
+            <div class="form-floating mb-3" *ngIf="isUsernameFormVisible">
               <input type="text" class="form-control" id="floatingInput" formControlName="username" placeholder="{{ 'USERNAME' | translate }}">
               <label for="floatingInput">{{ 'USERNAME' | translate }}</label>
-            </div><br>  
-            <div class="form-floating mb-3">
+              <br>
+            </div> 
+            <div class="form-floating mb-3" *ngIf="isEmailFormVisible">
               <input type="text" class="form-control" id="floatingInput" formControlName="email" placeholder="{{ 'Email' | translate }}">
               <label for="floatingInput">{{ 'EMAIL2' | translate }}</label>
-            </div><br>
+              <br>
+            </div>
             <div class="form-floating">
               <input type="password" class="form-control" id="floatingPassword" formControlName="password" placeholder="{{ 'PASSWORD' | translate }}">
               <label for="floatingPassword">{{ 'PASSWORD' | translate }}</label>
@@ -40,3 +47,21 @@
   <app-navbar></app-navbar>
 </footer>
 </html>
+
+
+<!-- 
+
+
+<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+    <div class="form-floating mb-3" *ngIf="isEmailFormVisible">
+      <input type="text" class="form-control" id="floatingEmail" formControlName="email" placeholder="{{ 'EMAIL2' | translate }}">
+      <label for="floatingEmail">{{ 'EMAIL2' | translate }}</label>
+      <br>  
+    </div>
+
+    <div class="form-floating mb-3" *ngIf="isUsernameFormVisible">
+      <input type="text" class="form-control" id="floatingUsername" formControlName="username" placeholder="{{ 'USERNAME' | translate }}">
+      <label for="floatingUsername">{{ 'USERNAME' | translate }}</label>
+      <br>
+    </div> -->
