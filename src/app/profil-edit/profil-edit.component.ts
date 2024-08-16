@@ -31,7 +31,6 @@ export class ProfilEditComponent implements OnInit {
     ngOnInit(): void {
      
       this.profileEditForm= this.fb.group({
-        userName:["",[Validators.required]],
         fullName:[""],
         email:["",[Validators.email]],
         Gender:['other']
@@ -40,6 +39,8 @@ export class ProfilEditComponent implements OnInit {
         this.userId= params.get('id')!;
       })
       this.getUser();
+   
+
     }
     getUser(){
       let genderSelect=0;
@@ -52,14 +53,14 @@ export class ProfilEditComponent implements OnInit {
       this.authService.getById(this.userId).subscribe({
         next:(response)=>{
           const profileUpdateModel : ProfileEditModel={
-            userName:response.userName,
+         
             email:response.email,
             fullName:response.fullName,
             Gender:genderSelect,
 
           }
           this.profileEditForm.patchValue({
-            userName: profileUpdateModel.userName,
+          
             email: profileUpdateModel.email,
             fullName: profileUpdateModel.fullName,
             Gender: profileUpdateModel.Gender
@@ -74,8 +75,8 @@ export class ProfilEditComponent implements OnInit {
    
     onUpdate():void{
       if(this.profileEditForm.valid){
-        const{ userName,fullName,email,Gender}=this.profileEditForm.value;
-        const profileeditmodel:ProfileEditModel={userName,fullName,email,Gender};
+        const{ fullName,email,Gender}=this.profileEditForm.value;
+        const profileeditmodel:ProfileEditModel={fullName,email,Gender};
         console.log(profileeditmodel);
         
         this.profileEditService.profileEdit(profileeditmodel,this.userId).subscribe({
