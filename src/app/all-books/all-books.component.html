@@ -17,11 +17,12 @@
             </div>
 
             <div class="book-info">
-              <strong>{{ book.bookName }}</strong> by {{ book.author }} (Publisher: {{ book.publisher }})
-              <p>Available: {{ book.isAvailable ? '✅' : '❌' }}</p>
+              <strong>{{ book.bookName }}</strong> by {{ book.author }} (Yayınevi: {{ book.publisher }})
+              <p>Müsait: {{ book.isAvailable ? '✅' : '❌' }}</p>
               <p>Stock: {{book.stock}}</p>
+
             </div>
-            <button (click)="viewBookDetails(book.bookName)">View Details</button>
+            <button (click)="viewBookDetails(book.bookName)">Kitabı İncele ve Ödünç Al</button>
           </li>
         </ul>
         <ng-template #noBooks>

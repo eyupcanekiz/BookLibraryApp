@@ -21,7 +21,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AnotherNavbarComponent } from './another-navbar/another-navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HttpClientModule, HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
-import { ReturnBookComponent } from './return-book/return-book.component';
 import { MyBooksComponent } from './my-books/my-books.component';
 import { BookModule } from './components/book/book.module'; //BookModule
 import { BookService } from './components/book/book.service';//bookservice
@@ -32,13 +31,10 @@ import { BorrowbookModule } from './components/borrowbook/borrowbook.module';
 import { VerificationEnterComponent } from './verification-enter/verification-enter.component';
 import { AdminComponent } from './admin/admin.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
-
 import { CommonModule } from '@angular/common';
-
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyPasswordComponent } from './components/verify-password/verify-password.component';
-
 import { AllBooksComponent } from './all-books/all-books.component';
 import { AllBookShowComponent } from './all-book-show/all-book-show.component';
 
@@ -59,7 +55,6 @@ import { AllBookShowComponent } from './all-book-show/all-book-show.component';
     NavbarComponent,
     AnotherNavbarComponent,
     ProfileComponent,
-    ReturnBookComponent,
     MyBooksComponent,
     ProfilEditComponent,
     VerificationEnterComponent,
