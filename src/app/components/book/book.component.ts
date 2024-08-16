@@ -14,7 +14,9 @@ export class BookComponent implements OnInit {
     publisher: '',
     author: '',
     isAvailable: false,
-    stock: ''
+    stock: '',
+    coverImageUrl: "",
+    category: ""
     
   };
   errorMessage: string = '';
@@ -44,7 +46,9 @@ export class BookComponent implements OnInit {
           publisher: '',
           author: '',
           isAvailable: false,
-          stock: ''
+          stock: '',
+          coverImageUrl: "",
+          category: ""
         };
         this.getBooks();
       },
@@ -107,4 +111,5 @@ export class BookComponent implements OnInit {
       this.setPaginated();
     }
   }
+  categories: string[] = ['Fiction', 'Non-fiction', 'Science Fiction', 'Biography', 'History', 'Fantasy', 'Mystery', 'Romance', 'Horror'];
 }
