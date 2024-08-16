@@ -24,7 +24,7 @@ export class AllBookShowComponent implements OnInit {
   author:string ="";
   userName:string="";
   bookNameDto!:AllShowBookDto;
-  
+  stock: any;
   available : boolean = false;
   book: Book | null = null;
   constructor(
@@ -55,6 +55,7 @@ export class AllBookShowComponent implements OnInit {
           this.publisher =response.publisher
           this.author =response.author
           this.available=response.isAvailable
+          this.stock = response.stock
       
         },
         error:(error) =>{
