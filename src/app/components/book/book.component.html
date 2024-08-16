@@ -28,6 +28,14 @@
       <input id="coverImageUrl" [(ngModel)]="newBook.coverImageUrl" name="coverImageUrl" required>
     </div>
     <div>
+      <label for="category">Category</label>
+      <select id="category" [(ngModel)]="newBook.category" name="category" required>
+        <option value="" disabled selected>Select a category</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+    
+    <div>
       <label>
         <input type="checkbox" [(ngModel)]="newBook.isAvailable" name="isAvailable">
         Available

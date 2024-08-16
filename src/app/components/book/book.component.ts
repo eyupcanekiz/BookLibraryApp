@@ -15,7 +15,8 @@ export class BookComponent implements OnInit {
     author: '',
     isAvailable: false,
     stock: '',
-    coverImageUrl: ""
+    coverImageUrl: "",
+    category: ""
     
   };
   errorMessage: string = '';
@@ -46,7 +47,8 @@ export class BookComponent implements OnInit {
           author: '',
           isAvailable: false,
           stock: '',
-          coverImageUrl: ""
+          coverImageUrl: "",
+          category: ""
         };
         this.getBooks();
       },
@@ -109,4 +111,5 @@ export class BookComponent implements OnInit {
       this.setPaginated();
     }
   }
+  categories: string[] = ['Fiction', 'Non-fiction', 'Science Fiction', 'Biography', 'History', 'Fantasy', 'Mystery', 'Romance', 'Horror'];
 }
