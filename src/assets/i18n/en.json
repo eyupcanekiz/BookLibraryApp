@@ -77,5 +77,6 @@
   "EMAIL1": "A valid email address is required.",
   "EMAIL2": "EmaIl address",
   "PUBLISHER2": "Publisher",
-  "READ": "Read"
+  "READ": "Read",
+  "CATEGORY": "Category"
 }
