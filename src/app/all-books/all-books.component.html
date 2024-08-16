@@ -13,7 +13,7 @@
           <li *ngFor="let book of books" class="book-item">
 
             <div class="book-cover">
-              
+              <img src="https://i.dr.com.tr/cache/154x170-0/originals/0002122599001-1.jpg" alt="">
             </div>
 
             <div class="book-info">
@@ -22,7 +22,7 @@
               <p>{{ 'STOCK' | translate }} :{{book.stock}}</p>
 
             </div>
-            <button (click)="viewBookDetails(book.bookName)">{{ 'REWIEW_BORROW' | translate }}</button>
+            <button (click)="viewBookDetails(book.bookName)">{{book.isAvailable ? 'Kitabı İncele ve Ödünç Al'  : 'Kitabı İncele'}}</button>
           </li>
         </ul>
         <ng-template #noBooks>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookService, Book } from '../components/book/book.service'; // Doğru yolu kontrol edin
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+
 @Component({
   selector: 'app-all-books',
   templateUrl: './all-books.component.html',
@@ -20,6 +21,7 @@ export class AllBooksComponent implements OnInit {
   ngOnInit(): void {
     this.spinner.show();
     this.getAllBooks();
+    
   }
 
   getAllBooks() {
@@ -38,7 +40,7 @@ export class AllBooksComponent implements OnInit {
   }
 
   viewBookDetails(name: string) {
-
+    
     
     this.router.navigate(['/all-book-show',name]);
   }

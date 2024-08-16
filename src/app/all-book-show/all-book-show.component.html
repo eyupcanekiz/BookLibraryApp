@@ -10,7 +10,7 @@
 </div>
 <button type="button" class="btn btn-primary" id="btn-back" routerLink="/all-books">{{ 'RETURN_ALL_BOOKS' | translate }}</button>
 
-<button type="button" class="btn btn-primary" id="btn-back" (click)="borrowBook(bookName)">{{ 'BORROW_BOOK' | translate }}</button>
+<button *ngIf="available" type="button" class="btn btn-primary" id="btn-back" (click)="borrowBook(bookName)">{{ 'BORROW_BOOK' | translate }}</button>
 <app-another-navbar></app-another-navbar>
 
 

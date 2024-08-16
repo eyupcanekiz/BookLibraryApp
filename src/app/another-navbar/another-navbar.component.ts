@@ -45,7 +45,7 @@ export class AnotherNavbarComponent implements OnInit  {
      this.authService.getById(this.userId!).subscribe({
       next:(response) =>{
           this.userName=response.userName
-          console.log(this.userName);
+        
           resolve();
       },
       error:(error)=>{
