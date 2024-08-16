@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required]],
+      email: [''],
+      username: [''],
       password: ['', Validators.required]
     });
   }
@@ -39,13 +40,12 @@ export class LoginComponent implements OnInit {
   }
   onLogin() {
     if (this.loginForm.valid) {
-      const { username, password } = this.loginForm.value;
-      this.authService.login(username, password).subscribe({
+      const {email, username, password } = this.loginForm.value;
+      this.authService.login(email,username, password).subscribe({
         next: (response) => {
           this.snackBar.open('Login successful', 'Close', { duration: 3000 });
 
           if (response.authenticateResult) {
-            // Kullanıcı bilgilerini yerel depolamaya kaydedin
             this.authService.getToken().subscribe({
               next: (token) => {
                 localStorage.setItem("AuthToken", token);
