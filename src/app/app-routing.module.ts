@@ -8,7 +8,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ReturnBookComponent } from './return-book/return-book.component';
 import { MyBooksComponent } from './my-books/my-books.component';
 import { AuthGuard } from './components/login/auth.guard';
 import { BookComponent } from './components/book/book.component';
@@ -20,14 +19,10 @@ import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from './admin.guard';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { AppComponent } from './app.component';
-
-
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyPasswordComponent } from './components/verify-password/verify-password.component';
 import { AllBookShowComponent } from './all-book-show/all-book-show.component';
 import { AllBooksComponent } from './all-books/all-books.component';
-
-
 
 const routes: Routes = [
   {
@@ -35,42 +30,38 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       { path: '', component: HomeComponent },
-      { path: 'register', component: RegisterComponent,canActivate:[AuthGuard] },
-      { path: 'login', component: LoginComponent , canActivate:[AuthGuard] },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        canActivate: [AuthGuard],
+      },
+      { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
       { path: 'about', component: AboutComponent },
-      { path: 'contact', component: ContactComponent},
+      { path: 'contact', component: ContactComponent },
       { path: 'profile/:id', component: ProfileComponent },
-      { path: 'return-book', component: ReturnBookComponent },
-      { path: 'my-books/:name', component: MyBooksComponent },  
-      { path: 'return-book', component: ReturnBookComponent },
-      { path: 'book', component: BookComponent},
-      { path: 'profil-edit/:id', component: ProfilEditComponent},
-      { path: 'borrowbook', component: BorrowbookComponent},
-      { path: 'verification-enter', component: VerificationEnterComponent},
-    
+      { path: 'my-books/:name', component: MyBooksComponent },
+      { path: 'book', component: BookComponent },
+      { path: 'profil-edit/:id', component: ProfilEditComponent },
+      { path: 'borrowbook', component: BorrowbookComponent },
+      { path: 'verification-enter', component: VerificationEnterComponent },
       { path: 'reset-password/:name', component: ResetPasswordComponent },
-      { path: 'forgot-password', component:ForgotPasswordComponent},
-      { path: 'verify-password/:name', component:VerifyPasswordComponent},
+      { path: 'forgot-password', component: ForgotPasswordComponent },
+      { path: 'verify-password/:name', component: VerifyPasswordComponent },
       { path: 'all-books', component: AllBooksComponent },
       { path: 'all-book-show/:name', component: AllBookShowComponent },
-
-
-
-    ]
+    ],
   },
   {
-
     path: '',
     component: MainLayoutComponent,
     children: [
       { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
       { path: 'not-authorized', component: NotAuthorizedComponent },
-    ]
-  }
- 
+    ],
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
