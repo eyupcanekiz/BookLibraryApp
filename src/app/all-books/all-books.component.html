@@ -14,6 +14,7 @@
             <div class="book-info">
               <strong>{{ book.bookName }}</strong> by {{ book.author }} (Publisher: {{ book.publisher }})
               <p>Available: {{ book.isAvailable ? '✅' : '❌' }}</p>
+              <p>Stock: {{book.stock}}</p>
             </div>
             <button (click)="viewBookDetails(book.bookName)">View Details</button>
           </li>
