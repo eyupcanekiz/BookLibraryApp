@@ -14,7 +14,8 @@ export class BookComponent implements OnInit {
     publisher: '',
     author: '',
     isAvailable: false,
-    stock: ''
+    stock: '',
+    coverImageUrl: ""
     
   };
   errorMessage: string = '';
@@ -44,7 +45,8 @@ export class BookComponent implements OnInit {
           publisher: '',
           author: '',
           isAvailable: false,
-          stock: ''
+          stock: '',
+          coverImageUrl: ""
         };
         this.getBooks();
       },

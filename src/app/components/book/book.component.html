@@ -18,6 +18,15 @@
       <label for="author">Author</label>
       <input id="author" [(ngModel)]="newBook.author" name="author" required>
     </div>
+   
+    <div>
+      <label for="stock">Stock</label>
+      <input id="stock" [(ngModel)]="newBook.stock" name="stock" required>
+    </div>
+    <div>
+      <label for="coverImageUrl">CoverImageUrl</label>
+      <input id="coverImageUrl" [(ngModel)]="newBook.coverImageUrl" name="coverImageUrl" required>
+    </div>
     <div>
       <label>
         <input type="checkbox" [(ngModel)]="newBook.isAvailable" name="isAvailable">

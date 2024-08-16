@@ -2,35 +2,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
 </head>
 <body>
-    <div class="all-books-container">
-        <h1>{{ 'ALL_BOOKS' | translate }}</h1>
-        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-      
-        <ul *ngIf="books.length > 0; else noBooks" class="book-list">
-          <li *ngFor="let book of books" class="book-item">
+  <div class="all-books-container">
+    <h1>{{ 'ALL_BOOKS' | translate }}</h1>
+    
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Kitap ismi ile arayın">
+    </div>
 
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <ul *ngIf="filteredBooks().length > 0; else noBooks" class="book-list">
+        <li *ngFor="let book of filteredBooks()" class="book-item">
             <div class="book-cover">
-              <img [src]="book.coverImageUrl" alt="Book Cover">
+                <img [src]="book.coverImageUrl" alt="Book Cover">
             </div>
-
             <div class="book-info">
-              <strong>{{ book.bookName }}</strong>  {{ book.author }}<br> ({{ 'PUBLISHER' | translate }} {{ book.publisher }})
-              <p>{{ 'AVAILABLE' | translate }} :{{ book.isAvailable ? '✅' : '❌' }}</p>
-              <p>{{ 'STOCK' | translate }} :{{book.stock}}</p>
-
+                <strong>{{ book.bookName }}</strong>  {{ book.author }}<br> ({{ 'PUBLISHER' | translate }} {{ book.publisher }})
+                <p>{{ 'AVAILABLE' | translate }} :{{ book.isAvailable ? '✅' : '❌' }}</p>
+                <p>{{ 'STOCK' | translate }} :{{book.stock}}</p>
             </div>
             <button (click)="viewBookDetails(book.bookName)">{{book.isAvailable ? 'Kitabı İncele ve Ödünç Al'  : 'Kitabı İncele'}}</button>
-          </li>
-        </ul>
-        <ng-template #noBooks>
-          <p>Kitap bulunamadı.</p>
-        </ng-template>
-      </div>
+        </li>
+    </ul>
+    <ng-template #noBooks>
+        <p>Kitap bulunamadı.</p>
+    </ng-template>
+</div>
       
     <app-another-navbar></app-another-navbar>
-    
 </body>
 </html>

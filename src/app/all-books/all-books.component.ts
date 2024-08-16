@@ -11,12 +11,13 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class AllBooksComponent implements OnInit {
   books: Book[] = [];
   errorMessage: string = '';
-
+  searchTerm: string = '';
   constructor(
      private bookService: BookService,
      private router: Router,
      private spinner: NgxSpinnerService  
     ) {}
+  
 
   ngOnInit(): void {
     this.spinner.show();
@@ -45,5 +46,10 @@ export class AllBooksComponent implements OnInit {
     
     
     this.router.navigate(['/all-book-show',name]);
+  }
+  filteredBooks() {
+    return this.books.filter(book => 
+      book.bookName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 }
