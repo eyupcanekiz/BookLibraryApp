@@ -43,6 +43,7 @@ export class AllBookShowComponent implements OnInit {
     await this.getUser();
     const name = this.route.snapshot.paramMap.get('name');
     this.onGetByName(name!);
+ 
     
    
     

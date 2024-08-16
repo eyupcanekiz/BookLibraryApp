@@ -11,8 +11,10 @@ export interface AllShowBookDto {
 
 export class AllBookShowService{
     private apiUrl = 'https://booklibaryapi.azurewebsites.net/api/BorrowBook';
+
     constructor(private http : HttpClient){}
 addBorrowedBook(bookDto: AllShowBookDto, userName: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/AddBorrow?userName=${userName}`, bookDto);
   }
+
 }
