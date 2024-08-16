@@ -13,7 +13,7 @@
           <li *ngFor="let book of books" class="book-item">
 
             <div class="book-cover">
-              <img src="https://i.dr.com.tr/cache/154x170-0/originals/0002122599001-1.jpg" alt="">
+              <img [src]="book.coverImageUrl" alt="Book Cover">
             </div>
 
             <div class="book-info">

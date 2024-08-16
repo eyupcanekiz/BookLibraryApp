@@ -50,7 +50,7 @@ export class AnotherNavbarComponent implements OnInit  {
           resolve();
       },
       error:(error)=>{
-        console.log(error);
+      
         rejects();
       }
      })

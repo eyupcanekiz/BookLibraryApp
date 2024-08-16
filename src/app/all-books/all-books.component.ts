@@ -28,6 +28,8 @@ export class AllBooksComponent implements OnInit {
     this.bookService.getBooks().subscribe(
       (data: Book[]) => {
         this.books = data;
+        console.log(data);
+        
    
       },
       (error) => {
