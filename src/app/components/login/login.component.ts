@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   passwordFieldType: string = 'password';
   dateNow!: string;
-
+  isEmailFormVisible: boolean = true;  // Başlangıçta e-posta formunu gösterir
+  isUsernameFormVisible: boolean = false;
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
     this.loginForm = this.fb.group({
       email: [''],
       username: [''],
@@ -37,6 +39,16 @@ export class LoginComponent implements OnInit {
     let now = new Date();
     now.setMinutes(now.getMinutes() + minutes);
     this.dateNow = this.datePipe.transform(now, 'yyyy-MM-dd HH:mm:ss')!;
+  }
+
+  showEmailForm() {
+    this.isEmailFormVisible = true;
+    this.isUsernameFormVisible = false;
+  }
+
+  showUsernameForm() {
+    this.isEmailFormVisible = false;
+    this.isUsernameFormVisible = true;
   }
   onLogin() {
     if (this.loginForm.valid) {
