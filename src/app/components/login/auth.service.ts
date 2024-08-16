@@ -23,8 +23,8 @@ export class AuthService {
 
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
-  public login(username: string, password: string): Observable<LoginResponse> {
-    const loginData: LoginModel = { username, password };
+  public login(email:string,username: string, password: string): Observable<LoginResponse> {
+    const loginData: LoginModel = {email, username, password };
     return this.http.post<LoginResponse>(this.loginUrl, loginData, {
       withCredentials: true,
     });
