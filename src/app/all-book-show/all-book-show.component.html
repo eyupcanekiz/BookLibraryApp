@@ -4,6 +4,8 @@
     <p><strong>{{ 'AUTHOR' | translate }}</strong> {{ author }}</p>
     <p><strong>{{ 'PUBLISHER' | translate }}</strong> {{ publisher }}</p>
     <p><strong>{{ 'AVAILABLE' | translate }}:</strong> {{ available ? '✅' : '❌' }}</p>
+    <p><strong>{{ 'STOCK' | translate }}:</strong> {{stock}}</p>
+
   </div>
 </div>
 <button type="button" class="btn btn-primary" id="btn-back" routerLink="/all-books">{{ 'RETURN_ALL_BOOKS' | translate }}</button>

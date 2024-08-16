@@ -4,10 +4,6 @@
 <div class="profile-container">
   <form [formGroup] ="profileEditForm" (ngSubmit)="onUpdate()">      
       <div class="profile-details">
-        <div class="detail-item">
-          <label for="userName">{{ 'USER_NAME' | translate }}:</label>
-          <input id="userName" formControlName="userName"  type="text" class="form-control" >
-        </div>
         
         <div class="detail-item">
           <label for="fullName">{{ 'FULL_NAME' | translate }}:</label>
