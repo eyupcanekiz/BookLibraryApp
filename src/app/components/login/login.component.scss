@@ -46,7 +46,9 @@ body {
         max-width: 100%; /* Küçük ekranlarda tam genişlik */
         padding: 20px; /* Küçük ekranlar için padding azaltma */
     }
-
+.link-button{
+    cursor: pointer;
+}
 }  
 
 #loginphoto {  
