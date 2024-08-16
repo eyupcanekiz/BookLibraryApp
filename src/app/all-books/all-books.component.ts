@@ -13,16 +13,16 @@ export class AllBooksComponent implements OnInit {
   errorMessage: string = '';
   searchTerm: string = '';
   constructor(
-     private bookService: BookService,
-     private router: Router,
-     private spinner: NgxSpinnerService  
-    ) {}
-  
+    private bookService: BookService,
+    private router: Router,
+    private spinner: NgxSpinnerService
+  ) { }
+
 
   ngOnInit(): void {
     this.spinner.show();
     this.getAllBooks();
-    
+
   }
 
   getAllBooks() {
@@ -31,7 +31,6 @@ export class AllBooksComponent implements OnInit {
         this.books = data;
        
         
-   
       },
       (error) => {
         this.errorMessage = error.message;
@@ -43,12 +42,12 @@ export class AllBooksComponent implements OnInit {
   }
 
   viewBookDetails(name: string) {
-    
-    
-    this.router.navigate(['/all-book-show',name]);
+
+
+    this.router.navigate(['/all-book-show', name]);
   }
   filteredBooks() {
-    return this.books.filter(book => 
+    return this.books.filter(book =>
       book.bookName.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
