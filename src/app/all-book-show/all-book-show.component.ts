@@ -23,6 +23,7 @@ export class AllBookShowComponent implements OnInit {
   bookId: string = '';
   author:string ="";
   userName:string="";
+  description:string="";
   coverImageUrl :string =""
   bookNameDto!:AllShowBookDto;
   stock: any;
@@ -59,6 +60,7 @@ export class AllBookShowComponent implements OnInit {
           this.available=response.isAvailable
           this.stock = response.stock
           this.coverImageUrl = response.coverImageUrl
+          this.description= response.description
       
         },
         error:(error) =>{

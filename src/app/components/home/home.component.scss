@@ -28,11 +28,10 @@
 
     .info-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.6); /* Yarı saydam siyah katman */
+      top: 50%; /* Ortaya hizalama */
+      left: 50%; /* Ortaya hizalama */
+      transform: translate(-50%, -50%); /* Gerçekten ortada olması için */
+      
       display: flex;
       justify-content: center;
       align-items: center;
@@ -40,23 +39,22 @@
       font-size: 1.5em;
       font-weight: bold;
       text-transform: uppercase;
-      opacity: 0;
-      transition: opacity 0.3s ease;
+      padding: 10px 20px;
+      letter-spacing: 2px;
+      opacity: 1; /* Opaklık başlangıçta 1 olacak */
+      transition: none; /* Hover durumunda değişiklik olmayacak */
 
       span {
+        background-color: black; /* Sarı arka plan */
         padding: 10px 20px;
-        background-color: #f0d105; /* Sarı arka plan */
         border-radius: 5px;
-        color: #343a40;
+        color: #ffffff;
         font-family: 'Bebas Neue', sans-serif;
       }
     }
-
-    &:hover .info-overlay {
-      opacity: 1;
-    }
   }
 }
+
 
 .floating-button {
   position: fixed;
@@ -120,6 +118,68 @@
   height: 60px;
   border-radius: 30px;
 }
-footer{
-  padding-top: 0;
+.footer {
+  background-color: #343a40;
+  color: #fff;
+  padding: 40px 0;
+  font-size: 0.9em;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-column h4 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.footer-column p,
+.footer-column ul,
+.footer-column li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+  color: #f0d105;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #ffd700;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.8em;
+}
+
+.footer-bottom p {
+  margin: 0;
 }

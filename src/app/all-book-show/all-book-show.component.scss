@@ -23,8 +23,9 @@
     &::after {
       content: '';
       position: absolute;
-      width: 80px;
+      width: 300px;
       height: 4px;
+      margin-left: 120px;
       background-color: #28a745;
       left: 50%;
       transform: translateX(-50%);
@@ -33,9 +34,9 @@
       transition: width 0.3s ease;
     }
 
-    &:hover::after {
-      width: 100%;
-    }
+    // &:hover::after {
+    //   width: 100%;
+    // }
 
     @media (max-width: 768px) {
       font-size: 2em;
@@ -147,3 +148,16 @@
     transform: translateY(0);
   }
 }
+#bookimg {
+  width: 200px;
+  height: 350px;
+  float: left; /* Görseli sola hizala */
+  margin-right: 20px; /* Görsel ve açıklama arasında boşluk */
+}
+
+.book-description {
+  font-size: 1.2em;
+  color: #555;
+  line-height: 1.6;
+}
+
