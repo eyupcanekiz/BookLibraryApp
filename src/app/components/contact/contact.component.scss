@@ -1,4 +1,4 @@
-$primary-color: #007BFF;
+$primary-color: #ffc202;
 $secondary-color: #6C757D;
 $background-color: #555555;
 $form-background-color: #FFFFFF;
@@ -8,19 +8,22 @@ $button-hover-color: darken($primary-color, 10%);
 $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
 .body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:"Bebas Neue", sans-serif; 
   margin: 0;
   padding: 0;
-  background-color: #555555;
+  background-color: white;
   
+ 
+ 
 }
 .contact-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #555555;
-
+  background-color: white; 
+  font-family:"Bebas Neue", sans-serif;
+  background-image: url('https://www.ultraimagehub.com/wallpapers/tr:flp-false,gx-0.5,gy-1,q-75,rh-3264,rw-5824,th-1080,tw-1920/1226413365396766801.jpeg');
   .contact-form {
     background-color: #fff;
     padding: 30px;
@@ -29,11 +32,20 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
     margin-top: 70px;
+    background-color: #90969c;
+    input{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    
+    
     
 
     h2 {
       text-align: center;
       margin-bottom: 20px;
+      font-family:"Bebas Neue", sans-serif;
+    
     }
 
     .form-group {
@@ -61,6 +73,6 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
   }
 }
-.footer{
-  background-color:#555555 ;
+footer{
+  padding-top: 0;
 }

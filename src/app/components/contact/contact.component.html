@@ -27,7 +27,7 @@
           <label for="message">{{ 'MESSAGE' | translate }}</label>
           <textarea id="message" formControlName="Message" class="form-control" rows="4" required></textarea>
         </div>
-        <button type="submit" class="btn btn-success" [disabled]="contactForm.invalid">{{ 'SUBMIT' | translate }}</button>
+        <button type="submit" class="btn btn-warning" [disabled]="contactForm.invalid">{{ 'SUBMIT' | translate }}</button>
       </form>
     </div>
   </div>

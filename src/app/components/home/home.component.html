@@ -7,89 +7,32 @@
 <body>
   <app-carousel></app-carousel>
 
-  <div class="container">
-    <div class="section">
-      <h2>{{ 'BOOKS_IN_STOCK' | translate }}</h2>
-      <ul>
-        <li class="book-item">
-          <img src="assets/images/don-kisot.jpg" alt="{{ 'DON_QUIXOTE' | translate }}" loading="lazy">
-          <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">{{ 'DON_QUIXOTE' | translate }}</span>
-            <a class="btn btn-success book-button" routerLink="/login">{{ 'BORROW' | translate }}</a>
-          </div>
-        </li>
-        <li class="book-item">
-          <img src="assets/images/kucuk-prens.jpg" alt="{{ 'LITTLE_PRINCE' | translate }}"loading="lazy">
-          <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">{{ 'LITTLE_PRINCE' | translate }}</span>
-            <a class="btn btn-success book-button" routerLink="/login">{{ 'BORROW' | translate }}</a>
-          </div>
-        </li>
-        <li class="book-item">
-          <img src="assets/images/nutuk.jpg" alt="{{ 'GREAT_SPEECH' | translate }}"loading="lazy">
-          <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">{{ 'GREAT_SPEECH' | translate }}</span>
-            <a class="btn btn-success book-button" routerLink="/login">{{ 'BORROW' | translate }}</a>
-          </div>
-        </li>
-      </ul>
+  <div class="info-sections">
+    <div class="info-section" routerLink="/all-books">
+      <img src="assets/images/booklibrary4.jpg" alt="Kitaplar">
+      <div class="info-overlay">
+        <span>KİTAPLAR</span>
+      </div>
     </div>
-    <div class="section">
-      <h2>{{ 'BOOKS_COMING_SOON' | translate }}</h2>
-      <ul>
-        <li class="book-item">
-          <img src="assets/images/anna-karenina.jpg" alt="{{ 'ANNA_KARENINA' | translate }}"loading="lazy">
-          <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">{{ 'ANNA_KARENINA' | translate }}</span>
-            <a class="btn btn-success book-button " routerLink="/login">{{ 'PRE_ORDER' | translate }}</a>
-          </div>
-        </li>
-        <li class="book-item">
-          <img src="assets/images/suc-ve-ceza.jpg" alt="{{ 'CRIME_PUNISHMENT' | translate }}"loading="lazy">
-          <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">{{ 'CRIME_PUNISHMENT' | translate }}</span>
-            <a class="btn btn-success book-button" routerLink="/login">{{ 'PRE_ORDER' | translate }}</a>
-          </div>
-        </li>
-        <li class="book-item">
-          <img src="assets/images/sefiller.jpg" alt="{{ 'LES_MISERABLES' | translate }}"loading="lazy">
-          <div class="book-details">
-            <span class="badge rounded-pill text-bg-secondary">{{ 'LES_MISERABLES' | translate }}</span>
-            <a class="btn btn-success book-button" routerLink="/login">{{ 'PRE_ORDER' | translate }}</a>
-          </div>
-        </li>
-      </ul>
+    <div class="info-section" routerLink="/about">
+      <img src="assets/images/about.jpg" alt="Hakkımızda">
+      <div class="info-overlay">
+        <span>HAKKIMIZDA</span>
+      </div>
     </div>
-    <div class="section">
-      <h2>{{ 'HOW_TO_GET_BOOKS' | translate }}</h2>
-      <ul>
-        <li>
-          <a class="btn btn-success " routerLink="/register">{{ 'REGISTER' | translate }}</a>
-        </li>
-        <li>
-          <a class="btn btn-success " routerLink="/login">{{ 'LOGIN' | translate }}</a>
-        </li>
-        <ng-container *ngIf="!isLoggedIn">
-        <li>
-          <a class="btn btn-success " routerLink="/dashboard">{{ 'BORROW_BOOK' | translate }}</a>
-        </li>
-        </ng-container>
-        <ng-container *ngIf="isLoggedIn">
-          <li>
-            <a class="btn btn-success " routerLink="/login">{{ 'BORROW_BOOK' | translate }}</a>
-          </li>
-          </ng-container>
-          <ng-container *ngIf="!isLoggedIn">
-        <li>
-          <a class="btn btn-success " routerLink="/return-book">{{ 'RETURN_BOOK' | translate }}</a>
-        </li>
-      </ng-container> 
-      <ng-container *ngIf="isLoggedIn">
-        <li>
-          <a class="btn btn-success " routerLink="/login">{{ 'RETURN_BOOK' | translate }}</a>
-        </li>
-      </ng-container> 
-      </ul>
+    <div class="info-section" routerLink="/contact">
+      <img src="assets/images/contact.jpg" alt="İletişim">
+      <div class="info-overlay">
+        <span>İLETİŞİM</span>
+      </div>
+    </div>
+  </div>
+  <div class="floating-button">
+    <button class="main-button" (click)="toggleMenu()">
+      <img src="assets/images/2.jpg" alt="Main Button" id="image2">
+    </button>
+    <div class="sub-button whatsapp" (click)="navigateToContact()">
+      <img src="assets/images/1.svg" alt="WhatsApp">
     </div>
   </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
