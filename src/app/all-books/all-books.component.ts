@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BookService, Book } from '../components/book/book.service'; // Doğru yolu kontrol edin
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { BorrowbookService } from '../components/borrowbook/borrowbook.service';
+import { AuthService } from '../components/login/auth.service';
 
 @Component({
   selector: 'app-all-books',
@@ -15,16 +17,26 @@ export class AllBooksComponent implements OnInit {
   itemsPerPage: number = 15;
   currentPage: number = 1;
   paginatedBooks: Book[] = [];
+  borrowBooks: any[] = [];
+  userId: string | undefined;
+  userName: string | undefined;
+  isAvailable: boolean = true;
 
   constructor(
-     private bookService: BookService,
-     private router: Router,
-     private spinner: NgxSpinnerService  
-    ) {}
-  
+    private bookService: BookService,
+    private router: Router,
+    private spinner: NgxSpinnerService,
+    private borrowbookService: BorrowbookService,
+    private authService: AuthService
+  ) {}
+
   ngOnInit(): void {
     this.spinner.show();
-    this.getAllBooks();
+    this.getToken();
+    if (this.userId) {
+      this.getUser();
+      this.getAllBooks();
+    }
   }
 
   getAllBooks() {
@@ -32,6 +44,7 @@ export class AllBooksComponent implements OnInit {
       (data: Book[]) => {
         this.books = data;
         this.filterAndPaginateBooks(); // Arama ve sayfalama işlemini birlikte yap
+        console.log(data)
       },
       (error) => {
         this.errorMessage = error.message;
@@ -45,11 +58,10 @@ export class AllBooksComponent implements OnInit {
   viewBookDetails(name: string) {
     this.router.navigate(['/all-book-show', name]);
   }
+
   filterAndPaginateBooks() {
     // Tüm kitapları filtrele
-    const filtered = this.books.filter(book => 
-      book.bookName.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+    const filtered = this.filteredBooks();
     
     // Filtrelenmiş kitapları sayfalara böl
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
@@ -63,7 +75,7 @@ export class AllBooksComponent implements OnInit {
     );
   }
 
-  goToNextPage(){
+  goToNextPage() {
     const totalFilteredBooks = this.filteredBooks().length;
     if (this.currentPage * this.itemsPerPage < totalFilteredBooks) {
       this.currentPage++;
@@ -71,10 +83,53 @@ export class AllBooksComponent implements OnInit {
     }
   }
 
-  goToPreviousPage(){
+  goToPreviousPage() {
     if (this.currentPage > 1) {
       this.currentPage--;
       this.filterAndPaginateBooks();
+    }
+  }
+
+  fetchBorrowedBooks(userName: string): void {
+    this.borrowbookService.getBorrowedBooks(userName).subscribe(
+      (response: { borrowBooks: any[] }) => {
+        this.borrowBooks = response.borrowBooks;
+        console.log(response);
+        this.isAvailable = this.borrowBooks.every(response => response.isAvailable);
+        console.log(this.isAvailable);
+        
+      },
+      (error) => {
+        console.error('Hata:', error);
+      }
+    );
+  }
+
+  getToken() {
+
+    if(typeof window!=='undefined'){
+    const token = localStorage.getItem('AuthToken');
+    if (token) {
+      this.userId = this.authService.extractUserIdFromToken(token);
+      console.log(this.userId);
+    }
+  }
+  }
+
+  getUser() {
+    if (this.userId) {
+      this.authService.getById(this.userId).subscribe(
+        (response) => {
+          this.userName = response.userName;
+          console.log(this.userName);
+          if (this.userName) {
+            this.fetchBorrowedBooks(this.userName);
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
     }
   }
 }
