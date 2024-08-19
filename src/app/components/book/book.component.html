@@ -71,11 +71,11 @@
   <br>
 
   <!-- Input field to get a book by ID -->
-  <div class="get-book-by-id" class="bookls">
-    <h2>Get Book by ID</h2>
-    <label for="bookId">Book ID</label>
-    <input id="bookId" [(ngModel)]="bookId" name="bookId" required>
-    <button >Get Book</button>
+  <div class="get-book-by-name" class="bookls">
+    <h2>Get Book by Name</h2>
+    <label for="bookName">Book Name</label>
+    <input id="bookName" [(ngModel)]="bookName" name="bookName" required>
+    <button (click)="getBookByName(bookName)" >Get Book</button>
   </div>
 
   <!-- Selected Book Details -->

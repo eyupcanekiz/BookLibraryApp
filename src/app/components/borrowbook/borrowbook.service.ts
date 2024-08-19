@@ -5,7 +5,10 @@ import { Observable } from 'rxjs';
 export interface BorrowBookByNameDto {
     bookName: string;
 }
-
+export interface BorrowBook{
+  bookName:string;
+  isAvailable:boolean;
+}
 @Injectable({
   providedIn: 'root'
 })

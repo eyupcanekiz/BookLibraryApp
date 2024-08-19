@@ -35,6 +35,7 @@ export class BorrowbookComponent implements OnInit {
     this.borrowbookService.getBorrowedBooks(userName).subscribe(
     (response) => {
      this.borrowedBooks = response.borrowBooks
+     console.log(response)
   
     },
     (error) => {
