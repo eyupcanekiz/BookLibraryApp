@@ -7,6 +7,8 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 body{
   margin: bottom 100px; 
   height: auto;
+  background-color: #c5c7ca;
+  
 }
 .container {
   display: grid;
@@ -21,7 +23,7 @@ body{
 
 /* Section Stilleri */
 .section {
-  background-color: $section-background-color;
+  background-color: #e6e5e5;
   border: 1px solid $border-color;
   border-radius: 10px;
   box-shadow: $box-shadow;
