@@ -8,10 +8,9 @@
   <div class="book-info">
     <p><strong>{{ 'AUTHOR' | translate }}</strong> {{ author }}</p>
     <p><strong>{{ 'PUBLISHER' | translate }}</strong> {{ publisher }}</p>
-    <app-star-rating [rating]="currentRating" (ratingChange)="updateRating($event)"></app-star-rating>
     <p><strong>{{ 'AVAILABLE' | translate }}:</strong> {{ available ? '✅' : '❌' }}</p>
     <p><strong>{{ 'STOCK' | translate }}</strong> {{ stock }}</p>
-
+    <p><app-star-rating [rating]="currentRating" (ratingChange)="updateRating($event)"></app-star-rating></p>
   </div>
 </div>
 
@@ -19,8 +18,26 @@
   {{ 'RETURN_ALL_BOOKS' | translate }}
 </button>
 
-<button *ngIf="available" type="button" class="btn btn-primary" id="btn-borrow" (click)="borrowBook(bookName)">
+<button *ngIf="available" type="button" class="btn btn-success" id="btn-borrow" (click)="borrowBook(bookName)">
   {{ 'BORROW_BOOK' | translate }}
 </button>
+<div class="comments-section">
+  <h3>Kitap Yorumları</h3>
+
+  <!-- Yorumları listele -->
+  <div *ngFor="let comment of comments">
+    <p><strong>{{comment.userName}}</strong>:</p>
+    <p>{{comment.text}}</p>
+  </div>
+
+  <!-- Yorum ekleme formu -->
+  <form (ngSubmit)="addComment()">
+    <div>
+      <label for="comment">Yorumunuzu yazın:</label>
+      <textarea id="comment" [(ngModel)]="newComment.text" name="comment" required></textarea>
+    </div>
+    <button type="submit">Yorumu Gönder</button>
+  </form>
+</div>
 
 <app-another-navbar></app-another-navbar>

@@ -39,6 +39,8 @@ export class AllBookShowComponent implements OnInit {
   currentPage: number = 1;
   paginatedBooks: Book[] = [];
   searchTerm: string = '';
+  comments: any[] = []; // Yorumları tutacak dizi
+  newComment: any = { text: '', userName: 'Kullanıcı Adı' };
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
@@ -60,7 +62,7 @@ export class AllBookShowComponent implements OnInit {
     const name = this.route.snapshot.paramMap.get('name');
     this.onGetByName(name!);
     this.fetchBorrowedBooks(this.userName);
- 
+    this.loadComments();
     
    
     
@@ -167,12 +169,26 @@ updateBookAvailability(): void {
     this.paginatedBooks = filtered.slice(startIndex, endIndex);
   }
 
+  loadComments() {
+    this.http.get<any[]>(`/api/books/${this.bookId}/comments`)
+      .subscribe(data => {
+        this.comments = data;
+      });
+  }
+  addComment() {
+    const commentData = {
+      text: this.newComment.text,
+      userName: this.newComment.userName,
+      bookId: this.bookId
+    };
 
-    // Burada backend'e gönderim yapılabilir:
-    // this.http.post('/api/rate-book', { rating: this.currentRating, bookId: this.bookId })
-    //   .subscribe(response => {
-    //     console.log('Rating saved:', response);
-    //   });
+    this.http.post<any>(`/api/books/${this.bookId}/comments`, commentData)
+      .subscribe(response => {
+        this.comments.push(response); // Yeni yorum listeye eklenir
+        this.newComment.text = ''; // Yorum alanı sıfırlanır
+      });
+  }
+    
 }
 
 

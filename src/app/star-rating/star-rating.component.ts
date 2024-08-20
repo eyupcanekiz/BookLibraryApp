@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { RatingService } from './rating.service';
+
 @Component({
   selector: 'app-star-rating',
   templateUrl: './star-rating.component.html',
@@ -12,18 +13,20 @@ export class StarRatingComponent {
   stars: number[] = [1, 2, 3, 4, 5];
   hoveredRating: number = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(private ratingService: RatingService) {}
 
-  // Kullanıcının seçtiği puanı belirler ve buçuklu değerlere yuvarlar
   rate(star: number) {
     this.rating = this.hoveredRating || this.roundToHalf(star);
     this.ratingChange.emit(this.rating);
 
-    this.http.post('/api/rate-book', { rating: this.rating, bookId: this.bookId }) .subscribe
-    (response => { console.log('Rating saved:', response); });
+    // RatingService kullanarak backend'e gönderim yapıyoruz
+    this.ratingService.rateBook(this.bookId, this.rating)
+      .subscribe(response => {
+        console.log('Rating saved:', response);
+        console.log(this.rating);
+      });
   }
 
-  // Puan önizlemesini buçuklu değerlere göre yapar
   previewRating(star: number, event: MouseEvent) {
     const rect = (event.target as HTMLElement).getBoundingClientRect();
     const x = event.clientX - rect.left;
@@ -43,7 +46,6 @@ export class StarRatingComponent {
     this.hoveredRating = 0;
   }
 
-  // Buçuklu değerlere yuvarlama fonksiyonu
   private roundToHalf(value: number): number {
     return Math.round(value * 2) / 2;
   }

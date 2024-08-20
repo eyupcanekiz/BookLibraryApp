@@ -16,5 +16,8 @@ export class AllBookShowService{
 addBorrowedBook(bookDto: AllShowBookDto, userName: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/AddBorrow?userName=${userName}`, bookDto);
   }
-
+  rateBook(bookId: number, rating: number): Observable<any> {
+    const ratingData = { bookId, rating };
+    return this.http.post<any>(this.apiUrl, ratingData);
+  }
 }
