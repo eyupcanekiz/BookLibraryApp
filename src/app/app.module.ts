@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -87,6 +89,7 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
     HttpClientModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    ToastrModule.forRoot(),
     NgxSpinnerModule,
     BookModule, 
     BorrowbookModule,
