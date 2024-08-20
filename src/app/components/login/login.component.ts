@@ -58,16 +58,14 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     if (this.loginForm.valid) {
-      const {email, username, password } = this.loginForm.value;
-      this.authService.login(email,username, password).subscribe({
+      const { email, username, password } = this.loginForm.value;
+      this.authService.login(email, username, password).subscribe({
         next: (response) => {
-          // this.snackBar.open('Login successful', 'Close', { duration: 3000 });
-          // this.toastr.success('Login successful', 'Success');
-          this.translate.get('LOGIN_SUCCESS').subscribe((res: string) => {
-            this.toastr.success(res, 'Success');
-          });
-
           if (response.authenticateResult) {
+            this.translate.get('LOGIN_SUCCESS').subscribe((res: string) => {
+              this.toastr.success(res, 'Success');
+            });
+  
             this.authService.getToken().subscribe({
               next: (token) => {
                 localStorage.setItem("AuthToken", token);
@@ -75,7 +73,7 @@ export class LoginComponent implements OnInit {
                 this.authService.getCurrentUser().subscribe(user => {
                   if (user && user.isAdmin) {
                     this.router.navigate(['/admin']);
-                  }if(user) {
+                  } else if (user) {
                     this.router.navigate(['all-books']);
                   }
                 });
@@ -85,25 +83,22 @@ export class LoginComponent implements OnInit {
               }
             });
           } else {
-            // this.snackBar.open('Login failed', 'Close', { duration: 3000 });
-            // this.toastr.error('Login failed', 'Error');
             this.translate.get('LOGIN_FAIL').subscribe((res: string) => {
               this.toastr.error(res, 'Error');
             });
           }
         },
         error: (error) => {
-          // this.snackBar.open('Login failed', 'Close', { duration: 3000 });
-          // this.toastr.error(error, 'Error');
           this.translate.get('ERROR').subscribe((res1: string) => {
             this.translate.get('ERROR_OCCURED').subscribe((res2: string) => {
-            this.toastr.error(res2, res1);
-            })
+              this.toastr.error(res2, res1);
+            });
           });
-
+  
           console.error('Login failed', error);
         }
       });
     }
   }
+  
 }

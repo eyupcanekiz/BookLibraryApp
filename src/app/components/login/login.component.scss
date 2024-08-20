@@ -31,6 +31,7 @@ body {
         flex-direction: column; /* Küçük ekranlarda dikey hizalama */
         height: auto; /* Sayfanın yüksekliğini otomatik ayarla */
     }
+    
 }  
 
 .form-container {  
@@ -42,6 +43,7 @@ body {
     padding: 40px; 
     background-color: #f9f9f9; 
     max-width: 43%;
+    margin-top: 100px;
 
     @media (max-width: 768px) {
         max-width: 100%; /* Küçük ekranlarda tam genişlik */
