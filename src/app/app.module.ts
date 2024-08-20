@@ -43,6 +43,7 @@ import { KvkkComponent } from './kvkk/kvkk.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
+import { FloatingButtonComponent } from './floating-button/floating-button.component';
 
 
 
@@ -75,6 +76,7 @@ import { StarRatingComponent } from './star-rating/star-rating.component';
     PrivacyPolicyComponent,
     TermsOfServiceComponent,
     StarRatingComponent,
+    FloatingButtonComponent,
 
   ],
   providers: [

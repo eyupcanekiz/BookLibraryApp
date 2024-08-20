@@ -27,6 +27,7 @@ import { KvkkComponent } from './kvkk/kvkk.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 import { StarRatingComponent } from './star-rating/star-rating.component';
+import { FloatingButtonComponent } from './floating-button/floating-button.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,7 @@ const routes: Routes = [
       { path: 'privacy-policy', component: PrivacyPolicyComponent },
       { path: 'terms-of-service', component: TermsOfServiceComponent },
       { path: 'star-rating', component: StarRatingComponent },
+      { path: 'floating-button', component: FloatingButtonComponent },
     ],
   },
   {

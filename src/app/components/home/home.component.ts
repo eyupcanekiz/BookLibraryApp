@@ -28,17 +28,4 @@ export class HomeComponent implements OnInit  {
   toggleLogin(){
     this.isLoggedIn=this.authGuard.canActivate();
   }
-  toggleMenu(){
-    this.menuOpen = !this.menuOpen;
-    const floatingButton = document.querySelector('.floating-button');
-    if(this.menuOpen){
-      floatingButton?.classList.add('open');
-    }
-    else{
-      floatingButton?.classList.remove('open');
-    }
-  }
-  navigateToContact(){
-    this.router.navigate(['/contact']);
-  }
 }
