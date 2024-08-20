@@ -23,11 +23,12 @@
             </div>
       
             <div class="book-info">
-              <strong>{{ book.bookName }}</strong>
+              <strong>{{  book.bookName }}</strong>
               <div class="info-item">{{ 'AUTHOR' | translate }} {{ book.author }}</div>
               <div class="info-item">{{ 'PUBLISHER' | translate }} {{ book.publisher }}</div>
               <div class="info-item">{{ 'STOCK' | translate }}: {{ book.stock }}</div>
-              <div class="info-item">{{ 'AVAILABLE' | translate }}: {{ isAvailable ? '✅' : '❌' }}</div>
+              <div class="info-item">{{ 'AVAILABLE' | translate }}: {{ book.isAvailable ? '✅' : '❌' }}</div>
+
               <div class="info-item">{{ 'CATEGORY' | translate }}: {{ book.category }}</div>
             </div>
       

@@ -10,6 +10,9 @@ import { resolve } from 'path';
 import { rejects } from 'assert';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
 import { HttpClient } from '@angular/common/http';
+import { BorrowbookService } from '../components/borrowbook/borrowbook.service';
+
+
 @Component({
   selector: 'app-all-book-show',
   templateUrl: './all-book-show.component.html',
@@ -18,7 +21,7 @@ import { HttpClient } from '@angular/common/http';
 export class AllBookShowComponent implements OnInit {
   errorMessage: string = '';
   currentRating: number = 0;
-  books: any[] = [];
+  books: Book[] = [];
   selectedBook: Book | null = null;
   bookName:string ="";
   publisher:string =""
@@ -31,6 +34,11 @@ export class AllBookShowComponent implements OnInit {
   stock: any;
   available : boolean = false;
   book: Book | null = null;
+  borrowBooks: any[] = [];
+  itemsPerPage: number = 15;
+  currentPage: number = 1;
+  paginatedBooks: Book[] = [];
+  searchTerm: string = '';
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
@@ -38,7 +46,12 @@ export class AllBookShowComponent implements OnInit {
     private allBookShowService:AllBookShowService,
     private router : Router,
     private authService:AuthService,
-    private http: HttpClient
+
+    private http: HttpClient,
+
+    private borrowbookService: BorrowbookService
+  
+
 
   ) {}
 
@@ -46,6 +59,7 @@ export class AllBookShowComponent implements OnInit {
     await this.getUser();
     const name = this.route.snapshot.paramMap.get('name');
     this.onGetByName(name!);
+    this.fetchBorrowedBooks(this.userName);
  
     
    
@@ -110,16 +124,56 @@ export class AllBookShowComponent implements OnInit {
 
     
   }
+
   updateRating(newRating: number) {
     this.currentRating = newRating;
+  }
+  fetchBorrowedBooks(userName: string): void {
+    this.borrowbookService.getBorrowedBooks(userName).subscribe(
+        (response: { borrowBooks: any[] }) => {
+            this.borrowBooks = response.borrowBooks;
+            this.updateBookAvailability();  
+        },
+        (error) => {
+            console.error('Hata:', error);
+        }
+    );
+}
 
-    // Burada backend'e gönderim yapılabilir:
-    this.http.post('/api/rate-book', { rating: this.currentRating, bookId: this.bookId })
-      .subscribe(response => {
-        console.log('Rating saved:', response);
-      });
+
+updateBookAvailability(): void {
+
+  this.available = true;
+
+ 
+  const borrowedBook = this.borrowBooks.find(b => b.bookName === this.bookName);
+  if (borrowedBook) {
+    this.available = false;
+  }
+}
+
+  
+  filteredBooks(): Book[] {
+    return this.books.filter(book => 
+      book.bookName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+  filterAndPaginateBooks() {
+  
+    const filtered = this.filteredBooks();
+    
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedBooks = filtered.slice(startIndex, endIndex);
   }
 
+
+    // Burada backend'e gönderim yapılabilir:
+    // this.http.post('/api/rate-book', { rating: this.currentRating, bookId: this.bookId })
+    //   .subscribe(response => {
+    //     console.log('Rating saved:', response);
+    //   });
 }
+
 
 
