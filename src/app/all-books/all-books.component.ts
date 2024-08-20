@@ -90,19 +90,29 @@ export class AllBooksComponent implements OnInit {
     }
   }
 
-  fetchBorrowedBooks(userName: string): void {
+ fetchBorrowedBooks(userName: string): void {
     this.borrowbookService.getBorrowedBooks(userName).subscribe(
-      (response: { borrowBooks: any[] }) => {
-        this.borrowBooks = response.borrowBooks;
-        console.log(response);
-        this.isAvailable = this.borrowBooks.every(response => response.isAvailable);
-        console.log(this.isAvailable);
-        
-      },
-      (error) => {
-        console.error('Hata:', error);
-      }
+        (response: { borrowBooks: any[] }) => {
+            this.borrowBooks = response.borrowBooks;
+            this.updateBookAvailability();  
+        },
+        (error) => {
+            console.error('Hata:', error);
+        }
     );
+}
+  updateBookAvailability(): void {
+    
+    this.books.forEach(book => book.isAvailable = true);
+
+  
+    this.borrowBooks.forEach(borrowedBook => {
+        const book = this.books.find(b => b.bookName === borrowedBook.bookName);
+        if (book) {
+            book.isAvailable = false;
+        }
+    });
+    this.filterAndPaginateBooks();
   }
 
   getToken() {
