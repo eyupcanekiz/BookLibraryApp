@@ -8,7 +8,8 @@ import { AllBookShowService, AllShowBookDto } from './all-book-show.service';
 import { AuthService } from '../components/login/auth.service';
 import { resolve } from 'path';
 import { rejects } from 'assert';
-
+import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-all-book-show',
   templateUrl: './all-book-show.component.html',
@@ -16,6 +17,7 @@ import { rejects } from 'assert';
 })
 export class AllBookShowComponent implements OnInit {
   errorMessage: string = '';
+  currentRating: number = 0;
   books: any[] = [];
   selectedBook: Book | null = null;
   bookName:string ="";
@@ -35,8 +37,8 @@ export class AllBookShowComponent implements OnInit {
     private snackBar:MatSnackBar,
     private allBookShowService:AllBookShowService,
     private router : Router,
-    private authService:AuthService
-  
+    private authService:AuthService,
+    private http: HttpClient
 
   ) {}
 
@@ -50,6 +52,7 @@ export class AllBookShowComponent implements OnInit {
     
   
    }
+   
   onGetByName(name:string){
     this.bookService.getBookByName(name).subscribe(
       {
@@ -107,7 +110,15 @@ export class AllBookShowComponent implements OnInit {
 
     
   }
+  updateRating(newRating: number) {
+    this.currentRating = newRating;
 
+    // Burada backend'e gönderim yapılabilir:
+    this.http.post('/api/rate-book', { rating: this.currentRating, bookId: this.bookId })
+      .subscribe(response => {
+        console.log('Rating saved:', response);
+      });
+  }
 
 }
 

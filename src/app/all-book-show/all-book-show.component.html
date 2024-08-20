@@ -11,12 +11,10 @@
     <p><strong>{{ 'PUBLISHER' | translate }}</strong> {{ publisher }}</p>
     <p><strong>{{ 'AVAILABLE1' | translate }}:</strong> {{ available ? '✅' : '❌' }}</p>
     <p><strong>{{ 'STOCK' | translate }}:</strong> {{stock}}</p>
-
+    <app-star-rating [rating]="currentRating" (ratingChange)="updateRating($event)"></app-star-rating>
   </div>
 </div>
 <button type="button" class="btn btn-primary" id="btn-back" routerLink="/all-books">{{ 'RETURN_ALL_BOOKS' | translate }}</button>
 
 <button *ngIf="available" type="button" class="btn btn-primary" id="btn-back" (click)="borrowBook(bookName)">{{ 'BORROW_BOOK' | translate }}</button>
 <app-another-navbar></app-another-navbar>
-
-

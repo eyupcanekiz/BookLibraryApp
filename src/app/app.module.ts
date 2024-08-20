@@ -42,6 +42,7 @@ import { AllBookShowComponent } from './all-book-show/all-book-show.component';
 import { KvkkComponent } from './kvkk/kvkk.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 
 
@@ -73,6 +74,7 @@ import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.com
     KvkkComponent,
     PrivacyPolicyComponent,
     TermsOfServiceComponent,
+    StarRatingComponent,
 
   ],
   providers: [

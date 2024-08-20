@@ -26,6 +26,7 @@ import { AllBooksComponent } from './all-books/all-books.component';
 import { KvkkComponent } from './kvkk/kvkk.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,7 @@ const routes: Routes = [
       { path: 'kvkk', component: KvkkComponent },
       { path: 'privacy-policy', component: PrivacyPolicyComponent },
       { path: 'terms-of-service', component: TermsOfServiceComponent },
+      { path: 'star-rating', component: StarRatingComponent },
     ],
   },
   {
