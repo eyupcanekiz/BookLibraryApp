@@ -8,6 +8,7 @@ import { AllBookShowService, AllShowBookDto } from './all-book-show.service';
 import { AuthService } from '../components/login/auth.service';
 import { resolve } from 'path';
 import { rejects } from 'assert';
+import { BorrowbookService } from '../components/borrowbook/borrowbook.service';
 
 @Component({
   selector: 'app-all-book-show',
@@ -16,7 +17,7 @@ import { rejects } from 'assert';
 })
 export class AllBookShowComponent implements OnInit {
   errorMessage: string = '';
-  books: any[] = [];
+  books: Book[] = [];
   selectedBook: Book | null = null;
   bookName:string ="";
   publisher:string =""
@@ -29,13 +30,19 @@ export class AllBookShowComponent implements OnInit {
   stock: any;
   available : boolean = false;
   book: Book | null = null;
+  borrowBooks: any[] = [];
+  itemsPerPage: number = 15;
+  currentPage: number = 1;
+  paginatedBooks: Book[] = [];
+  searchTerm: string = '';
   constructor(
     private route: ActivatedRoute,
     private bookService: BookService,
     private snackBar:MatSnackBar,
     private allBookShowService:AllBookShowService,
     private router : Router,
-    private authService:AuthService
+    private authService:AuthService,
+    private borrowbookService: BorrowbookService
   
 
   ) {}
@@ -44,6 +51,7 @@ export class AllBookShowComponent implements OnInit {
     await this.getUser();
     const name = this.route.snapshot.paramMap.get('name');
     this.onGetByName(name!);
+    this.fetchBorrowedBooks(this.userName);
  
     
    
@@ -106,6 +114,44 @@ export class AllBookShowComponent implements OnInit {
   })
 
     
+  }
+  fetchBorrowedBooks(userName: string): void {
+    this.borrowbookService.getBorrowedBooks(userName).subscribe(
+        (response: { borrowBooks: any[] }) => {
+            this.borrowBooks = response.borrowBooks;
+            this.updateBookAvailability();  
+        },
+        (error) => {
+            console.error('Hata:', error);
+        }
+    );
+}
+
+
+updateBookAvailability(): void {
+
+  this.available = true;
+
+ 
+  const borrowedBook = this.borrowBooks.find(b => b.bookName === this.bookName);
+  if (borrowedBook) {
+    this.available = false;
+  }
+}
+
+  
+  filteredBooks(): Book[] {
+    return this.books.filter(book => 
+      book.bookName.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
+  filterAndPaginateBooks() {
+  
+    const filtered = this.filteredBooks();
+    
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedBooks = filtered.slice(startIndex, endIndex);
   }
 
 
