@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -27,13 +27,17 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private datePipe: DatePipe,
     private toastr: ToastrService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private spinner: NgxSpinnerService 
   ) {
     this.setDateNowWithOffset(15);
   }
 
   ngOnInit(): void {
-    
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
     this.loginForm = this.fb.group({
       email: [''],
       username: [''],

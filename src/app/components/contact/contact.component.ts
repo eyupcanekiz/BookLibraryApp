@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from './contact.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { contactModel } from './contactModel';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -15,10 +15,16 @@ export class ContactComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private contactService: ContactService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private spinner: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
+    this.spinner.show();
+
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
     this.contactForm = this.fb.group({
       Name: ['', Validators.required],
       EmailAddress: ['', [Validators.required, Validators.email]],

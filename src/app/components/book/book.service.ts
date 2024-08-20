@@ -13,6 +13,9 @@ export interface Book {
   coverImageUrl:string;
   category: string;
   description: string;
+  averageRating: any ;
+  ratingCount: any ;
+  totalRating: any;
  
 }
 

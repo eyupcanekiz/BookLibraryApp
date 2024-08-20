@@ -12,7 +12,7 @@ import { VerificationEnterComponent } from '../../verification-enter/verificatio
 import * as CryptoJS from 'crypto-js';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
-
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -42,7 +42,8 @@ export class RegisterComponent implements OnInit {
     private verificationCodeService: VerificationCodeService,
     private verificationCodeCompenent : VerificationEnterComponent,
     private toastr: ToastrService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private spinner: NgxSpinnerService
 
 
   ) { }
@@ -54,9 +55,15 @@ export class RegisterComponent implements OnInit {
       Email: ['',[Validators.email]],
       Password: ['',[Validators.required,Validators.minLength(8)]],
       PasswordRepeat: ['',[Validators.required] ],
-      Gender: this.genderType.other
+      Gender: this.genderType.other,
+      
     
     });
+    this.spinner.show();
+    setTimeout(() => {
+      this.spinner.hide();
+    }, 500);
+    
   }
   
   generateVerificationCode() {

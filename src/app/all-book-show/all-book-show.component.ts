@@ -39,7 +39,11 @@ export class AllBookShowComponent implements OnInit {
   currentPage: number = 1;
   paginatedBooks: Book[] = [];
   searchTerm: string = '';
-  comments: any[] = []; // Yorumları tutacak dizi
+  averageRating: any = 0;
+  ratingCount: any = 0;
+  totalRating: any = 0;
+
+  comments: any[] = []; 
   newComment: any = { text: '', userName: 'Kullanıcı Adı' };
   constructor(
     private route: ActivatedRoute,
@@ -80,7 +84,10 @@ export class AllBookShowComponent implements OnInit {
           this.stock = response.stock
           this.coverImageUrl = response.coverImageUrl
           this.description= response.description
-      
+          this.averageRating = response.averageRating
+          this.ratingCount = response.ratingCount
+          this.totalRating =response.totalRating  
+       
         },
         error:(error) =>{
           this.snackBar.open('Şifreler eşleşmiyor', 'Close', { duration: 3000 });

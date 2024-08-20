@@ -6,5 +6,9 @@ export interface Book {
     isAvailable: boolean;
     stock: string;
     description: string;
+    averageRating: any ;
+    ratingCount: any ;
+    totalRating: any ;
+    rating: any;
   }
   

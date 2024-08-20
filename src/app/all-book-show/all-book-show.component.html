@@ -21,16 +21,16 @@
 <button *ngIf="available" type="button" class="btn btn-success" id="btn-borrow" (click)="borrowBook(bookName)">
   {{ 'BORROW_BOOK' | translate }}
 </button>
-<div class="comments-section">
+<!-- <div class="comments-section">
   <h3>Kitap Yorumları</h3>
 
-  <!-- Yorumları listele -->
+  Yorumları listele
   <div *ngFor="let comment of comments">
     <p><strong>{{comment.userName}}</strong>:</p>
     <p>{{comment.text}}</p>
   </div>
 
-  <!-- Yorum ekleme formu -->
+  Yorum ekleme formu
   <form (ngSubmit)="addComment()">
     <div>
       <label for="comment">Yorumunuzu yazın:</label>
@@ -38,7 +38,7 @@
     </div>
     <button type="submit">Yorumu Gönder</button>
   </form>
-</div>
+</div> -->
 
 <app-another-navbar></app-another-navbar>
 <app-floating-button></app-floating-button>

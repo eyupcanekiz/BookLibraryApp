@@ -17,8 +17,10 @@ export class BookComponent implements OnInit {
     stock: '',
     coverImageUrl: "",
     category: "",
-    description: ""
-    
+    description: "",
+    averageRating: 0,
+    ratingCount:  0,
+    totalRating: 0
   };
   errorMessage: string = '';
   books: Book[] = [];
@@ -50,7 +52,11 @@ export class BookComponent implements OnInit {
           stock: '',
           coverImageUrl: "",
           category: "",
-          description: ""
+          description: "",
+          averageRating: 0,
+          ratingCount:  0,
+          totalRating: 0
+
         };
         this.getBooks();
       },
