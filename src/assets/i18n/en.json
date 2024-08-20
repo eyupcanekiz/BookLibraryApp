@@ -82,5 +82,9 @@
   "REWIEW": "Review Book",
 
   "SUCCESS_MESSAGE": "This is a success message",
-  "LOGIN_SUCCESS": "Login successful"
+  "LOGIN_SUCCESS": "Login successful",
+  "LOGIN_FAIL": "Login failed",
+  "ERROR": "Error",
+  "ERROR_OCCURED": "An error occured"
+
 }

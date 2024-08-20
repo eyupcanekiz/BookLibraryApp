@@ -81,6 +81,12 @@
   "EMAIL2" : "E-Posta Adresi" ,
   "READ": "Okundu",
   "CATEGORY": "Kategori",
-  "REWIEW": "Kitabı İncele"
-
+  "REWIEW": "Kitabı İncele",
+  
+  "SUCCESS_MESSAGE": "Bu bir başarı mesajıdır",
+  "LOGIN_SUCCESS": "Giriş başarılı",
+  "LOGIN_FAIL": "Giriş başarısız",
+  "ERROR": "Hata",
+  "ERROR_OCCURED": "Bir hata oluştu"
 }
+
