@@ -10,6 +10,9 @@ import { VerificationCodeService } from '../../verification-enter/verification-c
 import { EmailVerificationService } from './emailVerification.service';
 import { VerificationEnterComponent } from '../../verification-enter/verification-enter.component';
 import * as CryptoJS from 'crypto-js';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
+
 
 
 @Component({
@@ -17,6 +20,7 @@ import * as CryptoJS from 'crypto-js';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'], 
   providers: [VerificationEnterComponent],
+  
 
 })
 export class RegisterComponent implements OnInit {
@@ -36,7 +40,10 @@ export class RegisterComponent implements OnInit {
     private sanitizer: DomSanitizer,
     private emailservice: EmailVerificationService,
     private verificationCodeService: VerificationCodeService,
-    private verificationCodeCompenent : VerificationEnterComponent
+    private verificationCodeCompenent : VerificationEnterComponent,
+    private toastr: ToastrService,
+    private translate: TranslateService
+
 
   ) { }
 
