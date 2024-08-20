@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
           // this.snackBar.open('Login successful', 'Close', { duration: 3000 });
           // this.toastr.success('Login successful', 'Success');
           this.translate.get('LOGIN_SUCCESS').subscribe((res: string) => {
-            this.toastr.success(res, 'Tada');
+            this.toastr.success(res, 'Success');
           });
 
           if (response.authenticateResult) {
