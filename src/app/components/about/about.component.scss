@@ -1,4 +1,4 @@
-$primary-color: #007BFF;
+$primary-color: #ffc202;
 $secondary-color: #6C757D;
 $background-color: #F4F4F4;
 $card-background-color: #FFFFFF;
@@ -7,10 +7,10 @@ $font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
 body {
-  font-family: $font-family;
-  background-color: $background-color;
+  font-family:"Bebas Neue", sans-serif; 
   margin: 0;
   padding: 0;
+  margin-top: 70px;
 }
 
 .about-container {
@@ -23,17 +23,20 @@ body {
   text-align: center;
   margin-bottom: 40px;
   margin-top: 40px;
+  
 
   h1 {
-    color: #fd7e14;
+    color: #ff9e02;
     font-size: 2.5em;
     margin-bottom: 20px;
+    font-family:"Bebas Neue", sans-serif; 
   }
 
   p {
     font-size: 1.2em;
     color: seagreen;
     margin-bottom: 20px;
+    
   }
 
   .about-images {
@@ -53,9 +56,10 @@ body {
   text-align: center;
 
   h2 {
-    color: #fd7e14;
+    color: #ff9e02;
     font-size: 2em;
     margin-bottom: 20px;
+    font-family:"Bebas Neue", sans-serif; 
   }
 
   .team-members {
@@ -74,7 +78,7 @@ body {
     padding: 20px;
     width: 30%;
     text-align: center;
-
+    background-color: ghostwhite;
     img {
       width: 80px;
       height: 80px;
@@ -89,7 +93,7 @@ body {
     }
 
     p {
-      color: $secondary-color;
+      color: black;
       font-size: 1em;
     }
   }

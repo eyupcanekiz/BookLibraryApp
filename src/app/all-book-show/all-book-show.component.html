@@ -1,8 +1,12 @@
 <div class="book-details-container">
-  <img [src]="coverImageUrl" alt="Book Cover">
+  <img [src]="coverImageUrl" alt="Book Cover" id="bookimg">
+  <div class="book-description">
+    <p><strong>{{ 'DESCRIPTION' | translate }}:</strong> {{ description }}</p>
+  </div>
   <h1>{{ bookName }}</h1>
-
+ 
   <div class="book-info">
+    
     <p><strong>{{ 'AUTHOR' | translate }}</strong> {{ author }}</p>
     <p><strong>{{ 'PUBLISHER' | translate }}</strong> {{ publisher }}</p>
     <p><strong>{{ 'AVAILABLE1' | translate }}:</strong> {{ available ? '✅' : '❌' }}</p>

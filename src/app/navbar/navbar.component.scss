@@ -1,9 +1,10 @@
 body {
-    background-color: #f8f9fa;
+    background-color: white;
     margin: 0;
-    padding-top: 70px; /* Navbar sabitlendiğinde içerik üst üste binmemesi için */
+    padding-top: 0px; /* Navbar sabitlendiğinde içerik üst üste binmemesi için */
     font-family:"Bebas Neue", sans-serif; /* Modern bir font ailesi kullanıyoruz */
     line-height: 1.6;
+
   }
   
   /* Navbar Stilleri */
@@ -29,7 +30,7 @@ body {
   }
   
   .navbar-brand:hover {
-    color: #00d084; /* Hover yapıldığında açık yeşil renk */
+    color: #f0d105; /* Hover yapıldığında açık yeşil renk */
     transform: scale(1.1); /* Hafif büyütme efekti */
   }
   
@@ -37,20 +38,20 @@ body {
   .nav-link {
     color: #ffffff;
     padding: 10px 20px; /* Butonları daha dolgun hale getiriyoruz */
-    border-radius: 25px; /* Köşeleri daha yuvarlak yapıyoruz */
+    border-radius: 15px; /* Köşeleri daha yuvarlak yapıyoruz */
     background-color: transparent; /* Arka planı başlangıçta şeffaf yapıyoruz */
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
   }
   
   .nav-link:hover {
-    background-color: rgba(40, 167, 69, 0.7); /* Hover rengi ve opaklık */
+    background-color: #f0d105; /* Hover rengi ve opaklık */
     color: #ffffff; /* Yazı rengi */
     transform: scale(1.05); /* Hafif büyütme efekti */
   }
   
   .nav-link.active {
-    background-color: #28a745; /* Aktif durumda yeşil renk */
-    color: white;
+    background-color: #f0dc05; /* Aktif durumda yeşil renk */
+    color: #000000;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Hafif gölge efekti */
   }
   
@@ -71,14 +72,14 @@ body {
   .navbar-toggler {
     border: none;
     padding: 5px 10px;
-    background-color: #28a745;
+    background-color: #f0d105;
     color: white;
     border-radius: 5px;
     transition: background-color 0.3s ease;
   }
   
   .navbar-toggler:hover {
-    background-color: #218838; /* Hover durumunda koyu yeşil */
+    background-color: #f0d105; /* Hover durumunda koyu yeşil */
   }
   
   .navbar-toggler:focus {
@@ -101,7 +102,7 @@ body {
   }
   
   .dropdown-item:hover {
-    background-color: #28a745; /* Hover renginde yeşil */
+    background-color: #f0d105; /* Hover renginde yeşil */
     color: #ffffff; /* Yazı rengi */
   }
   
@@ -146,5 +147,11 @@ body {
     padding: 0; /* Aynı şekilde padding için de */
     padding: 10px 20px;
   }
- 
+ #mainPage{
+  background-color: #FFC202;
   
+ }
+ #imagehome{
+  width: 80px;
+  height: 70px;
+ }

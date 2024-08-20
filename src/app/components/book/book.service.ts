@@ -11,7 +11,8 @@ export interface Book {
   isAvailable: boolean;
   stock: string;
   coverImageUrl:string;
-  category: string
+  category: string;
+  description: string;
  
 }
 

@@ -74,14 +74,14 @@
     padding: 12px 30px;
     font-size: 1.1em;
     border-radius: 50px;
-    background-color: #007bff;
+    background-color: #ffc202;
     color: #fff;
     border: none;
-    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(255, 221, 0, 0.3);
     transition: background-color 0.3s ease, transform 0.3s ease;
 
     &:hover {
-      background-color: #0056b3;
+      background-color: #b38000;
       transform: translateY(-3px);
     }
 

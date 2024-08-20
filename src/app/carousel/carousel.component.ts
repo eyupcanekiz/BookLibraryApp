@@ -7,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarouselComponent implements OnInit {
   images = [
-    'assets/images/image1.jpg',
-    'assets/images/image2.jpg',
-    'assets/images/image3.jpg',
-    'assets/images/image4.jpg',
-    'assets/images/image5.jpg'
+    'assets/images/booklibrary1.jpg',
+    'assets/images/booklibrary3.jpg',
+    'assets/images/booklibrary4.jpg',
+    'assets/images/booklibrary7.jpg',
+    'assets/images/booklibrary6.jpg'
     
   ];
 

@@ -29,7 +29,7 @@ body {
   }
   
   .navbar-brand:hover {
-    color: #00d084; /* Hover yapıldığında açık yeşil renk */
+    color: #ffc202; /* Hover yapıldığında açık yeşil renk */
     transform: scale(1.1); /* Hafif büyütme efekti */
   }
   
@@ -43,13 +43,13 @@ body {
   }
   
   .nav-link:hover {
-    background-color: rgba(40, 167, 69, 0.7); /* Hover rengi ve opaklık */
+    background-color: #ffc202; /* Hover rengi ve opaklık */
     color: #ffffff; /* Yazı rengi */
     transform: scale(1.05); /* Hafif büyütme efekti */
   }
   
   .nav-link.active {
-    background-color: #28a745; /* Aktif durumda yeşil renk */
+    background-color: #ffc202; /* Aktif durumda yeşil renk */
     color: white;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Hafif gölge efekti */
   }
@@ -71,17 +71,17 @@ body {
   .navbar-toggler {
     border: none;
     padding: 5px 10px;
-    background-color: #28a745;
+    background-color: #ffc202;
     color: white;
     border-radius: 5px;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
   
     &:hover {
-      background-color: #218838;
+      background-color: #ffc202;
     }
   
     &:focus {
-      box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+      box-shadow: 0 0 0 0.2rem #ffc202;
     }
   }
   
@@ -102,7 +102,7 @@ body {
   }
   
   .dropdown-item:hover {
-    background-color: #28a745; /* Hover renginde yeşil */
+    background-color: #ffc202; /* Hover renginde yeşil */
     color: #ffffff; /* Yazı rengi */
   }
   
@@ -142,4 +142,7 @@ body {
     font-weight: 400;
     font-style: normal;
   }
-  
+  #imagehome{
+    width: 80px;
+    height: 70px;
+   }

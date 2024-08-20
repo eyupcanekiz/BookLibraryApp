@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -11,7 +12,6 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -38,6 +38,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyPasswordComponent } from './components/verify-password/verify-password.component';
 import { AllBooksComponent } from './all-books/all-books.component';
 import { AllBookShowComponent } from './all-book-show/all-book-show.component';
+import { KvkkComponent } from './kvkk/kvkk.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 
 
 
@@ -66,6 +69,9 @@ import { AllBookShowComponent } from './all-book-show/all-book-show.component';
     VerifyPasswordComponent,
     AllBooksComponent,
     AllBookShowComponent,
+    KvkkComponent,
+    PrivacyPolicyComponent,
+    TermsOfServiceComponent,
 
   ],
   providers: [
@@ -82,7 +88,6 @@ import { AllBookShowComponent } from './all-book-show/all-book-show.component';
     HttpClientModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    ToastrModule.forRoot(),
     NgxSpinnerModule,
     BookModule, 
     BorrowbookModule,

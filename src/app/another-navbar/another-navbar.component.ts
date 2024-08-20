@@ -82,6 +82,7 @@ export class AnotherNavbarComponent implements OnInit  {
   navigateToProfile(){
     if(this.userId){
       this.router.navigate(["profile",this.userId]);
+      
     }
   
   }

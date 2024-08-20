@@ -16,13 +16,14 @@ export class BookComponent implements OnInit {
     isAvailable: false,
     stock: '',
     coverImageUrl: "",
-    category: ""
+    category: "",
+    description: ""
     
   };
   errorMessage: string = '';
   books: Book[] = [];
   selectedBook: Book | null = null;
-  bookId: string = ''; // To hold the user-entered book ID
+  bookName: string = ''; // To hold the user-entered book ID
   currentPage: number = 1;
   itemsPerPage: number = 5;
   paginatedBooks: any[] = [];
@@ -48,7 +49,8 @@ export class BookComponent implements OnInit {
           isAvailable: false,
           stock: '',
           coverImageUrl: "",
-          category: ""
+          category: "",
+          description: ""
         };
         this.getBooks();
       },

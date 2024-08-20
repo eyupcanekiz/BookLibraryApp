@@ -6,12 +6,12 @@
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   animation: fadeIn 1s ease-in-out;
-  margin-top: 50px;
+  margin-top: 80px;
   position: relative;
 
   h1 {
     text-align: center;
-    color: #28a745;
+    color: #ffc202;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 3em;
     margin-bottom: 20px;
@@ -22,7 +22,7 @@
       position: absolute;
       width: 100px;
       height: 4px;
-      background-color: #28a745;
+      background-color: #ffc202;
       left: 50%;
       transform: translateX(-50%);
       bottom: -10px;
@@ -124,7 +124,7 @@
       button {
         margin-top: 8px;
         padding: 8px 10px; /* Buton boyutunu biraz azalttık */
-        background-color: #28a745;
+        background-color: #ffc202;
         color: #ffffff;
         border: none;
         border-radius: 5px;
@@ -133,7 +133,7 @@
         transition: background-color 0.3s ease, transform 0.3s ease;
 
         &:hover {
-          background-color: #218838;
+          background-color: #ffc202;
           transform: translateY(-3px);
         }
       }
@@ -151,7 +151,7 @@
     transform: translateX(-50%);
     
     button {
-      background-color: #28a745;
+      background-color: #ffc202;
       color: white;
       border: none;
       border-radius: 50%;
@@ -165,7 +165,7 @@
       margin: 0 10px;
       
       &:hover {
-        background-color: #0c4300;
+        background-color: rgb(255, 166, 0);
         transform: translateY(-3px);
       }
       

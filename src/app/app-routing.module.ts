@@ -23,6 +23,9 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyPasswordComponent } from './components/verify-password/verify-password.component';
 import { AllBookShowComponent } from './all-book-show/all-book-show.component';
 import { AllBooksComponent } from './all-books/all-books.component';
+import { KvkkComponent } from './kvkk/kvkk.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsOfServiceComponent } from './terms-of-service/terms-of-service.component';
 
 const routes: Routes = [
   {
@@ -49,6 +52,9 @@ const routes: Routes = [
       { path: 'verify-password/:name', component: VerifyPasswordComponent },
       { path: 'all-books', component: AllBooksComponent },
       { path: 'all-book-show/:name', component: AllBookShowComponent },
+      { path: 'kvkk', component: KvkkComponent },
+      { path: 'privacy-policy', component: PrivacyPolicyComponent },
+      { path: 'terms-of-service', component: TermsOfServiceComponent },
     ],
   },
   {
