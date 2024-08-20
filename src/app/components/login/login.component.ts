@@ -4,6 +4,9 @@ import { AuthService } from './auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-login',
@@ -22,7 +25,9 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private snackBar: MatSnackBar,
     private router: Router,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private toastr: ToastrService,
+    private translate: TranslateService
   ) {
     this.setDateNowWithOffset(15);
   }
@@ -50,12 +55,21 @@ export class LoginComponent implements OnInit {
     this.isEmailFormVisible = false;
     this.isUsernameFormVisible = true;
   }
+
+  success(): void {
+    this.toastr.success('This is a success message', 'Tada');
+  }
+
   onLogin() {
     if (this.loginForm.valid) {
       const {email, username, password } = this.loginForm.value;
       this.authService.login(email,username, password).subscribe({
         next: (response) => {
-          this.snackBar.open('Login successful', 'Close', { duration: 3000 });
+          // this.snackBar.open('Login successful', 'Close', { duration: 3000 });
+          // this.toastr.success('Login successful', 'Success');
+          this.translate.get('LOGIN_SUCCESS').subscribe((res: string) => {
+            this.toastr.success(res, 'Tada');
+          });
 
           if (response.authenticateResult) {
             this.authService.getToken().subscribe({
@@ -75,11 +89,15 @@ export class LoginComponent implements OnInit {
               }
             });
           } else {
-            this.snackBar.open('Login failed', 'Close', { duration: 3000 });
+            // this.snackBar.open('Login failed', 'Close', { duration: 3000 });
+            this.toastr.error('Login failed', 'Error');
+
           }
         },
         error: (error) => {
-          this.snackBar.open('Login failed', 'Close', { duration: 3000 });
+          // this.snackBar.open('Login failed', 'Close', { duration: 3000 });
+          this.toastr.error(error, 'Error');
+
           console.error('Login failed', error);
         }
       });

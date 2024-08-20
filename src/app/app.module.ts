@@ -11,6 +11,7 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -81,6 +82,7 @@ import { AllBookShowComponent } from './all-book-show/all-book-show.component';
     HttpClientModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    ToastrModule.forRoot(),
     NgxSpinnerModule,
     BookModule, 
     BorrowbookModule,

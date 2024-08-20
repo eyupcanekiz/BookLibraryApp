@@ -79,5 +79,8 @@
   "PUBLISHER2": "Publisher",
   "READ": "Read",
   "CATEGORY": "Category",
-  "REWIEW": "Review Book"
+  "REWIEW": "Review Book",
+
+  "SUCCESS_MESSAGE": "This is a success message",
+  "LOGIN_SUCCESS": "Login successful"
 }
