@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService, Book } from '../components/book/book.service';
 import { response } from 'express';
-import { error, log } from 'console';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AllBookShowService, AllShowBookDto } from './all-book-show.service';
 import { AuthService } from '../components/login/auth.service';
@@ -13,6 +13,8 @@ import { HttpClient } from '@angular/common/http';
 import { BorrowbookService } from '../components/borrowbook/borrowbook.service';
 import { commentResponse } from './commentresponse';
 import { commentRequest } from './comment-request';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -55,7 +57,8 @@ export class AllBookShowComponent implements OnInit {
     private allBookShowService:AllBookShowService,
     private router : Router,
     private authService:AuthService,
-
+    private toastr: ToastrService,
+    private translate: TranslateService,
     private http: HttpClient,
 
     private borrowbookService: BorrowbookService
@@ -70,7 +73,7 @@ export class AllBookShowComponent implements OnInit {
     this.onGetByName(name!);
     this.fetchBorrowedBooks(this.userName);
     await this.loadComments(name!);
-    console.log(this.comments);
+    
 }
    
   onGetByName(name:string){
@@ -91,7 +94,7 @@ export class AllBookShowComponent implements OnInit {
         },
         error:(error) =>{
           this.snackBar.open('Şifreler eşleşmiyor', 'Close', { duration: 3000 });
-          console.log(error)
+   
         }
       }
     )
@@ -99,7 +102,7 @@ export class AllBookShowComponent implements OnInit {
   borrowBook(bookName:string){
     
     this.bookNameDto={bookName :bookName}
-    console.log(this.bookNameDto.bookName);
+    
     
     this.allBookShowService.addBorrowedBook(this.bookNameDto,this.userName).subscribe({
       next:()=>{
@@ -109,7 +112,7 @@ export class AllBookShowComponent implements OnInit {
       },
       error:(error)=>{
         this.snackBar.open("Kitap odunc alinamadi")
-        console.log(error);
+      
         
       }
     })
@@ -144,7 +147,7 @@ export class AllBookShowComponent implements OnInit {
             this.updateBookAvailability();  
         },
         (error) => {
-            console.error('Hata:', error);
+          
         }
     );
 }
@@ -200,15 +203,19 @@ updateBookAvailability(): void {
     };
     this.allBookShowService.addComment(bookName,commentData).subscribe(
       (response) => {
-        console.log(response);
-        
+      
+        window.location.reload();
       },
       (error)=>{
-        console.log(error);
+        this.translate.get('ERROR').subscribe((res1: string) => {
+          this.translate.get('ERROR_OCCURED').subscribe((res2: string) => {
+            this.toastr.error(res2, res1);
+          });
+        });
         
       }
     )
-    window.location.reload();
+   
   }
     
 }
