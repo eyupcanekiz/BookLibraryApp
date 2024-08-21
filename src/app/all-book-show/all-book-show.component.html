@@ -25,7 +25,7 @@
 </button>
 <div class="comments-section">
   <h3>Kitap Yorumları</h3>
-  <app-star-rating [bookName]="bookName"></app-star-rating>
+  <app-star-rating [bookName]="bookName" [userName]="userName"></app-star-rating>
   <div class="comment" *ngFor="let comment of comments">
     <div class="comment-header">
       <img src="https://avatars.githubusercontent.com/u/125741378?v=4" alt="{{comment.userName}}'s avatar" class="avatar">

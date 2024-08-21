@@ -9,7 +9,7 @@ import { RateBookResultDto } from './star-rating.model';
 })
 export class StarRatingComponent implements OnInit, OnChanges {
   @Input() bookName: string = '';  
-  userName: string = 'HalukAyt';  
+  @Input() userName: string = '';  
   currentRating = 0;  
   stars = [false, false, false, false, false];  
   isRatingLocked = false;
@@ -24,6 +24,11 @@ export class StarRatingComponent implements OnInit, OnChanges {
     if (changes['bookName'] && changes['bookName'].currentValue) {
       console.log('ngOnChanges - bookName:', this.bookName);
     }
+    if (changes['userName'] && changes['userName'].currentValue) {
+      console.log('ngOnChanges - userName:', this.userName);
+    }
+    
+    
   }
 
   setRating(rating: number) {
@@ -47,7 +52,6 @@ export class StarRatingComponent implements OnInit, OnChanges {
   }
 
   private sendRatingToServer() {
-    console.log(this.bookName);
     
     this.starRatingService.rateBook(this.bookName, this.currentRating, this.userName).subscribe({
       next: (response: RateBookResultDto) => {
