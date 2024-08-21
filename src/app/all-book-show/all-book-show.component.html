@@ -10,7 +10,8 @@
     <p><strong>{{ 'PUBLISHER' | translate }}</strong> {{ publisher }}</p>
     <p><strong>{{ 'AVAILABLE' | translate }}:</strong> {{ available ? '✅' : '❌' }}</p>
     <p><strong>{{ 'STOCK' | translate }}</strong> {{ stock }}</p>
-    <app-star-rating [bookName]="bookName"></app-star-rating>
+    <p><strong>{{ 'Average Rating' | translate }}</strong> {{ averageRating }}</p>
+    
     
   </div>
 </div>
@@ -24,7 +25,7 @@
 </button>
 <div class="comments-section">
   <h3>Kitap Yorumları</h3>
-
+  <app-star-rating [bookName]="bookName"></app-star-rating>
   <div class="comment" *ngFor="let comment of comments">
     <div class="comment-header">
       <img src="https://avatars.githubusercontent.com/u/125741378?v=4" alt="{{comment.userName}}'s avatar" class="avatar">
