@@ -185,7 +185,6 @@ updateBookAvailability(): void {
       
      },
      (error)=>{
-        console.log(error);
         rejects();
      }
     
