@@ -13,6 +13,6 @@ export class StarRatingService {
 
   rateBook(bookName: string, rating: number, userName: string): Observable<RateBookResultDto> {
     const request: RateBookRequest = { BookName: bookName, Rating: rating };
-    return this.http.post<RateBookResultDto>(`${this.apiUrl}/rate-book`, { ...request, userName });
+    return this.http.post<RateBookResultDto>(`${this.apiUrl}/rate-book?userName=${userName}`, { ...request });
   }
 }
