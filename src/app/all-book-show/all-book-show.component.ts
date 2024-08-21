@@ -209,6 +209,7 @@ updateBookAvailability(): void {
         
       }
     )
+    window.location.reload();
   }
     
 }
