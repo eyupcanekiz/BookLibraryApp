@@ -10,7 +10,8 @@
     <p><strong>{{ 'PUBLISHER' | translate }}</strong> {{ publisher }}</p>
     <p><strong>{{ 'AVAILABLE' | translate }}:</strong> {{ available ? '✅' : '❌' }}</p>
     <p><strong>{{ 'STOCK' | translate }}</strong> {{ stock }}</p>
-    <app-star-rating></app-star-rating>
+    <app-star-rating [bookName]="bookName"></app-star-rating>
+    
   </div>
 </div>
 

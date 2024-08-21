@@ -10,3 +10,6 @@
 <div class="rating-display">
   {{ currentRating }} puan
 </div>
+<div *ngIf="averageRating !== null">
+  <p>Ortalama Puan: {{ averageRating }}</p>
+</div>
