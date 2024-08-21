@@ -1,5 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { RatingService } from './rating.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-star-rating',
@@ -7,46 +6,25 @@ import { RatingService } from './rating.service';
   styleUrls: ['./star-rating.component.scss']
 })
 export class StarRatingComponent {
-  @Input() rating: number = 0;
-  @Input() bookId: number = 0; // Kitap ID'si
-  @Output() ratingChange = new EventEmitter<number>();
-  stars: number[] = [1, 2, 3, 4, 5];
-  hoveredRating: number = 0;
-
-  constructor(private ratingService: RatingService) {}
-
-  rate(star: number) {
-    this.rating = this.hoveredRating || this.roundToHalf(star);
-    this.ratingChange.emit(this.rating);
-
-    // RatingService kullanarak backend'e gönderim yapıyoruz
-    this.ratingService.rateBook(this.bookId, this.rating)
-      .subscribe(response => {
-        console.log('Rating saved:', response);
-        console.log(this.rating);
-      });
+  currentRating = 0;  // Başlangıç puanı sıfır
+  stars = [false, false, false, false, false];  // 5 yıldız
+  isRatingLocked = false;
+  setRating(rating: number) {
+    if (!this.isRatingLocked) {
+      this.currentRating = rating;  // Verilen puanı ayarla
+      this.isRatingLocked = true;   // Puanlama yapıldıktan sonra kilitle
+    } // Verilen puanı ayarla
   }
 
-  previewRating(star: number, event: MouseEvent) {
-    const rect = (event.target as HTMLElement).getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const percent = x / rect.width;
-    const approximateRating = star - 1 + percent;
-
-    this.hoveredRating = this.roundToHalf(approximateRating);
+  highlightStars(starIndex: number) {
+    if (!this.isRatingLocked) {
+      this.currentRating = starIndex;  // Üzerine gelince o kadar yıldızı doldur
+    }  // Üzerine gelince o kadar yıldızı doldur
   }
 
-  onMouseMove(event: MouseEvent) {
-    if (this.hoveredRating) {
-      this.previewRating(Math.ceil(this.hoveredRating), event);
+  clearHighlight() {
+    if (!this.isRatingLocked) {
+      this.currentRating = 0;  // Yıldızlardan çıkınca, puanı sıfırla
     }
-  }
-
-  onMouseLeave() {
-    this.hoveredRating = 0;
-  }
-
-  private roundToHalf(value: number): number {
-    return Math.round(value * 2) / 2;
   }
 }

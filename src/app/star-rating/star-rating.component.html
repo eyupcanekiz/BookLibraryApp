@@ -1,15 +1,12 @@
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  </head>
-  
-  <div class="star-rating-container">
-    <div class="stars">
-      <i *ngFor="let star of stars" class="fas fa-star"></i>
-    </div>
-    
-    <div class="star-overlay">
-      <span *ngFor="let star of stars" (click)="rate(star)" (mousemove)="previewRating(star, $event)"></span>
-    </div>
-  </div>
-  <p>Your Rating: {{ rating }}</p>
-  
+<div>
+  <span *ngFor="let star of stars; let i = index"
+        (click)="setRating(i + 1)"
+        (mouseover)="highlightStars(i + 1)"
+        (mouseleave)="clearHighlight()"
+        [class.filled]="i < currentRating">
+    ★
+  </span>
+</div>
+<div class="rating-display">
+  {{ currentRating }} puan
+</div>

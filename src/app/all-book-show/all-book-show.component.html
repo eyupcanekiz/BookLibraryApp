@@ -10,7 +10,7 @@
     <p><strong>{{ 'PUBLISHER' | translate }}</strong> {{ publisher }}</p>
     <p><strong>{{ 'AVAILABLE' | translate }}:</strong> {{ available ? '✅' : '❌' }}</p>
     <p><strong>{{ 'STOCK' | translate }}</strong> {{ stock }}</p>
-    <p><app-star-rating [rating]="currentRating" (ratingChange)="updateRating($event)"></app-star-rating></p>
+    <app-star-rating></app-star-rating>
   </div>
 </div>
 
