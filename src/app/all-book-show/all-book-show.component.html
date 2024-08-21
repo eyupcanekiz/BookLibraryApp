@@ -24,22 +24,24 @@
 <div class="comments-section">
   <h3>Kitap Yorumları</h3>
 
-  Yorumları listele
-  <div *ngFor="let comment of comments">
-    <p><strong>{{comment.userName}}</strong></p>
-    <p>{{comment.comment}}</p>
-  
+  <div class="comment" *ngFor="let comment of comments">
+    <div class="comment-header">
+      <img src="https://avatars.githubusercontent.com/u/125741378?v=4" alt="{{comment.userName}}'s avatar" class="avatar">
+      <p class="user-name"><strong>{{comment.userName}}</strong></p>
+    </div>
+    <p class="user-comment">{{comment.comment}}</p>
   </div>
 
-  Yorum ekleme formu
-  <form (ngSubmit)="addComment(bookName)">
-    <div>
+  <form (ngSubmit)="addComment(bookName)" class="comment-form">
+    <div class="form-group">
       <label for="comment">Yorumunuzu yazın:</label>
       <textarea id="comment" [(ngModel)]="newComment.text" name="comment" required></textarea>
     </div>
-    <button type="submit">Yorumu Gönder</button>
+    <button type="submit" class="submit-button">Yorumu Gönder</button>
   </form>
 </div>
+
+
 
 <app-another-navbar></app-another-navbar>
 <app-floating-button></app-floating-button>
