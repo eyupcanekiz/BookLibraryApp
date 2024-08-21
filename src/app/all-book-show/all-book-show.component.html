@@ -26,12 +26,13 @@
 
   Yorumları listele
   <div *ngFor="let comment of comments">
-    <p><strong>{{comment.userName}}</strong>:</p>
-    <p>{{comment.text}}</p>
+    <p><strong>{{comment.userName}}</strong></p>
+    <p>{{comment.comment}}</p>
+  
   </div>
 
   Yorum ekleme formu
-  <form (ngSubmit)="addComment()">
+  <form (ngSubmit)="addComment(bookName)">
     <div>
       <label for="comment">Yorumunuzu yazın:</label>
       <textarea id="comment" [(ngModel)]="newComment.text" name="comment" required></textarea>

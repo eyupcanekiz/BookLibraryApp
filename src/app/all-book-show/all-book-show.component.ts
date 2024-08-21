@@ -11,6 +11,9 @@ import { rejects } from 'assert';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
 import { HttpClient } from '@angular/common/http';
 import { BorrowbookService } from '../components/borrowbook/borrowbook.service';
+import { commentResponse } from './commentresponse';
+import { commentRequest } from './comment-request';
+
 
 
 @Component({
@@ -22,6 +25,7 @@ export class AllBookShowComponent implements OnInit {
   errorMessage: string = '';
   currentRating: number = 0;
   books: Book[] = [];
+  comments: commentResponse[] = [];
   selectedBook: Book | null = null;
   bookName:string ="";
   publisher:string =""
@@ -41,9 +45,8 @@ export class AllBookShowComponent implements OnInit {
   searchTerm: string = '';
   averageRating: any = 0;
   ratingCount: any = 0;
-  totalRating: any = 0;
+  ratings: any[] =[];
 
-  comments: any[] = []; 
   newComment: any = { text: '', userName: 'Kullanıcı Adı' };
   constructor(
     private route: ActivatedRoute,
@@ -66,12 +69,9 @@ export class AllBookShowComponent implements OnInit {
     const name = this.route.snapshot.paramMap.get('name');
     this.onGetByName(name!);
     this.fetchBorrowedBooks(this.userName);
-    this.loadComments();
-    
-   
-    
-  
-   }
+    await this.loadComments(name!);
+    console.log(this.comments);
+}
    
   onGetByName(name:string){
     this.bookService.getBookByName(name).subscribe(
@@ -86,7 +86,7 @@ export class AllBookShowComponent implements OnInit {
           this.description= response.description
           this.averageRating = response.averageRating
           this.ratingCount = response.ratingCount
-          this.totalRating =response.totalRating  
+          this.ratings =response.ratings  
        
         },
         error:(error) =>{
@@ -176,24 +176,39 @@ updateBookAvailability(): void {
     this.paginatedBooks = filtered.slice(startIndex, endIndex);
   }
 
-  loadComments() {
-    this.http.get<any[]>(`/api/books/${this.bookId}/comments`)
-      .subscribe(data => {
-        this.comments = data;
-      });
+  loadComments(name:string):Promise<void> {
+    return new Promise((resolve,rejects)=>{
+   this.allBookShowService.getComment(name).subscribe(
+     (response:commentResponse[])=>{
+      this.comments = response;
+      resolve(); 
+      
+     },
+     (error)=>{
+        console.log(error);
+        rejects();
+     }
+    
+    )
+  });
   }
-  addComment() {
-    const commentData = {
-      text: this.newComment.text,
-      userName: this.newComment.userName,
-      bookId: this.bookId
-    };
+  addComment(bookName:string) {
+    const commentData :commentRequest = {
+      comment: this.newComment.text,
+      userName:this.userName,
+      Status:true
 
-    this.http.post<any>(`/api/books/${this.bookId}/comments`, commentData)
-      .subscribe(response => {
-        this.comments.push(response); // Yeni yorum listeye eklenir
-        this.newComment.text = ''; // Yorum alanı sıfırlanır
-      });
+    };
+    this.allBookShowService.addComment(bookName,commentData).subscribe(
+      (response) => {
+        console.log(response);
+        
+      },
+      (error)=>{
+        console.log(error);
+        
+      }
+    )
   }
     
 }

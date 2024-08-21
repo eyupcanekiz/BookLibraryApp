@@ -8,7 +8,7 @@ export interface Book {
     description: string;
     averageRating: any ;
     ratingCount: any ;
-    totalRating: any ;
-    rating: any;
+   
+    ratings: any;
   }
   
