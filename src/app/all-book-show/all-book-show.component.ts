@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BookService, Book } from '../components/book/book.service';
+import { BookService, Book, Ratings } from '../components/book/book.service';
 import { response } from 'express';
 import { error, log } from 'console';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -45,7 +45,7 @@ export class AllBookShowComponent implements OnInit {
   searchTerm: string = '';
   averageRating: any = 0;
   ratingCount: any = 0;
-  ratings: any[] =[];
+  ratings: Ratings[] =[];
 
   newComment: any = { text: '', userName: 'Kullanıcı Adı' };
   constructor(
