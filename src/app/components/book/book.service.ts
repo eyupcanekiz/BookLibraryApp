@@ -18,6 +18,10 @@ export interface Book {
   ratings:any;
  
 }
+export interface Ratings{
+  userName:string;
+  Value: any;
+}
 
 @Injectable({
   providedIn: 'root'
