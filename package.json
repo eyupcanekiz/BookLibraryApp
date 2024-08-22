@@ -9,6 +9,7 @@
     "test": "ng test",
     "serve:ssr:BookLibary": "node dist/book-libary/server/server.mjs"
   },
+  "type": "module",
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.1.0",
