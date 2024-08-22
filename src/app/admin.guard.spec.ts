@@ -1,16 +1,16 @@
 import { TestBed } from '@angular/core/testing';
-import { CanActivateFn } from '@angular/router';
-import { adminGuard } from './admin.guard';
+import { CanActivate } from '@angular/router';
+import { AdminGuard } from './admin.guard'; // Import AdminGuard
 
-describe('adminGuard', () => {
-  const executeGuard: CanActivateFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => adminGuard(...guardParameters));
+describe('AdminGuard', () => {
+  let guard: AdminGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
+    guard = TestBed.inject(AdminGuard); // Create an instance of AdminGuard
   });
 
   it('should be created', () => {
-    expect(executeGuard).toBeTruthy();
+    expect(guard).toBeTruthy(); // Test if the guard is created
   });
 });
