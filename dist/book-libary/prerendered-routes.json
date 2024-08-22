@@ -1,0 +1,21 @@
+{
+  "routes": [
+    "/",
+    "/about",
+    "/admin",
+    "/all-books",
+    "/book",
+    "/borrowbook",
+    "/contact",
+    "/floating-button",
+    "/forgot-password",
+    "/kvkk",
+    "/login",
+    "/not-authorized",
+    "/privacy-policy",
+    "/register",
+    "/star-rating",
+    "/terms-of-service",
+    "/verification-enter"
+  ]
+}
