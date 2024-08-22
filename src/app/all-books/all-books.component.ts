@@ -120,7 +120,7 @@ export class AllBooksComponent implements OnInit {
     const token = localStorage.getItem('AuthToken');
     if (token) {
       this.userId = this.authService.extractUserIdFromToken(token);
-      console.log(this.userId);
+      
     }
   }
   }
