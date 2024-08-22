@@ -44,7 +44,6 @@ export class AllBooksComponent implements OnInit {
       (data: Book[]) => {
         this.books = data;
         this.filterAndPaginateBooks(); // Arama ve sayfalama işlemini birlikte yap
-        console.log(data)
       },
       (error) => {
         this.errorMessage = error.message;

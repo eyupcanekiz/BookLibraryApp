@@ -203,8 +203,7 @@ updateBookAvailability(): void {
     };
     this.allBookShowService.addComment(bookName,commentData).subscribe(
       (response) => {
-      
-        window.location.reload();
+        this.router.navigate(["/all-books"])
       },
       (error)=>{
         this.translate.get('ERROR').subscribe((res1: string) => {
