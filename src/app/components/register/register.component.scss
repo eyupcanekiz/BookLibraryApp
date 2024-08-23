@@ -5,7 +5,9 @@ $form-background-color: #FFFFFF;
 $input-border-color: #CCC;
 $button-hover-color: darken($primary-color, 10%);
 $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
+html{
+  height: 800px;
+}
 body {
   background-color: white;
   margin: 0;
@@ -42,6 +44,7 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 40px;
+  height: 500px;
   background-color: $form-background-color;
   max-width: 100%;
   font-family: "Bebas Neue", sans-serif;
@@ -63,8 +66,12 @@ body {
     font-size: 1.2em;
     transition: background-color 0.3s;
     margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(255, 221, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
     &:hover {
-      background-color: $button-hover-color;
+      background-color: #b38000;
+      transform: translateY(-3px);
     }
 
     @media (max-width: 768px) {
@@ -82,7 +89,8 @@ body {
   align-items: center;
   background-size: cover;
   background-position: center;
-  
+  height: 100%;
+  margin-top: 100px;
   @media (max-width: 768px) {
     display: none; /* Mobil cihazlarda fotoğrafı gizle */
   }
