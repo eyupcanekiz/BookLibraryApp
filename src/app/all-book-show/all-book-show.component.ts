@@ -189,9 +189,7 @@ export class AllBookShowComponent implements OnInit {
   }
 
   private loadUserRating() {
-    console.log(this.userName);
-    console.log(this.bookName);
-    
+
     
 
 
@@ -200,8 +198,12 @@ export class AllBookShowComponent implements OnInit {
         this.bookService.getUserBookRating(this.bookName, this.userName).subscribe({
           next: (response: UserBookRatingDto) => {
             if (response.success) {
+              console.log(response);
+              
               this.userRating = response.userRating || 0;
               this.isRatingLocked = true; // Lock rating to prevent change
+             
+              
             } else {
               this.errorMessage = response.message;
             }

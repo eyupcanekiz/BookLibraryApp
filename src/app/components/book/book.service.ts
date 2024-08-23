@@ -87,6 +87,6 @@ export class BookService {
   }
 
     getUserBookRating(bookName: string, userName: string): Observable<UserBookRatingDto> {
-    return this.http.get<UserBookRatingDto>(`${this.apiUrl}/getUserRating?bookName=${bookName}&userName=${userName}`);
+    return this.http.get<UserBookRatingDto>(`${this.apiUrl}/getUserRating/${bookName}/${userName}`);
   }
 }
