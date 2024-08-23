@@ -11,8 +11,8 @@
     <p><strong>{{ 'PUBLISHER' | translate }}</strong> {{ publisher }}</p>
     <p><strong>{{ 'AVAILABLE' | translate }}:</strong> {{ available ? '✅' : '❌' }}</p>
     <p><strong>{{ 'STOCK' | translate }}:</strong> {{ stock }}</p>
-    <p><strong>{{ 'Average Rating' | translate }}:</strong> {{ averageRating }}</p>
-    <p><strong>{{ 'Rating Count' | translate }}:</strong> {{ ratingCount }}</p>
+    <p><strong>{{ 'AVERAGE' | translate }}:</strong> {{ averageRating }}</p>
+    <p><strong>{{ 'COUNT' | translate }}:</strong> {{ ratingCount }}</p>
     <button type="button" class="btn btn-primary" id="btn-back" routerLink="/all-books">
       {{ 'RETURN_ALL_BOOKS' | translate }}
     </button>
@@ -25,7 +25,7 @@
 
 
 <div class="comments-section">
-  <h3>Kitap Yorumları</h3>
+  <h3>{{ 'BOOK_COMMENTS' | translate }}</h3>
   <app-star-rating [bookName]="bookName" [userName]="userName"></app-star-rating>
   <div class="comment" *ngFor="let comment of comments">
     <div class="comment-header">
@@ -37,10 +37,10 @@
 
   <form (ngSubmit)="addComment(bookName)" class="comment-form">
     <div class="form-group">
-      <label for="comment">Yorumunuzu yazın:</label>
+      <label for="comment">{{ 'YOUR_COMMENT' | translate }}</label>
       <textarea id="comment" [(ngModel)]="newComment.text" name="comment" required></textarea>
     </div>
-    <button type="submit" class="submit-button">Yorumu Gönder</button>
+    <button type="submit" class="submit-button">{{ 'SEND_COMMENT' | translate }}</button>
   </form>
 </div>
 

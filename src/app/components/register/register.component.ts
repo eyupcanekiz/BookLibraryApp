@@ -84,47 +84,42 @@ export class RegisterComponent implements OnInit {
   }
 
   sendEmailVerification(htmlContent: string) {
-    const {Email} = this.registerForm.value;
+    const { Email } = this.registerForm.value;
     const emailData = {
       EmailAddress: Email,
       HtmlContent: htmlContent
     };
-  
+
     this.emailservice.sendVerificationCode(emailData)
-    .subscribe({
-      next: (response) => {
-        console.log('Verification email sent successfully', response);
-        this.emailSent = true;
-       
-      
-  
-        
-      },
-      error: (error) => {
-        console.error('Error sending verification email', error);
-        this.snackBar.open('E-posta doğrulama kodu gönderilemedi. Lütfen tekrar deneyin.', 'Close', { duration: 3000 });
-      }
-    });
+      .subscribe({
+        next: (response) => {
+          console.log('Verification email sent successfully', response);
+          this.emailSent = true;
+          this.toastr.success(this.translate.instant('VERIFICATION_EMAIL_SENT'));
+        },
+        error: (error) => {
+          console.error('Error sending verification email', error);
+          this.toastr.error(this.translate.instant('VERIFICATION_EMAIL_ERROR'));
+        }
+      });
   }
 
-  
   onRegister(): void {
     if (this.registerForm.valid) {
       this.generateVerificationCode();
       this.loadHtmlContent();
 
       const { UserName, FullName, Email, Password, PasswordRepeat, Gender } = this.registerForm.value;
-      
+
       if (Password !== PasswordRepeat) {
-        this.snackBar.open('Şifreler eşleşmiyor', 'Close', { duration: 3000 });
+        this.toastr.error(this.translate.instant('PASSWORDS_DO_NOT_MATCH'));
         return;
       }
-    
+
       const registerModel: RegisterModel = { UserName, FullName, Email, Password, PasswordRepeat, Gender };
       const key = 'YourSecretKeyForEncryption&Descryption';
       const encryptedData = CryptoJS.AES.encrypt(JSON.stringify(registerModel), key).toString();
       this.router.navigate(['/verification-enter', { data: encryptedData }]);
-
     }
   }
 }

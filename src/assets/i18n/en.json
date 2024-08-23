@@ -80,11 +80,21 @@
   "READ": "Read",
   "CATEGORY": "Category",
   "REWIEW": "Review Book",
-
   "SUCCESS_MESSAGE": "This is a success message",
-  "LOGIN_SUCCESS": "Login successful",
-  "LOGIN_FAIL": "Login failed",
+  "LOGIN_SUCCESS": "Login Successful",
+  "LOGIN_FAIL": "Login Failed",
   "ERROR": "Error",
-  "ERROR_OCCURED": "An error occured"
+  "ERROR_OCCURED": "An error occured",
+  "BOOK_COMMENTS": "Book Reviews",
+  "AVERAGE": "Average Rating",
+  "COUNT": "Rating Count",
+  "YOUR_COMMENT": "Write your comment",
+  "SEND_COMMENT": "Send comment",
+  "POINT": "Point",
+  "VERIFICATION_EMAIL_SENT": "Verification email sent successfully.",
+  "VERIFICATION_EMAIL_ERROR": "Failed to send verification email. Please try again.",
+  "PASSWORDS_DO_NOT_MATCH": "Passwords do not match.",
+  "MESSAGE_SENT_SUCCESS": "Message sent successfully.",
+  "MESSAGE_SENT_ERROR": "Failed to send message."
 
 }
