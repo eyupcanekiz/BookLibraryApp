@@ -1,197 +1,154 @@
+$primary-color: #ffcc00;
+$secondary-color: #212121;
+$background-color: #ffffff;
+$hover-color: #ffc107;
+$font-family: 'Poppins', sans-serif;
+$transition-speed: 0.4s;
+
+// Container Styling
 .book-details-container {
-  max-width: 800px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-in-out;
-  margin-top: 80px;
-  @media (max-width: 768px) {
-    padding: 20px;
-    margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $background-color;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp $transition-speed ease-in-out;
+  max-width: 90%;
+  margin: 20px auto;
+  margin-top: 120px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    padding: 40px;
   }
 
   h1 {
-    text-align: center;
-    color: #28a745;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.5em;
+    color: $secondary-color;
+    margin-bottom: 10px;
+    font-family: $font-family;
+    font-size: 2rem; // Kitap adını biraz küçültüyoruz
+    text-align: left;
+  }
+
+  .book-description {
     margin-bottom: 20px;
-    position: relative;
+    font-family: $font-family;
+    color: $secondary-color;
 
-    &::after {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 4px;
-      margin-left: 120px;
-      background-color: #28a745;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -10px;
-      border-radius: 2px;
-      transition: width 0.3s ease;
+    p {
+      margin: 0;
+      font-size: 0.9rem; // Açıklamayı biraz küçültüyoruz
+    }
+  }
+
+  #bookimg {
+    width: 100%;
+    max-width: 280px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    transition: transform $transition-speed ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      transform: scale(1.08);
     }
 
-    // &:hover::after {
-    //   width: 100%;
-    // }
-
-    @media (max-width: 768px) {
-      font-size: 2em;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.5em;
+    @media (min-width: 768px) {
+      margin-right: 40px;
     }
   }
 
   .book-info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 1.2em;
-
-    @media (max-width: 768px) {
-      font-size: 1em;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 0.9em;
-    }
+    display: grid;
+    grid-template-columns: 1fr 1fr; // İki sütun düzenine geçiyoruz
+    gap: 20px; // Kutular arası boşluk
+    margin-top: 20px;
+    width: 100%; // Kutuları genişletiyoruz
 
     p {
-      color: #555;
-      position: relative;
-      padding-left: 25px;
-      line-height: 1.6;
-      transition: color 0.3s ease;
+      font-family: $font-family;
+      color: $secondary-color;
+      padding: 15px;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-      &::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 15px;
-        height: 15px;
-        background-color: #28a745;
-        border-radius: 50%;
-        transform: translateY(-50%);
-        transition: background-color 0.3s ease;
+      strong {
+        color: $primary-color;
       }
 
       &:hover {
-        color: #28a745;
-      }
-
-      &:hover::before {
-        background-color: darken(#28a745, 10%);
-      }
-
-      @media (max-width: 768px) {
-        padding-left: 20px;
-
-        &::before {
-          width: 12px;
-          height: 12px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        padding-left: 15px;
-
-        &::before {
-          width: 10px;
-          height: 10px;
-        }
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
       }
     }
   }
 }
 
-#btn-back {
-  display: block;
-  margin: 20px auto 0;
-  padding: 10px 20px;
-  font-size: 1em;
-  background-color: #28a745;
-  color: #ffffff;
+// Button Styling
+button {
+  font-family: $font-family;
+  background-color: $primary-color;
+  color: $secondary-color;
   border: none;
-  border-radius: 5px;
+  padding: 12px 24px;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color $transition-speed ease, transform $transition-speed ease, box-shadow $transition-speed ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  margin: 10px;
+  box-shadow: 0 5px 15px rgba(170, 255, 0, 0.3);
 
   &:hover {
-    background-color: darken(#28a745, 10%);
+    background-color: $hover-color;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   }
 
-  @media (max-width: 768px) {
-    width: 50%;
-    margin: 10px 0 0;
-    font-size: 0.9em;
-  }
+  &.btn-success {
+    background-color: #28a745;
 
-  @media (max-width: 480px) {
-    font-size: 0.8em;
-    padding: 8px 15px;
+    &:hover {
+      background-color: lighten(#28a745, 10%);
+    }
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-#bookimg {
-  width: 200px;
-  height: 350px;
-  float: left; /* Görseli sola hizala */
-  margin-right: 20px; /* Görsel ve açıklama arasında boşluk */
-}
-
-.book-description {
-  font-size: 1.2em;
-  color: #555;
-  line-height: 1.6;
-}
-#btn-borrow{
-  margin-left: 46.5%;
-  margin-top: 2%;
-}
-
-
+// Comments Section Styling
 .comments-section {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #f0f0f0;
+  margin-top: 40px;
+  width: 100%;
+  background-color: $background-color;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  animation: fadeIn 1s ease-in-out;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeInUp $transition-speed ease-in-out;
+  max-width: 90%;
+  margin: 20px auto;
 
   h3 {
-    text-align: center;
+    font-family: $font-family;
+    color: $secondary-color;
     margin-bottom: 20px;
-    color: #333;
-    font-size: 26px;
-    font-weight: 600;
+    text-align: center;
   }
 
   .comment {
-    background: #fff;
+    margin-bottom: 20px;
     padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
-    display: flex;
-    flex-direction: column;
-    animation: slideIn 0.5s ease-in-out;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: box-shadow $transition-speed ease;
+
+    &:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
 
     .comment-header {
       display: flex;
@@ -199,47 +156,63 @@
       margin-bottom: 10px;
 
       .avatar {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         border-radius: 50%;
-        margin-right: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        animation: bounceIn 1s ease-in-out;
+        margin-right: 15px;
+        transition: transform $transition-speed ease;
+
+        &:hover {
+          transform: scale(1.1);
+        }
       }
 
       .user-name {
-        font-weight: bold;
-        font-size: 18px;
-        color: #0073e6;
+        font-family: $font-family;
+        color: $secondary-color;
+        font-size: 1.1em;
       }
     }
 
     .user-comment {
-      color: #555;
-      font-size: 16px;
+      font-family: $font-family;
+      color: $secondary-color;
+      font-size: 1em;
+      margin-top: 10px;
+      line-height: 1.6;
     }
   }
 
   .comment-form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     .form-group {
+      width: 100%;
       margin-bottom: 15px;
 
       label {
-        display: block;
+        font-family: $font-family;
+        color: $secondary-color;
         margin-bottom: 5px;
-        color: #555;
+        display: block;
+        font-size: 1em;
       }
 
       textarea {
         width: 100%;
+        border: 2px solid $primary-color;
+        border-radius: 12px;
         padding: 12px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        transition: border-color 0.3s, box-shadow 0.3s;
+        font-family: $font-family;
+        color: $secondary-color;
+        transition: border-color $transition-speed ease;
+        resize: none;
 
         &:focus {
-          border-color: #0073e6;
-          box-shadow: 0 0 8px rgba(0, 115, 230, 0.3);
+          border-color: $hover-color;
           outline: none;
         }
       }
@@ -247,55 +220,49 @@
 
     .submit-button {
       width: 100%;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      background: #0073e6;
-      color: #fff;
-      font-size: 16px;
+      max-width: 200px;
+      background-color: $primary-color;
+      color: $secondary-color;
+      padding: 12px 24px;
+      border-radius: 25px;
       cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
-
+      transition: background-color $transition-speed ease, transform $transition-speed ease, box-shadow $transition-speed ease;
+      box-shadow: 0 5px 15px rgba(255, 221, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+  
       &:hover {
-        background-color: #005bb5;
-        transform: translateY(-2px);
+        background-color: #b38000;
+        transform: translateY(-3px);
       }
-
-      &:active {
-        transform: translateY(0);
-      }
+      
     }
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+// Navbar and Floating Button Styling
+app-another-navbar, app-floating-button {
+  animation: fadeInDown $transition-speed ease-in-out;
 }
 
-@keyframes slideIn {
+// Animations
+@keyframes fadeInUp {
   from {
+    opacity: 0;
     transform: translateY(20px);
-    opacity: 0;
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes bounceIn {
-  0%, 20%, 50%, 80%, 100% {
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
     transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-10px);
-  }
-  60% {
-    transform: translateY(-5px);
   }
 }

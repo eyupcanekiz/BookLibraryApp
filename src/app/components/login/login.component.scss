@@ -86,8 +86,13 @@ body {
     transition: background-color 0.3s;
     margin-bottom: 20px; /* Butonlar arasına boşluk ekle */
     margin-left: 1%;
+   
+    box-shadow: 0 5px 15px rgba(255, 221, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
     &:hover {
-        background-color: $button-hover-color;
+      background-color: #b38000;
+      transform: translateY(-3px);
     }
 
     @media (max-width: 768px) {
@@ -101,3 +106,16 @@ body {
 // .toast-success {
 //     background-color: #fff !important;
 // }
+#s1{    
+    background-color: #ffc202;
+    box-shadow: 0 5px 15px rgba(255, 221, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    letter-spacing: 0.8px;
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    &:hover {
+      background-color: #b38000;
+      transform: translateY(-3px);
+    }
+
+}
