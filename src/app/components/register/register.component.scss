@@ -8,19 +8,22 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 html{
   height: 800px;
 }
+
 body {
   background-color: white;
   margin: 0;
   padding: 0;
   font-family: "Bebas Neue", sans-serif;
+
   h2 {
     text-align: center;
     color: $primary-color;
-    margin-top: 300px ;
+    margin-top: 100px;  // Başlığı yukarıda görünür kılmak için margin-top'u sıfırla
     margin-bottom: 30px;
     font-family: "Bebas Neue", sans-serif;
   }
 }
+
 
 .register-container {
   display: flex;
@@ -42,9 +45,9 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; // Flex başlangıcına hizala
   padding: 40px;
-  height: 500px;
+  height: auto; // Yüksekliği içeriğe göre ayarla
   background-color: $form-background-color;
   max-width: 100%;
   font-family: "Bebas Neue", sans-serif;
