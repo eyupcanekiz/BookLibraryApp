@@ -8,6 +8,11 @@ import { response } from "express";
 export interface AllShowBookDto {
     bookName: string;
   }
+  // export interface UserBookRatingDto{
+  //    UserRating:any;
+  //    Message: string;
+  //    Success:boolean;
+  // }
 @Injectable({
     providedIn: 'root'
   })
@@ -21,6 +26,9 @@ export class AllBookShowService{
 addBorrowedBook(bookDto: AllShowBookDto, userName: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/AddBorrow?userName=${userName}`, bookDto);
   }
+  // ShowUserRating(bookName:string, userName:string): Observable<any>{
+  //   return this.http.get(`${this.bookUrl}/getUserRating?bookName=${bookName}&userName=${userName}`);
+  // }
   rateBook(bookId: number, rating: number): Observable<any> {
     const ratingData = { bookId, rating };
     return this.http.post<any>(this.apiUrl, ratingData);
