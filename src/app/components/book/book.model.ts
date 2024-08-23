@@ -11,4 +11,9 @@ export interface Book {
    
     ratings: any;
   }
+  export interface UserBookRatingDto{
+    userRating:any;
+    message: string;
+    success:boolean;
+ }
   

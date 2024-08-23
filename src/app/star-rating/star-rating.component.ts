@@ -1,13 +1,13 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { StarRatingService } from './star-rating.service'; 
-import { RateBookResultDto, UserBookRatingDto } from './star-rating.model'; 
+import { RateBookResultDto } from './star-rating.model'; 
 
 @Component({
   selector: 'app-star-rating',
   templateUrl: './star-rating.component.html',
   styleUrls: ['./star-rating.component.scss']
 })
-export class StarRatingComponent implements OnInit, OnChanges {
+export class StarRatingComponent implements OnInit {
   @Input() bookName: string = '';  
   @Input() userName: string = '';  
   currentRating: number = 0;  
@@ -19,17 +19,10 @@ export class StarRatingComponent implements OnInit, OnChanges {
   constructor(private starRatingService: StarRatingService) {}
 
   ngOnInit(): void {
-    this.loadUserRating(); // Fetch user rating on initialization
+
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['bookName'] && changes['bookName'].currentValue) {
-      this.loadUserRating(); // Fetch user rating when bookName changes
-    }
-    if (changes['userName'] && changes['userName'].currentValue) {
-      this.loadUserRating(); // Fetch user rating when userName changes
-    }
-  }
+
 
   setRating(rating: number) {
     if (!this.isRatingLocked) {
@@ -64,21 +57,4 @@ export class StarRatingComponent implements OnInit, OnChanges {
     });
   }
 
-  private loadUserRating(): void {
-    this.starRatingService.ShowUserRating(this.bookName, this.userName).subscribe({
-      next: (response: UserBookRatingDto) => {
-        if (response.Success) {
-          this.currentRating = response.UserRating;
-          this.isRatingLocked = true; // Lock rating to prevent change
-          
-        } else {
-          this.errorMessage = response.Message;
-        }
-      },
-      error: (error) => {
-        console.error('Error fetching user rating:', error);
-        this.errorMessage = 'Değerlendirme alınamadı.';
-      }
-    });
-  }
 }
