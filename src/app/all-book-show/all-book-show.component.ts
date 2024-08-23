@@ -153,44 +153,90 @@ export class AllBookShowComponent implements OnInit {
     this.paginatedBooks = filtered.slice(startIndex, endIndex);
   }
 
-  loadComments(name:string):Promise<void> {
-    return new Promise((resolve,rejects)=>{
-   this.allBookShowService.getComment(name).subscribe(
-     (response:commentResponse[])=>{
-      this.comments = response;
-      resolve(); 
-      
-     },
-     (error)=>{
-        rejects();
-     }
-    
-    )
-  });
-  }
-  addComment(bookName:string) {
-    const commentData :commentRequest = {
+  addComment(bookName: string) {
+    const commentData: commentRequest = {
       comment: this.newComment.text,
       userName: this.userName,
       Status: true
     };
-    this.allBookShowService.addComment(bookName,commentData).subscribe(
+    this.allBookShowService.addComment(bookName, commentData).subscribe(
       (response) => {
-        this.router.navigate(["/all-books"])
+        // Yorum ekledikten sonra sadece yorumları yeniden yükle
+        this.loadComments(bookName).then(() => {
+          // Yorum başarılı bir şekilde yenilendiğinde yeni yorum kutusunu temizle
+          this.newComment.text = ''; 
+          // Kullanıcıya başarı mesajı göster
+          this.translate.get('SUCCESS').subscribe((res1: string) => {
+            this.translate.get('COMMENT_ADDED').subscribe((res2: string) => {
+              this.toastr.success(res2, res1);
+            });
+          });
+        });
       },
-      (error)=>{
+      (error) => {
+        // Hata durumunda hata mesajı göster
         this.translate.get('ERROR').subscribe((res1: string) => {
           this.translate.get('ERROR_OCCURED').subscribe((res2: string) => {
             this.toastr.error(res2, res1);
           });
         });
-        
       }
-    )
-   
+    );
   }
+  
+  // Yorumları yüklemek için kullanılan metod
+  loadComments(name: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.allBookShowService.getComment(name).subscribe(
+        (response: commentResponse[]) => {
+          this.comments = response;
+          resolve();
+        },
+        (error) => {
+          reject();
+          this.handleError();
+        }
+      );
+    });
+  }
+
+
+  private loadUserRating() {
+
     
+
+
+        // URL encode bookName and userName to handle special characters
+       
+        this.bookService.getUserBookRating(this.bookName, this.userName).subscribe({
+          next: (response: UserBookRatingDto) => {
+            if (response.success) {
+              
+              this.userRating = response.userRating || 0;
+              this.isRatingLocked = true; // Lock rating to prevent change
+             
+              
+            } else {
+              this.errorMessage = response.message;
+            }
+         
+          },
+          error: (error) => {
+            console.error('Error fetching user rating:', error);
+            this.errorMessage = 'Değerlendirme alınamadı.';
+       
+          }
+        });
+      } 
+
+  
+  
+
+  private handleError() {
+    this.translate.get('ERROR').subscribe((res1: string) => {
+      this.translate.get('ERROR_OCCURED').subscribe((res2: string) => {
+        this.toastr.error(res2, res1);
+      });
+    });
+  }
 }
-
-
-
