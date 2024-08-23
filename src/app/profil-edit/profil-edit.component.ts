@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GenderType, ProfileEditModel } from './profile-edit.model';
@@ -24,7 +25,9 @@ export class ProfilEditComponent implements OnInit {
       private snackBar:MatSnackBar,
       private router :Router,
       private route:ActivatedRoute,
-      private authService:AuthService
+      private authService:AuthService,
+      private toastr: ToastrService, 
+      private translate: TranslateService,
 
     ){}
 
@@ -73,35 +76,45 @@ export class ProfilEditComponent implements OnInit {
       })
     }
    
-    onUpdate():void{
-      if(this.profileEditForm.valid){
-        const{ fullName,email,Gender}=this.profileEditForm.value;
-        const profileeditmodel:ProfileEditModel={fullName,email,Gender};
+    onUpdate(): void {
+      if (this.profileEditForm.valid) {
+        const { fullName, email, Gender } = this.profileEditForm.value;
+        const profileeditmodel: ProfileEditModel = { fullName, email, Gender };
         console.log(profileeditmodel);
-        
-        this.profileEditService.profileEdit(profileeditmodel,this.userId).subscribe({
-          next:(response:any)=>{
-            this.snackBar.open('Basariyla profil güncellendi','Close',{duration:3000});
-            this.router.navigate([``])
+    
+        this.profileEditService.profileEdit(profileeditmodel, this.userId).subscribe({
+          next: (response: any) => {
+            this.translate.get('PROFILE_UPDATE_SUCCESS').subscribe((res: string) => {
+              this.toastr.success(res, 'Success');
+            });
+            this.router.navigate([``]);
           },
           error: (error: any) => {
-            // Backend'den dönen hata mesajını yakalama
-            if (error.status === 400) { // Hata kodu backend'de 400 olarak tanımlanabilir
+            if (error.status === 400) {
               if (error.error === 'EMAIL_ALREADY_EXISTS') {
-                this.snackBar.open('Bu e-posta adresi zaten kayıtlı', 'Close', { duration: 3000 });
+                this.translate.get('EMAIL_ALREADY_EXISTS').subscribe((res: string) => {
+                  this.toastr.error(res, 'Error');
+                });
               } else if (error.error === 'USERNAME_ALREADY_EXISTS') {
-                this.snackBar.open('Bu kullanıcı adı zaten kayıtlı', 'Close', { duration: 3000 });
+                this.translate.get('USERNAME_ALREADY_EXISTS').subscribe((res: string) => {
+                  this.toastr.error(res, 'Error');
+                });
               } else {
-                this.snackBar.open('Kayıt başarısız. Lütfen tekrar deneyin.', 'Close', { duration: 3000 });
+                this.translate.get('UPDATE_FAILED_TRY_AGAIN').subscribe((res: string) => {
+                  this.toastr.error(res, 'Error');
+                });
               }
             } else {
-              this.snackBar.open('Kayıt başarısız', 'Close', { duration: 3000 });
+              this.translate.get('UPDATE_FAILED').subscribe((res: string) => {
+                this.toastr.error(res, 'Error');
+              });
             }
-            console.error('Kayıt başarısız', error);
+            console.error('Update failed', error);
           }
-        })
+        });
       }
     }
+    
     
     
     navigateToProfile(){

@@ -79,7 +79,9 @@ export class AllBookShowComponent implements OnInit {
         this.ratings = response.ratings;
       },
       error: (error) => {
-        this.snackBar.open('Kitap bilgisi alınamadı', 'Close', { duration: 3000 });
+        this.translate.get('BOOK_INFO_ERROR').subscribe((res: string) => {
+          this.toastr.error(res, 'Error');
+        });
       }
     });
   }
@@ -88,11 +90,15 @@ export class AllBookShowComponent implements OnInit {
     this.bookNameDto = { bookName: bookName };
     this.allBookShowService.addBorrowedBook(this.bookNameDto, this.userName).subscribe({
       next: () => {
-        this.snackBar.open("Kitap başarılı bir şekilde ödünç alındı", "Close", { duration: 3000 });
+        this.translate.get('BOOK_BORROW_SUCCESS').subscribe((res: string) => {
+          this.toastr.success(res, 'Success');
+        });
         this.router.navigate(["all-books"]);
       },
       error: (error) => {
-        this.snackBar.open("Kitap ödünç alınamadı", "Close", { duration: 3000 });
+        this.translate.get('BOOK_BORROW_ERROR').subscribe((res: string) => {
+          this.toastr.error(res, 'Error');
+        });
       }
     });
   }
@@ -105,7 +111,9 @@ export class AllBookShowComponent implements OnInit {
           resolve();
         },
         error: () => {
-          this.snackBar.open("Lütfen giriş yapınız", "Close", { duration: 3000 });
+          this.translate.get('LOGIN_REQUIRED').subscribe((res: string) => {
+            this.toastr.error(res, 'Error');
+          });
           rejects();
         }
       });

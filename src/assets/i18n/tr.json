@@ -97,6 +97,23 @@
   "VERIFICATION_EMAIL_ERROR": "E-posta doğrulama kodu gönderilemedi. Lütfen tekrar deneyin.",
   "PASSWORDS_DO_NOT_MATCH": "Şifreler eşleşmiyor.",
   "MESSAGE_SENT_SUCCESS": "Mesaj başarıyla gönderildi.",
-  "MESSAGE_SENT_ERROR": "Mesaj gönderilemedi."
+  "MESSAGE_SENT_ERROR": "Mesaj gönderilemedi.",
+  "PROFILE_UPDATE_SUCCESS": "Profil başarıyla güncellendi.",
+  "EMAIL_ALREADY_EXISTS": "Bu e-posta adresi zaten kayıtlı.",
+  "USERNAME_ALREADY_EXISTS": "Bu kullanıcı adı zaten kayıtlı.",
+  "UPDATE_FAILED_TRY_AGAIN": "Güncelleme başarısız. Lütfen tekrar deneyin.",
+  "UPDATE_FAILED": "Güncelleme başarısız.",
+  "BOOK_INFO_ERROR": "Kitap bilgisi alınamadı.",
+  "BOOK_BORROW_SUCCESS": "Kitap başarılı bir şekilde ödünç alındı.",
+  "BOOK_BORROW_ERROR": "Kitap ödünç alınamadı.",
+  "LOGIN_REQUIRED": "Lütfen giriş yapınız.",
+  "FETCH_BORROWED_BOOKS_ERROR": "Ödünç alınan kitaplar getirilemedi.",
+  "FETCH_READOUT_BOOKS_ERROR": "Okunan kitaplar getirilemedi.",
+  "BOOK_RETURN_SUCCESS": "Kitap başarıyla iade edildi.",
+  "BOOK_RETURN_ERROR": "Kitap iade edilemedi.",
+  "BOOK_UPDATE_SUCCESS": "Kitap başarıyla güncellendi.",
+  "BOOK_UPDATE_ERROR": "Kitap güncellenemedi.",
+  "LOGOUT_SUCCESS": "Oturum başarıyla kapatıldı.",
+  "LOGOUT_FAILED": "Oturum kapatılamadı."
 }
 

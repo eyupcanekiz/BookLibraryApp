@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { RegisterService } from './register.service';
 import { RegisterModel, GenderType } from './registerModel';
@@ -14,14 +13,11 @@ import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'], 
   providers: [VerificationEnterComponent],
-  
-
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
@@ -29,51 +25,45 @@ export class RegisterComponent implements OnInit {
   verificationCode: string = '';
   verificationName: string = 'Alperen';
   private emailSent: boolean = false;
-  check!:boolean;
 
   constructor(
     private fb: FormBuilder,
     private registerService: RegisterService,
-    private snackBar: MatSnackBar,
     private router: Router,
     private http: HttpClient,
     private sanitizer: DomSanitizer,
     private emailservice: EmailVerificationService,
     private verificationCodeService: VerificationCodeService,
-    private verificationCodeCompenent : VerificationEnterComponent,
+    private verificationCodeComponent: VerificationEnterComponent,
     private toastr: ToastrService,
     private translate: TranslateService,
     private spinner: NgxSpinnerService
-
-
   ) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
       UserName: ['', [Validators.required]],
       FullName: [''],
-      Email: ['',[Validators.email]],
-      Password: ['',[Validators.required,Validators.minLength(8)]],
-      PasswordRepeat: ['',[Validators.required] ],
+      Email: ['', [Validators.email]],
+      Password: ['', [Validators.required, Validators.minLength(8)]],
+      PasswordRepeat: ['', [Validators.required]],
       Gender: this.genderType.other,
-      
-    
     });
+
     this.spinner.show();
     setTimeout(() => {
       this.spinner.hide();
     }, 500);
-    
   }
-  
+
   generateVerificationCode() {
     this.verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
     this.verificationCodeService.setVerificationCode(this.verificationCode); // Doğrulama kodunu servise kaydedin
   }
 
   loadHtmlContent() {
-    const {FullName} = this.registerForm.value;
-    this.verificationName=FullName;
+    const { FullName } = this.registerForm.value;
+    this.verificationName = FullName;
     this.http.get('assets/email-verification.component.html', { responseType: 'text' })
       .subscribe((htmlContent: string) => {
         const modifiedHtmlContent = htmlContent
@@ -93,13 +83,15 @@ export class RegisterComponent implements OnInit {
     this.emailservice.sendVerificationCode(emailData)
       .subscribe({
         next: (response) => {
-          console.log('Verification email sent successfully', response);
+          this.translate.get('VERIFICATION_EMAIL_SENT').subscribe((res: string) => {
+            this.toastr.success(res, 'Success');
+          });
           this.emailSent = true;
-          this.toastr.success(this.translate.instant('VERIFICATION_EMAIL_SENT'));
         },
         error: (error) => {
-          console.error('Error sending verification email', error);
-          this.toastr.error(this.translate.instant('VERIFICATION_EMAIL_ERROR'));
+          this.translate.get('VERIFICATION_EMAIL_ERROR').subscribe((res: string) => {
+            this.toastr.error(res, 'Error');
+          });
         }
       });
   }
@@ -112,7 +104,9 @@ export class RegisterComponent implements OnInit {
       const { UserName, FullName, Email, Password, PasswordRepeat, Gender } = this.registerForm.value;
 
       if (Password !== PasswordRepeat) {
-        this.toastr.error(this.translate.instant('PASSWORDS_DO_NOT_MATCH'));
+        this.translate.get('PASSWORDS_DO_NOT_MATCH').subscribe((res: string) => {
+          this.toastr.error(res, 'Error');
+        });
         return;
       }
 
@@ -123,6 +117,3 @@ export class RegisterComponent implements OnInit {
     }
   }
 }
- 
-
-
