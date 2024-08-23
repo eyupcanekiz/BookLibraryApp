@@ -26,7 +26,7 @@
 
 <div class="comments-section">
   <h3>{{ 'BOOK_COMMENTS' | translate }}</h3>
-  <app-star-rating [bookName]="bookName" [userName]="userName"></app-star-rating>
+  <app-star-rating [bookName]="bookName" [userName]="userName" [currentRating]="userRating"></app-star-rating>
   <div class="comment" *ngFor="let comment of comments">
     <div class="comment-header">
       <img src="https://t4.ftcdn.net/jpg/04/17/45/29/360_F_417452904_rQxOdinTSq2Rc5Bjm5VwMNYdG6TluPrc.jpg" alt="{{comment.userName}}'s avatar" class="avatar">
