@@ -10,7 +10,7 @@ import { RateBookResultDto } from './star-rating.model';
 export class StarRatingComponent implements OnInit {
   @Input() bookName: string = '';  
   @Input() userName: string = '';  
-  currentRating: number = 0;  
+  @Input() currentRating: number = 0;  
   stars = [false, false, false, false, false];  
   isRatingLocked = false;
   averageRating!: number;
