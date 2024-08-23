@@ -31,7 +31,7 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
-    margin-top: 70px;
+    margin-top: 90px;
     background-color: #90969c;
     input{
       font-family: Arial, Helvetica, sans-serif;
@@ -70,6 +70,13 @@ $box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       padding: 10px;
       font-size: 16px;
       border-radius: 5px;
+      box-shadow: 0 5px 15px rgba(255, 221, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+  
+      &:hover {
+        background-color: #b38000;
+        transform: translateY(-3px);
+      }
     }
   }
 }

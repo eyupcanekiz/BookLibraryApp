@@ -146,19 +146,7 @@ export class AllBookShowComponent implements OnInit {
     this.paginatedBooks = filtered.slice(startIndex, endIndex);
   }
 
-  loadComments(name: string): Promise<void> {
-    return new Promise((resolve, rejects) => {
-      this.allBookShowService.getComment(name).subscribe(
-        (response: commentResponse[]) => {
-          this.comments = response;
-          resolve();
-        },
-        (error) => {
-          rejects();
-        }
-      );
-    });
-  }
+
 
   addComment(bookName: string) {
     const commentData: commentRequest = {
@@ -179,6 +167,56 @@ export class AllBookShowComponent implements OnInit {
       }
     );
   }
+
+ // Yorumları yüklemek için kullanılan metod
+loadComments(name: string): Promise<void> {
+  return new Promise((resolve, reject) => {
+    this.allBookShowService.getComment(name).subscribe(
+      (response: commentResponse[]) => {
+        this.comments = response;
+        resolve();
+      },
+      (error) => {
+        reject();
+        this.handleError();
+      }
+    );
+  });
+}
+
+// Yorum eklemek için kullanılan metod
+addComment(bookName: string) {
+  const commentData: commentRequest = {
+    comment: this.newComment.text,
+    userName: this.userName,
+    Status: true
+  };
+
+  this.allBookShowService.addComment(bookName, commentData).subscribe(
+    async (response) => {
+      // Yorum formunu temizle
+      this.newComment.text = '';
+
+      // Güncellenmiş yorumları tekrar çek
+      await this.loadComments(bookName);
+    },
+    (error) => {
+      this.handleError();
+    }
+  );
+}
+
+// Hataları yönetmek için ortak bir metod
+handleError() {
+  this.translate.get('ERROR').subscribe((res1: string) => {
+    this.translate.get('ERROR_OCCURED').subscribe((res2: string) => {
+      this.toastr.error(res2, res1);
+    });
+  });
+}
+
+    
+}
 
   // // Kullanıcının kitaba verdiği değerlendirmeyi almak için yeni metod
   // getUserBookRating(bookName: string, userName: string): Promise<void> {

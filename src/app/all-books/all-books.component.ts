@@ -44,7 +44,6 @@ export class AllBooksComponent implements OnInit {
       (data: Book[]) => {
         this.books = data;
         this.filterAndPaginateBooks(); // Arama ve sayfalama işlemini birlikte yap
-        console.log(data)
       },
       (error) => {
         this.errorMessage = error.message;
@@ -121,7 +120,7 @@ export class AllBooksComponent implements OnInit {
     const token = localStorage.getItem('AuthToken');
     if (token) {
       this.userId = this.authService.extractUserIdFromToken(token);
-      console.log(this.userId);
+      
     }
   }
   }
