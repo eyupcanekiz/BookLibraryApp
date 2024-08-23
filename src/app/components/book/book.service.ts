@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { UserBookRatingDto } from './book.model';
 
 export interface Book {
   id?: any;
@@ -16,6 +17,7 @@ export interface Book {
   averageRating: any ;
   ratingCount: any ;
   ratings:any;
+  userName:string;
  
 }
 export interface Ratings{
@@ -82,5 +84,9 @@ export class BookService {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(errorMessage);
+  }
+
+    getUserBookRating(bookName: string, userName: string): Observable<UserBookRatingDto> {
+    return this.http.get<UserBookRatingDto>(`${this.apiUrl}/getUserRating?bookName=${bookName}&userName=${userName}`);
   }
 }

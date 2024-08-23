@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService, Book, Ratings } from '../components/book/book.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AllBookShowService, AllShowBookDto, /*UserBookRatingDto */} from './all-book-show.service';
+import { AllBookShowService, AllShowBookDto } from './all-book-show.service';
 import { AuthService } from '../components/login/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
 import { BorrowbookService } from '../components/borrowbook/borrowbook.service';
 import { commentRequest } from './comment-request';
 import { commentResponse } from './commentresponse';
+import { StarRatingService } from '../star-rating/star-rating.service';
+import { UserBookRatingDto } from '../components/book/book.model';
 
 @Component({
   selector: 'app-all-book-show',
@@ -40,8 +42,9 @@ export class AllBookShowComponent implements OnInit {
   averageRating: any = 0;
   ratingCount: any = 0;
   ratings: Ratings[] = [];
-  userRating: number | undefined = undefined;
+  userRating: number = 0;
   newComment: any = { text: '', userName: 'Kullanıcı Adı' };
+  isRatingLocked = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,16 +55,19 @@ export class AllBookShowComponent implements OnInit {
     private authService: AuthService,
     private toastr: ToastrService,
     private translate: TranslateService,
-    private borrowbookService: BorrowbookService
+    private borrowbookService: BorrowbookService,
   ) {}
 
   async ngOnInit() {
     await this.getUser();
     const name = this.route.snapshot.paramMap.get('name');
-    this.onGetByName(name!);
+    if (name) {
+      this.bookName = name;
+      this.onGetByName(name);
+      await this.loadUserRating(); 
+      await this.loadComments(name);
+    }
     this.fetchBorrowedBooks(this.userName);
-    await this.loadComments(name!);
-    // await this.getUserBookRating(name!, this.userName);
   }
 
   onGetByName(name: string) {
@@ -77,8 +83,9 @@ export class AllBookShowComponent implements OnInit {
         this.averageRating = response.averageRating;
         this.ratingCount = response.ratingCount;
         this.ratings = response.ratings;
+      
       },
-      error: (error) => {
+      error: () => {
         this.snackBar.open('Kitap bilgisi alınamadı', 'Close', { duration: 3000 });
       }
     });
@@ -91,14 +98,14 @@ export class AllBookShowComponent implements OnInit {
         this.snackBar.open("Kitap başarılı bir şekilde ödünç alındı", "Close", { duration: 3000 });
         this.router.navigate(["all-books"]);
       },
-      error: (error) => {
+      error: () => {
         this.snackBar.open("Kitap ödünç alınamadı", "Close", { duration: 3000 });
       }
     });
   }
 
   getUser(): Promise<void> {
-    return new Promise((resolve, rejects) => {
+    return new Promise((resolve, reject) => {
       this.authService.getCurrentUser().subscribe({
         next: (response) => {
           this.userName = response?.userName || "";
@@ -106,7 +113,7 @@ export class AllBookShowComponent implements OnInit {
         },
         error: () => {
           this.snackBar.open("Lütfen giriş yapınız", "Close", { duration: 3000 });
-          rejects();
+          reject();
         }
       });
     });
@@ -146,8 +153,6 @@ export class AllBookShowComponent implements OnInit {
     this.paginatedBooks = filtered.slice(startIndex, endIndex);
   }
 
-
-
   addComment(bookName: string) {
     const commentData: commentRequest = {
       comment: this.newComment.text,
@@ -155,10 +160,10 @@ export class AllBookShowComponent implements OnInit {
       Status: true
     };
     this.allBookShowService.addComment(bookName, commentData).subscribe(
-      (response) => {
+      () => {
         window.location.reload();
       },
-      (error) => {
+      () => {
         this.translate.get('ERROR').subscribe((res1: string) => {
           this.translate.get('ERROR_OCCURED').subscribe((res2: string) => {
             this.toastr.error(res2, res1);
@@ -168,55 +173,56 @@ export class AllBookShowComponent implements OnInit {
     );
   }
 
- // Yorumları yüklemek için kullanılan metod
-loadComments(name: string): Promise<void> {
-  return new Promise((resolve, reject) => {
-    this.allBookShowService.getComment(name).subscribe(
-      (response: commentResponse[]) => {
-        this.comments = response;
-        resolve();
-      },
-      (error) => {
-        reject();
-        this.handleError();
-      }
-    );
-  });
-}
-
-
-
-// Hataları yönetmek için ortak bir metod
-handleError() {
-  this.translate.get('ERROR').subscribe((res1: string) => {
-    this.translate.get('ERROR_OCCURED').subscribe((res2: string) => {
-      this.toastr.error(res2, res1);
+  loadComments(name: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.allBookShowService.getComment(name).subscribe(
+        (response: commentResponse[]) => {
+          this.comments = response;
+          resolve();
+        },
+        () => {
+          reject();
+          this.handleError();
+        }
+      );
     });
-  });
-}
+  }
 
+  private loadUserRating() {
+    console.log(this.userName);
+    console.log(this.bookName);
     
+    
+
+
+        // URL encode bookName and userName to handle special characters
+       
+        this.bookService.getUserBookRating(this.bookName, this.userName).subscribe({
+          next: (response: UserBookRatingDto) => {
+            if (response.success) {
+              this.userRating = response.userRating || 0;
+              this.isRatingLocked = true; // Lock rating to prevent change
+            } else {
+              this.errorMessage = response.message;
+            }
+         
+          },
+          error: (error) => {
+            console.error('Error fetching user rating:', error);
+            this.errorMessage = 'Değerlendirme alınamadı.';
+       
+          }
+        });
+      } 
+
+  
+  
+
+  private handleError() {
+    this.translate.get('ERROR').subscribe((res1: string) => {
+      this.translate.get('ERROR_OCCURED').subscribe((res2: string) => {
+        this.toastr.error(res2, res1);
+      });
+    });
+  }
 }
-
-  // // Kullanıcının kitaba verdiği değerlendirmeyi almak için yeni metod
-  // getUserBookRating(bookName: string, userName: string): Promise<void> {
-  //   return new Promise((resolve, reject) => {
-  //     this.allBookShowService.ShowUserRating(bookName, userName).subscribe({
-  //       next: (response: UserBookRatingDto) => {
-  //         if (response.Success) {
-  //           this.userRating = response.UserRating;
-           
-  //         } else {
-  //           this.errorMessage = response.Message;
-  //         }
-  //         resolve();
-  //       },
-  //       error: (error) => {
-  //         console.error('Error fetching user rating:', error);
-  //         this.errorMessage = 'Değerlendirme alınamadı.';
-  //         reject();
-  //       }
-  //     });
-  //   });
-  // }
-

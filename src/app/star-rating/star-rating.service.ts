@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { RateBookRequest, RateBookResultDto, UserBookRatingDto } from './star-rating.model'; // Yolu ayarlayın
+import { RateBookRequest, RateBookResultDto } from './star-rating.model'; // Yolu ayarlayın
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +15,9 @@ export class StarRatingService {
     const request: RateBookRequest = { BookName: bookName, Rating: rating };
     return this.http.post<RateBookResultDto>(`${this.apiUrl}/rate-book?userName=${userName}`, request);
   }
-  ShowUserRating(bookName: string, userName: string): Observable<UserBookRatingDto> {
-    const url = `${this.apiUrl}/getUserRating?bookName=${encodeURIComponent(bookName)}&userName=${encodeURIComponent(userName)}`;
-    return this.http.get<UserBookRatingDto>(url);
-  }
-  
+  // ShowUserRating(bookName:string, userName:string): Observable<any>{
+  //   return this.http.get(`${this.apiUrl}/getUserRating?bookName=${bookName}&userName=${userName}`);
+  // }
+
 }
 

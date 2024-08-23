@@ -8,8 +8,3 @@ export interface RateBookRequest {
     AverageRating?: number;
     Message: string;
   }
-  export interface UserBookRatingDto{
-    UserRating:any;
-    Message: string;
-    Success:boolean;
- }
