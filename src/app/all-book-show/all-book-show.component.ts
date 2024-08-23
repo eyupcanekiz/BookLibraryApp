@@ -85,8 +85,15 @@ export class AllBookShowComponent implements OnInit {
         this.ratings = response.ratings;
       
       },
+
       error: () => {
         this.snackBar.open('Kitap bilgisi alınamadı', 'Close', { duration: 3000 });
+
+      error: (error) => {
+        this.translate.get('BOOK_INFO_ERROR').subscribe((res: string) => {
+          this.toastr.error(res, 'Error');
+        });
+
       }
     });
   }
@@ -95,11 +102,20 @@ export class AllBookShowComponent implements OnInit {
     this.bookNameDto = { bookName: bookName };
     this.allBookShowService.addBorrowedBook(this.bookNameDto, this.userName).subscribe({
       next: () => {
-        this.snackBar.open("Kitap başarılı bir şekilde ödünç alındı", "Close", { duration: 3000 });
+        this.translate.get('BOOK_BORROW_SUCCESS').subscribe((res: string) => {
+          this.toastr.success(res, 'Success');
+        });
         this.router.navigate(["all-books"]);
       },
+
       error: () => {
         this.snackBar.open("Kitap ödünç alınamadı", "Close", { duration: 3000 });
+
+      error: (error) => {
+        this.translate.get('BOOK_BORROW_ERROR').subscribe((res: string) => {
+          this.toastr.error(res, 'Error');
+        });
+
       }
     });
   }
@@ -112,8 +128,15 @@ export class AllBookShowComponent implements OnInit {
           resolve();
         },
         error: () => {
+
           this.snackBar.open("Lütfen giriş yapınız", "Close", { duration: 3000 });
           reject();
+
+          this.translate.get('LOGIN_REQUIRED').subscribe((res: string) => {
+            this.toastr.error(res, 'Error');
+          });
+          rejects();
+
         }
       });
     });
@@ -160,10 +183,28 @@ export class AllBookShowComponent implements OnInit {
       Status: true
     };
     this.allBookShowService.addComment(bookName, commentData).subscribe(
+
       () => {
         window.location.reload();
       },
       () => {
+
+      (response) => {
+        // Yorum ekledikten sonra sadece yorumları yeniden yükle
+        this.loadComments(bookName).then(() => {
+          // Yorum başarılı bir şekilde yenilendiğinde yeni yorum kutusunu temizle
+          this.newComment.text = ''; 
+          // Kullanıcıya başarı mesajı göster
+          this.translate.get('SUCCESS').subscribe((res1: string) => {
+            this.translate.get('COMMENT_ADDED').subscribe((res2: string) => {
+              this.toastr.success(res2, res1);
+            });
+          });
+        });
+      },
+      (error) => {
+        // Hata durumunda hata mesajı göster
+
         this.translate.get('ERROR').subscribe((res1: string) => {
           this.translate.get('ERROR_OCCURED').subscribe((res2: string) => {
             this.toastr.error(res2, res1);
@@ -173,6 +214,10 @@ export class AllBookShowComponent implements OnInit {
     );
   }
 
+
+  
+  // Yorumları yüklemek için kullanılan metod
+
   loadComments(name: string): Promise<void> {
     return new Promise((resolve, reject) => {
       this.allBookShowService.getComment(name).subscribe(
@@ -180,7 +225,11 @@ export class AllBookShowComponent implements OnInit {
           this.comments = response;
           resolve();
         },
+
         () => {
+
+        (error) => {
+
           reject();
           this.handleError();
         }
