@@ -184,27 +184,7 @@ loadComments(name: string): Promise<void> {
   });
 }
 
-// Yorum eklemek için kullanılan metod
-addComment(bookName: string) {
-  const commentData: commentRequest = {
-    comment: this.newComment.text,
-    userName: this.userName,
-    Status: true
-  };
 
-  this.allBookShowService.addComment(bookName, commentData).subscribe(
-    async (response) => {
-      // Yorum formunu temizle
-      this.newComment.text = '';
-
-      // Güncellenmiş yorumları tekrar çek
-      await this.loadComments(bookName);
-    },
-    (error) => {
-      this.handleError();
-    }
-  );
-}
 
 // Hataları yönetmek için ortak bir metod
 handleError() {
@@ -239,4 +219,4 @@ handleError() {
   //     });
   //   });
   // }
-}
+
