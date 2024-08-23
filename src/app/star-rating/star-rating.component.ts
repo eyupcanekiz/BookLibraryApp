@@ -7,29 +7,22 @@ import { RateBookResultDto } from './star-rating.model';
   templateUrl: './star-rating.component.html',
   styleUrls: ['./star-rating.component.scss']
 })
-export class StarRatingComponent implements OnInit, OnChanges {
+export class StarRatingComponent implements OnInit {
   @Input() bookName: string = '';  
   @Input() userName: string = '';  
-  currentRating = 0;  
+  @Input() currentRating: number = 0;  
   stars = [false, false, false, false, false];  
   isRatingLocked = false;
   averageRating!: number;
+  errorMessage: string = "";
+
   constructor(private starRatingService: StarRatingService) {}
 
   ngOnInit(): void {
-   
+
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['bookName'] && changes['bookName'].currentValue) {
-      console.log('ngOnChanges - bookName:', this.bookName);
-    }
-    if (changes['userName'] && changes['userName'].currentValue) {
-      console.log('ngOnChanges - userName:', this.userName);
-    }
-    
-    
-  }
+
 
   setRating(rating: number) {
     if (!this.isRatingLocked) {
@@ -52,14 +45,10 @@ export class StarRatingComponent implements OnInit, OnChanges {
   }
 
   private sendRatingToServer() {
-    
     this.starRatingService.rateBook(this.bookName, this.currentRating, this.userName).subscribe({
       next: (response: RateBookResultDto) => {
-        console.log(response);
-          this.averageRating = response.AverageRating!
-          alert('Puan başarıyla eklendi.');
-  
-        
+        this.averageRating = response.AverageRating!;
+        alert('Puan başarıyla eklendi.');
       },
       error: (err) => {
         console.error('Puan gönderilirken hata:', err);
@@ -67,4 +56,5 @@ export class StarRatingComponent implements OnInit, OnChanges {
       }
     });
   }
+
 }

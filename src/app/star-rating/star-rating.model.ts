@@ -4,6 +4,7 @@ export interface RateBookRequest {
   }
   
   export interface RateBookResultDto {
+    UserRating: number;
     Success: boolean;
     AverageRating?: number;
     Message: string;

@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
         next: (response) => {
           if (response.authenticateResult) {
             this.translate.get('LOGIN_SUCCESS').subscribe((res: string) => {
-              this.toastr.success(res, 'Success');
+              this.toastr.success(res, 'Login Successful');
             });
   
             this.authService.getToken().subscribe({
@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
             });
           } else {
             this.translate.get('LOGIN_FAIL').subscribe((res: string) => {
-              this.toastr.error(res, 'Error');
+              this.toastr.error(res, 'Login Failed');
             });
           }
         },

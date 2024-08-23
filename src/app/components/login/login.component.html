@@ -14,8 +14,8 @@
     <div class="form-container">  
         <h2>{{ 'LOGIN' | translate }}</h2><br>
         <div>
-          <button type="button" class="btn btn-info" (click)="showEmailForm()" *ngIf="isUsernameFormVisible" id="s1">E-posta ile giriş yapmak için tıklayınız</button>
-          <button type="button" class="btn btn-info" (click)="showUsernameForm()" *ngIf="isEmailFormVisible"id="s1">Kullanıcı adı ile giriş yapmak için tıklayınız</button>
+          <button type="button" class="btn " (click)="showEmailForm()" *ngIf="isUsernameFormVisible" id="s1">E-posta ile giriş yapmak için tıklayınız</button>
+          <button type="button" class="btn" (click)="showUsernameForm()" *ngIf="isEmailFormVisible"id="s1">Kullanıcı adı ile giriş yapmak için tıklayınız</button>
         </div><br>
         
         <form [formGroup]="loginForm" (ngSubmit)="onLogin()">

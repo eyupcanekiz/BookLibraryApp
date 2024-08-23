@@ -1,4 +1,3 @@
-// General Variables
 $primary-color: #ffcc00;
 $secondary-color: #212121;
 $background-color: #ffffff;
@@ -18,6 +17,7 @@ $transition-speed: 0.4s;
   animation: fadeInUp $transition-speed ease-in-out;
   max-width: 90%;
   margin: 20px auto;
+  margin-top: 120px;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -28,6 +28,7 @@ $transition-speed: 0.4s;
     color: $secondary-color;
     margin-bottom: 10px;
     font-family: $font-family;
+    font-size: 2rem; // Kitap adını biraz küçültüyoruz
     text-align: left;
   }
 
@@ -38,12 +39,13 @@ $transition-speed: 0.4s;
 
     p {
       margin: 0;
+      font-size: 0.9rem; // Açıklamayı biraz küçültüyoruz
     }
   }
 
   #bookimg {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
     border-radius: 12px;
     margin-bottom: 20px;
     transition: transform $transition-speed ease;
@@ -59,14 +61,29 @@ $transition-speed: 0.4s;
   }
 
   .book-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr; // İki sütun düzenine geçiyoruz
+    gap: 20px; // Kutular arası boşluk
+    margin-top: 20px;
+    width: 100%; // Kutuları genişletiyoruz
+
     p {
       font-family: $font-family;
       color: $secondary-color;
-      margin: 10px 0;
-      line-height: 1.5;
+      padding: 15px;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
 
       strong {
         color: $primary-color;
+      }
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
       }
     }
   }
@@ -86,6 +103,7 @@ button {
   display: inline-block;
   margin: 10px;
   box-shadow: 0 5px 15px rgba(170, 255, 0, 0.3);
+
   &:hover {
     background-color: $hover-color;
     transform: translateY(-4px);

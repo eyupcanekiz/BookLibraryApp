@@ -8,6 +8,7 @@ import { response } from 'express';
 import { error } from 'console';
 import { resolve } from 'path';
 import { rejects } from 'assert';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-another-navbar',
@@ -25,6 +26,7 @@ export class AnotherNavbarComponent implements OnInit  {
     private router : Router,
     private translate: TranslateService,
     private authService : AuthService,
+       private toastr: ToastrService,
     
   )
   {
@@ -67,17 +69,20 @@ export class AnotherNavbarComponent implements OnInit  {
   }
 
 
-  toogleLogout()
-  {
+  toogleLogout() {
     this.logoutService.logout().subscribe({
-      next:() =>{
-        this.snackBar.open("Oturum başarili bir şekilde kapatildi","Close",{duration:3000});
+      next: () => {
+        this.translate.get('LOGOUT_SUCCESS').subscribe((res: string) => {
+          this.toastr.success(res, 'Success');
+        });
       },
-      error:(error)=>{
-        this.snackBar.open("Oturum Kapatilamadi","Close",{duration:3000});
-        console.error("Logout Failed" ,error)
+      error: (error) => {
+        this.translate.get('LOGOUT_FAILED').subscribe((res: string) => {
+          this.toastr.error(res, 'Error');
+        });
+        console.error("Logout Failed", error);
       }
-    })
+    });
   }
   navigateToProfile(){
     if(this.userId){
