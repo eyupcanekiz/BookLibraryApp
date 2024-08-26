@@ -24,7 +24,7 @@ export class AllBookShowService{
 
     constructor(private http : HttpClient){}
 addBorrowedBook(bookDto: AllShowBookDto, userName: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/AddBorrow?userName=${userName}`, bookDto);
+    return this.http.post(`${this.apiUrl}/AddBorrow/${userName}`, bookDto);
   }
   // ShowUserRating(bookName:string, userName:string): Observable<any>{
   //   return this.http.get(`${this.bookUrl}/getUserRating?bookName=${bookName}&userName=${userName}`);

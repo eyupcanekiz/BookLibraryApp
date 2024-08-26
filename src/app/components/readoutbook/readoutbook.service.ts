@@ -11,6 +11,6 @@ export class ReadoutBookService {
   constructor(private http: HttpClient) {}
 
   getReadOutBooks(userName: any): Observable<any> {
-    return this.http.get(`${this.apiUrl}/GetReadOutByName?userName=${userName}`);
+    return this.http.get(`${this.apiUrl}/GetReadOutByName/${userName}`);
   }
 }
