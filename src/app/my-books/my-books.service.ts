@@ -12,10 +12,10 @@ import { BorrowBookByNameDto } from "../components/borrowbook/borrowbook.service
     constructor(private http: HttpClient) { }
   
     getBorrowedBooks(userName: any): Observable<any> {
-      return this.http.get(`${this.apiUrl}/GetBorrowBooks?userName=${userName}`);
+      return this.http.get(`${this.apiUrl}/GetBorrowBooks/${userName}`);
     }
     getReadOutBooks(userName: any): Observable<any> {
-      return this.http.get(`${this.apiUrl}/GetReadOutByName?userName=${userName}`);
+      return this.http.get(`${this.apiUrl}/GetReadOutByName/${userName}`);
     }
     removeBorrowedBook(bookDto: BorrowBookByNameDto, userName: string): Observable<any> {
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -26,7 +26,7 @@ import { BorrowBookByNameDto } from "../components/borrowbook/borrowbook.service
       });
     }
     updateBorrowedBook(bookDto: BorrowBookByNameDto, userName: string): Observable<any> {
-      return this.http.put(`${this.apiUrl}/UpdateBorrowedBook?userName=${userName}`, bookDto, {
+      return this.http.put(`${this.apiUrl}/UpdateBorrowedBook/${userName}`, bookDto, {
         headers: {
           'Content-Type': 'application/json',
           'Accept': '*/*'

@@ -49,13 +49,14 @@ export class BorrowbookComponent implements OnInit {
 
  addBorrowedbook() {
   const bookDto: BorrowBookByNameDto = { bookName: this.bookName };
-
+  
   this.borrowbookService.addBorrowedBook(bookDto, this.userName).subscribe({
     next: (response) => {
       this.message = response.message;
       this.fetchBorrowedBooks(this.userName)
     },
     error: (error) => {
+      console.log(this.userName);
       this.message = 'Bir hata oluştu: ' + error.message;
     }
   });
