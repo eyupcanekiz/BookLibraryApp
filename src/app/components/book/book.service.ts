@@ -16,7 +16,7 @@ export interface Book {
   description: string;
   averageRating: any ;
   ratingCount: any ;
-  ratings:any;
+  ratings:Ratings[];
   userName:string;
  
 }

@@ -20,7 +20,8 @@ export class BookComponent implements OnInit {
     description: "",
     averageRating: 0,
     ratingCount:  0,
-    totalRating: 0
+    totalRating: 0,
+    ratings: []
   };
   errorMessage: string = '';
   books: Book[] = [];
@@ -55,7 +56,8 @@ export class BookComponent implements OnInit {
           description: "",
           averageRating: 0,
           ratingCount:  0,
-          totalRating: 0
+          totalRating: 0,
+          ratings: []
 
         };
         this.getBooks();

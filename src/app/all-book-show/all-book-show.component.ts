@@ -186,44 +186,51 @@ export class AllBookShowComponent implements OnInit {
   
   // Yorumları yüklemek için kullanılan metod
   loadComments(name: string): Promise<void> {
-    return new Promise((resolve, reject) => {
-      this.allBookShowService.getComment(name).subscribe(
-        (response: commentResponse[]) => {
-          this.comments = response;
-          resolve();
-        },
-        (error) => {
+  return new Promise((resolve, reject) => {
+    this.allBookShowService.getComment(name).subscribe(
+      (response: commentResponse[]) => {
+        this.comments = response;
+        resolve();
+      },
+      (error) => {
+        if (error.status === 404) {
+          // Eğer hata 404 ise, yorumların boş olduğunu varsay ve hata mesajı gösterme
+          this.comments = []; // Yorumları boş olarak ayarla
+          resolve(); // Promise'i başarıyla tamamla
+        } else {
           reject();
           this.handleError();
         }
-      );
-    });
-  }
+      }
+    );
+  });
+}
+
 
 
   private loadUserRating() {
-       
-        this.bookService.getUserBookRating(this.bookName, this.userName).subscribe({
-          next: (response: UserBookRatingDto) => {
-            if (response.success) {
-              
-              this.userRating = response.userRating || 0;
-              this.isRatingLocked = true; // Lock rating to prevent change
-             
-              
-            } else {
-              this.errorMessage = response.message;
-            }
-         
-          },
-          error: (error) => {
-            console.error('Error fetching user rating:', error);
-            this.errorMessage = 'Değerlendirme alınamadı.';
-       
-          }
-        });
-      } 
-
+    this.bookService.getUserBookRating(this.bookName, this.userName).subscribe({
+      next: (response: UserBookRatingDto) => {
+        if (response.success) {
+          this.userRating = response.userRating || 0;
+          this.isRatingLocked = true; // Puan kilitle, değiştirilemesin
+        } else {
+          this.errorMessage = response.message;
+        }
+      },
+      error: (error) => {
+        if (error.status === 404) {
+          // Eğer puan yoksa (404 hatası), varsayılan olarak 0 yap
+          this.userRating = 0;
+          this.isRatingLocked = false; // Puanlama yapılabilir
+        } else {
+          console.error('Kullanıcı puanı alınırken hata oluştu:', error);
+          this.errorMessage = 'Değerlendirme alınamadı.';
+        }
+      }
+    });
+  }
+  
   
   
 
