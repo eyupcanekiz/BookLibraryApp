@@ -19,7 +19,7 @@ import { BorrowBookByNameDto } from "../components/borrowbook/borrowbook.service
     }
     removeBorrowedBook(bookDto: BorrowBookByNameDto, userName: string): Observable<any> {
       const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-      return this.http.delete(`${this.apiUrl}/RemoveBorrowed`, { 
+      return this.http.delete(`${this.apiUrl}/RemoveBorrowed/${userName}`, { 
         headers: headers, 
         body: bookDto,
         params: { userName: userName } 
