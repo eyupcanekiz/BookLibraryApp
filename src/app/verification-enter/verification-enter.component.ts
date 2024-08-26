@@ -5,6 +5,8 @@ import { RegisterService } from '../components/register/register.service';
 import { RegisterModel } from '../components/register/registerModel';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import * as CryptoJS from 'crypto-js';
+import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-verification-enter',
@@ -20,7 +22,9 @@ export class VerificationEnterComponent implements OnInit {
     private verificationCodeService: VerificationCodeService, // Servisi inject edin
     private registerService :RegisterService,
     private snackBar: MatSnackBar,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private toastr: ToastrService, 
+    private translate: TranslateService
 ) {}
 ngOnInit(): void {
   const key = 'YourSecretKeyForEncryption&Descryption';
@@ -41,45 +45,53 @@ ngOnInit(): void {
 }
   
 
-  onSubmit() {
-    const correctCode = this.verificationCodeService.getVerificationCode(); // Doğru kodu servisten alın
-    console.log(this.model);
-    
-    if (this.verificationCode === correctCode) {
-      // Kod doğru ise
-      console.log('Girdiğiniz kod doğru!');
-      alert('Girdiğiniz kod doğru!');
-      this.registerService.register(this.model).subscribe({
-        next: (response: any) => {
-          this.router.navigate(["/"])
-          this.snackBar.open('Başarıyla kayıt olundu', 'Close');
-          
-       
-        },
-        error: (error: any) => {
-    
-          if (error.status === 400) { 
-            if (error.error === 'EMAIL_ALREADY_EXISTS') {
-              this.snackBar.open('Bu e-posta adresi zaten kayıtlı', 'Close', { duration: 3000 });
-            } else if (error.error === 'USERNAME_ALREADY_EXISTS') {
-              this.snackBar.open('Bu kullanıcı adı zaten kayıtlı', 'Close', { duration: 3000 });
-            } else {
-              this.snackBar.open('Kayıt başarısız. Lütfen tekrar deneyin.', 'Close', { duration: 3000 });
-            }
+onSubmit() {
+  const correctCode = this.verificationCodeService.getVerificationCode(); // Doğru kodu servisten alın
+  console.log(this.model);
+  
+  if (this.verificationCode === correctCode) {
+    // Kod doğru ise
+    console.log('Girdiğiniz kod doğru!');
+    this.translate.get('VERIFICATION_CODE_CORRECT').subscribe((res: string) => {
+      this.toastr.success(res, 'Success');
+    });
+
+    this.registerService.register(this.model).subscribe({
+      next: (response: any) => {
+        this.router.navigate(["/"]);
+        this.translate.get('REGISTRATION_SUCCESSFUL').subscribe((res: string) => {
+          this.toastr.success(res, 'Success');
+        });
+      },
+      error: (error: any) => {
+        if (error.status === 400) {
+          if (error.error === 'EMAIL_ALREADY_EXISTS') {
+            this.translate.get('EMAIL_ALREADY_EXISTS').subscribe((res: string) => {
+              this.toastr.error(res, 'Error', { timeOut: 3000 });
+            });
+          } else if (error.error === 'USERNAME_ALREADY_EXISTS') {
+            this.translate.get('USERNAME_ALREADY_EXISTS').subscribe((res: string) => {
+              this.toastr.error(res, 'Error', { timeOut: 3000 });
+            });
           } else {
-            this.snackBar.open('Kayıt başarısız', 'Close', { duration: 3000 });
+            this.translate.get('REGISTRATION_FAILED').subscribe((res: string) => {
+              this.toastr.error(res, 'Error', { timeOut: 3000 });
+            });
           }
-          console.error('Kayıt başarısız', error);
+        } else {
+          this.translate.get('REGISTRATION_FAILED').subscribe((res: string) => {
+            this.toastr.error(res, 'Error', { timeOut: 3000 });
+          });
         }
-      });
-    }
-      
-      
-    
-     else {
-      // Kod yanlış ise
-      this.errorMessage = 'Girdiğiniz kod yanlış, lütfen tekrar deneyin.';
-      
-    }
+        console.error('Kayıt başarısız', error);
+      }
+    });
+  } else {
+    // Kod yanlış ise
+    this.translate.get('VERIFICATION_CODE_INCORRECT').subscribe((res: string) => {
+      this.toastr.error(res, 'Error', { timeOut: 3000 });
+    });
+    this.errorMessage = this.translate.instant('VERIFICATION_CODE_INCORRECT');
   }
+}
 }

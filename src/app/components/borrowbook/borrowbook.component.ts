@@ -31,18 +31,21 @@ export class BorrowbookComponent implements OnInit {
    this.fetchBorrowedBooks(this.userName);
   }
 
-  fetchBorrowedBooks(userName: string): void {
+  fetchBorrowedBooks(userName: string): Promise<void> {
+  return new Promise((resolve, reject) => {
     this.borrowbookService.getBorrowedBooks(userName).subscribe(
-    (response) => {
-     this.borrowedBooks = response.borrowBooks
-     console.log(response)
-  
-    },
-    (error) => {
-       console.error('Hata:', error);
-    }
-   );
- }
+      (response) => {
+        this.borrowedBooks = response.borrowBooks;
+        console.log(response);
+        resolve(); // İşlem başarılı olduğunda Promise'i çöz
+      },
+      (error) => {
+        console.error('Hata:', error);
+        reject(error); // Hata olduğunda Promise'i reddet
+      }
+    );
+  });
+}
 
  addBorrowedbook() {
   const bookDto: BorrowBookByNameDto = { bookName: this.bookName };
