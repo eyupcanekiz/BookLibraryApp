@@ -202,11 +202,6 @@ export class AllBookShowComponent implements OnInit {
 
 
   private loadUserRating() {
-
-    
-
-
-        // URL encode bookName and userName to handle special characters
        
         this.bookService.getUserBookRating(this.bookName, this.userName).subscribe({
           next: (response: UserBookRatingDto) => {

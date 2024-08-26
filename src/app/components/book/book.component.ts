@@ -48,7 +48,7 @@ export class BookComponent implements OnInit {
           bookName: '',
           publisher: '',
           author: '',
-          isAvailable: false,
+          isAvailable: true,
           stock: '',
           coverImageUrl: "",
           category: "",

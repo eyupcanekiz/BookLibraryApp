@@ -130,7 +130,7 @@ export class AllBooksComponent implements OnInit {
       this.authService.getById(this.userId).subscribe(
         (response) => {
           this.userName = response.userName;
-          console.log(this.userName);
+          
           if (this.userName) {
             this.fetchBorrowedBooks(this.userName);
           }

@@ -1,10 +1,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
 
 <div class="container">
-  <h1>Book List</h1>
+  <h1>Add Book</h1>
   <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
-
-  <!-- Form to add a new book -->
   <form (ngSubmit)="onSubmit()" #bookForm="ngForm" class="bookls">
     <div>
       <label for="bookName">Book Name</label>
@@ -18,11 +16,6 @@
       <label for="author">Author</label>
       <input id="author" [(ngModel)]="newBook.author" name="author" required>
     </div>
-   
-    <div>
-      <label for="stock">Stock</label>
-      <input id="stock" [(ngModel)]="newBook.stock" name="stock" required>
-    </div>
     <div>
       <label for="coverImageUrl">CoverImageUrl</label>
       <input id="coverImageUrl" [(ngModel)]="newBook.coverImageUrl" name="coverImageUrl" required>
@@ -34,28 +27,29 @@
         <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
       </select>
     </div>
-    
     <div>
-      <label>
-        <input type="checkbox" [(ngModel)]="newBook.isAvailable" name="isAvailable">
-        Available
-      </label>
+      <label for="stock">Stock</label>
+      <input id="stock" [(ngModel)]="newBook.stock" name="stock" required>
     </div>
+    <div>
+      <label for="description">Description</label>
+      <input id="description" [(ngModel)]="newBook.description" name="description" required>
+    </div>
+    <input type="hidden" [(ngModel)]="newBook.isAvailable" name="isAvailable" [value]="true">
     <button type="submit" [disabled]="!bookForm.form.valid">Add Book</button>
   </form>
+  
 
-  <!-- Message displayed when there are no books -->
+  
   <div *ngIf="books.length === 0 && !errorMessage" class="no-books-message">
     No books available.
   </div>
 
-  <!-- Book List -->
   <ul *ngIf="books.length > 0" class="booksl">
     <li *ngFor="let book of paginatedBooks" >
       <a href="#" (click)="getBookByName(book.bookName)">{{ book.bookName }}</a> 
       by {{ book.author }} (Publisher: {{ book.publisher }}) - 
       Available: {{ book.isAvailable ? 'Yes' : 'No' }}
-      <!-- Delete button -->
       <button (click)="deleteBook(book.bookName)">Delete</button>
     </li>
   </ul>
@@ -70,7 +64,6 @@
 
   <br>
 
-  <!-- Input field to get a book by ID -->
   <div class="get-book-by-name" class="bookls">
     <h2>Get Book by Name</h2>
     <label for="bookName">Book Name</label>
@@ -78,7 +71,6 @@
     <button (click)="getBookByName(bookName)" >Get Book</button>
   </div>
 
-  <!-- Selected Book Details -->
   <div *ngIf="selectedBook" class="bookls">
     <h2>Book Details</h2>
     <p><strong>Book Name:</strong> {{ selectedBook.bookName }}</p>
